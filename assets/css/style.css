@@ -55,7 +55,15 @@ header .inner-wrap .inner-user {
     width: 20%;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
+header .inner-wrap .user:hover, .cart:hover {
+    border-bottom: 2px solid black;
+    padding-bottom: 3px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
 header .inner-wrap .inner-user a, i{
     margin: 0 10px;
     color: black;

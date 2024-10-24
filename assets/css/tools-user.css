@@ -1,0 +1,102 @@
+.tools-user {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.65);
+    display: none;
+}
+
+.tools-user #btn-login {
+    background-color: #00B368;
+    color: white;
+}
+.tools-user #btn-register{
+    background-color: red;
+    color: white;
+}
+
+.tools-user .inner-content {
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+}
+
+.tools-user .inner-box {
+    display: flex;
+    width: 55%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: fit-content;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.tools-user .inner-box .inner-left {
+    align-content: center;
+    justify-items: center;
+}
+.tools-user .inner-box .inner-right {
+    width: 60%;
+    padding: 30px 40px;
+    position: relative;
+}
+.tools-user .inner-box .inner-right .btn-exit-tools-user {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.tools-user .inner-box .inner-right .btn-exit-tools-user:hover {
+    font-size: 22px;
+    background-color: red;
+    color: white;
+    padding: 8px;
+    transition: all 0.8s;
+    border-radius: 10px;
+}
+
+.tools-user .inner-box .inner-right > .inner-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    width: fit-content;
+    border-bottom: 3px solid black;
+    font-weight: bold;
+}
+.tools-user .inner-box .inner-right .inner-value {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.tools-user .inner-box .inner-right .inner-value .inner-title {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.tools-user .inner-box .inner-left {
+    width: 45%;
+    background-color: #333333;
+    color: #BEC6CF;
+    padding: 30px 40px;
+}
+.tools-user .inner-box .inner-left .inner-title, .inner-desc, .inner-end {
+    margin-bottom: 20px;
+}
+.tools-user .inner-box .inner-left .inner-title {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+.tools-user .inner-box .inner-left .inner-title:hover {
+    padding-bottom: 3px;
+    border-bottom: 3px solid white;
+    transition: all 0.3s;
+}
+.tools-user .inner-box .inner-left, .inner-desc {
+    text-align: center;
+    line-height: 1.4;
+}
