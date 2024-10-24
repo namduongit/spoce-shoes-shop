@@ -26,18 +26,21 @@ function writeHeaderPage() {
                 </div>
 
                 <div class="inner-user">
+
                     <div class="user" id="user" onclick="showTools()">
                         <div>
                             <i class="fa-solid fa-user"></i>
                             <span>Tài khoản</span>
                         </div>
                     </div>
+
                     <div class="cart" id="cart>
                         <div href="">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span>Giỏ hàng</span>
                         </div>
                     </div>
+                    
                 </div>
             </div>
     `);

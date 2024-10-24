@@ -18,6 +18,7 @@ function changeSelectToolUser(obj) {
     const button = document.querySelector(".tools-user .inner-right .inner-value button");
 
     if (checkSelect(obj)) {
+        // Nếu đúng là đang trạng thái đăng nhập
         content.innerHTML = `
             <div class="inner-login">
                 <div class="user-name">
@@ -41,6 +42,7 @@ function changeSelectToolUser(obj) {
         button.id = "btn-register";
 
     } else {
+        // Đang là trạng thái đăng k
         content.innerHTML = `
             <div class="inner-register resgister-from">
                 <div class="user-name box-name">
@@ -72,20 +74,24 @@ function changeSelectToolUser(obj) {
 function addLogin() {
     document.write(`
         <div class="inner-login login-form">
+
             <div class="user-name">
                 <div class="inner-title small-margin-top">Tài khoản:</div>
                 <input type="text" name="" id="" placeholder="Nhập tài khoản">
             </div>
+
             <div class="pass-word">
                 <div class="inner-title small-margin-top">Mật khẩu</div>
                 <input type="password" name="" id="" placeholder="********">
             </div>
+
             <div class="inner-save-info">
                 <input type="checkbox">
-
                 <span class="inner-title">Nhớ đăng nhập lần sau</span>
             </div>
+
             <button class="button" id="btn-login">Đăng nhập</button>
+
         </div>
 
     `);
@@ -94,11 +100,13 @@ function addLogin() {
 
 function writeTools() {
     document.write(`
-    <div class="tools-user" id="tools-user">
+    <div class="tools-user hidden" id="tools-user">
         <div class="inner-content">
             <div class="inner-box">
+
                 <div class="inner-left">
                     <div class="inner-title">SPOCE SHOES</div>
+
                     <div class="inner-desc">Spoce shop là hệ thống chuyên bán các sản phẩm như giày của các hãng nổi
                         tiếng
                         <strong>ADIDAS</strong>
@@ -110,21 +118,22 @@ function writeTools() {
                         uy tín chất lượng.
                         Hệ thống <strong>SPOCE SHOP</strong> còn tuyển các đại lý mua bán sỉ lẻ trên toàn quốc.
                     </div>
+
                     <div class="inner-end">
                         <strong>Nếu bạn dành 1% uy tín cho chúng tôi, chúng tôi sẽ chứng minh 99% còn lại</strong>
                         <strong>FROM SPOCE SHOP WITH LOVE❤️</strong>
                     </div>
-                </div>
 
+                </div>
 
                 <div class="inner-right">
                     <div class="inner-title">Đăng nhập hệ thống</div>
+
                     <div class="inner-value">
                         <div class="inner-title">Nếu bạn chưa có tài khoản</div>
-
-                        <button class="button" name="btn-selection" id="btn-register" onclick="changeSelectToolUser(this)">Đăng ký
-                            ngay!</button>
+                        <button class="button" name="btn-selection" id="btn-register" onclick="changeSelectToolUser(this)">Đăng ký ngay!</button>
                     </div>
+
                     <div class="inner-select">
                         <script>
                             addLogin();

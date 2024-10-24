@@ -57,7 +57,7 @@ header .inner-wrap .inner-user {
     justify-content: center;
     cursor: pointer;
 }
-header .inner-wrap .user:hover, .cart:hover {
+header .inner-wrap span:hover {
     border-bottom: 2px solid black;
     padding-bottom: 3px;
     font-weight: bold;
