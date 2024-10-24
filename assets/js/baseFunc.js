@@ -1,4 +1,4 @@
-function headerPage() {
+function writeHeaderPage() {
     document.write(`
         <div class="inner-content">
                 <div class="inner-logo">
@@ -43,7 +43,7 @@ function headerPage() {
     `);
 }
 
-function headMenu() {
+function writeHeadMenu() {
     document.write(`
         <div class="inner-content">
                 <ul class="menu-1">
@@ -81,7 +81,7 @@ function headMenu() {
             </div>
     `);
 }
-function headFooter() {
+function writeHeadFooter() {
     document.write(`
         <div class="inner-content">
                 <div class="inner-left">
@@ -150,7 +150,7 @@ function headFooter() {
     `);
 }
 
-function footFooter() {
+function writeFootFooter() {
     document.write(`
         <div class="inner-content">
                 <div class="inner-left">
