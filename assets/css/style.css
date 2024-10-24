@@ -64,10 +64,10 @@ header .inner-wrap .user:hover, .cart:hover {
     transition: all 0.2s;
 }
 
-header .inner-wrap .inner-user a, i{
+header .inner-wrap .inner-user span, i{
     margin: 0 10px;
     color: black;
-    font-weight: 500;
+    font-weight: bold;
 }
 /* End header */
 /* Section one */
@@ -75,7 +75,7 @@ header .inner-wrap .inner-user a, i{
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
     background-color: var(--bg-color-1);
 }
 .section-one .inner-wrap {
