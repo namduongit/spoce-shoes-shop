@@ -78,7 +78,12 @@ function writeRegisterForm() {
             </div>
         </div>
         <div class="right-form">
-            <div class="innput-email">
+            <div class="input-fullname">
+                <label for="fullname">Nhập họ và tên:</label>
+                <br>
+                <input type="text" id="fullname" placeholder="Nhập tên của bạn:">
+            </div>
+            <div class="input-email">
                 <label for="email">Nhập email:</label>
                 <br>
                 <input type="email" id="email" placeholder="Nhập email của bạn:">
