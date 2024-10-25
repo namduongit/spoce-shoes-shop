@@ -4,53 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Font -->
+    <!-- Font/Icon -->
     <link rel="stylesheet" href="assets/css/font.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
     <!-- Css/base css -->
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 
     <!-- Script/js -->
-    <script src="assets/js/baseFunc.js"></script>
     <script src="assets/js/script.js"></script>
     <!-- Logo shop -->
     <link rel="icon" type="image/png" href="assets/image/logo/logo-shop-2.png">
     <title>Spoce Shop</title>
 
-    <!-- Tools css với js -->
-    <link rel="stylesheet" href="assets/css/tools-user.css">
 
-    <script src="assets/js/tools-user.js"></script>
+    <!-- Script specific -->
+    <script src="assets/js/interface.js"></script>
+
 </head>
 
 <body>
     <!-- Header page -->
-    <header>
-        <div class="inner-wrap">
-            <script>
-                writeHeaderPage();
-            </script>
-        </div>
-    </header>
+    <script>writeLogoAndUserTools()</script>
+
     <!-- Section one -->
-    <div class="section-one">
-        <div class="inner-wrap">
-            <script>
-                writeHeadMenu();
-            </script>
-        </div>
-    </div>
+    <script>writeMenuSelection()</script>
 
     <!-- Section two -->
-    <div class="section-two">
-        <div class="inner-slide-show">
-            <img src="assets/image/slide-show/slider_1.png" alt="" id="slide-show">
-        </div>
-    </div>
+    <script>writeSlideShow()</script>
     <!-- End section two -->
 
     <!-- Body page -->
@@ -563,28 +545,13 @@
         <!-- End section six -->
     </div>
     <!-- Foot page -->
-    <footer class="footer">
-        <div class="inner-wrap">
-            <script>
-                writeHeadFooter();
-            </script>
-        </div>
-    </footer>
+    <script>writeStorePolicies</script>
 
-    <div class="inner-footer">
-        <div class="inner-wrap">
-            <script>
-                writeFootFooter();
-            </script>
-        </div>
-    </div>
+    <script>writeContactUs()</script>
+    <!-- Contact -->
     <div class="inner-phone">
         <a href=""><i class="fa-solid fa-phone-volume"></i></a>
     </div>
 
-    <script>writeTools()</script>
 </body>
-
-<script src="assets/js/script.js"></script>
-
 </html>

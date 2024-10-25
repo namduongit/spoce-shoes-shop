@@ -1,0 +1,19 @@
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+    /* CSS cho điện thoại nhỏ */
+  }
+
+  /* Tablet */
+  @media (min-width: 481px) and (max-width: 768px) {
+    /* CSS cho tablet */
+  }
+
+  /* Desktop và Laptop */
+  @media (min-width: 769px) and (max-width: 1200px) {
+    /* CSS cho laptop và desktop */
+  }
+
+  /* Màn hình lớn */
+  @media (min-width: 1201px) {
+    /* CSS cho màn hình lớn */
+  }

@@ -1,6 +1,8 @@
-function writeHeaderPage() {
+function writeLogoAndUserTools() {
     document.write(`
-        <div class="inner-content">
+    <header>
+        <div class="inner-wrap">
+            <div class="inner-content">
                 <div class="inner-logo">
                     <a href="">
                         <img src="assets/image/logo/logo-header-2.png" alt="">
@@ -9,13 +11,13 @@ function writeHeaderPage() {
 
                 <div class="inner-search">
                     <select name="" id="">
-                        <option value="" selected>Tất cả</option>
-                        <option value="">NIKE</option>
-                        <option value="">ADIDAS</option>
-                        <option value="">VANS</option>
-                        <option value="">CONVERSE</option>
-                        <option value="">QUẦN ÁO</option>
-                        <option value="">PHỤ KIỆN</option>
+                        <option value="" id="all-products" selected>Tất cả</option>
+                        <option value="" id="nike-products">NIKE</option>
+                        <option value="" id="adidas-products">ADIDAS</option>
+                        <option value="" id="vans-products">VANS</option>
+                        <option value="" id="converse-products">CONVERSE</option>
+                        <option value="" id="clothes-products">QUẦN ÁO</option>
+                        <option value="" id="other-products">PHỤ KIỆN</option>
                     </select>
                     <div class="search">
                         <input type="search" placeholder="Tìm kiếm sản phẩm">
@@ -27,28 +29,32 @@ function writeHeaderPage() {
 
                 <div class="inner-user">
 
-                    <div class="user" id="user" onclick="showTools()">
+                    <div class="user">
                         <div>
                             <i class="fa-solid fa-user"></i>
                             <span>Tài khoản</span>
                         </div>
                     </div>
 
-                    <div class="cart" id="cart>
-                        <div href="">
+                    <div class="cart">
+                        <div>
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span>Giỏ hàng</span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
+        </div>
+    </header>
     `);
 }
 
-function writeHeadMenu() {
+function writeMenuSelection() {
     document.write(`
-        <div class="inner-content">
+    <div class="section-one">
+        <div class="inner-wrap">
+            <div class="inner-content">
                 <ul class="menu-1">
                     <li>
                         <a href="">All</a>
@@ -82,11 +88,26 @@ function writeHeadMenu() {
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
     `);
 }
-function writeHeadFooter() {
+
+function writeSlideShow() {
     document.write(`
-        <div class="inner-content">
+    <div class="section-two">
+        <div class="inner-slide-show">
+            <img src="assets/image/slide-show/slider_1.png" alt="" id="slide-show">
+        </div>
+    </div>
+    `);
+}
+
+function writeStorePolicies() {
+    document.write(`
+    <footer class="footer">
+        <div class="inner-wrap">
+            <div class="inner-content">
                 <div class="inner-left">
                     <div class="title">ĐỒ ÁN MÔN WEB 1</div>
                     <div class="address">Địa chỉ: 273 An Dương Vương Phường 3, Quận 5</div>
@@ -149,13 +170,16 @@ function writeHeadFooter() {
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-
+        </div>
+    </footer>
     `);
 }
 
-function writeFootFooter() {
+function writeContactUs() {
     document.write(`
-        <div class="inner-content">
+    <div class="inner-footer">
+        <div class="inner-wrap">
+            <div class="inner-content">
                 <div class="inner-left">
                     <div>© Đồ án của nhóm: <span>Tên nhóm</span></div>
 
@@ -183,5 +207,7 @@ function writeFootFooter() {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
     `);
 }

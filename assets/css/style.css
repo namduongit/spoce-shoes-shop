@@ -57,12 +57,6 @@ header .inner-wrap .inner-user {
     justify-content: center;
     cursor: pointer;
 }
-header .inner-wrap span:hover {
-    border-bottom: 2px solid black;
-    padding-bottom: 3px;
-    font-weight: bold;
-    transition: all 0.2s;
-}
 
 header .inner-wrap .inner-user span, i{
     margin: 0 10px;
@@ -70,6 +64,7 @@ header .inner-wrap .inner-user span, i{
     font-weight: bold;
 }
 /* End header */
+
 /* Section one */
 .section-one {
     position: sticky;
@@ -452,6 +447,7 @@ header .inner-wrap .inner-user span, i{
     height: 250px;
 }
 /* End footer */
+
 /* Inner footer */
 .inner-footer {
     background-color: #333333;

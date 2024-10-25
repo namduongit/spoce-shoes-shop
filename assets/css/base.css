@@ -41,22 +41,4 @@ body {
 .body-content {
     margin: 100px 0;
 }
-button {
-    padding: 5px 10px;
-    color: white;
-    background-color: #00B368;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    font-size: 14px;
-    border: 0;
-    cursor: pointer;
-}
-.small-margin-bottom {
-    margin-bottom: 5px;
-}
-.small-margin-top {
-    margin-top: 10px;
-}
-.hidden {
-    display: none;
-}
+
