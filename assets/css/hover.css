@@ -1,0 +1,15 @@
+.section-one .inner-wrap .inner-content .menu-1 > li > a:hover {
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 3px solid white;
+    transition: all 0.3s;
+}
+.inner-content .section-six .inner-content .inner-items .inner-box .inner-item .read-more i:hover {
+    background-color: red;
+    transition: all 0.8s;
+}
+.footer .inner-wrap .inner-content ul li:hover {
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+    transition: all 0.3s;
+}

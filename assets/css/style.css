@@ -58,10 +58,37 @@ header .inner-wrap .inner-user {
     cursor: pointer;
 }
 
-header .inner-wrap .inner-user span, i{
+header .inner-wrap .inner-user span {
     margin: 0 10px;
     color: black;
+}
+header .inner-wrap .inner-user .user .parent {
+    cursor: pointer;
+}
+header .inner-wrap .inner-user .user .parent .child {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 999;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+}
+header .inner-wrap .inner-user .user .parent .child .child-login, .child-register {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 10px 5px 0;
+    cursor: pointer;
+}
+header .inner-wrap .inner-user .user .parent .child .child-login:hover {
     font-weight: bold;
+}
+header .inner-wrap .inner-user .user .parent .child .child-register:hover {
+    font-weight: bold;
+}
+header .inner-wrap .inner-user .user .parent:hover .child {
+    display: block;
 }
 /* End header */
 
@@ -89,12 +116,7 @@ header .inner-wrap .inner-user span, i{
 .section-one .inner-wrap .inner-content .menu-1 > li > a {
     color: white;
 }
-.section-one .inner-wrap .inner-content .menu-1 > li > a:hover {
-    font-weight: bold;
-    padding-bottom: 8px;
-    border-bottom: 3px solid white;
-    transition: all 0.3s;
-}
+
 /* End section one */
 
 
@@ -366,10 +388,7 @@ header .inner-wrap .inner-user span, i{
     position: absolute;
     right: 0;
 }
-.inner-content .section-six .inner-content .inner-items .inner-box .inner-item .read-more i:hover {
-    background-color: red;
-    transition: all 0.8s;
-}
+
 .inner-content .section-six .inner-content .inner-items .inner-box .inner-item .read-more span {
     color: black;
 }
@@ -429,11 +448,7 @@ header .inner-wrap .inner-user span, i{
     content: ">";
     margin-right: 5px;
 }
-.footer .inner-wrap .inner-content ul li:hover {
-    padding-bottom: 5px;
-    border-bottom: 1px solid white;
-    transition: all 0.3s;
-}
+
 .footer .inner-wrap .inner-content .inner-right {
     width: 35%;
     padding: 10px;

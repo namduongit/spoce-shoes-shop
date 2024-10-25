@@ -28,11 +28,20 @@ function writeLogoAndUserTools() {
                 </div>
 
                 <div class="inner-user">
-
                     <div class="user">
-                        <div>
+                        <div class="parent">
                             <i class="fa-solid fa-user"></i>
                             <span>Tài khoản</span>
+                            <div class="child">
+                                <div class="child-login">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    <span>Đăng nhập</span>
+                                </div>
+                                <div class="child-register">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span>Đăng ký</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
