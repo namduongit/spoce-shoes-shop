@@ -17,7 +17,6 @@ function writeLogoAndUserTools() {
                         <option value="" id="vans-products">VANS</option>
                         <option value="" id="converse-products">CONVERSE</option>
                         <option value="" id="clothes-products">QUẦN ÁO</option>
-                        <option value="" id="other-products">PHỤ KIỆN</option>
                     </select>
                     <div class="search">
                         <input type="search" placeholder="Tìm kiếm sản phẩm">

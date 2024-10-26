@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     justify-items: center;
-    align-content: center;
+
     display: none;
 }
 .user-content-selection .inner-content {
@@ -15,6 +15,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     display: flex;
+    margin-top: 8%;
 }
 .user-content-selection .inner-content .left-card {
     width: 45%;
