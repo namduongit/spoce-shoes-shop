@@ -1,11 +1,39 @@
 /* Mobile nhỏ */
 @media (max-width: 480px) {
     /* CSS cho điện thoại nhỏ */
+    .section-one ul > li:last-child {
+      display: block;
+    }
+
+    .section-one .inner-wrap {
+      justify-content: flex-end;
+      margin-right: 20px;
+    }
+
+    .section-one ul > li {
+      display: none;
+    }
+
+    .sidebar {
+      width: 100%;
+    }
   }
 
   /* Tablet */
   @media (min-width: 481px) and (max-width: 768px) {
     /* CSS cho tablet */
+    .section-one ul > li:last-child {
+      display: block;
+    }
+
+    .section-one .inner-wrap {
+      justify-content: flex-end;
+      margin-right: 20px;
+    }
+
+    .section-one ul > li {
+      display: none;
+    }
   }
 
   /* Desktop và Laptop */

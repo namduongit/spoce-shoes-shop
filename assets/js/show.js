@@ -150,3 +150,18 @@ function showTools(obj) {
 function hideTools() {
     document.getElementById("form").style.display = "none";
 }
+
+function showSideBar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.remove('slide-to-right');
+    sidebar.classList.add('slide-to-left');
+    sidebar.style.display = 'block';
+}
+
+function hideSideBar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.replace('slide-to-left','slide-to-right');
+    sidebar.addEventListener('animationend', () => {
+        sidebar.style.display = 'none';
+    }, { once: true });
+}
