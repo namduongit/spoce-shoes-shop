@@ -165,3 +165,15 @@ function hideSideBar(){
         sidebar.style.display = 'none';
     }, { once: true });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    let currentSlide = 0;
+    function slideshow() {
+        const slides = document.getElementsByClassName('inner-slide-show');
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.display = 'block';
+        setTimeout(slideshow, 5000);
+    }
+    slideshow();
+});

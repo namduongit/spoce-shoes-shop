@@ -186,6 +186,10 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 
 
 /* Section two - slide show */
+.section-two .inner-slide-show {
+    display: none;
+}
+
 .section-two .inner-slide-show img {
     width: 100%;
     height: auto;
