@@ -114,7 +114,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     background-color: var(--bg-color-1);
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 999;
     width: 200px;
     height: 100vh;
@@ -144,11 +144,11 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 
 @keyframes slideToLeft {
     from {
-        transform: translateX(300px);
+        transform: translateX(0px);
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(-300px);
     }
 }
 
@@ -164,11 +164,11 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 
 @keyframes slideToRight {
     from {
-        transform: translateX(0);
+        transform: translateX(-300px);
     }
 
     to {
-        transform: translateX(1000px);
+        transform: translateX(0px);
     }
 }
 

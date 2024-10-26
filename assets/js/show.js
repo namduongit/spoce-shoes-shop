@@ -153,14 +153,14 @@ function hideTools() {
 
 function showSideBar(){
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.remove('slide-to-right');
-    sidebar.classList.add('slide-to-left');
+    sidebar.classList.remove('slide-to-left');
+    sidebar.classList.add('slide-to-right');
     sidebar.style.display = 'block';
 }
 
 function hideSideBar(){
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.replace('slide-to-left','slide-to-right');
+    sidebar.classList.replace('slide-to-right','slide-to-left');
     sidebar.addEventListener('animationend', () => {
         sidebar.style.display = 'none';
     }, { once: true });
