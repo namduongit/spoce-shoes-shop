@@ -1,4 +1,4 @@
-function writeForm(funcForm1, funcForm2, funcForm3) {
+function writeForm(funcForm) {
     document.getElementById("form-container").innerHTML = `
     <div class="user-content-selection" id="form">
         <div class="inner-content">
@@ -26,12 +26,9 @@ function writeForm(funcForm1, funcForm2, funcForm3) {
 
             <div class="right-card">
                 <div class="card-content">
-                    <div class="inner-title large-margin-bottom" id="title-form">Đăng nhập hệ thống</div>
-                    ${funcForm2()}
 
-                    ${funcForm1()}
+                    ${funcForm()}
 
-                    ${funcForm3()}
                 </div>
                 <i class="fa-solid fa-minus exit-form" id="exit-form" onclick="hideTools()"></i>
             </div>
@@ -43,116 +40,125 @@ function writeForm(funcForm1, funcForm2, funcForm3) {
 
 function writeLoginForm() {
     return `
-    <div class="login-form">
-        <div class="input-username small-margin-bottom">
-            <label for="username">Tài khoản của bạn:</label>
-            <br>
-            <input type="text" id="username" placeholder="Nhập tài khoản">
-        </div>
-        <div class="input-password small-margin-bottom">
-            <label for="password">Nhập mật khẩu:</label>
-            <br>
-            <input type="password" id="password" placeholder="*********">
-        </div>
-    </div>`;
-}
+    <div class="inner-title large-margin-bottom">Đăng nhập hệ thống</div>
 
-function writeRegisterForm() {
-    return `
-    <div class="register-form">
-        <div class="left-form">
-            <div class="input-username">
-                <label for="username">Tài khoản của bạn:</label>
-                <br>
-                <input type="text" id="username" placeholder="Nhập tài khoản">
-            </div>
-            <div class="innput-password">
-                <label for="password">Nhập mật khẩu:</label>
-                <br>
-                <input type="password" id="password" placeholder="*********">
-            </div>
-            <div class="confirm-password">
-                <label for="password">Nhập lại mật khẩu:</label>
-                <br>
-                <input type="password" id="password" placeholder="*********">
-            </div>
-        </div>
-        <div class="right-form">
-            <div class="input-fullname">
-                <label for="fullname">Nhập họ và tên:</label>
-                <br>
-                <input type="text" id="fullname" placeholder="Nhập tên của bạn:">
-            </div>
-            <div class="input-email">
-                <label for="email">Nhập email:</label>
-                <br>
-                <input type="email" id="email" placeholder="Nhập email của bạn:">
-            </div>
-            <div class="innput-number-phone">
-                <label for="numberphone">Nhập số điện thoại:</label>
-                <br>
-                <input type="tel" id="numberphone" placeholder="Nhập số điện thoại:">
-            </div>
-        </div>
-    </div>`;
-}
-
-function writeButtonLogin() {
-    return `
     <div class="inner-notice small-margin-bottom">
         <div class="desc">Nếu bạn chưa có tài khoản</div>
         <button id="register-now" class="register-btn" onclick="actionChangeForm(this)">Đăng ký ngay!</button>
     </div>
+
+    <div class="login-form">
+
+        <div class="group-form">
+            <label for="input_username_login">Tài khoản của bạn:</label>
+            <br>
+            <input type="text" id="input_username_login" placeholder="Nhập tài khoản">
+        </div>
+
+        <div class="group-form">
+            <label for="input_password_login">Nhập mật khẩu:</label>
+            <br>
+            <input type="password" id="input_password_login" placeholder="*********">
+        </div>
+
+    </div>
+
+    <div class="submit-action">
+        <button class="login-btn" id="action-login">Đăng nhập</button>
+    </div>
+
     `;
 }
-function writeButtonRegister() {
+
+function writeRegisterForm() {
     return `
+    <div class="inner-title large-margin-bottom">Đăng ký tài khoản</div>
+
     <div class="inner-notice small-margin-bottom">
         <div class="desc">Nếu bạn đã có tài khoản</div>
         <button id="login-now" class="login-btn" onclick="actionChangeForm(this)">Đăng nhập ngay!</button>
     </div>
-    `;
-}
-function submitLogin() {
-    return `
-    <div class="submit-action">
-        <button class="login-btn" id="action-login">Đăng nhập</button>
+
+    <div class="register-form">
+
+        <div class="left-form">
+            <div class="group-form">
+                <label for="input_username_register">Tài khoản:</label>
+                <br>
+                <input type="text" id="input_username_register" placeholder="Nhập tài khoản">
+            </div>
+            <div class="group-form">
+                <label for="input_password_register">Nhập mật khẩu:</label>
+                <br>
+                <input type="password" id="input_password_register" placeholder="*********">
+            </div>
+            <div class="group-form">
+                <label for="input_password_confirm_register">Nhập lại mật khẩu:</label>
+                <br>
+                <input type="password" id="input_password_confirm_register" placeholder="*********">
+            </div>
+        </div>
+
+        <div class="right-form">
+            <div class="group-form">
+                <label for="input_fullname_register">Họ và tên:</label>
+                <br>
+                <input type="text" id="input_fullname_register" placeholder="Nhập tên của bạn">
+            </div>
+            <div class="group-form">
+                <label for="input_email_register">Nhập email:</label>
+                <br>
+                <input type="email" id="input_email_register" placeholder="Nhập email của bạn">
+            </div>
+            <div class="group-form">
+                <label for="input_numberphone_register">Nhập số điện thoại:</label>
+                <br>
+                <input type="tel" id="input_numberphone_register" placeholder="Nhập số điện thoại">
+            </div>
+        </div>
+
     </div>
-    `;
-}
-function submitRegister() {
-    return `
+
     <div class="submit-action">
         <button class="register-btn" id="action-register">Đăng ký</button>
     </div>
     `;
 }
-function actionChangeForm(obj) {
-    if (obj.id === "register-now") {
-        writeForm(writeRegisterForm, writeButtonRegister, submitRegister);
-        document.getElementById("title-form").innerHTML = "Đăng ký hệ thống";
-    }
-    else if (obj.id === "login-now") {
-        writeForm(writeLoginForm, writeButtonLogin, submitLogin);
-        document.getElementById("title-form").innerHTML = "Đăng nhập tài khoản";
-    }
-}
-function showTools(obj) {
-    if (obj.id === "login") {
-        writeForm(writeLoginForm, writeButtonLogin, submitLogin);
-        document.getElementById("title-form").innerHTML = "Đăng nhập tài khoản";
-    } else if (obj.id === "register") {
-        writeForm(writeRegisterForm, writeButtonRegister, submitRegister);
-        document.getElementById("title-form").innerHTML = "Đăng ký hệ thống";
-    }
-}
 
+
+
+
+function showTools(object) {
+    if (object.id === "login") {
+        writeForm(writeLoginForm);
+    }
+    else {
+        writeForm(writeRegisterForm);
+    }
+}
+function actionChangeForm(object) {
+    if (object.id === "login-now") {
+        writeForm(writeLoginForm);
+    }
+    else {
+        writeForm(writeRegisterForm);
+    }
+}
 function hideTools() {
     document.getElementById("form").style.display = "none";
 }
 
-var count_index = 0;
 
+
+
+
+
+
+
+
+
+// Slide bar
+var count_index = 0;
 function showSideBar() {
 
     const sidebar = document.querySelector('.sidebar');
