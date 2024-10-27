@@ -69,9 +69,6 @@ function writeMenuSelection() {
             <div class="inner-content">
                 <ul class="menu-1">
                     <li>
-                        <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>
-                    </li>
-                    <li>
                         <a href="">All</a>
                     </li>
                     <li>
@@ -100,6 +97,9 @@ function writeMenuSelection() {
                     </li>
                     <li>
                         <a href="">NHẬN THÔNG BÁO SALE</a>
+                    </li>
+                    <li>
+                        <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>
                     </li>
                 </ul>
             </div>
