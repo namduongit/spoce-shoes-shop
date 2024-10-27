@@ -17,6 +17,9 @@
     .sidebar {
       width: 100%;
     }
+    .inner-user {
+      display: none;
+    }
   }
 
   /* Tablet */
