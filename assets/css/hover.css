@@ -13,6 +13,13 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     border-bottom: 3px solid white;
     transition: all 0.3s;
 }
+
+.sidebar .menu-1 > li > a:hover {
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 3px solid white;
+    transition: all 0.3s;
+}
 .section-six .inner-content .inner-items .inner-box .inner-item .read-more i:hover {
     background-color: red;
     transition: all 0.8s;

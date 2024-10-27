@@ -109,10 +109,87 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     color: white;
 }
 
+.sidebar {
+    display: none;
+    background-color: var(--bg-color-1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 200px;
+    height: 100vh;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sidebar ul li {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding-left: 15px;
+}
+
+.sidebar ul li a {
+    width: 100%;
+}
+
+.section-one ul > li:last-child {
+    display: none;
+}
+
+@keyframes slideToLeft {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(-300px);
+    }
+}
+
+.slide-to-left {
+    animation-name: slideToLeft;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
+}
+
+@keyframes slideToRight {
+    from {
+        transform: translateX(-300px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+.slide-to-right {
+    animation-name: slideToRight;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
+}
+
 /* End section one */
 
 
 /* Section two - slide show */
+.section-two .inner-slide-show {
+    display: none;
+}
+
 .section-two .inner-slide-show img {
     width: 100%;
     height: auto;
