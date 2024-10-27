@@ -140,10 +140,10 @@ function actionChangeForm(obj) {
 function showTools(obj) {
     if (obj.id === "login") {
         writeForm(writeLoginForm, writeButtonLogin, submitLogin);
-        document.getElementById("title-form").innerHTML = "Đăng ký tài khoản";
+        document.getElementById("title-form").innerHTML = "Đăng nhập tài khoản";
     } else if (obj.id === "register") {
         writeForm(writeRegisterForm, writeButtonRegister, submitRegister);
-        document.getElementById("title-form").innerHTML = "Đăng nhập hệ thống";
+        document.getElementById("title-form").innerHTML = "Đăng ký hệ thống";
     }
 }
 

@@ -21,7 +21,7 @@ function writeLogoAndUserTools() {
                     <div class="search">
                         <input type="search" placeholder="Tìm kiếm sản phẩm">
                         <a href="">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
                         </a>
                     </div>
                 </div>
