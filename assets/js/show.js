@@ -6,22 +6,22 @@ function writeForm(funcForm1, funcForm2, funcForm3) {
 
                 <div class="inner-title">SPOCE SHOES</div>
 
-                    <div class="inner-desc">Spoce shop là hệ thống chuyên bán các sản phẩm như giày của các hãng nổi tiếng
-                        <strong>ADIDAS</strong>
-                        <strong>NIKE</strong>
-                        <strong>VANS</strong>
-                        <strong>CONVERSE ,...</strong>
-                        Ngoài ra
-                        <strong>SPOCE SHOP</strong>
-                        còn bán các sản phẩm như quần, áo, phụ kiện,... chính hãng uy tín chất lượng, đển mỗi khi bạn đi
-                        ra ngoài nó sẽ giúp bạn trở nên phong độ, tự tin hơn với phong cách trang phục của bạn.
-                        Hệ thống <strong>SPOCE SHOP</strong> còn tuyển các đại lý mua bán sỉ lẻ toàn quốc.
-                    </div>
+                <div class="inner-desc">Spoce shop là hệ thống chuyên bán các sản phẩm như giày của các hãng nổi tiếng
+                    <strong>ADIDAS</strong>
+                    <strong>NIKE</strong>
+                    <strong>VANS</strong>
+                    <strong>CONVERSE ,...</strong>
+                    Ngoài ra
+                    <strong>SPOCE SHOP</strong>
+                    còn bán các sản phẩm như quần, áo, phụ kiện,... chính hãng uy tín chất lượng, đển mỗi khi bạn đi
+                    ra ngoài nó sẽ giúp bạn trở nên phong độ, tự tin hơn với phong cách trang phục của bạn.
+                    Hệ thống <strong>SPOCE SHOP</strong> còn tuyển các đại lý mua bán sỉ lẻ toàn quốc.
+                </div>
 
-                    <div class="inner-end-content">
-                        <strong>Nếu bạn dành 1% uy tín cho chúng tôi, chúng tôi sẽ chứng mình 99% còn lại</strong>
-                        <strong>FROM SPOCE SHOP WITH LOVE ❤️</strong>
-                    </div>
+                <div class="inner-end-content">
+                    <strong>Nếu bạn dành 1% uy tín cho chúng tôi, chúng tôi sẽ chứng mình 99% còn lại</strong>
+                    <strong>FROM SPOCE SHOP WITH LOVE ❤️</strong>
+                </div>
             </div>
 
             <div class="right-card">
@@ -130,20 +130,20 @@ function submitRegister() {
 function actionChangeForm(obj) {
     if (obj.id === "register-now") {
         writeForm(writeRegisterForm, writeButtonRegister, submitRegister);
-        document.getElementById("title-form").innerHTML = "Đăng nhập hệ thống";
+        document.getElementById("title-form").innerHTML = "Đăng ký hệ thống";
     }
     else if (obj.id === "login-now") {
         writeForm(writeLoginForm, writeButtonLogin, submitLogin);
-        document.getElementById("title-form").innerHTML = "Đăng ký tài khoản";
+        document.getElementById("title-form").innerHTML = "Đăng nhập tài khoản";
     }
 }
 function showTools(obj) {
     if (obj.id === "login") {
         writeForm(writeLoginForm, writeButtonLogin, submitLogin);
-        document.getElementById("title-form").innerHTML = "Đăng ký tài khoản";
+        document.getElementById("title-form").innerHTML = "Đăng nhập tài khoản";
     } else if (obj.id === "register") {
         writeForm(writeRegisterForm, writeButtonRegister, submitRegister);
-        document.getElementById("title-form").innerHTML = "Đăng nhập hệ thống";
+        document.getElementById("title-form").innerHTML = "Đăng ký hệ thống";
     }
 }
 
