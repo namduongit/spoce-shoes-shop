@@ -151,16 +151,30 @@ function hideTools() {
     document.getElementById("form").style.display = "none";
 }
 
-function showSideBar(){
+var count_index = 0;
+
+function showSideBar() {
+
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.remove('slide-to-left');
-    sidebar.classList.add('slide-to-right');
-    sidebar.style.display = 'block';
+    count_index++;
+
+    if (count_index % 2 != 0) {
+        sidebar.classList.remove('slide-to-left');
+        sidebar.classList.add('slide-to-right');
+        sidebar.style.display = 'block';
+    }
+    else {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.replace('slide-to-right', 'slide-to-left');
+        sidebar.addEventListener('animationend', () => {
+            sidebar.style.display = 'none';
+        }, { once: true });
+    }
 }
 
-function hideSideBar(){
+function hideSideBar() {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.replace('slide-to-right','slide-to-left');
+    sidebar.classList.replace('slide-to-right', 'slide-to-left');
     sidebar.addEventListener('animationend', () => {
         sidebar.style.display = 'none';
     }, { once: true });
