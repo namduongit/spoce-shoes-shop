@@ -92,6 +92,16 @@
     #all_accessory_products {
       display: none;
     }
+
+
+    /* Login/SignUp Form */
+
+    .user-content-selection .inner-content .left-card {
+      width: 100%;
+    }
+    .user-content-selection .inner-content .right-card {
+      width: 100%;
+    }
   }
 
   /* Màn hình lớn */
