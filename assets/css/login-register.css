@@ -15,6 +15,7 @@
     overflow: hidden;
     display: flex;
     margin-top: 8%;
+    flex-wrap: wrap;
 }
 .user-content-selection .inner-content .left-card {
     width: 45%;
