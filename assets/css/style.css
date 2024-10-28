@@ -512,7 +512,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     margin-bottom: 20px;
     font-size: 16px;
 }
-.footer .inner-wrap .inner-content ul li::before {
+.footer .inner-wrap .inner-content ul li div::before {
     content: ">";
     margin-right: 5px;
 }

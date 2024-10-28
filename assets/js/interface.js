@@ -177,22 +177,22 @@ function writeStorePolicies() {
                     <div class="title">Thông tin</div>
                     <ul>
                         <li>
-                            <a href="">Trang chủ</a>
+                            <div data-name="home-page">Trang chủ</div>
                         </li>
                         <li>
-                            <a href="">Giới thiệu</a>
+                            <div data-name="introduce">Giới thiệu</div>
                         </li>
                         <li>
-                            <a href="">Sản phẩm</a>
+                            <div data-name="products">Sản phẩm</div>
                         </li>
                         <li>
-                            <a href="">Khuyến mãi</a>
+                            <div data-name="promotion">Khuyến mãi</div>
                         </li>
                         <li>
-                            <a href="">Tin tức</a>
+                            <div data-name="news">Tin tức</div>
                         </li>
                         <li>
-                            <a href="">Liên hệ</a>
+                            <div data-name="contact">Liên hệ</div>
                         </li>
                     </ul>
                 </div>

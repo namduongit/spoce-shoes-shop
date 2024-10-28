@@ -24,7 +24,7 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     background-color: red;
     transition: all 0.8s;
 }
-.footer .inner-wrap .inner-content ul li:hover {
+.footer .inner-wrap .inner-content ul li div:hover {
     padding-bottom: 5px;
     border-bottom: 1px solid white;
     transition: all 0.3s;
