@@ -475,6 +475,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .footer .inner-wrap .inner-content .inner-left {
     width: 25%;
