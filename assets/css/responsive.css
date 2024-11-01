@@ -1,6 +1,7 @@
 /* Mobile nhỏ */
 @media (max-width: 480px) {
     /* CSS cho điện thoại nhỏ */
+    /* Slide bar */
     .section-one ul > li:last-child {
       display: block;
     }
@@ -14,18 +15,61 @@
       display: none;
     }
 
+    /* Product */
+    .inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
+      width: 100%;
+    }
+    .inner-content .section-four .inner-wrap .inner-content .inner-products .inner-box {
+      width: 100%;
+    }
+    .inner-content .section-five .inner-wrap .inner-content .inner-products .inner-box {
+      width: 100%;
+    }
+
     .sidebar {
+      width: 100%;
+    }
+    header .inner-wrap {
       width: 100%;
     }
     header .inner-wrap .inner-user {
       display: none !important;
     }
     header .inner-wrap .inner-search {
-      width: 60%;
+      width: 100%;
+    }
+    header .inner-wrap .inner-search select {
+      display: none;
     }
     header .inner-wrap .inner-logo {
-      width: 40%;
+      display: none;
     }
+
+
+    /* Bài viết */
+  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+    display: none;
+  }
+  .inner-content .section-six .inner-content .inner-items .inner-box:first-child {
+    display: none;
+  }
+  .inner-content .section-six .inner-content .inner-items .inner-box {
+    width: 100%;
+  }
+
+  /* Chính sách & hướng dẫn sử dụng */
+  .footer .inner-left {
+    display: none;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-1 {
+    width: 100%;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-2 {
+    width: 100%;
+  }
+  .footer .inner-wrap .inner-content .inner-right {
+    display: none;
+  }
 
 
   }
@@ -75,6 +119,28 @@
       width: 60%;
   }
 
+  /* Bài viết */
+  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+    display: none;
+  }
+  .inner-content .section-six .inner-content .inner-items .inner-box {
+    width: 50%;
+  }
+
+  /* Chính sách & hướng dẫn sử dụng */
+  .footer .inner-left {
+    display: none;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-1 {
+    width: 40%;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-2 {
+    width: 60%;
+  }
+  .footer .inner-wrap .inner-content .inner-right {
+    display: none;
+  }
+
   }
 
   /* Desktop và Laptop */
@@ -113,7 +179,30 @@
     }
     .user-content-selection .inner-content .right-card {
       width: 100%;
+
   }
+  /* Bài viết */
+  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+    display: none;
+  }
+  .inner-content .section-six .inner-content .inner-items .inner-box {
+    width: 50%;
+  }
+
+  /* Chính sách & hướng dẫn sử dụng */
+  .footer .inner-left {
+    display: none;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-1 {
+    width: 30%;
+  }
+  .footer .inner-wrap .inner-content .inner-mid-2 {
+    width: 40%;
+  }
+  .footer .inner-wrap .inner-content .inner-right {
+    width: 30%;
+  }
+
   }
 
   /* Màn hình lớn */
