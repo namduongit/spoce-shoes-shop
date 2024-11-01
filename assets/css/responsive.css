@@ -38,6 +38,9 @@
     header .inner-wrap .inner-search {
       width: 100%;
     }
+    header .inner-wrap .inner-search select {
+      display: none;
+    }
     header .inner-wrap .inner-logo {
       display: none;
     }

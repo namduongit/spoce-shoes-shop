@@ -53,20 +53,22 @@ body {
     margin-bottom: 40px;
 }
 .register-btn {
-    padding: 7px 14px;
+    padding: 7px 20px;
     font-size: 12px;
     background-color: red;
     color: white;
     border: 2px solid red;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 5px;
 }
 .login-btn {
-    padding: 7px 14px;
+    padding: 7px 20px;
     font-size: 12px;
     background-color: green;
     color: white;
     border: 2px solid green;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 5px;
 }

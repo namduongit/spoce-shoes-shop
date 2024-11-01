@@ -1,7 +1,7 @@
 .user-content-selection {
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 12;
     width: 100%;
     height: 100%;
     justify-items: center;
@@ -69,22 +69,26 @@
     align-content: center;
 }
 .user-content-selection .inner-content .right-card .inner-notice .desc {
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 12px;
     align-content: center;
 }
 
 .user-content-selection .inner-content .right-card input {
-    padding: 2px 5px;
+    padding: 4px 10px;
     margin-top: 5px;
     font-size: 14px;
+    transition: all 0.3s;
+    border-radius: 5px;
+    border: 2px solid gray;
+    align-items: center;
+}
+.user-content-selection .inner-content .right-card input:hover {
+    padding: 5px 12px;
 }
 .user-content-selection .inner-content .right-card label {
     font-size: 17px;
     font-weight: bold;
-}
-.user-content-selection .inner-content .right-card .submit-action {
-    margin-top: 20px;
 }
 .user-content-selection .inner-content .right-card .register-form {
     display: flex;
@@ -98,4 +102,7 @@
 .user-content-selection .inner-content .right-card .register-form .right-form {
     width: 50%;
     padding-left: 5px;
+}
+.user-content-selection .inner-content .group-form {
+    margin: 10px 0;
 }

@@ -1,6 +1,11 @@
 /* Header */
-header .inner-wrap {
+header {
     background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    width: 100%;
 }
 header .inner-wrap .inner-content {
     margin: 0 auto;
@@ -25,6 +30,7 @@ header .inner-wrap .inner-search {
     width: 60%;
     display: flex;
     justify-content: center;
+
 }
 header .inner-wrap .inner-search select {
     padding: 4px 0;
@@ -32,6 +38,7 @@ header .inner-wrap .inner-search select {
     border: 1px solid gray;
     color: black;
     border-right: 0px;
+
 }
 header .inner-wrap .inner-search .search {
     width: 40%;
@@ -44,12 +51,18 @@ header .inner-wrap .inner-search input {
     width: 100%;
     height: 100%;
 }
-
+header .inner-wrap .inner-search a i {
+    color: white !important;
+    height: fit-content;
+}
 header .inner-wrap .inner-search a {
     position: absolute;
-    top: 18%;
-    right: 5%;
-    font-size: 14px;
+    background-color: #FF6666;
+    height: 100%;
+    align-content: center;
+    right: 0;
+    padding: 0 20px;
+    border-radius: 20px 0 0 20px;
 }
 header .inner-wrap .inner-user {
     width: 20%;
@@ -61,6 +74,9 @@ header .inner-wrap .inner-user {
 header .inner-wrap .inner-user span {
     margin: 0 10px;
     color: black;
+}
+header .inner-wrap .inner-user .user {
+    margin-right: 10px;
 }
 header .inner-wrap .inner-user .user .parent {
     cursor: pointer;
@@ -88,8 +104,9 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 9;
     background-color: var(--bg-color-1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .section-one .inner-wrap {
     display: flex;
