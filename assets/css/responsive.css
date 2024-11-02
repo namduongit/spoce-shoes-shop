@@ -38,9 +38,7 @@
     header .inner-wrap .inner-search {
       width: 100%;
     }
-    header .inner-wrap .inner-search select {
-      display: none;
-    }
+    
     header .inner-wrap .inner-logo {
       display: none;
     }
@@ -71,6 +69,17 @@
     display: none;
   }
 
+  /* Liên hệ */
+  .inner-footer .inner-content .inner-left {
+    display: none;
+  }
+  .inner-footer .inner-content .inner-right {
+    width: 100% !important;
+  }
+  /* Icon điện thoại */
+  .inner-phone {
+    display: none;
+  }
 
   }
 

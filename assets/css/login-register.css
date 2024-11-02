@@ -6,7 +6,20 @@
     height: 100%;
     justify-items: center;
     display: none;
+    background-color: #33333333;
 }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .user-content-selection .inner-content {
     width: 50%;
     background-color: white;
@@ -16,6 +29,7 @@
     display: flex;
     margin-top: 8%;
     flex-wrap: wrap;
+    animation: slideDown 0.5s ease-out forwards;
 }
 .user-content-selection .inner-content .left-card {
     width: 45%;
