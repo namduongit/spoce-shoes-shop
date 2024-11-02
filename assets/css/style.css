@@ -33,7 +33,7 @@ header .inner-wrap .inner-search {
 
 }
 header .inner-wrap .inner-search select {
-    padding: 4px 0;
+    padding: 6px 0;
     text-align: center;
     border: 1px solid gray;
     color: black;
@@ -57,11 +57,11 @@ header .inner-wrap .inner-search a i {
 }
 header .inner-wrap .inner-search a {
     position: absolute;
-    background-color: #FF6666;
+    background-color: #333333;
     height: 100%;
     align-content: center;
     right: 0;
-    padding: 0 20px;
+    padding: 0 22px;
     border-radius: 20px 0 0 20px;
 }
 header .inner-wrap .inner-user {
@@ -80,6 +80,11 @@ header .inner-wrap .inner-user .user {
 }
 header .inner-wrap .inner-user .user .parent {
     cursor: pointer;
+    font-weight: 500;
+}
+header .inner-wrap .inner-user .cart .parent {
+    cursor: pointer;
+    font-weight: 500;
 }
 header .inner-wrap .inner-user .user .parent .child {
     display: none;
@@ -228,6 +233,8 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 .inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
     width: 25%;
     padding: 20px;
+    position: relative;
+    border: 1px solid #ddd;
 }
 .inner-content .section-three .inner-wrap .inner-content .inner-product {
     position: relative;
@@ -588,19 +595,27 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     margin-right: 15px;
 }
 /* -------------------Contact P2P-------------------- */
+@keyframes gentleShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+  }
 .inner-phone {
     bottom: 30px;
     left: 30px;
     position: fixed;
-    font-size: 24px;
+    font-size: 20px;
     background-color: rgba(40, 40, 255, 0.78);
     padding: 15px;
     border-radius: 100%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: gentleShake 0.5s ease-in-out infinite;
 }
 .inner-phone i {
     color: white;

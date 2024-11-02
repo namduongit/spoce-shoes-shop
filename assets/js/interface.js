@@ -19,7 +19,7 @@ function writeLogoAndUserTools() {
                         <option value="" id="clothes-products">QUẦN ÁO</option>
                     </select>
                     <div class="search">
-                        <input type="search" placeholder="Tìm kiếm sản phẩm">
+                        <input type="search" placeholder="Tìm kiếm">
                         <a href="">
                             <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
                         </a>
@@ -48,9 +48,10 @@ function writeLogoAndUserTools() {
                     </div>
 
                     <div class="cart">
-                        <div>
+                        <div class="parent">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span>Giỏ hàng</span>
+                            
                         </div>
                     </div>
 
