@@ -82,9 +82,20 @@ header .inner-wrap .inner-user .user .parent {
     cursor: pointer;
     font-weight: 500;
 }
+header .inner-wrap .inner-user .user .parent .icon-name {
+    display: flex;
+}
+header .inner-wrap .inner-user .user .parent .icon-name > div {
+    margin-left: 5px;
+}
 header .inner-wrap .inner-user .cart .parent {
     cursor: pointer;
     font-weight: 500;
+
+    display: flex;
+}
+header .inner-wrap .inner-user .cart .parent > div {
+    margin-left: 5px;
 }
 header .inner-wrap .inner-user .user .parent .child {
     display: none;

@@ -29,10 +29,10 @@ function writeLogoAndUserTools() {
                 <div class="inner-user">
                     <div class="user">
                         <div class="parent">
-
-                            <i class="fa-solid fa-user"></i>
-                            <span>Tài khoản</span>
-
+                            <div class="icon-name">
+                                <i class="fa-solid fa-user"></i>
+                                <div>Tài khoản</div>
+                            </div>
                             <div class="child">
                                 <div class="child-login" onclick="showTools(this)" id="login">
                                     <i class="fa-solid fa-right-to-bracket"></i>
@@ -50,8 +50,7 @@ function writeLogoAndUserTools() {
                     <div class="cart">
                         <div class="parent">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span>Giỏ hàng</span>
-                            
+                            <div>Giỏ hàng</div>
                         </div>
                     </div>
 
