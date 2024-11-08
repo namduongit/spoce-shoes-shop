@@ -97,9 +97,9 @@
     border: 2px solid gray;
     align-items: center;
 }
-.user-content-selection .inner-content .right-card input:hover {
+/* .user-content-selection .inner-content .right-card input:hover {
     padding: 5px 12px;
-}
+} */
 .user-content-selection .inner-content .right-card label {
     font-size: 17px;
     font-weight: bold;

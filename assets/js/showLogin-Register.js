@@ -47,26 +47,25 @@ function writeLoginForm() {
         <button id="register-now" class="register-btn" onclick="actionChangeForm(this)">Đăng ký ngay!</button>
     </div>
 
-    <div class="login-form">
+    <form action="" onsubmit="return checkValidLogin()">
+        <div class="login-form">
+            <div class="group-form">
+                <label for="input_username_login">Tài khoản của bạn:</label>
+                <br>
+                <input type="text" id="input_username_login" placeholder="Nhập tài khoản">
+            </div>
 
-        <div class="group-form">
-            <label for="input_username_login">Tài khoản của bạn:</label>
-            <br>
-            <input type="text" id="input_username_login" placeholder="Nhập tài khoản">
+            <div class="group-form">
+                <label for="input_password_login">Nhập mật khẩu:</label>
+                <br>
+                <input type="password" id="input_password_login" placeholder="*********">
+            </div>
         </div>
 
-        <div class="group-form">
-            <label for="input_password_login">Nhập mật khẩu:</label>
-            <br>
-            <input type="password" id="input_password_login" placeholder="*********">
+        <div class="submit-action">
+            <button class="login-btn" id="action-login">Đăng nhập</button>
         </div>
-
-    </div>
-
-    <div class="submit-action">
-        <button class="login-btn" id="action-login">Đăng nhập</button>
-    </div>
-
+    </form>
     `;
 }
 
@@ -79,49 +78,51 @@ function writeRegisterForm() {
         <button id="login-now" class="login-btn" onclick="actionChangeForm(this)">Đăng nhập ngay!</button>
     </div>
 
-    <div class="register-form">
-
-        <div class="left-form">
-            <div class="group-form">
-                <label for="input_username_register">Tài khoản:</label>
-                <br>
-                <input type="text" id="input_username_register" placeholder="Nhập tài khoản">
+    <form action="" onsubmit="return checkValidRegister()">
+        <div class="register-form">
+    
+            <div class="left-form">
+                <div class="group-form">
+                    <label for="input_username_register">Tài khoản: *</label>
+                    <br>
+                    <input type="text" id="input_username_register" placeholder="Vui lòng nhập tài khoản">
+                </div>
+                <div class="group-form">
+                    <label for="input_password_register">Nhập mật khẩu: *</label>
+                    <br>
+                    <input type="password" id="input_password_register" placeholder="Vui lòng nhập mật khẩu">
+                </div>
+                <div class="group-form">
+                    <label for="input_password_confirm_register">Nhập lại mật khẩu:</label>
+                    <br>
+                    <input type="password" id="input_password_confirm_register" placeholder="Vui lòng xác nhận mật khẩu">
+                </div>
             </div>
-            <div class="group-form">
-                <label for="input_password_register">Nhập mật khẩu:</label>
-                <br>
-                <input type="password" id="input_password_register" placeholder="*********">
+    
+            <div class="right-form">
+                <div class="group-form">
+                    <label for="input_fullname_register">Họ và tên: *</label>
+                    <br>
+                    <input type="text" id="input_fullname_register" placeholder="Vui lòng nhập họ và tên">
+                </div>
+                <div class="group-form">
+                    <label for="input_email_register">Nhập email:</label>
+                    <br>
+                    <input type="email" id="input_email_register" placeholder="Vui lòng nhập email">
+                </div>
+                <div class="group-form">
+                    <label for="input_numberphone_register">Nhập số điện thoại: *</label>
+                    <br>
+                    <input type="tel" id="input_numberphone_register" placeholder="Vui lòng nhập số điện thoại">
+                </div>
             </div>
-            <div class="group-form">
-                <label for="input_password_confirm_register">Nhập lại mật khẩu:</label>
-                <br>
-                <input type="password" id="input_password_confirm_register" placeholder="*********">
-            </div>
+    
         </div>
-
-        <div class="right-form">
-            <div class="group-form">
-                <label for="input_fullname_register">Họ và tên:</label>
-                <br>
-                <input type="text" id="input_fullname_register" placeholder="Nhập tên của bạn">
-            </div>
-            <div class="group-form">
-                <label for="input_email_register">Nhập email:</label>
-                <br>
-                <input type="email" id="input_email_register" placeholder="Nhập email của bạn">
-            </div>
-            <div class="group-form">
-                <label for="input_numberphone_register">Nhập số điện thoại:</label>
-                <br>
-                <input type="tel" id="input_numberphone_register" placeholder="Nhập số điện thoại">
-            </div>
+    
+        <div class="submit-action">
+            <button class="register-btn" id="action-register">Đăng ký</button>
         </div>
-
-    </div>
-
-    <div class="submit-action">
-        <button class="register-btn" id="action-register">Đăng ký</button>
-    </div>
+    </form>
     `;
 }
 
