@@ -20,7 +20,7 @@ var products_list = [
 		"brand": "nike",
 		"price": "3.300.000₫",
 		"sell": "2.640.000₫",
-		"discount": "30",
+		"discount": "20",
 		"image": "image/2.png",
 		"promo_image": {
 			"image_1": "",
@@ -35,7 +35,7 @@ var products_list = [
 		"brand": "nike",
 		"price": "1.700.000₫",
 		"sell": "1.360.000₫",
-		"discount": "30",
+		"discount": "20",
 		"image": "image/3.png",
 		"promo_image": {
 			"image_1": "",
@@ -50,7 +50,7 @@ var products_list = [
 		"brand": "nike",
 		"price": "1.700.000₫",
 		"sell": "1.360.000₫",
-		"discount": "30",
+		"discount": "20",
 		"image": "image/4.png",
 		"promo_image": {
 			"image_1": "",
@@ -80,7 +80,7 @@ var products_list = [
 		"brand": "nike",
 		"price": "1.800.000đ",
 		"sell": "1.440.000đ",
-		"discount": "30",
+		"discount": "20",
 		"image": "image/6.png",
 		"promo_image": {
 			"image_1": "image/6.1.png",
@@ -170,7 +170,7 @@ var products_list = [
 		"brand": "nike",
 		"price": "2.400.000đ",
 		"sell": "1.920.000₫",
-		"discount": "30",
+		"discount": "20",
 		"image": "image/12.png",
 		"promo_image": {
 			"image_1": "",
