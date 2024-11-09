@@ -181,6 +181,7 @@ function showSideBar() {
 
 function hideSideBar() {
     const sidebar = document.querySelector('.sidebar');
+    count_index++;
     sidebar.classList.replace('slide-to-right', 'slide-to-left');
     sidebar.addEventListener('animationend', () => {
         sidebar.style.display = 'none';
@@ -198,3 +199,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     slideshow();
 });
+
