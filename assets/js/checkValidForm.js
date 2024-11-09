@@ -93,12 +93,15 @@ function checkValidRegister() {
         alert("Tài khoản đã tồn tại!");
         return false;
     } else {
+        var currentTime =  new Date();
+        currentTime = getCurrentDateTime(currentTime);
         const newUser = {
             username: username,
             password: password,
             fullname: fullname,
             email: email,
             phone: phone,
+            registrationTime: currentTime,
             cart: [],
             products: []
         };
@@ -149,5 +152,19 @@ function checkValidLogin() {
         return false;
     }
     return true;
+}
+
+function getCurrentDateTime() {
+    const now = new Date();
+
+    const day = now.getDay() + 1;                                      // Thứ (0 - 6, nên cần + 1)
+    const date = now.getDate().toString().padStart(2, '0');            // Ngày (1-31)
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');    // Tháng (0-11, nên cần +1)
+    const year = now.getFullYear();                                    // Năm
+    const hours = now.getHours().toString().padStart(2, '0');          // Giờ (0-23)
+    const minutes = now.getMinutes().toString().padStart(2, '0');      // Phút (0-59)
+    const seconds = now.getSeconds().toString().padStart(2, '0');      // Giây (0-59)
+
+    return `Thứ ${day} ${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
 
