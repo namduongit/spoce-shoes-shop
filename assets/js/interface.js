@@ -68,35 +68,35 @@ function writeMenuSelection() {
         <div class="inner-wrap">
             <div class="inner-content">
                 <ul class="menu-1">
-                    <li id="all_products">
-                        <a href="">All</a>
+                    <li id="all_products" onclick="showCategory('ALL')">
+                        <a href="#">All</a>
                     </li>
-                    <li id="all_products_sale">
-                        <a href="">Sale 40% - 80%</a>
+                    <li id="all_products_sale" onclick="showCategory('Sale')">
+                        <a href="#">Sale 40% - 80%</a>
                     </li>
-                    <li id="all_nike_products">
-                        <a href="">NIKE</a>
+                    <li id="all_nike_products" onclick="showCategory('NIKE')">
+                        <a href="#">NIKE</a>
                     </li>
-                    <li id="all_adidas_products">
-                        <a href="">ADIDAS</a>
+                    <li id="all_adidas_products" onclick="showCategory('ADIDAS')">
+                        <a href="#">ADIDAS</a>
                     </li>
-                    <li id="all_vans_products">
-                        <a href="">VANS</a>
+                    <li id="all_vans_products" onclick="showCategory('VANS')">
+                        <a href="#">VANS</a>
                     </li>
-                    <li id="all_converse_products">
-                        <a href="">CONVERSE</a>
+                    <li id="all_converse_products" onclick="showCategory('CONVERSE')">
+                        <a href="#">CONVERSE</a>
                     </li>
-                    <li  id="all_brands_products">
-                        <a href="">HÃNG KHÁC</a>
+                    <li  id="all_brands_products" onclick="showCategory('OTHER')">
+                        <a href="#">HÃNG KHÁC</a>
                     </li>
-                    <li id="all_clothes_products">
-                        <a href="">QUẦN ÁO</a>
+                    <li id="all_clothes_products" onclick="showCategory('CLOTHES')">
+                        <a href="#">QUẦN ÁO</a>
                     </li>
-                    <li id="all_accessory_products">
-                        <a href="">PHỤ KIỆN</a>
+                    <li id="all_accessory_products" onclick="showCategory('ACCESSORY')">
+                        <a href="#">PHỤ KIỆN</a>
                     </li>
                     <li id="all_notice_products">
-                        <a href="">NHẬN THÔNG BÁO SALE</a>
+                        <a href="#">NHẬN THÔNG BÁO SALE</a>
                     </li>
                     <li id="count_slide_bar">
                         <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>

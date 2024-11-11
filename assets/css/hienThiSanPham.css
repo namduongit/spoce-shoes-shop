@@ -1,0 +1,292 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.grid__col-3 {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.grid__col-5 {
+    width: 41.66667%;
+    padding: 0 15px;
+}
+
+.grid__col-6 {
+    width: 50%;
+    padding: 0 15px;
+}
+
+.grid__col-7 {
+    width: 58.33333%;
+    padding: 0 15px;
+}
+
+.grid__col-9 {
+    width: 75%;
+    padding: 0 15px;
+}
+
+.grid_col-4 {
+    width: 33.33333%;
+    padding: 0 15px;
+}
+
+
+/* Begin: Kích thước giày  */
+
+.title_size {
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    padding-bottom: 6px;
+    margin: 36px 0 20px;
+
+}
+
+.sizeList {
+    /* justify-content: space-around; */
+    list-style: none;
+}
+
+.size {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #6F6F6F;
+}
+
+.size span {
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+/* End: Kích thước giày  */
+
+/* Begin: PagiBar */
+
+.PagiBar {
+    border-bottom: 2px solid #ebebeb;
+    margin-bottom: 12px;
+}
+
+.sortPagiBar {
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.view-mode {
+    display: flex;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.view-mode__icon i {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.total-product {
+    margin-left: 10px;
+}
+
+.sort {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: flex-end;
+}
+
+.sort-by {
+    padding-right: 6px;
+}
+
+.list-sort {
+    list-style: none;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.list-sort i {
+    padding-left: 52px;
+    font-size: 16px;
+}
+
+.list-sort li:hover .sort-options {
+    display: block;
+    cursor: pointer;
+}
+
+.list-sort > li {
+    color: #000;
+    padding: 0 20px;
+    min-width: 150px;
+    line-height: 30px;
+}
+
+.sort-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    display: none;
+    z-index: 2;
+}
+
+.sort-options li {
+    min-width: 150px;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    line-height: 36px;
+    padding: 0 20px;
+    color: #000;
+    background-color: #fff;
+}
+
+.list-sort .sort-options li:hover {
+    color: #007fb8;
+    cursor: pointer;
+}
+
+/* End: PagiBar */
+
+/* Begin: Product  */
+
+.product__item {
+    position: relative;
+    margin-bottom: 16px;
+    /* box-shadow: 0 0 2px #999;
+    border-radius: 2px; */
+}
+
+.product__link {
+    text-decoration: none;
+}
+
+.product__link-img {
+    width: 100%;
+    padding: 18px 18px 0;
+    margin: 0 5px 10px;
+}
+
+.product__link-name {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    /* padding-right: 38px; */
+    margin: 0 12px 12px;
+    /* can chinh toi da 2 dong cho ten */
+    height: 40px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /*gioi han van ban toi da 2 dong*/    
+    overflow: hidden;
+}
+
+.product__link-sale {
+    position: absolute;
+    top: 5%;
+    right: 8%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #f00;
+    padding: 8px 6px;
+    border-radius: 4px;
+}
+
+.product__price {
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.product__price-current {
+    color: #f00;
+}
+
+.product__price-old {
+    padding-left: 16px;
+    text-decoration: line-through;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+/* End: Product  */
+
+/* Begin: pagination */
+
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.page-item {
+    border-top: 1px solid #e1e1e1;
+    padding-top: 30px;
+    margin: 20px 0 20px;
+}
+
+.pagination .page-item:hover .page-link,
+.page-item.disabled .page-link{
+    color: #fff;
+    background-color: #252525;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+}
+
+.page-link {
+    display: block;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #252525;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    text-decoration: none;
+    margin: 2.5px;
+}
+
+.page-link i {
+    font-size: 10px;
+}
+
+
+/* End: pagination */
+
