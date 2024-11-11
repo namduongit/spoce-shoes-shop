@@ -605,22 +605,6 @@ function createProduct() {
                     "image_4": "image/39.4.png"
                 }
             },
-
-            {
-                id: "40",
-                name_product: "EQ21 RUN COLD.RDY",
-                brand: "adidas",
-                price: "1.100.000",
-                sell: "880.000",
-                discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
-                promo_image: {
-                    "image_1": "image/40.1.png",
-                    "image_2": "image/40.2.png",
-                    "image_3": "image/40.3.png",
-                    "image_4": "image/40.4.png"
-                }
-            },
             {
                 id: "40",
                 name_product: "Vans Vault Style 36 Orange",
