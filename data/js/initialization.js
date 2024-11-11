@@ -621,6 +621,756 @@ function createProduct() {
                     "image_4": "image/40.4.png"
                 }
             },
+            {
+                id: "40",
+                name_product: "Vans Vault Style 36 Orange",
+                brand: "VANS",
+                price: "1.040.000",
+                sell: "832.000",
+                discount: "20",
+                image: "image/40.png",
+                promo_image: {
+                    "image_1": "image/40.1.png",
+                    "image_2": "image/40.2.png",
+                    "image_3": "image/40.3.png",
+                    "image_4": "image/40.4.png"
+                }
+            },
+            {
+                id: "41",
+                name_product: "VANS STYLE 36 RED",
+                brand: "VANS",
+                price: "1.000.000",
+                sell: "800.000",
+                discount: "20",
+                image: "image/41.png",
+                promo_image: {
+                    "image_1": "image/41.1.png",
+                    "image_2": "image/41.2.png",
+                    "image_3": "image/41.3.png",
+                    "image_4": "image/41.4.png"
+                }
+            },
+            {
+                id: "42",
+                name_product: "Vans Vault Style 36 Black",
+                brand: "VANS",
+                price: "1.250.000",
+                sell: "1.000.000",
+                discount: "20",
+                image: "image/42.png",
+                promo_image: {
+                    "image_1": "image/42.1.png",
+                    "image_2": "image/42.2.png",
+                    "image_3": "image/42.3.png",
+                    "image_4": "image/42.4.png"
+                }
+            },
+            {
+                id: "43",
+                name_product: "VANS OLD SKOOL CLASSIC BLACK",
+                brand: "VANS",
+                price: "950.000",
+                sell: "760.000",
+                discount: "20",
+                image: "image/43.png",
+                promo_image: {
+                    "image_1": "image/43.1.png",
+                    "image_2": "image/43.2.png",
+                    "image_3": "image/43.3.png",
+                    "image_4": "image/43.4.png"
+                }
+            },
+            {
+                id: "44",
+                name_product: "Vans Vault Style 36 - Red",
+                brand: "VANS",
+                price: "1.150.000",
+                sell: "690.000",
+                discount: "40",
+                image: "image/44.png",
+                promo_image: {
+                    "image_1": "image/44.1.png",
+                    "image_2": "image/44.2.png",
+                    "image_3": "image/44.3.png",
+                    "image_4": "image/44.4.png"
+                }
+            },
+            {
+                id: "45",
+                name_product: "Vans Vault Style 36 - Blue",
+                brand: "VANS",
+                price: "1.150.000",
+                sell: "690.000",
+                discount: "40",
+                image: "image/45.png",
+                promo_image: {
+                    "image_1": "image/45.1.png",
+                    "image_2": "image/45.2.png",
+                    "image_3": "image/45.3.png",
+                    "image_4": "image/45.4.png"
+                }
+            },
+            {
+                id: "46",
+                name_product: "Vans Vault Style 36 - Green",
+                brand: "VANS",
+                price: "1.150.000",
+                sell: "920.000",
+                discount: "20",
+                image: "image/46.png",
+                promo_image: {
+                    "image_1": "image/46.1.png",
+                    "image_2": "image/46.2.png",
+                    "image_3": "image/46.3.png",
+                    "image_4": "image/46.4.png"
+                }
+            },
+            {
+                id: "47",
+                name_product: "Vault og authentic lx (canvas/suede) - Red 2020",
+                brand: "VANS",
+                price: "1.050.000",
+                sell: "840.000",
+                discount: "20",
+                image: "image/47.png",
+                promo_image: {
+                    "image_1": "image/47.1.png",
+                    "image_2": "image/47.2.png",
+                    "image_3": "image/47.3.png",
+                    "image_4": "image/47.4.png"
+                }
+            },
+            {
+                id: "48",
+                name_product: "OG Authentic LX Island Leaf (Brown)",
+                brand: "VANS",
+                price: "1.250.000",
+                sell: "1.000.000",
+                discount: "20",
+                image: "image/48.png",
+                promo_image: {
+                    "image_1": "image/48.1.png",
+                    "image_2": "image/48.2.png",
+                    "image_3": "image/48.3.png",
+                    "image_4": "image/48.4.png"
+                }
+            },
+            {
+                id: "49",
+                name_product: "VANS OLD SKOOL CLASSIC NAVY",
+                brand: "VANS",
+                price: "950.000",
+                sell: "760.000",
+                discount: "20",
+                image: "image/49.png",
+                promo_image: {
+                    "image_1": "image/49.1.png",
+                    "image_2": "image/49.2.png",
+                    "image_3": "image/49.3.png",
+                    "image_4": "image/49.4.png"
+                }
+            },
+            {
+                id: "50",
+                name_product: "VANS STYLE 36 GREEN",
+                brand: "VANS",
+                price: "1.000.000",
+                sell: "800.000",
+                discount: "20",
+                image: "image/50.png",
+                promo_image: {
+                    "image_1": "image/50.1.png",
+                    "image_2": "image/50.2.png",
+                    "image_3": "image/50.3.png",
+                    "image_4": "image/50.4.png"
+                }
+            },
+            {
+                id: "51",
+                name_product: "VANS FOG x Era 95 Reissue 'Marshmallow'",
+                brand: "VANS",
+                price: "1.200.000",
+                sell: "960.000",
+                discount: "20",
+                image: "image/51.png",
+                promo_image: {
+                    "image_1": "image/51.1.png",
+                    "image_2": "image/51.2.png",
+                    "image_3": "image/51.3.png",
+                    "image_4": "image/51.4.png"
+                }
+            },
+            {
+                id: "52",
+                name_product: "VANS FOG x Era 95 DX 'Collection 2 White'",
+                brand: "VANS",
+                price: "1.200.000",
+                sell: "960.000",
+                discount: "20",
+                image: "image/52.png",
+                promo_image: {
+                    "image_1": "image/52.1.png",
+                    "image_2": "image/52.2.png",
+                    "image_3": "image/52.3.png",
+                    "image_4": "image/52.4.png"
+                }
+            },
+            {
+                id: "53",
+                name_product: "VANS FOG x Era 95 DX 'Collection 2 Red'",
+                brand: "VANS",
+                price: "1.200.000",
+                sell: "600.000",
+                discount: "50",
+                image: "image/53.png",
+                promo_image: {
+                    "image_1": "image/53.1.png",
+                    "image_2": "image/53.2.png",
+                    "image_3": "image/53.3.png",
+                    "image_4": "image/53.4.png"
+                }
+            },
+            {
+                id: "54",
+                name_product: "VANS STYLE 36 BLUE",
+                brand: "VANS",
+                price: "1.200.000",
+                sell: "960.000",
+                discount: "20",
+                image: "image/54.png",
+                promo_image: {
+                    "image_1": "image/54.1.png",
+                    "image_2": "image/54.2.png",
+                    "image_3": "image/54.3.png",
+                    "image_4": "image/54.4.png"
+                }
+            },  
+            {
+                id: "61",
+                name_product: "1970s PARCHMENT HIGH",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "800.000",
+                discount: "20",
+                image: "image/61.png",
+                promo_image: {
+                    "image_1": "image/61.1.png",
+                    "image_2": "image/61.2.png",
+                    "image_3": "image/61.3.png",
+                    "image_4": "image/61.4.png"
+                }
+            },
+        
+            {
+                id: "62",
+                name_product: "1970s PARCHMENT LOW",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/62.png",
+                promo_image: {
+                    "image_1": "image/62.1.png",
+                    "image_2": "image/62.2.png",
+                    "image_3": "image/62.3.png",
+                    "image_4": "image/62.4.png"
+                }
+            },
+        
+            {
+                id: "63",
+                name_product: "FEAR OF GOD x CHUCK 70 HI 'GREY'",
+                brand: "converse",
+                price: "1.700.000",
+                sell: "1.360.000",
+                discount: "20",
+                image: "image/63.png",
+                promo_image: {
+                    "image_1": "image/63.1.png",
+                    "image_2": "image/63.2.png",
+                    "image_3": "image/63.3.png",
+                    "image_4": "image/63.4.png"
+                }
+            },
+        
+            {
+                id: "64",
+                name_product: "FEAR OF GOD x CHUCK 70 HI 'BLACK'",
+                brand: "converse",
+                price: "3.300.000",
+                sell: "2.460.000",
+                discount: "20",
+                image: "image/63.png",
+                promo_image: {
+                    "image_1": "image/64.1.png",
+                    "image_2": "image/64.2.png",
+                    "image_3": "image/64.3.png",
+                    "image_4": "image/64.4.png"
+                }
+            },
+        
+            {
+                id: "65",
+                name_product: "FEAR OF GOD x CHUCK 70 HI 'NATURAL'",
+                brand: "converse",
+                price: "1.700.000",
+                sell: "800.000",
+                discount: "53",
+                image: "image/65.png",
+                promo_image: {
+                    "image_1": "image/65.1.png",
+                    "image_2": "image/65.2.png",
+                    "image_3": "image/65.3.png",
+                    "image_4": "image/65.4.png"
+                }
+            },
+        
+            {
+                id: "66",
+                name_product: "1970s WHITE LOW",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/66.png",
+                promo_image: {
+                    "image_1": "image/66.1.png",
+                    "image_2": "image/66.2.png",
+                    "image_3": "image/66.3.png",
+                    "image_4": "image/66.4.png"
+                }
+            },
+        
+            {
+                id: "67",
+                name_product: "1970s BLACK LOW",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/67.png",
+                promo_image: {
+                    "image_1": "image/67.1.png",
+                    "image_2": "image/67.2.png",
+                    "image_3": "image/67.3.png",
+                    "image_4": "image/67.4.png"
+                }
+            },
+        
+            {
+                id: "68",
+                name_product: "1970s BLACK HIGH",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/68.png",
+                promo_image: {
+                    "image_1": "image/68.1.png",
+                    "image_2": "image/68.2.png",
+                    "image_3": "image/68.3.png",
+                    "image_4": "image/68.4.png"
+                }
+            },
+        
+            {
+                id: "69",
+                name_product: "1970s WHITE HIGH",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/69.png",
+                promo_image: {
+                    "image_1": "image/69.1.png",
+                    "image_2": "image/69.2.png",
+                    "image_3": "image/69.3.png",
+                    "image_4": "image/69.4.png"
+                }
+            },
+        
+            {
+                id: "70",
+                name_product: "CHUCK 70s x CDG BLACK HIGH",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/70.png",
+                promo_image: {
+                    "image_1": "image/70.1.png",
+                    "image_2": "image/70.2.png",
+                    "image_3": "image/70.3.png",
+                    "image_4": "image/70.4.png"
+                }
+            },
+        
+            {
+                id: "71",
+                name_product: "CHUCK 70s x CDG BLACK LOW",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/71.png",
+                promo_image: {
+                    "image_1": "image/71.1.png",
+                    "image_2": "image/71.2.png",
+                    "image_3": "image/71.3.png",
+                    "image_4": "image/71.4.png"
+                }
+            },
+        
+            {
+                id: "72",
+                name_product: "CHUCK 70s x CDG WHITE HIGH",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/72.png",
+                promo_image: {
+                    "image_1": "image/72.1.png",
+                    "image_2": "image/72.2.png",
+                    "image_3": "image/72.3.png",
+                    "image_4": "image/72.4.png"
+                }
+            },
+        
+            {
+                id: "73",
+                name_product: "CHUCK 70s x CDG WHITE LOW",
+                brand: "converse",
+                price: "1.100.000",
+                sell: "880.000",
+                discount: "20",
+                image: "image/73.png",
+                promo_image: {
+                    "image_1": "image/73.1.png",
+                    "image_2": "image/73.2.png",
+                    "image_3": "image/73.3.png",
+                    "image_4": "image/73.4.png"
+                }
+            },
+        
+            {
+                id: "74",
+                name_product: "CHUCK TAYLOR ALL STAR SPRAY PAINT",
+                brand: "converse",
+                price: "2.000.000",
+                sell: "1.800.000",
+                discount: "10",
+                image: "image/74.png",
+                promo_image: {
+                    "image_1": "image/74.1.png",
+                    "image_2": "image/74.2.png",
+                    "image_3": "image/74.3.png",
+                    "image_4": "image/74.4.png"
+                }
+            },
+        
+            {
+                id: "75",
+                name_product: "CHUCK 70 PLUS AQUA MIST",
+                brand: "converse",
+                price: "2.500.000",
+                sell: "1.625.000",
+                discount: "35",
+                image: "image/75.png",
+                promo_image: {
+                    "image_1": "image/75.1.png",
+                    "image_2": "image/75.2.png",
+                    "image_3": "image/75.3.png",
+                    "image_4": "image/75.4.png"
+                }
+            },
+        
+            {
+                id: "76",
+                name_product: "CHUCK 70 PLUS PINK",
+                brand: "converse",
+                price: "2.500.000",
+                sell: "1.250.000",
+                discount: "50",
+                image: "image/76.png",
+                promo_image: {
+                    "image_1": "image/76.1.png",
+                    "image_2": "image/76.2.png",
+                    "image_3": "image/76.3.png",
+                    "image_4": "image/76.4.png"
+                }
+            },
+        
+            {
+                id: "77",
+                name_product: "CHUCK 70 CRAFT MIX",
+                brand: "converse",
+                price: "2.500.000",
+                sell: "1.650.000",
+                discount: "35",
+                image: "image/77.png",
+                promo_image: {
+                    "image_1": "image/77.1.png",
+                    "image_2": "image/77.2.png",
+                    "image_3": "image/77.3.png",
+                    "image_4": "image/77.4.png"
+                }
+            },
+        
+            {
+                id: "78",
+                name_product: "CHUCK TAYLOR ALL STAR LOGO TAG",
+                brand: "converse",
+                price: "2.000.000",
+                sell: "1.200.000",
+                discount: "40",
+                image: "image/78.png",
+                promo_image: {
+                    "image_1": "image/78.1.png",
+                    "image_2": "image/78.2.png",
+                    "image_3": "image/78.3.png",
+                    "image_4": "image/78.4.png"
+                }
+            },
+        
+            {
+                id: "79",
+                name_product: "RUN STAR HIKE PLATFORM",
+                brand: "converse",
+                price: "2.500.000",
+                sell: "1.250.000",
+                discount: "35",
+                image: "image/79.png",
+                promo_image: {
+                    "image_1": "image/79.1.png",
+                    "image_2": "image/79.2.png",
+                    "image_3": "image/79.3.png",
+                    "image_4": "image/79.4.png"
+                }
+            },
+        
+            {
+                id: "80",
+                name_product: "CHUCK TAYLOR ALL STAR MOVE",
+                brand: "converse",
+                price: "2.000.000",
+                sell: "1.700.000",
+                discount: "15",
+                image: "image/80.png",
+                promo_image: {
+                    "image_1": "image/80.1.png",
+                    "image_2": "image/80.2.png",
+                    "image_3": "image/80.3.png",
+                    "image_4": "image/80.4.png"
+                }
+            },
+            {
+                id: "81",
+                name_product: "HTAG SWEATER - VINTAGE HASTAG",
+                brand: "clothes",
+                price: "500000",
+                sell: "220000",
+                discount: "30",
+                image: "image/1.png",
+                promo_image: {
+                    "image_1": "image/81.1.png",
+                    "image_2": "image/81.2.png",
+                    "image_3": "image/81.3.png",
+                    "image_4": "image/81.4.png"
+                }
+            },
+            {
+                id: "82",
+                name_product: "HTAG HOODIE - EARTH BLACK",
+                brand: "clothes",
+                price: "800000",
+                sell: "290000",
+                discount: "30",
+                image: "image/82.png",
+                promo_image: {
+                    "image_1": "image/82.1.png",
+                    "image_2": "image/82.2.png",
+                    "image_3": "image/82.3.png",
+                    "image_4": "image/82.4.png"
+                }
+            },
+            {
+                id: "83",
+                name_product: "HTAG SWEATER - WHITE HORSE",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/83.png",
+                promo_image: {
+                    "image_1": "image/83.1.png",
+                    "image_2": "image/83.2.png",
+                    "image_3": "image/83.3.png",
+                    "image_4": "image/83.4.png"
+                }
+            },
+            {
+                id: "84",
+                name_product: "HTAG SWEATER - BLACK HORSE",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/84.png",
+                promo_image: {
+                    "image_1": "image/84.1.png",
+                    "image_2": "image/84.2.png",
+                    "image_3": "image/84.3.png",
+                    "image_4": "image/84.4.png"
+                }
+            },
+            {
+                id: "85",
+                name_product: "HTAG SWEATER - VINTAGE HORSE",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/85.png",
+                promo_image: {
+                    "image_1": "image/85.1.png",
+                    "image_2": "image/85.2.png",
+                    "image_3": "image/85.3.png",
+                    "image_4": "image/85.4.png"
+                }
+            },
+            {
+                id: "86",
+                name_product: "HTAG HOODIE - GREY HASTAG",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/86.png",
+                promo_image: {
+                    "image_1": "image/86.1.png",
+                    "image_2": "image/86.2.png",
+                    "image_3": "image/86.3.png",
+                    "image_4": "image/86.4.png"
+                }
+            },
+            {
+                id: "87",
+                name_product: "HTAG HOODIE - VINTAGE HASTAG",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/87.png",
+                promo_image: {
+                    "image_1": "image/87.1.png",
+                    "image_2": "image/87.2.png",
+                    "image_3": "image/87.3.png",
+                    "image_4": "image/87.4.png"
+                }
+            },
+            {
+                id: "88",
+                name_product: "HTAG HOODIE - RED HASTAG",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/88.png",
+                promo_image: {
+                    "image_1": "image/88.1.png",
+                    "image_2": "image/88.2.png",
+                    "image_3": "image/88.3.png",
+                    "image_4": "image/88.4.png"
+                }
+            },
+            {
+                id: "89",
+                name_product: "HTAG HOODIE - GREEN BLACK HASTAG",
+                brand: "clothes",
+                price: "700000",
+                sell: "290000",
+                discount: "30",
+                image: "image/89.png",
+                promo_image: {
+                    "image_1": "image/89.1.png",
+                    "image_2": "image/89.2.png",
+                    "image_3": "image/89.3.png",
+                    "image_4": "image/89.4.png"
+                }
+            },
+            {
+                id: "90",
+                name_product: "HTAG JACKET VARSITY - ROBOT BLACK WHITE",
+                brand: "clothes",
+                price: "1300000",
+                sell: "780000",
+                discount: "30",
+                image: "image/90.png",
+                promo_image: {
+                    "image_1": "image/90.1.png",
+                    "image_2": "image/90.2.png",
+                    "image_3": "image/90.3.png",
+                    "image_4": "image/90.4.png"
+                }
+            },
+            {
+                id: "91",
+                name_product: "HTAG BOMBER - BRING BLACK",
+                brand: "clothes",
+                price: "990000",
+                sell: "594000",
+                discount: "30",
+                image: "image/91.png",
+                promo_image: {
+                    "image_1": "image/91.1.png",
+                    "image_2": "image/91.2.png",
+                    "image_3": "image/91.3.png",
+                    "image_4": "image/91.4.png"
+                }
+            },
+            {
+                id: "92",
+                name_product: "HTAG BOMBER - BRING ORANGE",
+                brand: "clothes",
+                price: "990000",
+                sell: "594000",
+                discount: "30",
+                image: "image/92.png",
+                promo_image: {
+                    "image_1": "image/92.1.png",
+                    "image_2": "image/92.2.png",
+                    "image_3": "image/92.3.png",
+                    "image_4": "image/92.4.png"
+                }
+            },
+            {
+                id: "93",
+                name_product: "Sweater Kenzo Blue",
+                brand: "clothes",
+                price: "800000",
+                sell: "640000",
+                discount: "30",
+                image: "image/93.png",
+                promo_image: {
+                    "image_1": "image/93.1.png",
+                    "image_2": "image/93.2.png"
+                }
+            },
+            {
+                id: "94",
+                name_product: "Sweater Kenzo Black Blue",
+                brand: "clothes",
+                price: "800000",
+                sell: "640000",
+                discount: "30",
+                image: "image/94.png",
+                promo_image: {
+                    "image_1": "image/94.1.png",
+                    "image_2": "image/94.2.png"
+                }
+            },
         ]
         localStorage.setItem('products', JSON.stringify(products));
     }
