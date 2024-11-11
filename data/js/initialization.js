@@ -9,7 +9,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "data/js/image/1.png",
+                image: "image/1.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -23,8 +23,8 @@ function createProduct() {
                 brand: "nike",
                 price: "3.300.000₫",
                 sell: "2.640.000₫",
-                discount: "20",
-                image: "data/js/image/2.png",
+                discount: "30",
+                image: "image/2.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -38,8 +38,8 @@ function createProduct() {
                 brand: "nike",
                 price: "1.700.000₫",
                 sell: "1.360.000₫",
-                discount: "20",
-                image: "data/js/image/3.png",
+                discount: "30",
+                image: "image/3.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -53,8 +53,8 @@ function createProduct() {
                 brand: "nike",
                 price: "1.700.000₫",
                 sell: "1.360.000₫",
-                discount: "20",
-                image: "data/js/image/4.png",
+                discount: "30",
+                image: "image/4.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -69,7 +69,7 @@ function createProduct() {
                 price: "2.200.000đ",
                 sell: "1.550.000đ",
                 discount: "30",
-                image: "data/js/image/5.png",
+                image: "image/5.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -83,8 +83,8 @@ function createProduct() {
                 brand: "nike",
                 price: "1.800.000đ",
                 sell: "1.440.000đ",
-                discount: "20",
-                image: "data/js/image/6.png",
+                discount: "30",
+                image: "image/6.png",
                 promo_image: {
                     "image_1": "image/6.1.png",
                     "image_2": "image/6.2.png",
@@ -99,7 +99,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "data/js/image/7.png",
+                image: "image/7.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -114,7 +114,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "data/js/image/8.png",
+                image: "image/8.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -129,7 +129,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/9.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -144,7 +144,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/10.png",
                 promo_image: {
                     "image_1": "image/10.1.png",
                     "image_2": "image/10.2.png",
@@ -159,7 +159,7 @@ function createProduct() {
                 price: "2.800.000đ",
                 sell: "1.960.000₫",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/11.png",
                 promo_image: {
                     "image_1": "image/11.1.png",
                     "image_2": "image/11.2.png",
@@ -173,8 +173,8 @@ function createProduct() {
                 brand: "nike",
                 price: "2.400.000đ",
                 sell: "1.920.000₫",
-                discount: "20",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                discount: "30",
+                image: "image/12.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -189,7 +189,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/13.png",
                 promo_image: {
                     "image_1": "image/13.1.png",
                     "image_2": "image/13.2.png",
@@ -204,7 +204,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/14.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -219,7 +219,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/15.png",
                 promo_image: {
                     "image_1": "image/15.1.png",
                     "image_2": "image/15.2.png",
@@ -234,7 +234,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/16.png",
                 promo_image: {
                     "image_1": "image/16.1.png",
                     "image_2": "image/16.2.png",
@@ -249,7 +249,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/17.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -264,7 +264,7 @@ function createProduct() {
                 price: "1.400.000đ",
                 sell: "980.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/18.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -279,7 +279,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/19.png",
                 promo_image: {
                     "image_1": "image/19.1.png",
                     "image_2": "image/19.2.png",
@@ -294,7 +294,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "image/20.png",
                 promo_image: {
                     "image_1": "image/20.1.png",
                     "image_2": "image/20.2.png",
@@ -309,7 +309,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/21.png",
                 promo_image: {
                     "image_1": "image/21.1.png",
                     "image_2": "image/21.2.png",
@@ -317,7 +317,6 @@ function createProduct() {
                     "image_4": "image/21.4.png"
                 }
             },
-
             {
                 id: "22",
                 name_product: "Samba OG White Green",
@@ -325,7 +324,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/22.png",
                 promo_image: {
                     "image_1": "image/22.1.png",
                     "image_2": "image/22.2.png",
@@ -333,7 +332,6 @@ function createProduct() {
                     "image_4": "image/22.4.png"
                 }
             },
-
             {
                 id: "23",
                 name_product: "UltraBoost 4.0 DNA 'Black Green White'",
@@ -341,7 +339,7 @@ function createProduct() {
                 price: "1.800.000",
                 sell: "1.440.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/23.png",
                 promo_image: {
                     "image_1": "image/23.1.png",
                     "image_2": "image/23.2.png",
@@ -349,7 +347,6 @@ function createProduct() {
                     "image_4": "image/23.4.png"
                 }
             },
-
             {
                 id: "24",
                 name_product: "YEEZY SLIDES 'BONE' 2022",
@@ -357,7 +354,7 @@ function createProduct() {
                 price: "900.000",
                 sell: "720.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/24.png",
                 promo_image: {
                     "image_1": "image/24.1.png",
                     "image_2": "image/24.2.png",
@@ -365,7 +362,6 @@ function createProduct() {
                     "image_4": "image/24.4.png"
                 }
             },
-
             {
                 id: "25",
                 name_product: "ULTRABOOST 22 HEAT.RDY 'BLACK CLEAR ORANGE'",
@@ -373,7 +369,7 @@ function createProduct() {
                 price: "1.900.000",
                 sell: "1.520.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/25.png",
                 promo_image: {
                     "image_1": "image/25.1.png",
                     "image_2": "image/25.2.png",
@@ -381,7 +377,6 @@ function createProduct() {
                     "image_4": "image/25.4.png"
                 }
             },
-
             {
                 id: "26",
                 name_product: "YEEZY BOOST 350 V2 'DAZZLING BLUE'",
@@ -389,7 +384,7 @@ function createProduct() {
                 price: "2.100.000",
                 sell: "1.680.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/26.png",
                 promo_image: {
                     "image_1": "image/26.1.png",
                     "image_2": "image/26.2.png",
@@ -397,7 +392,6 @@ function createProduct() {
                     "image_4": "image/26.4.png"
                 }
             },
-
             {
                 id: "27",
                 name_product: "YEEZY BOOST 350 V2 'MX OAT'",
@@ -405,7 +399,7 @@ function createProduct() {
                 price: "2.100.000",
                 sell: "1.680.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/27.png",
                 promo_image: {
                     "image_1": "image/27.1.png",
                     "image_2": "image/27.2.png",
@@ -413,7 +407,6 @@ function createProduct() {
                     "image_4": "image/27.4.png"
                 }
             },
-
             {
                 id: "28",
                 name_product: "Superstars White",
@@ -421,7 +414,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/28.png",
                 promo_image: {
                     "image_1": "image/28.1.png",
                     "image_2": "image/28.2.png",
@@ -429,7 +422,6 @@ function createProduct() {
                     "image_4": "image/28.4.png"
                 }
             },
-
             {
                 id: "29",
                 name_product: "Stan Smith White",
@@ -437,7 +429,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/29.png",
                 promo_image: {
                     "image_1": "image/29.1.png",
                     "image_2": "image/29.2.png",
@@ -445,7 +437,6 @@ function createProduct() {
                     "image_4": "image/29.4.png"
                 }
             },
-
             {
                 id: "30",
                 name_product: "Stan Smith Black",
@@ -453,7 +444,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/30.png",
                 promo_image: {
                     "image_1": "image/30.1.png",
                     "image_2": "image/30.2.png",
@@ -461,7 +452,6 @@ function createProduct() {
                     "image_4": "image/30.4.png"
                 }
             },
-
             {
                 id: "31",
                 name_product: "SAMBA VEGAN 'BLACK'",
@@ -469,7 +459,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/31.png",
                 promo_image: {
                     "image_1": "image/31.1.png",
                     "image_2": "image/31.2.png",
@@ -477,7 +467,6 @@ function createProduct() {
                     "image_4": "image/31.4.png"
                 }
             },
-
             {
                 id: "32",
                 name_product: "adiFOM Superstar 'Black White'",
@@ -485,7 +474,7 @@ function createProduct() {
                 price: "1.100.000",
                 sell: "550.000",
                 discount: "50",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/32.png",
                 promo_image: {
                     "image_1": "image/32.1.png",
                     "image_2": "image/32.2.png",
@@ -493,7 +482,6 @@ function createProduct() {
                     "image_4": "image/32.4.png"
                 }
             },
-
             {
                 id: "33",
                 name_product: "YEEZY SLIDES 'PURE'",
@@ -501,7 +489,7 @@ function createProduct() {
                 price: "900.000",
                 sell: "720.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/33.png",
                 promo_image: {
                     "image_1": "image/33.1.png",
                     "image_2": "image/33.2.png",
@@ -509,7 +497,6 @@ function createProduct() {
                     "image_4": "image/33.4.png"
                 }
             },
-
             {
                 id: "34",
                 name_product: "SuperStar 'White Silver Metallic'",
@@ -517,7 +504,7 @@ function createProduct() {
                 price: "1.300.000",
                 sell: "1.040.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/34.png",
                 promo_image: {
                     "image_1": "image/34.1.png",
                     "image_2": "image/34.2.png",
@@ -525,7 +512,6 @@ function createProduct() {
                     "image_4": "image/34.4.png"
                 }
             },
-
             {
                 id: "35",
                 name_product: "YEEZY BOOST 350 V2 'ONYX'",
@@ -533,7 +519,7 @@ function createProduct() {
                 price: "2.100.000",
                 sell: "1.680.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/35.png",
                 promo_image: {
                     "image_1": "image/35.1.png",
                     "image_2": "image/35.2.png",
@@ -541,7 +527,6 @@ function createProduct() {
                     "image_4": "image/35.4.png"
                 }
             },
-
             {
                 id: "36",
                 name_product: "ULTRABOOST 22 'NON DYED BLACK'",
@@ -549,7 +534,7 @@ function createProduct() {
                 price: "1.900.000",
                 sell: "1.520.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/36.png",
                 promo_image: {
                     "image_1": "image/36.1.png",
                     "image_2": "image/36.2.png",
@@ -557,7 +542,6 @@ function createProduct() {
                     "image_4": "image/36.4.png"
                 }
             },
-
             {
                 id: "37",
                 name_product: "FORUM 84 LOW 'WHITE BLACK'",
@@ -565,7 +549,7 @@ function createProduct() {
                 price: "1.200.000",
                 sell: "960.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/37.png",
                 promo_image: {
                     "image_1": "image/37.1.png",
                     "image_2": "image/37.2.png",
@@ -573,7 +557,6 @@ function createProduct() {
                     "image_4": "image/37.4.png"
                 }
             },
-
             {
                 id: "38",
                 name_product: "AR.SENAL X ULTRABOOST 21 'BLACK SCARLET'",
@@ -581,7 +564,7 @@ function createProduct() {
                 price: "1.900.000",
                 sell: "1.520.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/38.png",
                 promo_image: {
                     "image_1": "image/38.1.png",
                     "image_2": "image/38.2.png",
@@ -589,7 +572,6 @@ function createProduct() {
                     "image_4": "image/38.4.png"
                 }
             },
-
             {
                 id: "39",
                 name_product: "YEEZY BOOST 700 'WASH ORANGE'",
@@ -597,7 +579,7 @@ function createProduct() {
                 price: "3.000.000",
                 sell: "2.400.000",
                 discount: "20",
-                image: "//bizweb.dktcdn.net/thumb/large/100/336/177/products/6-803049a8-951e-44c0-8138-179bc9edc097.jpg?v=1682928244017",
+                image: "image/39.png",
                 promo_image: {
                     "image_1": "image/39.1.png",
                     "image_2": "image/39.2.png",
@@ -607,10 +589,10 @@ function createProduct() {
             },
             {
                 id: "40",
-                name_product: "Vans Vault Style 36 Orange",
-                brand: "VANS",
-                price: "1.040.000",
-                sell: "832.000",
+                name_product: "EQ21 RUN COLD.RDY",
+                brand: "adidas",
+                price: "1.100.000",
+                sell: "880.000",
                 discount: "20",
                 image: "image/40.png",
                 promo_image: {
