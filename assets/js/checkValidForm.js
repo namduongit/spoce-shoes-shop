@@ -105,7 +105,7 @@ function checkValidRegister() {
             cart: [],
             products: []
         };
-        
+
         // Thêm tài khoản mới vào mảng
         users.push(newUser);
         // lưu tài khoản vào localStorage
