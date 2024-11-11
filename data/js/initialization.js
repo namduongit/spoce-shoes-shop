@@ -317,7 +317,7 @@ function createProduct() {
                     "image_4": "image/21.4.png"
                 }
             },
-        
+
             {
                 id: "22",
                 name_product: "Samba OG White Green",
@@ -333,7 +333,7 @@ function createProduct() {
                     "image_4": "image/22.4.png"
                 }
             },
-        
+
             {
                 id: "23",
                 name_product: "UltraBoost 4.0 DNA 'Black Green White'",
@@ -349,7 +349,7 @@ function createProduct() {
                     "image_4": "image/23.4.png"
                 }
             },
-        
+
             {
                 id: "24",
                 name_product: "YEEZY SLIDES 'BONE' 2022",
@@ -365,7 +365,7 @@ function createProduct() {
                     "image_4": "image/24.4.png"
                 }
             },
-        
+
             {
                 id: "25",
                 name_product: "ULTRABOOST 22 HEAT.RDY 'BLACK CLEAR ORANGE'",
@@ -381,7 +381,7 @@ function createProduct() {
                     "image_4": "image/25.4.png"
                 }
             },
-        
+
             {
                 id: "26",
                 name_product: "YEEZY BOOST 350 V2 'DAZZLING BLUE'",
@@ -397,7 +397,7 @@ function createProduct() {
                     "image_4": "image/26.4.png"
                 }
             },
-        
+
             {
                 id: "27",
                 name_product: "YEEZY BOOST 350 V2 'MX OAT'",
@@ -413,7 +413,7 @@ function createProduct() {
                     "image_4": "image/27.4.png"
                 }
             },
-        
+
             {
                 id: "28",
                 name_product: "Superstars White",
@@ -429,7 +429,7 @@ function createProduct() {
                     "image_4": "image/28.4.png"
                 }
             },
-        
+
             {
                 id: "29",
                 name_product: "Stan Smith White",
@@ -445,7 +445,7 @@ function createProduct() {
                     "image_4": "image/29.4.png"
                 }
             },
-        
+
             {
                 id: "30",
                 name_product: "Stan Smith Black",
@@ -461,7 +461,7 @@ function createProduct() {
                     "image_4": "image/30.4.png"
                 }
             },
-            
+
             {
                 id: "31",
                 name_product: "SAMBA VEGAN 'BLACK'",
@@ -477,7 +477,7 @@ function createProduct() {
                     "image_4": "image/31.4.png"
                 }
             },
-        
+
             {
                 id: "32",
                 name_product: "adiFOM Superstar 'Black White'",
@@ -493,7 +493,7 @@ function createProduct() {
                     "image_4": "image/32.4.png"
                 }
             },
-        
+
             {
                 id: "33",
                 name_product: "YEEZY SLIDES 'PURE'",
@@ -509,7 +509,7 @@ function createProduct() {
                     "image_4": "image/33.4.png"
                 }
             },
-        
+
             {
                 id: "34",
                 name_product: "SuperStar 'White Silver Metallic'",
@@ -525,7 +525,7 @@ function createProduct() {
                     "image_4": "image/34.4.png"
                 }
             },
-        
+
             {
                 id: "35",
                 name_product: "YEEZY BOOST 350 V2 'ONYX'",
@@ -541,7 +541,7 @@ function createProduct() {
                     "image_4": "image/35.4.png"
                 }
             },
-        
+
             {
                 id: "36",
                 name_product: "ULTRABOOST 22 'NON DYED BLACK'",
@@ -557,7 +557,7 @@ function createProduct() {
                     "image_4": "image/36.4.png"
                 }
             },
-        
+
             {
                 id: "37",
                 name_product: "FORUM 84 LOW 'WHITE BLACK'",
@@ -573,7 +573,7 @@ function createProduct() {
                     "image_4": "image/37.4.png"
                 }
             },
-        
+
             {
                 id: "38",
                 name_product: "AR.SENAL X ULTRABOOST 21 'BLACK SCARLET'",
@@ -589,7 +589,7 @@ function createProduct() {
                     "image_4": "image/38.4.png"
                 }
             },
-        
+
             {
                 id: "39",
                 name_product: "YEEZY BOOST 700 'WASH ORANGE'",
@@ -605,7 +605,7 @@ function createProduct() {
                     "image_4": "image/39.4.png"
                 }
             },
-        
+
             {
                 id: "40",
                 name_product: "EQ21 RUN COLD.RDY",
@@ -845,7 +845,7 @@ function createProduct() {
                     "image_3": "image/54.3.png",
                     "image_4": "image/54.4.png"
                 }
-            },  
+            },
             {
                 id: "61",
                 name_product: "1970s PARCHMENT HIGH",
@@ -861,7 +861,7 @@ function createProduct() {
                     "image_4": "image/61.4.png"
                 }
             },
-        
+
             {
                 id: "62",
                 name_product: "1970s PARCHMENT LOW",
@@ -877,7 +877,7 @@ function createProduct() {
                     "image_4": "image/62.4.png"
                 }
             },
-        
+
             {
                 id: "63",
                 name_product: "FEAR OF GOD x CHUCK 70 HI 'GREY'",
@@ -893,7 +893,7 @@ function createProduct() {
                     "image_4": "image/63.4.png"
                 }
             },
-        
+
             {
                 id: "64",
                 name_product: "FEAR OF GOD x CHUCK 70 HI 'BLACK'",
@@ -909,7 +909,7 @@ function createProduct() {
                     "image_4": "image/64.4.png"
                 }
             },
-        
+
             {
                 id: "65",
                 name_product: "FEAR OF GOD x CHUCK 70 HI 'NATURAL'",
@@ -925,7 +925,7 @@ function createProduct() {
                     "image_4": "image/65.4.png"
                 }
             },
-        
+
             {
                 id: "66",
                 name_product: "1970s WHITE LOW",
@@ -941,7 +941,7 @@ function createProduct() {
                     "image_4": "image/66.4.png"
                 }
             },
-        
+
             {
                 id: "67",
                 name_product: "1970s BLACK LOW",
@@ -957,7 +957,7 @@ function createProduct() {
                     "image_4": "image/67.4.png"
                 }
             },
-        
+
             {
                 id: "68",
                 name_product: "1970s BLACK HIGH",
@@ -973,7 +973,7 @@ function createProduct() {
                     "image_4": "image/68.4.png"
                 }
             },
-        
+
             {
                 id: "69",
                 name_product: "1970s WHITE HIGH",
@@ -989,7 +989,7 @@ function createProduct() {
                     "image_4": "image/69.4.png"
                 }
             },
-        
+
             {
                 id: "70",
                 name_product: "CHUCK 70s x CDG BLACK HIGH",
@@ -1005,7 +1005,7 @@ function createProduct() {
                     "image_4": "image/70.4.png"
                 }
             },
-        
+
             {
                 id: "71",
                 name_product: "CHUCK 70s x CDG BLACK LOW",
@@ -1021,7 +1021,7 @@ function createProduct() {
                     "image_4": "image/71.4.png"
                 }
             },
-        
+
             {
                 id: "72",
                 name_product: "CHUCK 70s x CDG WHITE HIGH",
@@ -1037,7 +1037,7 @@ function createProduct() {
                     "image_4": "image/72.4.png"
                 }
             },
-        
+
             {
                 id: "73",
                 name_product: "CHUCK 70s x CDG WHITE LOW",
@@ -1053,7 +1053,7 @@ function createProduct() {
                     "image_4": "image/73.4.png"
                 }
             },
-        
+
             {
                 id: "74",
                 name_product: "CHUCK TAYLOR ALL STAR SPRAY PAINT",
@@ -1069,7 +1069,7 @@ function createProduct() {
                     "image_4": "image/74.4.png"
                 }
             },
-        
+
             {
                 id: "75",
                 name_product: "CHUCK 70 PLUS AQUA MIST",
@@ -1085,7 +1085,7 @@ function createProduct() {
                     "image_4": "image/75.4.png"
                 }
             },
-        
+
             {
                 id: "76",
                 name_product: "CHUCK 70 PLUS PINK",
@@ -1101,7 +1101,7 @@ function createProduct() {
                     "image_4": "image/76.4.png"
                 }
             },
-        
+
             {
                 id: "77",
                 name_product: "CHUCK 70 CRAFT MIX",
@@ -1117,7 +1117,7 @@ function createProduct() {
                     "image_4": "image/77.4.png"
                 }
             },
-        
+
             {
                 id: "78",
                 name_product: "CHUCK TAYLOR ALL STAR LOGO TAG",
@@ -1133,7 +1133,7 @@ function createProduct() {
                     "image_4": "image/78.4.png"
                 }
             },
-        
+
             {
                 id: "79",
                 name_product: "RUN STAR HIKE PLATFORM",
@@ -1149,7 +1149,7 @@ function createProduct() {
                     "image_4": "image/79.4.png"
                 }
             },
-        
+
             {
                 id: "80",
                 name_product: "CHUCK TAYLOR ALL STAR MOVE",
