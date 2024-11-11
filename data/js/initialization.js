@@ -1356,6 +1356,9 @@ function createProduct() {
                 }
             },
         ]
+         for(let i=0;i<products.length;i++){
+            products[i].image="data/js/image/"+(i+1)+".png";
+        }
         localStorage.setItem('products', JSON.stringify(products));
     }
 }
