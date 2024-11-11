@@ -12,10 +12,11 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     display: block;
 }
 .section-one .inner-wrap .inner-content .menu-1 > li > a:hover {
-    font-weight: bold;
-    padding-bottom: 8px;
-    border-bottom: 3px solid white;
+    font-weight: 500;
+    /* padding-bottom: 2px;
+    border-bottom: 3px solid white; */
     transition: all 0.3s;
+    text-shadow: 0 0 10px #fff;
 }
 
 .sidebar .menu-1 > li > a:hover {

@@ -86,9 +86,6 @@ function writeMenuSelection() {
                     <li id="all_converse_products" onclick="showCategory('CONVERSE')">
                         <a href="#">CONVERSE</a>
                     </li>
-                    <li  id="all_brands_products" onclick="showCategory('OTHER')">
-                        <a href="#">HÃNG KHÁC</a>
-                    </li>
                     <li id="all_clothes_products" onclick="showCategory('CLOTHES')">
                         <a href="#">QUẦN ÁO</a>
                     </li>

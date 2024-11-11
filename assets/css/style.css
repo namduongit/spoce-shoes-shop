@@ -129,16 +129,22 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     justify-content: center;
 }
 .section-one .inner-wrap .inner-content {
-    padding: 15px 0;
+    /* padding: 15px 0; */
 }
 .section-one .inner-wrap .inner-content .menu-1 {
     display: flex;
 }
 .section-one .inner-wrap .inner-content .menu-1 > li {
     margin: 0 10px;
+    padding: 6px 0;
 }
 .section-one .inner-wrap .inner-content .menu-1 > li > a {
-    color: white;
+    color: #fff;
+    font-weight: 400;
+    line-height: 30px;
+    display: block;
+    padding: 4px 10px;
+    text-transform: uppercase;
 }
 
 .sidebar {
