@@ -25,8 +25,8 @@ function showCategory(value) {
 
 
     function loadPage(page) {
-        let start = (page - 1) * productsPerPage;
-        let end = page * productsPerPage;
+        let start =  productsPerPage * (page - 1) ;
+        let end =  productsPerPage * page;
         let currentProducts = products.slice(start, end);
 
 
@@ -39,8 +39,8 @@ function showCategory(value) {
                             <div class="product__link-sale">${product.discount}%</div>
                         </a>
                         <div class="product__price">
-                            <div class="product__price-current">${product.sell}</div>
-                            <div class="product__price-old">${product.price}</div>
+                            <div class="product__price-current">${product.sell}đ</div>
+                            <div class="product__price-old">${product.price}đ</div>
                         </div>
                     </div>`;
         });

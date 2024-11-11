@@ -128,9 +128,6 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     display: flex;
     justify-content: center;
 }
-.section-one .inner-wrap .inner-content {
-    /* padding: 15px 0; */
-}
 .section-one .inner-wrap .inner-content .menu-1 {
     display: flex;
 }

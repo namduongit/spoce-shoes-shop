@@ -193,6 +193,8 @@ html {
     width: 100%;
     padding: 18px 18px 0;
     margin: 0 5px 10px;
+    height: 158px;
+    object-fit: contain;
 }
 
 .product__link-name {
@@ -261,7 +263,7 @@ html {
 }
 
 .pagination .page-item:hover .page-link,
-.page-item.disabled .page-link{
+.page-item .page-link.active{
     color: #fff;
     background-color: #252525;
     border: 1px solid #e1e1e1;
