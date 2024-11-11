@@ -9,7 +9,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/1.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -24,7 +24,7 @@ function createProduct() {
                 price: "3.300.000₫",
                 sell: "2.640.000₫",
                 discount: "20",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/2.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -39,7 +39,7 @@ function createProduct() {
                 price: "1.700.000₫",
                 sell: "1.360.000₫",
                 discount: "20",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/3.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -54,7 +54,7 @@ function createProduct() {
                 price: "1.700.000₫",
                 sell: "1.360.000₫",
                 discount: "20",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/4.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -69,7 +69,7 @@ function createProduct() {
                 price: "2.200.000đ",
                 sell: "1.550.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/5.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -84,7 +84,7 @@ function createProduct() {
                 price: "1.800.000đ",
                 sell: "1.440.000đ",
                 discount: "20",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/6.png",
                 promo_image: {
                     "image_1": "image/6.1.png",
                     "image_2": "image/6.2.png",
@@ -99,7 +99,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/7.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
@@ -114,7 +114,7 @@ function createProduct() {
                 price: "2.100.000đ",
                 sell: "1.470.000đ",
                 discount: "30",
-                image: "https://bizweb.dktcdn.net/thumb/large/100/336/177/products/9-a7e276cd-4e85-493d-9035-820eccac9b9e.jpg?v=1695395068057",
+                image: "data/js/image/8.png",
                 promo_image: {
                     "image_1": "",
                     "image_2": "",
