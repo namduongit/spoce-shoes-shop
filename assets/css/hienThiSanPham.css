@@ -50,6 +50,9 @@ html {
     padding: 0 15px;
 }
 
+.wrapper {
+    margin: 30px 0;
+}
 
 /* Begin: Kích thước giày  */
 
@@ -165,7 +168,6 @@ html {
     border-radius: 3px;
     line-height: 36px;
     padding: 0 20px;
-    color: #000;
     background-color: #fff;
 }
 
@@ -191,14 +193,26 @@ html {
 
 .product__link-img {
     width: 100%;
-    padding: 18px 18px 0;
+    /* padding: 18px 18px 0; */
     margin: 0 5px 10px;
     height: 158px;
     object-fit: contain;
+    -webkit-transition: transform 0.4s ease;
+    -moz-transition: transform 0.4s ease;
+    -o-transition: transform 0.4s ease;
+    transition: transform 0.4s ease;
+}
+
+.product__link-img:hover {
+    -webkit-transform: scale(1.06);
+    -moz-transform: scale(1.06);
+    -o-transform: scale(1.06);
+    transform: scale(1.06);
+
 }
 
 .product__link-name {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.4;
     color: #000;
     font-weight: 700;
@@ -227,7 +241,7 @@ html {
 }
 
 .product__price {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     display: flex;
     justify-content: center;

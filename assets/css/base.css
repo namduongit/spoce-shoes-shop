@@ -31,15 +31,12 @@ body {
 }
 .title-content-center {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 .title-content-left {
     text-align: left;
     margin-bottom: 30px;
     margin-left: 20px;
-}
-.body-content {
-    margin: 100px 0;
 }
 
 /* Margin-bottom */

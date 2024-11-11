@@ -293,9 +293,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 }
 /* End Section three */
 /* Section four */
-.inner-content .section-four {
-    margin-top: 100px;
-}
+
 .inner-content .section-four .inner-wrap .inner-title a {
     padding-bottom: 15px;
     border-bottom: 2px solid gray;
@@ -354,9 +352,6 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 }
 /* End section four */
 /* Section five */
-.inner-content .section-five {
-    margin-top: 100px;
-}
 
 .inner-content .section-five .inner-wrap .inner-title a {
     padding-bottom: 15px;
@@ -417,8 +412,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 /* End section five */
 /* Section six */
 .inner-content .section-six {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 50px 0;
 }
 .inner-content .section-six .inner-wrap .inner-title a {
     padding-bottom: 15px;
