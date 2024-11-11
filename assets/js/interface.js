@@ -92,12 +92,6 @@ function writeMenuSelection() {
                     <li id="all_clothes_products" onclick="showCategory('CLOTHES')">
                         <a href="#">QUẦN ÁO</a>
                     </li>
-                    <li id="all_accessory_products" onclick="showCategory('ACCESSORY')">
-                        <a href="#">PHỤ KIỆN</a>
-                    </li>
-                    <li id="all_notice_products">
-                        <a href="#">NHẬN THÔNG BÁO SALE</a>
-                    </li>
                     <li id="count_slide_bar">
                         <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>
                     </li>
