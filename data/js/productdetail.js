@@ -1,21 +1,6 @@
-document.querySelectorAll(".ChiTietSanPham").forEach(element => {
-    element.addEventListener("click",()=>{
-        DetailProducts();
-        document.querySelectorAll(".page-item").forEach(elements => {
-            elements.addEventListener("click",()=>{
-                DetailProducts();
-            });
-        });
-    });
-});
 
-
-function DetailProducts() {
-    var products = JSON.parse(localStorage.getItem("products"));
-    const product_item = document.querySelectorAll(".product__item");
-    product_item.forEach(element => {
-        element.addEventListener("click", function () {
-            let id = this.getAttribute("id");
+function DetailProducts(id) {
+    const products = JSON.parse(localStorage.getItem("products"));
             let product;
             for (let i = 0; i < products.length; i++) {
                 if (id === products[i].id) product = products[i];
@@ -25,8 +10,6 @@ function DetailProducts() {
             document.querySelector(".close-icon").onclick=function(){
                 document.querySelector(".detail-background").classList.remove("active");
             }
-        });
-    });
 }
 function ZoomImage(image){
     let dom=document.querySelector(".image img");
@@ -84,7 +67,7 @@ function Detail_product(product) {
         <h2>Chi tiết sản phẩm</h2>
         <div class="detail-flex">
             <div class="image">
-                <img src=${product.image}>
+               <div class="main-img"> <img src=${product.image}>    </div>
                 <div class="promo-image">
                    ${image}
                 </div>
@@ -156,3 +139,4 @@ function Detail_product(product) {
     document.querySelector(".detail-background").innerHTML = s;
 
 }
+
