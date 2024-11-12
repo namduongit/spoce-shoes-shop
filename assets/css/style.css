@@ -733,9 +733,12 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     transition: all 0.3s;
     margin-top: 10px;
 }
-.size_product button:hover,.size_product button:focus{
+.size_product button:hover{
     background-color: #F44236;
     cursor: pointer;
+}
+.check    {
+    background-color: #F44236 !important;    
 }
 .details-pro{
     width: 50%;
@@ -773,6 +776,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     padding:10px;
     border-radius: 0 ;
 }
+
 .product-quantity .btn-down{
     border-right: none;
 }
