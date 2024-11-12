@@ -69,25 +69,25 @@ function writeMenuSelection() {
         <div class="inner-wrap">
             <div class="inner-content">
                 <ul class="menu-1">
-                    <li id="all_products" onclick="showCategory('ALL')">
+                    <li id="all_products" class="ChiTietSanPham" onclick="showCategory('ALL')">
                         <a href="#">All</a>
                     </li>
-                    <li id="all_products_sale" onclick="showCategory('Sale')">
+                    <li id="all_products_sale" class="ChiTietSanPham" onclick="showCategory('Sale')">
                         <a href="#">Sale 40% - 80%</a>
                     </li>
-                    <li id="all_nike_products" onclick="showCategory('NIKE')">
+                    <li id="all_nike_products" class="ChiTietSanPham" onclick="showCategory('NIKE')">
                         <a href="#">NIKE</a>
                     </li>
-                    <li id="all_adidas_products" onclick="showCategory('ADIDAS')">
+                    <li id="all_adidas_products" class="ChiTietSanPham" onclick="showCategory('ADIDAS')">
                         <a href="#">ADIDAS</a>
                     </li>
-                    <li id="all_vans_products" onclick="showCategory('VANS')">
+                    <li id="all_vans_products" class="ChiTietSanPham" onclick="showCategory('VANS')">
                         <a href="#">VANS</a>
                     </li>
-                    <li id="all_converse_products" onclick="showCategory('CONVERSE')">
+                    <li id="all_converse_products" class="ChiTietSanPham" onclick="showCategory('CONVERSE')">
                         <a href="#">CONVERSE</a>
                     </li>
-                    <li id="all_clothes_products" onclick="showCategory('CLOTHES')">
+                    <li id="all_clothes_products" class="ChiTietSanPham" onclick="showCategory('CLOTHES')">
                         <a href="#">QUẦN ÁO</a>
                     </li>
                     <li id="count_slide_bar">
