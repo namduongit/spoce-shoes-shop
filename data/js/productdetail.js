@@ -24,16 +24,19 @@ function DetailProducts(id) {
         });
     });
        let i=0;
-    let primg=document.querySelectorAll(".promo-image .image__item");
     let flag=true;;
     function Auto(){
         if(flag==false) return;
+          let primg=document.querySelectorAll(".promo-image .image__item");
         if(primg.length==0) return;
         primg[i].click();
         i++;
         if(i==primg.length) i=0;
         setTimeout(Auto,5000);
     }
+      document.querySelector(".close-icon").addEventListener("click", () => {
+        flag = false;
+    })
     document.querySelectorAll(".promo-image .image__item").forEach(element => { element.addEventListener('mousedown', () => { flag = false;});
 });
     Auto();
