@@ -65,7 +65,7 @@ function searchAndDisplay() {
     let s = "";
     currentProducts.forEach((product) => {
       s += `<div class="grid_col-4 product__item onclick="DetailProducts('${product.id}')"">
-                        <a href="" class="product__link">
+                        <a href="javascipt:void(0)" class="product__link">
                             <img src="${product.image}" alt="" class="product__link-img">
                             <span class="product__link-name">${product.name_product}</span>
                             <div class="product__link-sale">${product.discount}%</div>
