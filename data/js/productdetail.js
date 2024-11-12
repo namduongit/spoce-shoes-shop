@@ -1,62 +1,84 @@
-
 function DetailProducts(id) {
     const products = JSON.parse(localStorage.getItem("products"));
-            let product;
-            for (let i = 0; i < products.length; i++) {
-                if (id === products[i].id) product = products[i];
+    let product;
+    for (let i = 0; i < products.length; i++) {
+        if (id === products[i].id) product = products[i];
+    }
+    Detail_product(product);
+    document.querySelector(".detail-background").classList.add("active");
+    document.querySelector(".close-icon").onclick = function () {
+        document.querySelector(".detail-background").classList.remove("active");
+    }
+    document.querySelectorAll(".size_product .btn").forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(element.classList.contains("check")) {
+                element.classList.remove("check");
+                return;
             }
-            Detail_product(product);
-            document.querySelector(".detail-background").classList.add("active");
-            document.querySelector(".close-icon").onclick=function(){
-                document.querySelector(".detail-background").classList.remove("active");
-            }
+            document.querySelectorAll(".size_product .btn").forEach(elm=>{
+                if(elm.classList.contains("check")){
+                    elm.classList.remove("check");
+                }
+            });
+            element.classList.add("check");
+        });
+    });
+    let i=0;
+    function Auto(){
+        let primg=document.querySelectorAll(".promo-image .image__item");
+        if(primg.length==0) return;
+        primg[i].click();
+        i++;
+        if(i==primg.length) i=0;
+        setTimeout(Auto,5000);
+    }
+    Auto();
 }
-function ZoomImage(image){
-    let dom=document.querySelector(".image img");
-    console.log(dom);
-    dom.setAttribute("src",image);
+function ZoomImage(image) {
+    let dom = document.querySelector(".image img");
+    dom.setAttribute("src", image);
 
 }
-function Quantity(value,price){
-    let input=document.querySelector(".input-quantity").value;
-    if(value==="down"){
-        if(!isNaN(Number(input))) {
-            input=Number(input)-1;
-            if(input<0) return;
-            document.querySelector(".input-quantity").value=input;
-           let pay= price;
-           cleanedValue = pay.replace(/[.đ₫]/g, ''); 
-           let numberValue = Number(cleanedValue);
-           pay=numberValue*input;
-           pay=pay.toLocaleString('vi-VN');
-           pay+="đ";
-           document.querySelector(".pay-all").innerHTML=pay;
+function Quantity(value, price) {
+    let input = document.querySelector(".input-quantity").value;
+    if (value === "down") {
+        if (!isNaN(Number(input))) {
+            input = Number(input) - 1;
+            if (input < 0) return;
+            document.querySelector(".input-quantity").value = input;
+            let pay = price;
+            cleanedValue = pay.replace(/[.đ₫]/g, '');
+            let numberValue = Number(cleanedValue);
+            pay = numberValue * input;
+            pay = pay.toLocaleString('vi-VN');
+            pay += "đ";
+            document.querySelector(".pay-all").innerHTML = pay;
             return;
         };
         return;
     }
-    if(!isNaN(Number(input))) {
-        input=Number(input)+1;
-        document.querySelector(".input-quantity").value=input;
-        let pay= price;
-           cleanedValue = pay.replace(/[.đ₫]/g, ''); 
-           let numberValue = Number(cleanedValue);
-           pay=numberValue*input;
-           pay=pay.toLocaleString('vi-VN');
-           pay+="đ";
-           document.querySelector(".pay-all").innerHTML=pay;
+    if (!isNaN(Number(input))) {
+        input = Number(input) + 1;
+        document.querySelector(".input-quantity").value = input;
+        let pay = price;
+        cleanedValue = pay.replace(/[.đ₫]/g, '');
+        let numberValue = Number(cleanedValue);
+        pay = numberValue * input;
+        pay = pay.toLocaleString('vi-VN');
+        pay += "đ";
+        document.querySelector(".pay-all").innerHTML = pay;
         return;
     };
     return;
-    
+
 }
 function Detail_product(product) {
-    let image="";
-    for(let key in product.promo_image){
-        if(product.promo_image[key]==="") {
+    let image = "";
+    for (let key in product.promo_image) {
+        if (product.promo_image[key] === "") {
             break;
         }
-        image+=`
+        image += `
         <div class="image__item" onclick="ZoomImage('${product.promo_image[key]}')"><img src=${product.promo_image[key]}> </div>
         `
     }
