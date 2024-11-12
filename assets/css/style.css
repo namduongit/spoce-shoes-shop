@@ -680,19 +680,26 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     margin-left: 20px;
     width: 50%;
 }
-.image>img{
+.image .main-img{
+    height: 300px;
+}
+.image .main-img img{
     width: 100%;   
+    height: 100%;
 }
 .promo-image{
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
+
 }
 .promo-image .image__item{
-    width: 25%;
+   padding: 10px;
+   height: 90px;
 }
 .image__item img{
     width: 100%;
+    height: 100%;
     opacity: 1;
     transition: all 0.5s;
 }
@@ -870,3 +877,4 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 .product__item:hover .product__link-img{
     opacity: 0.5;
 }
+
