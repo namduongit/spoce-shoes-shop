@@ -23,15 +23,19 @@ function DetailProducts(id) {
             element.classList.add("check");
         });
     });
-    let i=0;
+       let i=0;
+    let primg=document.querySelectorAll(".promo-image .image__item");
+    let flag=true;;
     function Auto(){
-        let primg=document.querySelectorAll(".promo-image .image__item");
+        if(flag==false) return;
         if(primg.length==0) return;
         primg[i].click();
         i++;
         if(i==primg.length) i=0;
         setTimeout(Auto,5000);
     }
+    document.querySelectorAll(".promo-image .image__item").forEach(element => { element.addEventListener('mousedown', () => { flag = false;});
+});
     Auto();
 }
 function ZoomImage(image) {
