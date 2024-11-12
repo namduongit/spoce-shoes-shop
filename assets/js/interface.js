@@ -10,13 +10,13 @@ function writeLogoAndUserTools() {
                 </div>
 
                 <div class="inner-search">
-                    <select name="" id="">
+                    <select name="brand-select" id="brand-select">
                         <option value="" id="all-products" selected>Tất cả</option>
-                        <option value="" id="nike-products">NIKE</option>
-                        <option value="" id="adidas-products">ADIDAS</option>
-                        <option value="" id="vans-products">VANS</option>
-                        <option value="" id="converse-products">CONVERSE</option>
-                        <option value="" id="clothes-products">QUẦN ÁO</option>
+                        <option value="nike" id="nike-products">NIKE</option>
+                        <option value="adidas" id="adidas-products">ADIDAS</option>
+                        <option value="vans" id="vans-products">VANS</option>
+                        <option value="converse" id="converse-products">CONVERSE</option>
+                        <option value="clothes" id="clothes-products">QUẦN ÁO</option>
                     </select>
                     <div class="search">
                         <input type="text" id="search-inp" placeholder="Tìm kiếm">
