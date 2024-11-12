@@ -132,3 +132,5 @@ function showCategory(value) {
     // Hiển thị trang đầu tiên khi bắt đầu
     loadPage(1);
 }
+
+

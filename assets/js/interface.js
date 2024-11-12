@@ -19,10 +19,11 @@ function writeLogoAndUserTools() {
                         <option value="" id="clothes-products">QUẦN ÁO</option>
                     </select>
                     <div class="search">
-                        <input type="search" placeholder="Tìm kiếm">
-                        <a href="">
+                        <input type="text" id="search-inp" placeholder="Tìm kiếm">
+                        <a href="" id="button-search">
                             <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
                         </a>
+                        
                     </div>
                 </div>
 
