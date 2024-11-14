@@ -138,29 +138,34 @@ function showProducts() {
 
 
     document.querySelector('.content').innerHTML = `
+    <div class="delete-confirm">
+        
+    </div>
+
     <div class="product-title">
-                    <h1>Danh sách sản phẩm</h1>
-                </div>
+        <h1>Danh sách sản phẩm</h1>
+    </div>
 
-                <div class="product-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nhãn Hiệu</th>
-                                <th>Tên Sản Phẩm</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
+    <div class="product-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nhãn Hiệu</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
-                        <tbody id="product-details">
+            <tbody id="product-details">
 
-                        </tbody>
-                    </table>
+            </tbody>
+        </table>
                     
-                </div>
-                <ul id="page-select" class="page-select"></ul>
+    </div>
+
+    <ul id="page-select" class="page-select"></ul>
     `;
 
 
@@ -194,7 +199,7 @@ function showProducts() {
                     <td>${productsOfPage[i].id}</td>
                     <td>${productsOfPage[i].brand.toUpperCase()}</td>
                     <td>${productsOfPage[i].name_product}</td>
-                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}">XÓA</a></td>
+                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}" onclick="showDeleteConfirmation(this)">XÓA</a></td>
                     <td><a href="#" class="warning" data-id="${productsOfPage[i].id}">SỬA</a></td>
                 </tr>
             `;
@@ -217,6 +222,33 @@ function showProducts() {
     }
 
     loadProducts(1);
+}
+
+function showDeleteConfirmation(product) {
+    document.querySelector('.delete-confirm').style.display = 'block';
+    document.querySelector('.delete-confirm').innerHTML = `
+    <div class="confirm-top">
+        XÓA SẢN PHẨM
+    </div>
+
+    <div class="confirm-content">
+        Bạn có chắc chắn muốn xóa sản phẩm có ID là ${product.getAttribute('data-id')} ?
+    </div>
+
+    <div class="confirm-btn-container">
+        <a href="#">
+            <div class="confirm-btn">Xóa</div>
+        </a>
+        <a href="#" onclick="closeDeleteConfirmation()">
+            <div class="confirm-btn">Bỏ qua</div>
+        </a>
+    </div>
+    `;
+}
+
+function closeDeleteConfirmation() {
+    document.querySelector('.delete-confirm').innerHTML = ``;
+    document.querySelector('.delete-confirm').style.display = 'none';
 }
 
 
