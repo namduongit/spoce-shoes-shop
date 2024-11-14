@@ -6,6 +6,10 @@
     list-style: none;
 }
 
+.warning {
+    color: red;
+}
+
 img {
     width: 100%
 }
@@ -164,6 +168,14 @@ i {
     margin-right: 50px;
 }
 
+
+
+
+
+
+
+
+
 /* CONTENT */
 .content {
     width: 100%;
@@ -247,11 +259,73 @@ i {
     border-bottom: 1px solid grey;
 }
 
+    /* PRODUCT CONTENT */
+.product-title {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+.product-content {
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.product-content table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.product-content table tbody td {
+    height: 50px;
+}
+
+.page-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.page-select .page-item {
+    background-color: white;
+    border: 1px solid grey;
+    padding: 15px;
+    margin: 0 2.5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-select .page-item a {
+    color: black;
+}
+
 /* HEADER HOVER */
 .body .header-bar .sidebar-button:hover {
     border-radius: 100px;
     background-color: #f1f1f1;
 }
+
+
+
+
+
+
+
+
+
 
 /* RESPONSIVE CHO Desktop và Laptop */
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -297,6 +371,12 @@ i {
         margin-right: 0;
     }
 }
+
+
+
+
+
+
 
 /* RESPONSIVE CHO Tablet */
 @media (min-width: 481px) and (max-width: 768px) {
@@ -360,6 +440,14 @@ i {
         margin-bottom: 20px;
     }
 }
+
+
+
+
+
+
+
+
 
 /* ANIMATION */
 @keyframes slideToRight {

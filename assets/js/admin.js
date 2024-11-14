@@ -27,136 +27,9 @@ window.addEventListener('load',checkResolution);
 window.addEventListener('resize',checkResolution);
 
 // hàm khởi tạo giao diện chính
-function writeMainPage() {
-    document.querySelector('.container').innerHTML = `
-        <div class="sidebar">
-            <div class="top-sidebar">
-                <div class="logo">
-                    <a href=""><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
-                </div>
-                <div class="mini-logo">
-                    <a href=""><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
-                </div>
-                <div class="exit-button">
-                    <a href="" onclick="event.preventDefault(); hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
-                </div>
-            </div>
-            <div class="sidebar-content">
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-user"></i>
-                        <h3>Khách hàng</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-receipt"></i>
-                        <h3>Đơn hàng</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <h3>Thống kê</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <h3>Sản phẩm</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-plus"></i>
-                        <h3>Thêm sản phẩm</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <h3>Đăng xuất</h3>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="sidebar mini-sidebar" id="side-bar">
-            <div class="top-sidebar">
-                <div class="logo">
-                    <a href=""><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
-                </div>
-                <div class="mini-logo">
-                    <a href=""><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
-                </div>
-                <div class="exit-button">
-                    <a href="" onclick="event.preventDefault(); hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
-                </div>
-            </div>
-            <div class="sidebar-content">
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-user"></i>
-                        <h3>Khách hàng</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-receipt"></i>
-                        <h3>Đơn hàng</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <h3>Thống kê</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <h3>Sản phẩm</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-plus"></i>
-                        <h3>Thêm sản phẩm</h3>
-                    </a>
-                </div>
-                <div class="sidebar-item">
-                    <a href="">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <h3>Đăng xuất</h3>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="body">
-            <div class="header-bar">
-                <div class="sidebar-button">
-                    <a href="" onclick="event.preventDefault(); showSideBar()"><i class="fa-solid fa-bars"></i></a>
-                </div>
-
-                <div class="bar-content">
-                    <h2>Tổng quan</h2>
-                </div>
-
-                <div class="admin-info">
-                    <div class="admin-content">
-                        <h4>Xin chào, Admin</h4>
-                    </div>
-                    <div class="admin-logo">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content">
-                <div class="analytics">
+function writeMainContent() {
+    document.querySelector('.content').innerHTML = `
+        <div class="analytics">
                     <div class="today-sales analytics-item">
                         <div class="analytics-icon">
                             <i class="fa-solid fa-chart-simple"></i>
@@ -253,9 +126,81 @@ function writeMainPage() {
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
     `;
+}
+
+function showProducts() {
+    document.getElementById('bar-title').innerHTML = `
+        <h2>Sản phẩm</h2>
+    `;
+    document.querySelector('.content').innerHTML = `
+    <div class="product-title">
+                    <h1>Danh sách sản phẩm</h1>
+                </div>
+
+                <div class="product-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nhãn Hiệu</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="product-details">
+
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <ul id="page-select" class="page-select"></ul>
+    `;
+
+    var products = JSON.parse(localStorage.getItem('products'));
+    const itemsPerPage = 8;
+    var numOfPages = Math.ceil(products.length / itemsPerPage);
+
+    var str = "";
+    for (let i=1; i<=numOfPages; i++) {
+        str = str + `
+            <li class="page-item" data-page="${i}">
+                <a href="javascript:void(0);">${i}</a>
+            </li>
+        `;
+    }
+
+    function loadProducts(page) {
+        var start = itemsPerPage * (page - 1);
+        var end = itemsPerPage * page;
+        var productsOfPage = products.slice(start,end);
+
+        var s = "";
+        for (let i=0; i<productsOfPage.length; i++) {
+            s = s + `
+                <tr>
+                    <td>${productsOfPage[i].id}</td>
+                    <td>${productsOfPage[i].brand.toUpperCase()}</td>
+                    <td>${productsOfPage[i].name_product}</td>
+                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}">XÓA</a></td>
+                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}">SỬA</a></td>
+                </tr>
+            `;
+        }
+        document.getElementById('product-details').innerHTML = s;
+        document.getElementById('page-select').innerHTML = str;
+        var pageSelectors = document.querySelectorAll('.page-item');
+        pageSelectors.forEach(select => {
+            select.addEventListener('click', () => {
+                var pageid = parseInt(select.getAttribute('data-page'));
+                loadProducts(pageid);
+            });
+        });
+    }
+
+    loadProducts(1);
 }
 
 

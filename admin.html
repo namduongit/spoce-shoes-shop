@@ -20,8 +20,137 @@
 </head>
 <body>
     <div class="container">
-        
+        <div class="sidebar">
+            <div class="top-sidebar">
+                <div class="logo">
+                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
+                </div>
+                <div class="mini-logo">
+                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
+                </div>
+                <div class="exit-button">
+                    <a href="#" onclick="event.preventDefault(); hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <h3>Khách hàng</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-receipt"></i>
+                        <h3>Đơn hàng</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <h3>Thống kê</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" onclick="showProducts()">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <h3>Sản phẩm</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-plus"></i>
+                        <h3>Thêm sản phẩm</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <h3>Đăng xuất</h3>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="sidebar mini-sidebar" id="side-bar">
+            <div class="top-sidebar">
+                <div class="logo">
+                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
+                </div>
+                <div class="mini-logo">
+                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
+                </div>
+                <div class="exit-button">
+                    <a href="#" onclick="event.preventDefault(); hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <h3>Khách hàng</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-receipt"></i>
+                        <h3>Đơn hàng</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <h3>Thống kê</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#" onclick="showProducts()">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <h3>Sản phẩm</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-plus"></i>
+                        <h3>Thêm sản phẩm</h3>
+                    </a>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <h3>Đăng xuất</h3>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="header-bar">
+                <div class="sidebar-button">
+                    <a href="" onclick="event.preventDefault(); showSideBar()"><i class="fa-solid fa-bars"></i></a>
+                </div>
+
+                <div class="bar-content" id="bar-title">
+                    <h2>Tổng quan</h2>
+                </div>
+
+                <div class="admin-info">
+                    <div class="admin-content">
+                        <h4>Xin chào, Admin</h4>
+                    </div>
+                    <div class="admin-logo">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                
+            </div>
+        </div>
     </div>
-    <script>writeMainPage()</script>
+    <script>writeMainContent()</script>
 </body>
 </html>
