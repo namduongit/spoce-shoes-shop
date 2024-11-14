@@ -130,9 +130,13 @@ function writeMainContent() {
 }
 
 function showProducts() {
+
+    
     document.getElementById('bar-title').innerHTML = `
         <h2>Sản phẩm</h2>
     `;
+
+
     document.querySelector('.content').innerHTML = `
     <div class="product-title">
                     <h1>Danh sách sản phẩm</h1>
@@ -159,23 +163,29 @@ function showProducts() {
                 <ul id="page-select" class="page-select"></ul>
     `;
 
+
     var products = JSON.parse(localStorage.getItem('products'));
     const itemsPerPage = 8;
     var numOfPages = Math.ceil(products.length / itemsPerPage);
+
 
     var str = "";
     for (let i=1; i<=numOfPages; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
-                <a href="javascript:void(0);">${i}</a>
+                <a class="page-item-text" href="javascript:void(0);">${i}</a>
             </li>
         `;
     }
 
+    
     function loadProducts(page) {
+
+
         var start = itemsPerPage * (page - 1);
         var end = itemsPerPage * page;
         var productsOfPage = products.slice(start,end);
+
 
         var s = "";
         for (let i=0; i<productsOfPage.length; i++) {
@@ -189,8 +199,14 @@ function showProducts() {
                 </tr>
             `;
         }
+
+
         document.getElementById('product-details').innerHTML = s;
         document.getElementById('page-select').innerHTML = str;
+        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+
+
         var pageSelectors = document.querySelectorAll('.page-item');
         pageSelectors.forEach(select => {
             select.addEventListener('click', () => {

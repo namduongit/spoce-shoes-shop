@@ -313,6 +313,17 @@ i {
     color: black;
 }
 
+/* PAGE SELECT HOVER */
+.page-select .page-item:hover {
+    background-color: black;
+}
+
+.page-select .page-item:hover .page-item-text {
+    color: white;
+}
+
+
+
 /* HEADER HOVER */
 .body .header-bar .sidebar-button:hover {
     border-radius: 100px;
