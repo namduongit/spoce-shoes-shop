@@ -4,6 +4,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    font-family: var(--font);
 }
 
 .warning {
@@ -63,7 +64,7 @@ i {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     padding: 10px;
     height: 100px;
 }
