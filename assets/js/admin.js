@@ -449,61 +449,157 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="main-img">Ảnh chính:</label>
+                <input type="file" id="main-img" accept="image/*">
                 <div class="img-product">
             
                 </div>
-                <input type="file" id="main-img" onchange="changeImage(event)" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-1">Ảnh Promo 1: </label>
+                <input type="file" id="promo-1" accept="image/*">
                 <div class="img-product">
-            
+
                 </div>
-                <input type="file" id="promo-1" onchange="changeImage(event)" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-2">Ảnh Promo 2: </label>
+                <input type="file" id="promo-2" accept="image/*">
                 <div class="img-product">
             
                 </div>
-                <input type="file" id="promo-2" onchange="changeImage(event)" accept="image/*">
                 <br>
             </div>
             
             <div class="adding-content-item">
                 <label for="promo-3">Ảnh Promo 3: </label>
+                <input type="file" id="promo-3" accept="image/*">
                 <div class="img-product">
             
                 </div>
-                <input type="file" id="promo-3" onchange="changeImage(event)" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-4">Ảnh Promo 4: </label>
+                <input type="file" id="promo-4" accept="image/*">
                 <div class="img-product">
             
                 </div>
-                <input type="file" id="promo-4" onchange="changeImage(event)" accept="image/*">
                 <br>
             </div>
         </form>
     </div>
 
     <div class="adding-btn-container">
-        <a href="#">
+        <a href="#" onclick="addingProduct()">
             <div class="adding-btn">Thêm</div>
         </a>
 
-        <a href="#">
+        <a href="#" onclick="resetForm()">
             <div class="adding-btn">Đặt lại</div>
         </a>
     </div>
     `;
+}
+
+// hàm để đặt lại dữ liệu trong form
+function resetForm() {
+    document.getElementById('id').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('brand-select').value = 'nike';
+    document.getElementById('original-price').value = '';
+    document.getElementById('sell-price').value = '';
+    document.getElementById('discount').value = '';
+    document.getElementById('main-img').value = '';
+    document.getElementById('promo-1').value = '';
+    document.getElementById('promo-2').value = '';
+    document.getElementById('promo-3').value = '';
+    document.getElementById('promo-4').value = '';
+    document.querySelectorAll('img-product').innerHTML = ``;
+}
+
+// hàm để kiểm tra và tạo sản phẩm mới đồng thời cập nhật lên local storage
+function addingProduct() {
+    var idField = document.getElementById('id');
+    var nameField = document.getElementById('name');
+    var brandField = document.getElementById('brand-select');
+    var orgPriceField = document.getElementById('original-price');
+    var sellPriceField = document.getElementById('sell-price');
+    var discountField = document.getElementById('discount');
+    var mainImg = document.getElementById('main-img');
+    var promo1 = document.getElementById('promo-1');
+    var promo2 = document.getElementById('promo-2');
+    var promo3 = document.getElementById('promo-3');
+    var promo4 = document.getElementById('promo-4');
+
+    if (idField.value === '') {
+        alert('ID sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (nameField.value === '') {
+        alert('Tên sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (orgPriceField.value === '') {
+        alert('Giá gốc sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (sellPriceField.value === '') {
+        alert('Giá bán sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (discountField.value === '') {
+        alert('Phẩn trăm giảm của sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (mainImg.value === '') {
+        alert('Ảnh sản phẩm không được bỏ trống');
+        return;
+    }
+
+    var mainImgFile = mainImg.files[0];
+    var mainImgURL;
+    if (mainImgFile) {
+        mainImgURL = URL.createObjectURL(mainImgFile);
+    }
+
+    var newProduct = {};
+    newProduct.id = idField.value;
+    newProduct.name_product = nameField.value;
+    newProduct.brand = brandField.value;
+    newProduct.price = orgPriceField.value;
+    newProduct.sell = sellPriceField.value;
+    newProduct.discount = discountField.value;
+    newProduct.image = mainImgURL;
+
+    if (promo1.value !== '') {
+        newProduct.promo_image.image_1 = promo1.value;
+    }
+
+    if (promo2.value !== '') {
+        newProduct.promo_image.image_2 = promo2.value;
+    }
+
+    if (promo3.value !== '') {
+        newProduct.promo_image.image_3 = promo3.value;
+    }
+
+    if (promo4.value !== '') {
+        newProduct.promo_image.image_4 = promo4.value;
+    }
+
+    products.push(newProduct);
+    localStorage.setItem('products', JSON.stringify(products));
+    resetForm();
 }
 
 
