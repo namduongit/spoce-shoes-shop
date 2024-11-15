@@ -244,7 +244,7 @@ function showDeleteConfirmation(product) {
     </div>
 
     <div class="confirm-btn-container">
-        <a href="#">
+        <a href="#" onclick="deleteProduct(this)" data-id="${product.getAttribute('data-id')}">
             <div class="confirm-btn">Xóa</div>
         </a>
         <a href="#" onclick="closeDeleteConfirmation()">
@@ -381,6 +381,13 @@ function showModifyingForm(productId) {
         closeModifyingForm();
         showProducts();
     });
+}
+
+function deleteProduct(productId) {
+    var productToBeRemovedIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
+    products.splice(productToBeRemovedIndex,1);
+    localStorage.setItem('products', JSON.stringify(products));
+    showProducts();
 }
 
 
