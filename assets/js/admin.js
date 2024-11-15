@@ -254,19 +254,21 @@ function showDeleteConfirmation(product) {
     `;
 }
 
+// hàm đóng form xóa sản phẩm
 function closeDeleteConfirmation() {
     document.querySelector('.delete-confirm').innerHTML = ``;
     document.querySelector('.delete-confirm').style.display = 'none';
 }
 
 
-
+// hàm để xóa ảnh
 function deleteImage() {
     var img = document.getElementById('form-img');
     img.src = '';
     img.alt = 'Không có ảnh';
 }
 
+// Hàm để đổi ảnh
 function changeImage(event) {
     var img = document.getElementById('form-img');
     var file = event.target.files[0];
@@ -280,6 +282,7 @@ function changeImage(event) {
     }
 }
 
+// hàm đóng form chỉnh sửa
 function closeModifyingForm() {
     document.querySelector('.modifying').innerHTML = '';
     document.querySelector('.modifying').style.display = 'none';
@@ -354,7 +357,7 @@ function showModifyingForm(productId) {
     </div>
 
     <div class="modify-btn-container">
-        <a href="#" onclick="saveChanges()">
+        <a href="#" id="save-btn">
             <div class="modify-btn">Lưu</div>
         </a>
 
@@ -364,6 +367,20 @@ function showModifyingForm(productId) {
     </div>
     `;
     document.getElementById('brand-select').value = product.brand;
+    document.getElementById('save-btn').addEventListener('click', () => {
+        var changedProductIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
+        products[changedProductIndex].id = document.getElementById('id').value;
+        products[changedProductIndex].name_product = document.getElementById('name').value;
+        products[changedProductIndex].brand = document.getElementById('brand-select').value;
+        products[changedProductIndex].price = document.getElementById('original-price').value;
+        products[changedProductIndex].sell = document.getElementById('sell-price').value;
+        products[changedProductIndex].discount = document.getElementById('discount').value;
+        products[changedProductIndex].image = document.getElementById('form-img').src;
+
+        localStorage.setItem('products', JSON.stringify(products));
+        closeModifyingForm();
+        showProducts();
+    });
 }
 
 
