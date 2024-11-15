@@ -129,6 +129,8 @@ function writeMainContent() {
     `;
 }
 
+var products = JSON.parse(localStorage.getItem('products'));
+
 function showProducts() {
 
     
@@ -140,6 +142,10 @@ function showProducts() {
     document.querySelector('.content').innerHTML = `
     <div class="delete-confirm">
         
+    </div>
+
+    <div class="modifying">
+    
     </div>
 
     <div class="product-title">
@@ -169,7 +175,7 @@ function showProducts() {
     `;
 
 
-    var products = JSON.parse(localStorage.getItem('products'));
+    
     const itemsPerPage = 8;
     var numOfPages = Math.ceil(products.length / itemsPerPage);
 
@@ -199,8 +205,8 @@ function showProducts() {
                     <td>${productsOfPage[i].id}</td>
                     <td>${productsOfPage[i].brand.toUpperCase()}</td>
                     <td>${productsOfPage[i].name_product}</td>
-                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}" onclick="showDeleteConfirmation(this)">XÓA</a></td>
-                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}">SỬA</a></td>
+                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}" onclick="showDeleteConfirmation(this); closeModifyingForm()">XÓA</a></td>
+                    <td><a href="#" class="warning" data-id="${productsOfPage[i].id}" onclick="showModifyingForm(this); closeDeleteConfirmation()">SỬA</a></td>
                 </tr>
             `;
         }
@@ -223,6 +229,8 @@ function showProducts() {
 
     loadProducts(1);
 }
+
+// Form để xóa sản phẩm
 
 function showDeleteConfirmation(product) {
     document.querySelector('.delete-confirm').style.display = 'block';
@@ -249,6 +257,113 @@ function showDeleteConfirmation(product) {
 function closeDeleteConfirmation() {
     document.querySelector('.delete-confirm').innerHTML = ``;
     document.querySelector('.delete-confirm').style.display = 'none';
+}
+
+
+
+function deleteImage() {
+    var img = document.getElementById('form-img');
+    img.src = '';
+    img.alt = 'Không có ảnh';
+}
+
+function changeImage(event) {
+    var img = document.getElementById('form-img');
+    var file = event.target.files[0];
+
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function closeModifyingForm() {
+    document.querySelector('.modifying').innerHTML = '';
+    document.querySelector('.modifying').style.display = 'none';
+}
+
+// Form để sửa sản phẩm
+function showModifyingForm(productId) {
+    var form = document.querySelector('.modifying');
+    form.style.display = 'block';
+    var product = products.find(item => item.id === productId.getAttribute('data-id'));
+    form.innerHTML = `
+    <div class="modifying-top">
+        SỬA SẢN PHẨM
+    </div>
+
+    <div class="modifying-content">
+        <form>
+            <div class="form-item">
+            <label for="id">ID: </label>
+            <input type="text" id="id" value="${product.id}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="name">Tên sản phẩm: </label>
+            <input type="text" id="name" value="${product.name_product}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="brand-select">Nhãn hiệu: </label>
+            <select id="brand-select">
+                <option value="nike">Nike</option>
+                <option value="adidas">Adidas</option>
+                <option value="VANS">Vans</option>
+                <option value="converse">Converse</option>
+                <option value="clothes">Clothes</option>
+            </select>
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="original-price">Giá gốc: </label>
+            <input type="text" id="original-price" value="${product.price}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="sell-price">Giá bán: </label>
+            <input type="text" id="sell-price" value="${product.sell}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="discount">Giảm: </label>
+            <input type="text" id="discount" value="${product.discount}">
+            </div>
+            <br>
+            <div class="form-image">
+                <div class="form-image-item">
+                    <label value="image">Hình ảnh: </label>
+                </div>
+
+                <div class="form-image-item">
+                    <img src="${product.image}" id="form-img" alt="product-image">
+                </div>
+            
+                <div class="form-image-item">
+                    <button onclick="deleteImage(${product.id})">Xóa ảnh</button>
+                </div>
+
+                <div class="form-image-item">
+                    <input type="file" onchange="changeImage(event)" accept="image/*">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modify-btn-container">
+        <a href="#" onclick="saveChanges()">
+            <div class="modify-btn">Lưu</div>
+        </a>
+
+        <a href="#" onclick="closeModifyingForm()">
+            <div class="modify-btn">Thoát</div>
+        </a>
+    </div>
+    `;
+    document.getElementById('brand-select').value = product.brand;
 }
 
 

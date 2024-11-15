@@ -370,6 +370,79 @@ i {
 }
 
 
+/* Modifying Form */
+.modifying {
+    display: none;
+    width: 50%;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modifying .modifying-top {
+    width: 100%;
+    background-color: grey;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.modifying .modifying-content {
+    padding: 20px 10px 10px 10px;
+}
+
+.modifying .modifying-content form {
+    padding: 10px 10px;
+}
+
+.modifying .modifying-content form img {
+    width: 100px;
+    height: 100px;
+}
+
+.modifying .modifying-content form .form-item {
+    padding: 0px 0;
+}
+
+.modifying .modifying-content form .form-image {
+    display: flex;
+}
+
+.modifying .modifying-content form .form-image .form-image-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.modifying .modifying-content form input {
+    width: 70%;
+}
+
+.modify-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.modify-btn-container .modify-btn {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.modify-btn-container .modify-btn:hover {
+    background-color: black;
+    color: white;
+}
+
 /* HEADER HOVER */
 .body .header-bar .sidebar-button:hover {
     border-radius: 100px;
