@@ -126,6 +126,7 @@ i {
 /* mini sidebar */
 .container .mini-sidebar {
     display: none;
+    z-index: 100;
 }
 
 /* HEADER */
@@ -443,6 +444,54 @@ i {
     color: white;
 }
 
+/* Adding Product Form */
+.adding-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.adding-content {
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 90%;
+    border: 1px solid grey;
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.adding-content .adding-content-item {
+    margin: 10px 0 10px 10px;
+}
+
+.adding-content .adding-content-item input {
+    width: 40%;
+}
+
+.adding-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.adding-btn-container .adding-btn {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.adding-btn-container .adding-btn:hover {
+    background-color: black;
+    color: white;
+}
+
 /* HEADER HOVER */
 .body .header-bar .sidebar-button:hover {
     border-radius: 100px;
@@ -569,6 +618,10 @@ i {
 
     .content .recent-orders {
         margin-bottom: 20px;
+    }
+
+    .mini-sidebar .sidebar-content .sidebar-item h3 {
+        font-size: 15px;
     }
 }
 

@@ -129,6 +129,7 @@ function writeMainContent() {
     `;
 }
 
+// đọc mảng products từ local storage về ở dạng biến toàn cục
 var products = JSON.parse(localStorage.getItem('products'));
 
 function showProducts() {
@@ -383,11 +384,126 @@ function showModifyingForm(productId) {
     });
 }
 
+// hàm xóa sản phẩm khỏi mảng và cập nhật lên local storage
 function deleteProduct(productId) {
     var productToBeRemovedIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
     products.splice(productToBeRemovedIndex,1);
     localStorage.setItem('products', JSON.stringify(products));
     showProducts();
+}
+
+
+function showAddingProduct() {
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Thêm sản phẩm</h2>
+    `;
+
+    document.querySelector('.content').innerHTML = `
+    <div class="adding-top">
+        <h1>Thêm sản phẩm mới</h1>
+    </div>
+
+    <div class="adding-content">
+        <form>
+            <div class="adding-content-item">
+                <label for="id">ID: </label>
+                <input type="text" id="id">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="name">Tên sản phẩm:</label>
+                <input type="text" id="name">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="brand-select">Nhãn hiệu: </label>
+                <select id="brand-select">
+                    <option value="nike">Nike</option>
+                    <option value="adidas">Adidas</option>
+                    <option value="VANS">Vans</option>
+                    <option value="converse">Converse</option>
+                    <option value="clothes">Clothes</option>
+                </select>
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="original-price">Giá gốc: </label>
+                <input type="text" id="original-price">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="sell-price">Giá bán: </label>
+                <input type="text" id="sell-price">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="discount">Giảm: </label>
+                <input type="text" id="discount">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="main-img">Ảnh chính:</label>
+                <div class="img-product">
+            
+                </div>
+                <input type="file" id="main-img" onchange="changeImage(event)" accept="image/*">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="promo-1">Ảnh Promo 1: </label>
+                <div class="img-product">
+            
+                </div>
+                <input type="file" id="promo-1" onchange="changeImage(event)" accept="image/*">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="promo-2">Ảnh Promo 2: </label>
+                <div class="img-product">
+            
+                </div>
+                <input type="file" id="promo-2" onchange="changeImage(event)" accept="image/*">
+                <br>
+            </div>
+            
+            <div class="adding-content-item">
+                <label for="promo-3">Ảnh Promo 3: </label>
+                <div class="img-product">
+            
+                </div>
+                <input type="file" id="promo-3" onchange="changeImage(event)" accept="image/*">
+                <br>
+            </div>
+
+            <div class="adding-content-item">
+                <label for="promo-4">Ảnh Promo 4: </label>
+                <div class="img-product">
+            
+                </div>
+                <input type="file" id="promo-4" onchange="changeImage(event)" accept="image/*">
+                <br>
+            </div>
+        </form>
+    </div>
+
+    <div class="adding-btn-container">
+        <a href="#">
+            <div class="adding-btn">Thêm</div>
+        </a>
+
+        <a href="#">
+            <div class="adding-btn">Đặt lại</div>
+        </a>
+    </div>
+    `;
 }
 
 

@@ -58,7 +58,7 @@
                     </a>
                 </div>
                 <div class="sidebar-item">
-                    <a href="#">
+                    <a href="#" onclick="showAddingProduct()">
                         <i class="fa-solid fa-plus"></i>
                         <h3>Thêm sản phẩm</h3>
                     </a>
@@ -76,10 +76,10 @@
         <div class="sidebar mini-sidebar" id="side-bar">
             <div class="top-sidebar">
                 <div class="logo">
-                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
+                    <a href="#" onclick="writeMainContent(); hideSideBar()"><img src="assets/image/logo/logo-header-1.png" alt="logo"></a>
                 </div>
                 <div class="mini-logo">
-                    <a href="#" onclick="writeMainContent()"><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
+                    <a href="#" onclick="writeMainContent(); hideSideBar()"><img src="assets/image/logo/logo-shop-2.png" alt="mini-logo"></a>
                 </div>
                 <div class="exit-button">
                     <a href="#" onclick="event.preventDefault(); hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
@@ -105,13 +105,13 @@
                     </a>
                 </div>
                 <div class="sidebar-item">
-                    <a href="#" onclick="showProducts()">
+                    <a href="#" onclick="showProducts(); hideSideBar()">
                         <i class="fa-solid fa-bag-shopping"></i>
                         <h3>Sản phẩm</h3>
                     </a>
                 </div>
                 <div class="sidebar-item">
-                    <a href="#">
+                    <a href="#" onclick="showAddingProduct(); hideSideBar()">
                         <i class="fa-solid fa-plus"></i>
                         <h3>Thêm sản phẩm</h3>
                     </a>
