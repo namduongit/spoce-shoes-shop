@@ -240,15 +240,18 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     font-size: 20px;
     color: black;
 }
-.inner-content .section-three .inner-wrap .inner-content .inner-products {
+.inner-wrap .outstandingproducts,.inner-wrap .sell-products{
     display: flex;
     flex-wrap: wrap;
 }
-.inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
+.inner-content .section-three .inner-wrap .outstandingproducts {
+    display: flex;
+    flex-wrap: wrap;
+}
+.inner-content .section-three .inner-wrap .outstandingproducts .product__item{
     width: 25%;
     padding: 20px;
     position: relative;
-    border: 1px solid #ddd;
 }
 .inner-content .section-three .inner-wrap .inner-content .inner-product {
     position: relative;
