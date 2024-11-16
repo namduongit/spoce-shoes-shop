@@ -130,9 +130,8 @@ html {
 
 .list-sort {
     list-style: none;
-    border: 1px solid #ebebeb;
-    border-radius: 3px;
-    position: relative;
+
+ 
     cursor: pointer;
 }
 
@@ -151,6 +150,8 @@ html {
     padding: 0 20px;
     min-width: 150px;
     line-height: 30px;
+    position: relative;
+    border: 1px solid #ebebeb;
 }
 
 .sort-options {
@@ -159,18 +160,26 @@ html {
     left: 0;
     list-style: none;
     display: none;
-    z-index: 2;
+    z-index: 1000;
+   
+    width: 100%;
 }
 
 .sort-options li {
     min-width: 150px;
     border: 1px solid #ebebeb;
-    border-radius: 3px;
     line-height: 36px;
     padding: 0 20px;
+    width: 100%;
     background-color: #fff;
+   
 }
-
+.sort-options li:hover{
+    background-color: #0693e3;
+}
+.sort-options li a{
+    color: black;
+}
 .list-sort .sort-options li:hover {
     color: #007fb8;
     cursor: pointer;
