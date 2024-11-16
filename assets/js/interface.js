@@ -260,3 +260,63 @@ function writeContactUs() {
     </div>
     `);
 }
+function OutStandingProduct() {
+
+    const products = JSON.parse(localStorage.getItem("products"));
+    var outstandingproducts_list = [];
+    for (let product of products) {
+        outstandingproducts_list.push(product);
+        if (outstandingproducts_list.length === 12) { break; }
+    }
+    let s = "";
+    outstandingproducts_list.forEach((product) => {
+        s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+                        <a href="javascript:void(0)" class="product__link">
+                            <img src="${product.image}" alt="" class="product__link-img">
+                            <span class="product__link-name">${product.name_product}</span>
+                            <div class="product__link-sale">${product.discount}%</div>
+                        </a>
+                        <div class="product__price">
+                            <div class="product__price-current">${product.sell}</div>
+                            <div class="product__price-old">${product.price}</div>
+                        </div>
+                    </div>`;
+    });
+    document.querySelector(".outstandingproducts").innerHTML = s;
+    var sellproducut = products.filter(
+        (item) => item.discount >= 40 && item.discount <= 80
+    );
+    let str = "";
+    sellproducut.forEach((product) => {
+        str += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+                          <a href="javascript:void(0)" class="product__link">
+                              <img src="${product.image}" alt="" class="product__link-img">
+                              <span class="product__link-name">${product.name_product}</span>
+                              <div class="product__link-sale">${product.discount}%</div>
+                          </a>
+                          <div class="product__price">
+                              <div class="product__price-current">${product.sell}</div>
+                              <div class="product__price-old">${product.price}</div>
+                          </div>
+                      </div>`;
+    });
+    document.querySelector(".sell-products").innerHTML = str;
+    let product_fashion = products.filter(
+        (item) => item.brand.toUpperCase() === "CLOTHES"
+    );
+    let st = "";
+    product_fashion.forEach((product) => {
+        st += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+                            <a href="javascript:void(0)" class="product__link">
+                                <img src="${product.image}" alt="" class="product__link-img">
+                                <span class="product__link-name">${product.name_product}</span>
+                                <div class="product__link-sale">${product.discount}%</div>
+                            </a>
+                            <div class="product__price">
+                                <div class="product__price-current">${product.sell}</div>
+                                <div class="product__price-old">${product.price}</div>
+                            </div>
+                        </div>`;
+    });
+    document.querySelector(".clothes-products").innerHTML = st;
+}
