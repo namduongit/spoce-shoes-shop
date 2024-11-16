@@ -44,14 +44,14 @@ function showCategory(value) {
     let s = "";
     currentProducts.forEach((product) => {
       s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
-                        <a href="" class="product__link">
+                        <a href="javascript:void(0)" class="product__link">
                             <img src="${product.image}" alt="" class="product__link-img">
                             <span class="product__link-name">${product.name_product}</span>
                             <div class="product__link-sale">${product.discount}%</div>
                         </a>
                         <div class="product__price">
-                            <div class="product__price-current">${product.sell}đ</div>
-                            <div class="product__price-old">${product.price}đ</div>
+                            <div class="product__price-current">${product.sell}</div>
+                            <div class="product__price-old">${product.price}</div>
                         </div>
                     </div>`;
     });
@@ -101,13 +101,12 @@ function showCategory(value) {
                                                      <li>
                                                          <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
                                                          <ul class="sort-options">
-                                                             <li><a href="#">Mặc định</li>
-                                                             <li><a href="#">A → Z</li>
-                                                             <li><a href="#">Z → A</li>
-                                                             <li><a href="#">Giá tăng dần</li>
-                                                             <li><a href="#">Giá giảm dần</li>
-                                                             <li><a href="#">Hàng mới nhất</li>
-                                                             <li><a href="#">Hàng cũ nhất</li>
+                                                             <li onclick="Default()"><a href="#">Mặc định</li>
+                                                             <li onclick="SortA_Z()"><a href="#" >A → Z</li>
+                                                             <li onclick="SortZ_A()"><a href="#">Z → A</li>
+                                                             <li onclick="SortIncrease()"><a href="#">Giá tăng dần</li>
+                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</li>
+
                                                          </ul>
                                                      </li>
                                                  </ul>
@@ -116,7 +115,7 @@ function showCategory(value) {
                                      </div>
                                  </div>
         
-                                <div class="grid__row product_list">
+                                <div class="grid__row product_list" data-brand="${products[1].brand}">
                                     ${s}
                                     <ul class="pagination">
                                         ${footPage}
