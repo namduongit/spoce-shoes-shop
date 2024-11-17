@@ -119,4 +119,8 @@
 }
 .user-content-selection .inner-content .group-form {
     margin: 10px 0;
+    min-height: 70px;
+}
+.group-form .text-danger{
+    color:red;
 }
