@@ -28,6 +28,9 @@ window.addEventListener('resize',checkResolution);
 
 // hàm khởi tạo giao diện chính
 function writeMainContent() {
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Tổng quan</h2>
+    `;
     document.querySelector('.content').innerHTML = `
         <div class="analytics">
                     <div class="today-sales analytics-item">
@@ -492,46 +495,31 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="main-img">Ảnh chính:</label>
-                <input type="file" id="main-img" onchange="addImage(event, this)" accept="image/*">
-                <div class="img-product">
-            
-                </div>
+                <input type="file" id="main-img" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-1">Ảnh Promo 1: </label>
-                <input type="file" id="promo-1" onchange="addImage(event, this)" accept="image/*">
-                <div class="img-product">
-
-                </div>
+                <input type="file" id="promo-1" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-2">Ảnh Promo 2: </label>
-                <input type="file" id="promo-2" onchange="addImage(event, this)" accept="image/*">
-                <div class="img-product">
-            
-                </div>
+                <input type="file" id="promo-2" accept="image/*">
                 <br>
             </div>
             
             <div class="adding-content-item">
                 <label for="promo-3">Ảnh Promo 3: </label>
-                <input type="file" id="promo-3" onchange="addImage(event, this)" accept="image/*">
-                <div class="img-product">
-            
-                </div>
+                <input type="file" id="promo-3" accept="image/*">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="promo-4">Ảnh Promo 4: </label>
-                <input type="file" id="promo-4" onchange="addImage(event, this)" accept="image/*">
-                <div class="img-product">
-            
-                </div>
+                <input type="file" id="promo-4" accept="image/*">
                 <br>
             </div>
         </form>
@@ -562,7 +550,6 @@ function resetForm() {
     document.getElementById('promo-2').value = '';
     document.getElementById('promo-3').value = '';
     document.getElementById('promo-4').value = '';
-    document.querySelectorAll('img-product').innerHTML = ``;
 }
 
 // hàm để kiểm tra và tạo sản phẩm mới đồng thời cập nhật lên local storage
@@ -610,10 +597,7 @@ function addingProduct() {
     }
 
     var mainImgFile = mainImg.files[0];
-    var mainImgURL;
-    if (mainImgFile) {
-        mainImgURL = URL.createObjectURL(mainImgFile);
-    }
+    var mainImgURL = URL.createObjectURL(mainImgFile);
 
     var newProduct = {};
     newProduct.id = idField.value;
@@ -623,21 +607,30 @@ function addingProduct() {
     newProduct.sell = sellPriceField.value;
     newProduct.discount = discountField.value;
     newProduct.image = mainImgURL;
+    newProduct.promo_image = {};
 
     if (promo1.value !== '') {
-        newProduct.promo_image.image_1 = promo1.value;
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_1 = promoImgURL;
     }
 
     if (promo2.value !== '') {
-        newProduct.promo_image.image_2 = promo2.value;
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_2 = promoImgURL;
     }
 
     if (promo3.value !== '') {
-        newProduct.promo_image.image_3 = promo3.value;
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_3 = promoImgURL;
     }
 
     if (promo4.value !== '') {
-        newProduct.promo_image.image_4 = promo4.value;
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_4 = promoImgURL;
     }
 
     products.push(newProduct);

@@ -465,11 +465,15 @@ i {
 }
 
 .adding-content .adding-content-item {
-    margin: 10px 0 10px 10px;
+    margin: 10px 0 20px 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .adding-content .adding-content-item input {
-    width: 40%;
+    width: 200px;
+    margin-right: 50px;
+    margin-left: 10px;
 }
 
 .adding-btn-container {
@@ -477,6 +481,7 @@ i {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .adding-btn-container .adding-btn {
@@ -486,6 +491,11 @@ i {
     margin: 0 5px;
     padding: 5px;
 }
+
+/* .img-product {
+    width: 60px;
+    height: 60px;
+} */
 
 .adding-btn-container .adding-btn:hover {
     background-color: black;
