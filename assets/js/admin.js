@@ -283,6 +283,49 @@ function changeImage(event) {
     }
 }
 
+// hàm đê thêm ảnh khi người dùng thêm file ảnh vào
+function addImage(event, img) {
+    var imgId = img.id;
+    var imgDiv = document.querySelectorAll('.img-product');
+    var file = event.target.files[0];
+
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            if (imgId === 'main-img') {
+                imgDiv[0].innerHTML = `
+                <img src="${e.target.result}" alt="main-image">
+                `;
+            }
+
+            if (imgId === 'promo-1') {
+                imgDiv[1].innerHTML = `
+                <img src="${e.target.result}" alt="promo-1">
+                `;
+            }
+
+            if (imgId === 'promo-2') {
+                imgDiv[2].innerHTML = `
+                <img src="${e.target.result}" alt="promo-2">
+                `;
+            }
+
+            if (imgId === 'promo-3') {
+                imgDiv[3].innerHTML = `
+                <img src="${e.target.result}" alt="promo-3">
+                `;
+            }
+
+            if (imgId === 'promo-4') {
+                imgDiv[4].innerHTML = `
+                <img src="${e.target.result}" alt="promo-4">
+                `;
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
 // hàm đóng form chỉnh sửa
 function closeModifyingForm() {
     document.querySelector('.modifying').innerHTML = '';
@@ -449,7 +492,7 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="main-img">Ảnh chính:</label>
-                <input type="file" id="main-img" accept="image/*">
+                <input type="file" id="main-img" onchange="addImage(event, this)" accept="image/*">
                 <div class="img-product">
             
                 </div>
@@ -458,7 +501,7 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="promo-1">Ảnh Promo 1: </label>
-                <input type="file" id="promo-1" accept="image/*">
+                <input type="file" id="promo-1" onchange="addImage(event, this)" accept="image/*">
                 <div class="img-product">
 
                 </div>
@@ -467,7 +510,7 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="promo-2">Ảnh Promo 2: </label>
-                <input type="file" id="promo-2" accept="image/*">
+                <input type="file" id="promo-2" onchange="addImage(event, this)" accept="image/*">
                 <div class="img-product">
             
                 </div>
@@ -476,7 +519,7 @@ function showAddingProduct() {
             
             <div class="adding-content-item">
                 <label for="promo-3">Ảnh Promo 3: </label>
-                <input type="file" id="promo-3" accept="image/*">
+                <input type="file" id="promo-3" onchange="addImage(event, this)" accept="image/*">
                 <div class="img-product">
             
                 </div>
@@ -485,7 +528,7 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="promo-4">Ảnh Promo 4: </label>
-                <input type="file" id="promo-4" accept="image/*">
+                <input type="file" id="promo-4" onchange="addImage(event, this)" accept="image/*">
                 <div class="img-product">
             
                 </div>
