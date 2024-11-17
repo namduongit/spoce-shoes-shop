@@ -53,12 +53,15 @@ function writeLoginForm() {
                 <label for="input_username_login">Tài khoản của bạn:</label>
                 <br>
                 <input type="text" id="input_username_login" placeholder="Nhập tài khoản">
+                 <span class="text-danger" id="errol_username_disable"></span>
             </div>
 
             <div class="group-form">
                 <label for="input_password_login">Nhập mật khẩu:</label>
                 <br>
                 <input type="password" id="input_password_login" placeholder="*********">
+                <span class="text-danger" id="errol_pass_disable"></span>
+                <span class="text-danger" id="errol_wrong"></span>
             </div>
         </div>
 
@@ -86,16 +89,25 @@ function writeRegisterForm() {
                     <label for="input_username_register">Tài khoản: *</label>
                     <br>
                     <input type="text" id="input_username_register" placeholder="Vui lòng nhập tài khoản">
+                    <br>
+                     <span class="text-danger" id="errol_user_disable"></span>
+                      <span class="text-danger" id="errol_user_length"></span>
+                       <span class="text-danger" id="errol_user_same"></span>
                 </div>
                 <div class="group-form">
                     <label for="input_password_register">Nhập mật khẩu: *</label>
                     <br>
                     <input type="password" id="input_password_register" placeholder="Vui lòng nhập mật khẩu">
+                    <br>
+                     <span class="text-danger" id="errol_password_disable"></span>
+                     <span class="text-danger" id="errol_password_length"></span>
                 </div>
                 <div class="group-form">
                     <label for="input_password_confirm_register">Nhập lại mật khẩu:</label>
                     <br>
                     <input type="password" id="input_password_confirm_register" placeholder="Vui lòng xác nhận mật khẩu">
+                     <span class="text-danger" id="errol_confirm_disable"></span>
+                     <span class="text-danger" id="errol_confirm_same"></span>
                 </div>
             </div>
     
@@ -104,16 +116,24 @@ function writeRegisterForm() {
                     <label for="input_fullname_register">Họ và tên: *</label>
                     <br>
                     <input type="text" id="input_fullname_register" placeholder="Vui lòng nhập họ và tên">
+                     <span class="text-danger" id="errol_name_disable"></span>
+                      <span class="text-danger" id="errol_name_length"></span>
                 </div>
                 <div class="group-form">
                     <label for="input_email_register">Nhập email:</label>
                     <br>
                     <input type="email" id="input_email_register" placeholder="Vui lòng nhập email">
+                     <span class="text-danger" id="errol_email_disable"></span>
+                      <span class="text-danger" id="errol_email_wrongpattern"></span>
+                      <span class="text-danger" id="errol_email_same"></span>
                 </div>
                 <div class="group-form">
                     <label for="input_numberphone_register">Nhập số điện thoại: *</label>
                     <br>
                     <input type="tel" id="input_numberphone_register" placeholder="Vui lòng nhập số điện thoại">
+                     <span class="text-danger" id="errol_tel_disable"></span>
+                      <span class="text-danger" id="errol_tel_pattern"></span>
+                       <span class="text-danger" id="errol_tel_same"></span>
                 </div>
             </div>
     
