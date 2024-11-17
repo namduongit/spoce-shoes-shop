@@ -353,9 +353,10 @@ function SortReduce() {
   document.querySelector(".text-default").innerHTML = "Giá giảm dần <i class='fa-solid fa-caret-down'></i>"
 }
 function Default(){
-  var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  products = products.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+  products = products.filter(
+    (item) => item.discount >= 40 && item.discount <= 80
+  );
   displaylist(products);
   document.querySelector(".text-default").innerHTML = "Mặc định <i class='fa-solid fa-caret-down'></i>";
 }
