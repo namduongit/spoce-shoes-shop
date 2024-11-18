@@ -1,4 +1,5 @@
 //start tim kiếm theo tên + brand
+// Thêm sự kiện cho các nút và input tìm kiếm
 document
   .getElementById("button-search")
   .addEventListener("click", function (event) {
@@ -24,6 +25,8 @@ function searchAndDisplay() {
     .value.trim()
     .toLowerCase();
   const selectedBrand = document.getElementById("brand-select").value;
+
+  // Ẩn phần nội dung không liên quan
   document.querySelector(".section-two").style.display = "none";
 
   // Lấy dữ liệu từ localStorage
@@ -40,21 +43,17 @@ function searchAndDisplay() {
     return matchesName && matchesBrand;
   });
 
+  // Kiểm tra nếu không tìm thấy sản phẩm
   if (filteredProducts.length === 0) {
-    alert("Không tìm thấy sản phẩm.");
+    document.getElementsByClassName("body-content")[0].innerHTML = `
+      <div class="no-results">Không tìm thấy sản phẩm phù hợp.</div>`;
     return;
   }
 
+  // Phân trang
   const productsPerPage = 6;
   const numPages = Math.ceil(filteredProducts.length / productsPerPage);
   let currentPage = 1;
-
-  let footPage = "";
-  for (let i = 1; i <= numPages; i++) {
-    footPage += `
-            <li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>
-        `;
-  }
 
   function loadPage(page) {
     currentPage = page;
@@ -62,21 +61,32 @@ function searchAndDisplay() {
     const end = productsPerPage * page;
     const currentProducts = filteredProducts.slice(start, end);
 
+    // Tạo nội dung sản phẩm
     let s = "";
     currentProducts.forEach((product) => {
-      s += `<div class="grid_col-4 product__item onclick="DetailProducts('${product.id}')"">
-                        <a href="javascipt:void(0)" class="product__link">
-                            <img src="${product.image}" alt="" class="product__link-img">
-                            <span class="product__link-name">${product.name_product}</span>
-                            <div class="product__link-sale">${product.discount}%</div>
-                        </a>
-                        <div class="product__price">
-                            <div class="product__price-current">${product.sell}đ</div>
-                            <div class="product__price-old">${product.price}đ</div>
-                        </div>
-                    </div>`;
+      s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+                <a href="javascript:void(0)" class="product__link">
+                    <img src="${product.image}" alt="" class="product__link-img">
+                    <span class="product__link-name">${product.name_product}</span>
+                    <div class="product__link-sale">${product.discount}%</div>
+                </a>
+                <div class="product__price">
+                    <div class="product__price-current">${product.sell}đ</div>
+                    <div class="product__price-old">${product.price}đ</div>
+                </div>
+            </div>`;
     });
 
+    // Tạo nội dung phân trang
+    let footPage = "";
+    for (let i = 1; i <= numPages; i++) {
+      footPage += `
+        <li class="page-item" data-page="${i}">
+          <a href="javascript:void(0);" class="page-link">${i}</a>
+        </li>`;
+    }
+
+    // Cập nhật nội dung trang
     let pageContent = `
         <div class="wrapper">
             <div class="grid">
@@ -96,7 +106,6 @@ function searchAndDisplay() {
                             <li class="size grid__col-6"><input type="checkbox"><span>44</span></li>
                         </ul>
                     </div>
-
                     <div class="grid__col-9">
                         <div class="PagiBar">
                             <div class="grid__row sortPagiBar">
@@ -107,8 +116,9 @@ function searchAndDisplay() {
                                             <i class="fa-solid fa-bars"></i>
                                         </div>
                                         <div class="total-product">
-                                            <span> Hiển thị ${start + 1} - ${start + currentProducts.length
-      } trong tổng số ${filteredProducts.length} sản phẩm </span>
+                                            <span> Hiển thị ${start + 1} - ${
+      start + currentProducts.length
+    } trong tổng số ${filteredProducts.length} sản phẩm </span>
                                         </div>
                                     </div>
                                 </div>
@@ -119,11 +129,11 @@ function searchAndDisplay() {
                                             <li>
                                                 <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
                                                 <ul class="sort-options">
-                                                    <li  onclick="Default()"><a href="#">Mặc định</li>
-                                                    <li onclick="SortA_Z()"><a href="#">A → Z</li>
-                                                             <li onclick="SortZ_A()"><a href="#">Z → A</li>
-                                                             <li onclick="SortIncrease()"><a href="#" >Giá tăng dần</li>
-                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</li>
+                                                    <li onclick="Default()"><a href="#">Mặc định</a></li>
+                                                    <li onclick="SortA_Z()"><a href="#">A → Z</a></li>
+                                                    <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
+                                                    <li onclick="SortIncrease()"><a href="#">Giá tăng dần</a></li>
+                                                    <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -131,38 +141,30 @@ function searchAndDisplay() {
                                 </div>
                             </div>
                         </div>
-
-                        <div class="grid__row product_list" data-brand="${products[1].brand}">
+                        <div class="grid__row product_list">
                             ${s}
-                            <ul class="pagination">
-                                ${footPage}
-                            </ul>
+                            <ul class="pagination">${footPage}</ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>`;
-
     document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
 
-    document
-      .querySelectorAll(".page-link")
-      .forEach((page) => page.classList.remove("active"));
-    document
-      .querySelector(`.page-item[data-page="${currentPage}"] .page-link`)
-      .classList.add("active");
-
-    const pageLinks = document.querySelectorAll(".page-item");
-    pageLinks.forEach((pageLink) => {
-      pageLink.addEventListener("click", function () {
-        const page = parseInt(pageLink.getAttribute("data-page"));
+    // Gắn sự kiện cho các nút phân trang (Event Delegation)
+    document.querySelector(".pagination").addEventListener("click", function (e) {
+      if (e.target.classList.contains("page-link")) {
+        const page = parseInt(
+          e.target.parentElement.getAttribute("data-page")
+        );
         loadPage(page);
-      });
+      }
     });
   }
 
   loadPage(1); // Hiển thị trang đầu tiên
 }
+
 //end tìm kiếm theo tên + brand
 // SORT
 function SortA_Z() {
