@@ -19,6 +19,7 @@ document.getElementById("brand-select").addEventListener("change", function () {
 });
 
 function searchAndDisplay() {
+   let brand=document.querySelector("#brand-select").value;
   const searchQuery = document
     .getElementById("search-inp")
     .value.trim()
@@ -132,7 +133,7 @@ function searchAndDisplay() {
                             </div>
                         </div>
 
-                        <div class="grid__row product_list" data-brand="${products[1].brand}">
+                        <div class="grid__row product_list"data-brand="${brand}" >
                             ${s}
                             <ul class="pagination">
                                 ${footPage}
@@ -168,7 +169,20 @@ function searchAndDisplay() {
 function SortA_Z() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  products = products.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+  if (brand === "ALL") {
+    // Trường hợp hiển thị tất cả sản phẩm
+    // Không cần lọc, giữ nguyên danh sách sản phẩm
+  } else if (brand === "Sale") {
+    // Lọc sản phẩm có giảm giá từ 40% đến 80%
+    products = products.filter(
+      (item) => item.discount >= 40 && item.discount <= 80
+    );
+  } else {
+    // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
+    products = products.filter(
+      (item) => item.brand.toUpperCase() === brand.toUpperCase()
+    );
+  }
   products.sort((a, b) => {
     if (a.name_product.toLowerCase() < b.name_product.toLowerCase()) {
       return -1;
@@ -178,10 +192,11 @@ function SortA_Z() {
     }
     return 0;
   });
-  displaylist(products);
+  console.log(products);
+  displaylist(products,brand);
   document.querySelector(".text-default").innerHTML = "A → Z <i class='fa-solid fa-caret-down'></i>"
 }
-function displaylist(products) {
+function displaylist(products,brand) {
   const productsPerPage = 6;
   let numPages = Math.ceil(products.length / productsPerPage);
   let currentPage = 1;
@@ -231,7 +246,7 @@ function displaylist(products) {
                                      <li class="size grid__col-6"><input type="checkbox"><span>44</span></li>
                                  </ul>
                              </div>
-
+        
                              <div class="grid__col-9">
                                  <div class="PagiBar">
                                      <div class="grid__row sortPagiBar">
@@ -268,8 +283,8 @@ function displaylist(products) {
                                          </div>
                                      </div>
                                  </div>
-
-                                <div class="grid__row product_list "data-brand="${products[1].brand}">
+        
+                                <div class="grid__row product_list "data-brand="${brand}">
                                     ${s}
                                     <ul class="pagination">
                                         ${footPage}
@@ -299,11 +314,23 @@ function displaylist(products) {
 
   loadPage(1);
 }
-
 function SortZ_A() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  products = products.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+  if (brand === "ALL") {
+    // Trường hợp hiển thị tất cả sản phẩm
+    // Không cần lọc, giữ nguyên danh sách sản phẩm
+  } else if (brand === "Sale") {
+    // Lọc sản phẩm có giảm giá từ 40% đến 80%
+    products = products.filter(
+      (item) => item.discount >= 40 && item.discount <= 80
+    );
+  } else {
+    // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
+    products = products.filter(
+      (item) => item.brand.toUpperCase() === brand.toUpperCase()
+    );
+  }
   products.sort((a, b) => {
     if (a.name_product.toLowerCase() > b.name_product.toLowerCase()) {
       return -1;
@@ -313,14 +340,26 @@ function SortZ_A() {
     }
     return 0;
   });
-  displaylist(products);
+  displaylist(products,brand);
   document.querySelector(".text-default").innerHTML = "Z → A <i class='fa-solid fa-caret-down'></i>"
 }
-
 function SortIncrease() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  products = products.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+  if (brand === "ALL") {
+    // Trường hợp hiển thị tất cả sản phẩm
+    // Không cần lọc, giữ nguyên danh sách sản phẩm
+  } else if (brand === "Sale") {
+    // Lọc sản phẩm có giảm giá từ 40% đến 80%
+    products = products.filter(
+      (item) => item.discount >= 40 && item.discount <= 80
+    );
+  } else {
+    // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
+    products = products.filter(
+      (item) => item.brand.toUpperCase() === brand.toUpperCase()
+    );
+  }
   for (let i = 0; i < products.length - 1; i++) {
     for (let j = i + 1; j < products.length; j++) {
       let priceA = Number(products[i].sell.replace(/[đ₫.]/g, ""));
@@ -332,15 +371,26 @@ function SortIncrease() {
       }
     }
   }
-  console.log(products);
-  displaylist(products);
+  displaylist(products,brand);
   document.querySelector(".text-default").innerHTML = "Giá tăng dần <i class='fa-solid fa-caret-down'></i>"
 }
-
 function SortReduce() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  products = products.filter((item) => item.brand.toLowerCase() === brand.toLowerCase());
+  if (brand === "ALL") {
+    // Trường hợp hiển thị tất cả sản phẩm
+    // Không cần lọc, giữ nguyên danh sách sản phẩm
+  } else if (brand === "Sale") {
+    // Lọc sản phẩm có giảm giá từ 40% đến 80%
+    products = products.filter(
+      (item) => item.discount >= 40 && item.discount <= 80
+    );
+  } else {
+    // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
+    products = products.filter(
+      (item) => item.brand.toUpperCase() === brand.toUpperCase()
+    );
+  }
   for (let i = 0; i < products.length - 1; i++) {
     for (let j = i + 1; j < products.length; j++) {
       let priceA = Number(products[i].sell.replace(/[đ₫.]/g, ""));
@@ -352,16 +402,26 @@ function SortReduce() {
       }
     }
   }
-  displaylist(products);
+  displaylist(products,brand);
   document.querySelector(".text-default").innerHTML = "Giá giảm dần <i class='fa-solid fa-caret-down'></i>"
 }
-
 function Default(){
-  var products = JSON.parse(localStorage.getItem("products"));
   var brand = document.querySelector(".product_list").dataset.brand;
-  products = products.filter(
-    (item) => item.brand.toLowerCase() === brand.toLowerCase()
-  );
-  displaylist(products);
+  var products = JSON.parse(localStorage.getItem("products"));
+  if (brand === "ALL") {
+    // Trường hợp hiển thị tất cả sản phẩm
+    // Không cần lọc, giữ nguyên danh sách sản phẩm
+  } else if (brand === "Sale") {
+    // Lọc sản phẩm có giảm giá từ 40% đến 80%
+    products = products.filter(
+      (item) => item.discount >= 40 && item.discount <= 80
+    );
+  } else {
+    // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
+    products = products.filter(
+      (item) => item.brand.toUpperCase() === brand.toUpperCase()
+    );
+  }
+  displaylist(products,brand);
   document.querySelector(".text-default").innerHTML = "Mặc định <i class='fa-solid fa-caret-down'></i>";
 }
