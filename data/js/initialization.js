@@ -1,4 +1,14 @@
 // Khởi tạo danh sách sản phẩm
+function loadProduct() {
+    document.addEventListener("DOMContentLoaded", function () {
+        // Xóa dữ liệu cũ trong localStorage
+        localStorage.removeItem("products");
+        console.log("LocalStorage đã được xóa khi tải trang!");
+
+        // Tạo lại dữ liệu sau khi xóa
+        createProduct();
+    });
+}
 function createProduct() {
     if (localStorage.getItem('products') === null) {
         let products = [
@@ -1345,5 +1355,5 @@ function createProduct() {
     }
 }
 
-window.onload = createProduct();
+window.onload = loadProduct();
 

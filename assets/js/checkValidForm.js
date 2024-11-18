@@ -11,7 +11,7 @@ function checkValidRegister() {
     var valid=true;
     //Check validation
     valid&=validation.kiemtraRong(username,"#errol_user_disable")&validation.kiemtraRong(password,"#errol_password_disable")&validation.kiemtraRong(password2,"#errol_confirm_disable")&validation.kiemtraRong(fullname,"#errol_name_disable")&validation.kiemtraRong(email,"#errol_email_disable")&validation.kiemtraRong(phone,"#errol_tel_disable")&validation.kiemtraDodai(username,"#errol_user_length",6)&validation.kiemtraDodai(password,"#errol_password_length",6)&validation.kiemtraDodai(fullname,"#errol_name_length",6)&validation.kiemtraEmail(email,"#errol_email_wrongpattern")&validation.kiemtraSDT(phone,"#errol_tel_pattern");
-    
+
     if(valid===0){
         return false;
     }
@@ -28,7 +28,7 @@ function checkValidRegister() {
         document.querySelector("#errol_confirm_same").style.display="block";
     }
     else{
-        document.querySelector("#errol_confirm_same").style.display="none";   
+        document.querySelector("#errol_confirm_same").style.display="none";
     }
     if (users.some(user => {
         return user.email === email;
@@ -64,7 +64,8 @@ function checkValidRegister() {
         phone: phone,
         registrationTime: currentTime,
         cart: [],
-        products: []
+        products: [],
+        active: True
     };
 
     // Thêm tài khoản mới vào mảng

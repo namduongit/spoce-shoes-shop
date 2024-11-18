@@ -23,7 +23,7 @@ function writeLogoAndUserTools() {
                         <a href="" id="button-search">
                             <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
@@ -260,17 +260,40 @@ function writeContactUs() {
     </div>
     `);
 }
+
+function parseCurrencyToNumber(currencyString) {
+    // Loại bỏ các ký tự không phải số và dấu thập phân
+    const cleanString = currencyString.replace(/[^\d]/g, "");
+    // Chuyển đổi chuỗi đã làm sạch thành số
+    return parseInt(cleanString, 10);
+}
+function averagePriceProduct() {
+    let sum = 0;
+    const products = JSON.parse(localStorage.getItem("products"));
+    for (let product of products) {
+        sum += parseCurrencyToNumber(product.sell)
+    }
+    return sum / products.length;
+}
 function OutStandingProduct() {
 
+    let outProductHTML = ""
+    averageProduct = averagePriceProduct();
+
     const products = JSON.parse(localStorage.getItem("products"));
+    const number_productsPage = 8;
     var outstandingproducts_list = [];
     for (let product of products) {
-        outstandingproducts_list.push(product);
-        if (outstandingproducts_list.length === 12) { break; }
+        if (parseCurrencyToNumber(product.sell) >= averageProduct) {
+            outstandingproducts_list.push(product);
+            if (outstandingproducts_list.length === number_productsPage) {
+                break;
+            }
+        }
     }
-    let s = "";
+    outProductHTML = "";
     outstandingproducts_list.forEach((product) => {
-        s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+        outProductHTML  += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                         <a href="javascript:void(0)" class="product__link">
                             <img src="${product.image}" alt="" class="product__link-img">
                             <span class="product__link-name">${product.name_product}</span>
@@ -282,13 +305,22 @@ function OutStandingProduct() {
                         </div>
                     </div>`;
     });
-    document.querySelector(".outstandingproducts").innerHTML = s;
-    var sellproducut = products.filter(
-        (item) => item.discount >= 40 && item.discount <= 80
-    );
-    let str = "";
+    document.querySelector(".outstandingproducts").innerHTML = outProductHTML;
+
+
+    var sellproducut = []
+    for (let product of products) {
+        if (product.discount >= 35 && product.discount <= 80) {
+            sellproducut.push(product);
+            if (sellproducut.length === number_productsPage) {
+                break;
+            }
+        }
+    }
+
+    outProductHTML = "";
     sellproducut.forEach((product) => {
-        str += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+        outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                           <a href="javascript:void(0)" class="product__link">
                               <img src="${product.image}" alt="" class="product__link-img">
                               <span class="product__link-name">${product.name_product}</span>
@@ -300,13 +332,22 @@ function OutStandingProduct() {
                           </div>
                       </div>`;
     });
-    document.querySelector(".sell-products").innerHTML = str;
-    let product_fashion = products.filter(
-        (item) => item.brand.toUpperCase() === "CLOTHES"
-    );
-    let st = "";
+    document.querySelector(".sell-products").innerHTML = outProductHTML;
+
+    let product_fashion = [];
+
+    for (let product of products) {
+        if (product.brand.toUpperCase() === "CLOTHES") {
+            product_fashion.push(product);
+            if (product_fashion.length === number_productsPage) {
+                break;
+            }
+        }
+    }
+
+    outProductHTML = "";
     product_fashion.forEach((product) => {
-        st += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+        outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                             <a href="javascript:void(0)" class="product__link">
                                 <img src="${product.image}" alt="" class="product__link-img">
                                 <span class="product__link-name">${product.name_product}</span>
@@ -318,5 +359,5 @@ function OutStandingProduct() {
                             </div>
                         </div>`;
     });
-    document.querySelector(".clothes-products").innerHTML = st;
+    document.querySelector(".clothes-products").innerHTML = outProductHTML;
 }
