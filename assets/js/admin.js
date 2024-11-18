@@ -639,3 +639,184 @@ function addingProduct() {
 }
 
 
+
+var users = JSON.parse(localStorage.getItem('users'));
+
+function showCustomer() {
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Khách hàng</h2>
+    `;
+
+    document.querySelector('.content').innerHTML = `
+    <div class="user-modify-form"></div>
+
+    <div class="customer-title">
+        <h1>Danh sách khách hàng</h1>
+    </div>
+
+    <div class="customer-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Username</th>
+                    <th>Số điện thoại</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="customer-details">
+
+            </tbody>
+        </table>
+                    
+    </div>
+
+    <ul id="page-select" class="page-select"></ul>
+    `;
+
+    
+    var userPerPage = 8;
+    var numOfPages = Math.ceil(users.length / userPerPage);
+
+    var str = "";
+    for (let i=1; i<=numOfPages; i++) {
+        str = str + `
+            <li class="page-item" data-page="${i}">
+                <a class="page-item-text" href="javascript:void(0);">${i}</a>
+            </li>
+        `;
+    }
+
+    function loadPage(page) {
+        var start = userPerPage * (page - 1);
+        var end = userPerPage * page;
+        var userOfPage = users.slice(start,end);
+        var stt = start + 1;
+
+        var s = "";
+        for (let i = 0; i < userOfPage.length; i++) {
+            var activeStr;
+            if (userOfPage[i].active) {
+                activeStr = "Đang hoạt động";
+            } else {
+                activeStr = "Khóa";
+            }
+
+            s = s + `
+            <tr>
+                <td>${stt}</td>
+                <td>${userOfPage[i].username}</td>
+                <td>${userOfPage[i].phone}</td>
+                <td>${activeStr}</td>
+                <td><a href="#" class="warning" data-username="${userOfPage[i].username}" onclick="showUserModify(this)">Sửa</a></td>
+            </tr>
+            `;
+        }
+
+        document.getElementById('customer-details').innerHTML = s;
+        document.getElementById('page-select').innerHTML = str;
+        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+
+        var pageBtns = document.querySelectorAll('.page-item');
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                var page = parseInt(btn.getAttribute('data-page'));
+                loadPage(page);
+            });
+        });
+    }
+
+    loadPage(1);
+}
+
+function showUserModify(obj) {
+    document.querySelector('.user-modify-form').style.display = 'block';
+    var user = users.find(item => item.username === obj.getAttribute('data-username'));
+    var indexOfUser = users.findIndex(item => item.username === obj.getAttribute('data-username'));
+    document.querySelector('.user-modify-form').innerHTML = `
+        <div class="user-modify-top">
+            Thông tin khách hàng
+        </div>
+
+        <div class="user-modify-content">
+            <form>
+                <div class="form-item">
+                    <label for="username">Tài khoản: </label>
+                    <input type="text" id="username" value="${user.username}">
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="password">Mật khẩu: </label>
+                    <input type="text" id="password" value="${user.password}">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="fullname">Họ tên: </label>
+                    <input type="text" id="fullname" value="${user.fullname}">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" value="${user.email}">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="phone">Số điện thoại: </label>
+                    <input type="text" id="phone" value="${user.phone}">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="account-status">Trạng thái: </label>
+                    <select id="account-status">
+                        <option value="true">Đang hoạt động</option>
+                        <option value="false">Khóa</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="user-modify-btn-container">
+            <a href="#" id="user-save-btn">
+                <div class="user-modify-btn">
+                    Lưu
+                </div>
+            </a>
+
+            <a href="#" onclick="closeUserModifyForm()">
+                <div class="user-modify-btn">
+                    Thoát
+                </div>
+            </a>
+        </div>
+    `;
+
+    document.getElementById('account-status').value = user.active.toString();
+    document.getElementById('user-save-btn').addEventListener('click', () => {
+        var status = (document.getElementById('account-status').value === "true");
+        users[indexOfUser].username = document.getElementById('username').value;
+        users[indexOfUser].password = document.getElementById('password').value;
+        users[indexOfUser].fullname = document.getElementById('fullname').value;
+        users[indexOfUser].email = document.getElementById('email').value;
+        users[indexOfUser].phone = document.getElementById('phone').value;
+        users[indexOfUser].active = status;
+        localStorage.setItem('users', JSON.stringify(users));
+        closeUserModifyForm();
+        showCustomer();
+    });
+}
+
+function closeUserModifyForm() {
+    document.querySelector('.user-modify-form').style.display = 'none';
+}

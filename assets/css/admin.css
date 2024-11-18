@@ -432,11 +432,8 @@ i {
 }
 
 .modify-btn-container .modify-btn {
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    margin: 0 5px;
-    padding: 5px;
+    color: white;
+    background-color: black;
 }
 
 .modify-btn-container .modify-btn:hover {
@@ -509,6 +506,47 @@ i {
 }
 
 
+/* User */
+.customer-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.customer-content {
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.customer-content table {
+    width: 100%;
+    border-collapse: collaspe;
+    text-align: center;
+}
+
+.customer-content table tbody td {
+    height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -562,10 +600,62 @@ i {
     }
 }
 
+/* USER MODIFY FORM */
+.user-modify-form {
+    display: none;
+    width: 50%;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
+.user-modify-form .user-modify-top {
+    width: 100%;
+    background-color: grey;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
 
+.user-modify-form .user-modify-content {
+    padding: 20px 10px 10px 10px;
+}
 
+.user-modify-form .user-modify-content form {
+    padding: 10px 10px;
+}
 
+.user-modify-form .user-modify-content form input {
+    width: 60%;
+}
+
+.user-modify-form .user-modify-content form .form-item {
+    margin: 5px 0;
+}
+
+.user-modify-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.user-modify-btn-container .user-modify-btn {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.user-modify-btn-container .user-modify-btn:hover {
+    color: white;
+    background-color: black;
+}
 
 
 /* RESPONSIVE CHO Tablet */
