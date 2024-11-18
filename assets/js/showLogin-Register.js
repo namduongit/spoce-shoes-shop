@@ -152,7 +152,7 @@ function showTools(object) {
     if (object.id === "login") {
         writeForm(writeLoginForm);
     }
-    else {
+    else if (object.id === "register") {
         writeForm(writeRegisterForm);
     }
 }
