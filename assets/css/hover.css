@@ -1,13 +1,9 @@
-header .inner-wrap .inner-user .user .parent .child .child-login:hover {
+header .inner-wrap .inner-user .user .parent .child .group-form:hover {
     font-weight: bold;
     border-bottom: 2px solid black;
     transition: all 0.05s;
 }
-header .inner-wrap .inner-user .user .parent .child .child-register:hover {
-    font-weight: bold;
-    border-bottom: 2px solid black;
-    transition: all 0.05s;
-}
+
 header .inner-wrap .inner-user .user .parent:hover .child {
     display: block;
 }

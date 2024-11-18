@@ -35,11 +35,11 @@ function writeLogoAndUserTools() {
                                 <div>Tài khoản</div>
                             </div>
                             <div class="child">
-                                <div class="child-login" onclick="showTools(this)" id="login">
+                                <div class="group-form" onclick="showTools(this)" id="login">
                                     <i class="fa-solid fa-right-to-bracket"></i>
                                     <span>Đăng nhập</span>
                                 </div>
-                                <div class="child-register" onclick="showTools(this)" id="register">
+                                <div class="group-form" onclick="showTools(this)" id="register">
                                     <i class="fa-solid fa-user-plus"></i>
                                     <span>Đăng ký</span>
                                 </div>

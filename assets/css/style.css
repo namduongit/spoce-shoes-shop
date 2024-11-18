@@ -102,10 +102,10 @@ header .inner-wrap .inner-user .user .parent .child {
     position: absolute;
     background-color: white;
     z-index: 2;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 5px;
 }
-header .inner-wrap .inner-user .user .parent .child .child-login, .child-register {
+header .inner-wrap .inner-user .user .parent .child .group-form {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -660,7 +660,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     transition: opacity .3s;
 }
 .active{
-    opacity: 1;  
+    opacity: 1;
     pointer-events: auto;
 
 }
@@ -687,7 +687,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     height: 300px;
 }
 .image .main-img img{
-    width: 100%;   
+    width: 100%;
     height: 100%;
 }
 .promo-image{
@@ -723,7 +723,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     margin: 10px 0;
 }
 .detail-product_content i{
-   
+
     margin-right: 5px;
 }
 .size_product{
@@ -741,7 +741,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     cursor: pointer;
 }
 .check    {
-    background-color: #F44236 !important;    
+    background-color: #F44236 !important;
 }
 .details-pro{
     width: 50%;
@@ -751,7 +751,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
 .details-pro h1{
     font-size: 20px;
     font-weight: 500;
-    
+
 }
 .details-pro .details-pro__content{
     line-height: 30px;
@@ -829,7 +829,7 @@ header .inner-wrap .inner-user .user .parent .child .child-login, .child-registe
     border: none;
     cursor: pointer;
     transition: all .5s;
-} 
+}
 .detail-product  .product-pay .cart-pay .btn-pay:hover{
     color: black;
     background-color: white;
