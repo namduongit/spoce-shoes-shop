@@ -83,7 +83,7 @@ function writeRegisterForm() {
 
     <form action="" onsubmit="return checkValidRegister()">
         <div class="register-form">
-    
+
             <div class="left-form">
                 <div class="group-form">
                     <label for="input_username_register">Tài khoản: *</label>
@@ -110,7 +110,7 @@ function writeRegisterForm() {
                      <span class="text-danger" id="errol_confirm_same"></span>
                 </div>
             </div>
-    
+
             <div class="right-form">
                 <div class="group-form">
                     <label for="input_fullname_register">Họ và tên: *</label>
@@ -136,16 +136,15 @@ function writeRegisterForm() {
                        <span class="text-danger" id="errol_tel_same"></span>
                 </div>
             </div>
-    
+
         </div>
-    
+
         <div class="submit-action">
             <button class="register-btn" id="action-register">Đăng ký</button>
         </div>
     </form>
     `;
 }
-
 
 
 
@@ -168,12 +167,6 @@ function actionChangeForm(object) {
 function hideTools() {
     document.getElementById("form").style.display = "none";
 }
-
-
-
-
-
-
 
 
 
