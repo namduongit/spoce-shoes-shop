@@ -780,7 +780,7 @@ function showUserModify(obj) {
                 <div class="form-item">
                     <label for="account-status">Trạng thái: </label>
                     <select id="account-status">
-                        <option value="true">Đang hoạt động</option>
+                        <option value="true">Hoạt động</option>
                         <option value="false">Khóa</option>
                     </select>
                 </div>
