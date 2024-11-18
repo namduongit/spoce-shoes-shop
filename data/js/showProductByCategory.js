@@ -115,7 +115,7 @@ function showCategory(value) {
                                      </div>
                                  </div>
         
-                                <div class="grid__row product_list" data-brand="${products[1].brand}">
+                                <div class="grid__row product_list" data-brand="${value}">
                                     ${s}
                                     <ul class="pagination">
                                         ${footPage}
