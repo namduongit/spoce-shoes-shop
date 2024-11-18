@@ -164,7 +164,7 @@ function searchAndDisplay() {
   loadPage(1); // Hiển thị trang đầu tiên
 }
 //end tìm kiếm theo tên + brand
-// SORT 
+// SORT
 function SortA_Z() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
@@ -231,7 +231,7 @@ function displaylist(products) {
                                      <li class="size grid__col-6"><input type="checkbox"><span>44</span></li>
                                  </ul>
                              </div>
-        
+
                              <div class="grid__col-9">
                                  <div class="PagiBar">
                                      <div class="grid__row sortPagiBar">
@@ -268,7 +268,7 @@ function displaylist(products) {
                                          </div>
                                      </div>
                                  </div>
-        
+
                                 <div class="grid__row product_list "data-brand="${products[1].brand}">
                                     ${s}
                                     <ul class="pagination">
@@ -299,6 +299,7 @@ function displaylist(products) {
 
   loadPage(1);
 }
+
 function SortZ_A() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
@@ -315,6 +316,7 @@ function SortZ_A() {
   displaylist(products);
   document.querySelector(".text-default").innerHTML = "Z → A <i class='fa-solid fa-caret-down'></i>"
 }
+
 function SortIncrease() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
@@ -334,6 +336,7 @@ function SortIncrease() {
   displaylist(products);
   document.querySelector(".text-default").innerHTML = "Giá tăng dần <i class='fa-solid fa-caret-down'></i>"
 }
+
 function SortReduce() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
@@ -352,10 +355,12 @@ function SortReduce() {
   displaylist(products);
   document.querySelector(".text-default").innerHTML = "Giá giảm dần <i class='fa-solid fa-caret-down'></i>"
 }
+
 function Default(){
   var products = JSON.parse(localStorage.getItem("products"));
+  var brand = document.querySelector(".product_list").dataset.brand;
   products = products.filter(
-    (item) => item.discount >= 40 && item.discount <= 80
+    (item) => item.brand.toLowerCase() === brand.toLowerCase()
   );
   displaylist(products);
   document.querySelector(".text-default").innerHTML = "Mặc định <i class='fa-solid fa-caret-down'></i>";
