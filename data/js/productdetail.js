@@ -141,16 +141,7 @@ function Detail_product(product) {
 
                 <div class="size_product">
                     <p>Kích thước:</p>
-                    <button class="btn">35</button>
-                    <button class="btn">36</button>
-                    <button class="btn">37</button>
-                    <button class="btn">38</button>
-                    <button class="btn">39</button>
-                    <button class="btn">40</button>
-                    <button class="btn">41</button>
-                    <button class="btn">42</button>
-                    <button class="btn">43</button>
-                    <button class="btn">44 </button>
+                    ${writeSelectionSize(product)}
                 </div>
             </div>
             <div class="details-pro">
