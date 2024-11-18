@@ -64,8 +64,7 @@ function checkValidRegister() {
         phone: phone,
         registrationTime: currentTime,
         cart: [],
-        products: [],
-        active: true
+        products: []
     };
 
     // Thêm tài khoản mới vào mảng
@@ -73,10 +72,20 @@ function checkValidRegister() {
     // lưu tài khoản vào localStorage
     localStorage.setItem("users", JSON.stringify(users));
     alert("Đăng ký thành công!");
+    users.forEach(user => {
+        console.log(user.username);
+        if(user.username===username) {
+
+            localStorage.setItem("usercurrent",JSON.stringify(user));
+        }
+    });
+    hideTools();
+    InterfaceLogin();
     return true;
 }
 
 function checkValidLogin() {
+    event.preventDefault();
     var username = document.getElementById('input_username_login').value;
     var password = document.getElementById('input_password_login').value;
     let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -99,7 +108,17 @@ function checkValidLogin() {
         document.querySelector("#errol_wrong").style.display="block";
         return false;
     }
+    users.forEach(user => {
+        console.log(user.username);
+        if(user.username===username) {
+
+            localStorage.setItem("usercurrent",JSON.stringify(user));
+        }
+    });
+    hideTools();
+    InterfaceLogin();
     return true;
+
 }
 
 function getCurrentDateTime() {
@@ -115,4 +134,35 @@ function getCurrentDateTime() {
 
     return `Thứ ${day} ${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
+function InterfaceLogin(){
+    let currenuser = JSON.parse(localStorage.getItem("usercurrent"));
+    if(currenuser != null){
+        const nameParts = currenuser.fullname.split(" ");
+        const shortName = nameParts[nameParts.length - 2] +" "+ nameParts[nameParts.length - 1];
+        document.querySelector(".inner-user .user").innerHTML=`
+                        <div class="parent">
+                            <div class="icon-name">
+                                <i class="fa-solid fa-user"></i>
+                                <span>${shortName}</span>
+                            </div>
+                            <div class="child">
+                                <div class="group-form" onclick="showTools(this)" id="changeInfo">
+                                    <i class="fa-solid fa-gear"></i>
+                                    <span>Sửa thông tin</span>
+                                </div>
+                                <div class="group-form" onclick ="Logout()"" id="register">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span>Đăng xuất</span>
+                                </div>
+                            </div>
 
+                        </div>
+                        `
+
+    }
+}
+window.onload = InterfaceLogin();
+function Logout(){
+    localStorage.removeItem("usercurrent");
+    window.location.reload();
+}
