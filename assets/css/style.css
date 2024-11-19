@@ -67,7 +67,7 @@ header .inner-wrap .inner-search a {
 header .inner-wrap .inner-user {
     width: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     cursor: pointer;
 }
 
@@ -75,8 +75,8 @@ header .inner-wrap .inner-user span {
     margin: 0 10px;
     color: black;
 }
-header .inner-wrap .inner-user .user {
-    margin-right: 10px;
+header .inner-wrap .inner-user .user, .cart {
+    width: 50%;
 }
 header .inner-wrap .inner-user .user .parent {
     cursor: pointer;
@@ -681,7 +681,7 @@ header .inner-wrap .inner-user .user .parent .child .group-form {
 }
 .image{
     margin-left: 20px;
-    width: 50%;
+    width: 55%;
 }
 .image .main-img{
     height: 300px;
@@ -744,7 +744,7 @@ header .inner-wrap .inner-user .user .parent .child .group-form {
     background-color: #F44236 !important;
 }
 .details-pro{
-    width: 50%;
+    width: 45%;
     padding-top: 20px;
     text-align: center;
 }
@@ -853,10 +853,11 @@ header .inner-wrap .inner-user .user .parent .child .group-form {
     content: "Chi tiết";
     position: absolute;
     z-index: 2;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.5);
-    background-color: wheat;
+    background-color: #333333e5;
+    color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -870,12 +871,14 @@ header .inner-wrap .inner-user .user .parent .child .group-form {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    background-color: wheat;
+    background-color: #333333e5;
+    color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 10px 20px;
     border-radius: 5px;
     opacity: 1;
     transition: transform 0.5s ease, opacity 0.3s ease;
+    cursor: pointer;
 }
 .product__link-img{
     opacity: 1;
@@ -883,5 +886,6 @@ header .inner-wrap .inner-user .user .parent .child .group-form {
 }
 .product__item:hover .product__link-img{
     opacity: 0.5;
+    transition: all 0.4 ease;
 }
 

@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-    font-family: "Roboto", sans-serif;
-}
-
 .grid {
     width: 1200px;
     max-width: 100%;
@@ -131,7 +127,7 @@ html {
 .list-sort {
     list-style: none;
 
- 
+
     cursor: pointer;
 }
 
@@ -161,7 +157,7 @@ html {
     list-style: none;
     display: none;
     z-index: 1000;
-   
+
     width: 100%;
 }
 
@@ -172,7 +168,7 @@ html {
     padding: 0 20px;
     width: 100%;
     background-color: #fff;
-   
+
 }
 .sort-options li:hover{
     background-color: #0693e3;
@@ -233,7 +229,8 @@ html {
     height: 40px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /*gioi han van ban toi da 2 dong*/    
+    -webkit-line-clamp: 2; /*gioi han van ban toi da 2 dong*/
+    line-clamp: 2; /*gioi han van ban toi da 2 dong*/
     overflow: hidden;
 }
 
@@ -242,15 +239,14 @@ html {
     top: 5%;
     right: 8%;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     background-color: #f00;
-    padding: 8px 6px;
+    padding: 8px 12px;
     border-radius: 4px;
 }
 
 .product__price {
-    font-size: 15px;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -258,10 +254,12 @@ html {
 }
 
 .product__price-current {
+    font-size: 17px;
     color: #f00;
 }
 
 .product__price-old {
+    font-size: 12px;
     padding-left: 16px;
     text-decoration: line-through;
     color: rgb(0, 0, 0, 0.5);

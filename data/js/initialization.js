@@ -26,6 +26,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -42,6 +54,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -58,6 +82,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -74,6 +110,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -90,6 +138,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -106,6 +166,18 @@ function createProduct() {
                     "image_2": "data/js/image/6.2.png",
                     "image_3": "data/js/image/6.3.png",
                     "image_4": "data/js/image/6.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -122,6 +194,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -138,6 +222,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -154,6 +250,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -170,6 +278,18 @@ function createProduct() {
                     "image_2": "data/js/image/10.2.png",
                     "image_3": "data/js/image/10.3.png",
                     "image_4": "data/js/image/10.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -186,6 +306,18 @@ function createProduct() {
                     "image_2": "data/js/image/11.2.png",
                     "image_3": "data/js/image/11.3.png",
                     "image_4": "data/js/image/11.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -202,6 +334,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -218,6 +362,18 @@ function createProduct() {
                     "image_2": "data/js/image/13.2.png",
                     "image_3": "data/js/image/13.3.png",
                     "image_4": "data/js/image/13.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -234,6 +390,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -250,6 +418,18 @@ function createProduct() {
                     "image_2": "data/js/image/15.2.png",
                     "image_3": "data/js/image/15.3.png",
                     "image_4": "data/js/image/15.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -266,6 +446,18 @@ function createProduct() {
                     "image_2": "data/js/image/16.2.png",
                     "image_3": "data/js/image/16.3.png",
                     "image_4": "data/js/image/16.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -282,6 +474,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -298,6 +502,18 @@ function createProduct() {
                     "image_2": "",
                     "image_3": "",
                     "image_4": ""
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -314,6 +530,18 @@ function createProduct() {
                     "image_2": "data/js/image/19.2.png",
                     "image_3": "data/js/image/19.3.png",
                     "image_4": "data/js/image/19.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -330,6 +558,18 @@ function createProduct() {
                     "image_2": "data/js/image/20.2.png",
                     "image_3": "data/js/image/20.3.png",
                     "image_4": "data/js/image/20.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -346,6 +586,18 @@ function createProduct() {
                     "image_2": "data/js/image/21.2.png",
                     "image_3": "data/js/image/21.3.png",
                     "image_4": "data/js/image/21.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -362,6 +614,18 @@ function createProduct() {
                     "image_2": "data/js/image/22.2.png",
                     "image_3": "data/js/image/22.3.png",
                     "image_4": "data/js/image/22.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -378,6 +642,18 @@ function createProduct() {
                     "image_2": "data/js/image/23.2.png",
                     "image_3": "data/js/image/23.3.png",
                     "image_4": "data/js/image/23.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -394,6 +670,18 @@ function createProduct() {
                     "image_2": "data/js/image/24.2.png",
                     "image_3": "data/js/image/24.3.png",
                     "image_4": "data/js/image/24.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -410,6 +698,18 @@ function createProduct() {
                     "image_2": "data/js/image/25.2.png",
                     "image_3": "data/js/image/25.3.png",
                     "image_4": "data/js/image/25.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -426,6 +726,18 @@ function createProduct() {
                     "image_2": "data/js/image/26.2.png",
                     "image_3": "data/js/image/26.3.png",
                     "image_4": "data/js/image/26.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -442,6 +754,18 @@ function createProduct() {
                     "image_2": "data/js/image/27.2.png",
                     "image_3": "data/js/image/27.3.png",
                     "image_4": "data/js/image/27.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -458,6 +782,18 @@ function createProduct() {
                     "image_2": "data/js/image/28.2.png",
                     "image_3": "data/js/image/28.3.png",
                     "image_4": "data/js/image/28.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -474,6 +810,18 @@ function createProduct() {
                     "image_2": "data/js/image/29.2.png",
                     "image_3": "data/js/image/29.3.png",
                     "image_4": "data/js/image/29.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -490,6 +838,18 @@ function createProduct() {
                     "image_2": "data/js/image/30.2.png",
                     "image_3": "data/js/image/30.3.png",
                     "image_4": "data/js/image/30.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -506,6 +866,18 @@ function createProduct() {
                     "image_2": "data/js/image/31.2.png",
                     "image_3": "data/js/image/31.3.png",
                     "image_4": "data/js/image/31.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -522,6 +894,18 @@ function createProduct() {
                     "image_2": "data/js/image/32.2.png",
                     "image_3": "data/js/image/32.3.png",
                     "image_4": "data/js/image/32.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -538,6 +922,18 @@ function createProduct() {
                     "image_2": "data/js/image/33.2.png",
                     "image_3": "data/js/image/33.3.png",
                     "image_4": "data/js/image/33.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -554,6 +950,18 @@ function createProduct() {
                     "image_2": "data/js/image/34.2.png",
                     "image_3": "data/js/image/34.3.png",
                     "image_4": "data/js/image/34.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -570,6 +978,18 @@ function createProduct() {
                     "image_2": "data/js/image/35.2.png",
                     "image_3": "data/js/image/35.3.png",
                     "image_4": "data/js/image/35.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -586,6 +1006,18 @@ function createProduct() {
                     "image_2": "data/js/image/36.2.png",
                     "image_3": "data/js/image/36.3.png",
                     "image_4": "data/js/image/36.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -602,6 +1034,18 @@ function createProduct() {
                     "image_2": "data/js/image/37.2.png",
                     "image_3": "data/js/image/37.3.png",
                     "image_4": "data/js/image/37.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -618,6 +1062,18 @@ function createProduct() {
                     "image_2": "data/js/image/38.2.png",
                     "image_3": "data/js/image/38.3.png",
                     "image_4": "data/js/image/38.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -634,6 +1090,18 @@ function createProduct() {
                     "image_2": "data/js/image/39.2.png",
                     "image_3": "data/js/image/39.3.png",
                     "image_4": "data/js/image/39.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -650,6 +1118,18 @@ function createProduct() {
                     "image_2": "data/js/image/40.2.png",
                     "image_3": "data/js/image/40.3.png",
                     "image_4": "data/js/image/40.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -666,8 +1146,21 @@ function createProduct() {
                     "image_2": "data/js/image/41.2.png",
                     "image_3": "data/js/image/41.3.png",
                     "image_4": "data/js/image/41.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
+
             {
                 id: "42",
                 name_product: "Vans Vault Style 36 Black",
@@ -682,6 +1175,18 @@ function createProduct() {
                     "image_2": "data/js/image/42.2.png",
                     "image_3": "data/js/image/42.3.png",
                     "image_4": "data/js/image/42.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -698,6 +1203,18 @@ function createProduct() {
                     "image_2": "data/js/image/43.2.png",
                     "image_3": "data/js/image/43.3.png",
                     "image_4": "data/js/image/43.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -714,6 +1231,18 @@ function createProduct() {
                     "image_2": "data/js/image/44.2.png",
                     "image_3": "data/js/image/44.3.png",
                     "image_4": "data/js/image/44.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -730,6 +1259,18 @@ function createProduct() {
                     "image_2": "data/js/image/45.2.png",
                     "image_3": "data/js/image/45.3.png",
                     "image_4": "data/js/image/45.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -746,6 +1287,18 @@ function createProduct() {
                     "image_2": "data/js/image/46.2.png",
                     "image_3": "data/js/image/46.3.png",
                     "image_4": "data/js/image/46.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -762,6 +1315,18 @@ function createProduct() {
                     "image_2": "data/js/image/47.2.png",
                     "image_3": "data/js/image/47.3.png",
                     "image_4": "data/js/image/47.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -778,6 +1343,18 @@ function createProduct() {
                     "image_2": "data/js/image/48.2.png",
                     "image_3": "data/js/image/48.3.png",
                     "image_4": "data/js/image/48.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -794,6 +1371,18 @@ function createProduct() {
                     "image_2": "data/js/image/49.2.png",
                     "image_3": "data/js/image/49.3.png",
                     "image_4": "data/js/image/49.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -810,6 +1399,18 @@ function createProduct() {
                     "image_2": "data/js/image/50.2.png",
                     "image_3": "data/js/image/50.3.png",
                     "image_4": "data/js/image/50.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -826,6 +1427,18 @@ function createProduct() {
                     "image_2": "data/js/image/51.2.png",
                     "image_3": "data/js/image/51.3.png",
                     "image_4": "data/js/image/51.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -842,6 +1455,18 @@ function createProduct() {
                     "image_2": "data/js/image/52.2.png",
                     "image_3": "data/js/image/52.3.png",
                     "image_4": "data/js/image/52.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -858,6 +1483,18 @@ function createProduct() {
                     "image_2": "data/js/image/53.2.png",
                     "image_3": "data/js/image/53.3.png",
                     "image_4": "data/js/image/53.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -874,6 +1511,18 @@ function createProduct() {
                     "image_2": "data/js/image/54.2.png",
                     "image_3": "data/js/image/54.3.png",
                     "image_4": "data/js/image/54.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -890,6 +1539,18 @@ function createProduct() {
                     "image_2": "data/js/image/61.2.png",
                     "image_3": "data/js/image/61.3.png",
                     "image_4": "data/js/image/61.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -907,6 +1568,18 @@ function createProduct() {
                     "image_2": "data/js/image/62.2.png",
                     "image_3": "data/js/image/62.3.png",
                     "image_4": "data/js/image/62.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -924,6 +1597,18 @@ function createProduct() {
                     "image_2": "data/js/image/63.2.png",
                     "image_3": "data/js/image/63.3.png",
                     "image_4": "data/js/image/63.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -941,6 +1626,18 @@ function createProduct() {
                     "image_2": "data/js/image/64.2.png",
                     "image_3": "data/js/image/64.3.png",
                     "image_4": "data/js/image/64.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -958,6 +1655,18 @@ function createProduct() {
                     "image_2": "data/js/image/65.2.png",
                     "image_3": "data/js/image/65.3.png",
                     "image_4": "data/js/image/65.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -975,6 +1684,18 @@ function createProduct() {
                     "image_2": "data/js/image/66.2.png",
                     "image_3": "data/js/image/66.3.png",
                     "image_4": "data/js/image/66.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -992,6 +1713,18 @@ function createProduct() {
                     "image_2": "data/js/image/67.2.png",
                     "image_3": "data/js/image/67.3.png",
                     "image_4": "data/js/image/67.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1009,6 +1742,18 @@ function createProduct() {
                     "image_2": "data/js/image/68.2.png",
                     "image_3": "data/js/image/68.3.png",
                     "image_4": "data/js/image/68.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1026,6 +1771,18 @@ function createProduct() {
                     "image_2": "data/js/image/69.2.png",
                     "image_3": "data/js/image/69.3.png",
                     "image_4": "data/js/image/69.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1043,6 +1800,18 @@ function createProduct() {
                     "image_2": "data/js/image/70.2.png",
                     "image_3": "data/js/image/70.3.png",
                     "image_4": "data/js/image/70.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1077,6 +1846,18 @@ function createProduct() {
                     "image_2": "data/js/image/72.2.png",
                     "image_3": "data/js/image/72.3.png",
                     "image_4": "data/js/image/72.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1094,6 +1875,18 @@ function createProduct() {
                     "image_2": "data/js/image/73.2.png",
                     "image_3": "data/js/image/73.3.png",
                     "image_4": "data/js/image/73.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1111,6 +1904,18 @@ function createProduct() {
                     "image_2": "data/js/image/74.2.png",
                     "image_3": "data/js/image/74.3.png",
                     "image_4": "data/js/image/74.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1128,6 +1933,18 @@ function createProduct() {
                     "image_2": "data/js/image/75.2.png",
                     "image_3": "data/js/image/75.3.png",
                     "image_4": "data/js/image/75.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1145,6 +1962,18 @@ function createProduct() {
                     "image_2": "data/js/image/76.2.png",
                     "image_3": "data/js/image/76.3.png",
                     "image_4": "data/js/image/76.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1162,6 +1991,18 @@ function createProduct() {
                     "image_2": "data/js/image/77.2.png",
                     "image_3": "data/js/image/77.3.png",
                     "image_4": "data/js/image/77.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1179,6 +2020,18 @@ function createProduct() {
                     "image_2": "data/js/image/78.2.png",
                     "image_3": "data/js/image/78.3.png",
                     "image_4": "data/js/image/78.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1196,6 +2049,18 @@ function createProduct() {
                     "image_2": "data/js/image/79.2.png",
                     "image_3": "data/js/image/79.3.png",
                     "image_4": "data/js/image/79.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
 
@@ -1213,6 +2078,18 @@ function createProduct() {
                     "image_2": "data/js/image/80.2.png",
                     "image_3": "data/js/image/80.3.png",
                     "image_4": "data/js/image/80.4.png"
+                },
+                size: {
+                    "35": 50,
+                    "36": 50,
+                    "37": 50,
+                    "38": 50,
+                    "39": 50,
+                    "40": 50,
+                    "41": 50,
+                    "42": 50,
+                    "43": 50,
+                    "44": 50
                 }
             },
             {
@@ -1229,6 +2106,14 @@ function createProduct() {
                     "image_2": "data/js/image/81.2.png",
                     "image_3": "data/js/image/81.3.png",
                     "image_4": "data/js/image/81.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1245,6 +2130,14 @@ function createProduct() {
                     "image_2": "data/js/image/82.2.png",
                     "image_3": "data/js/image/82.3.png",
                     "image_4": "data/js/image/82.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1261,6 +2154,14 @@ function createProduct() {
                     "image_2": "data/js/image/83.2.png",
                     "image_3": "data/js/image/83.3.png",
                     "image_4": "data/js/image/83.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1277,6 +2178,14 @@ function createProduct() {
                     "image_2": "data/js/image/84.2.png",
                     "image_3": "data/js/image/84.3.png",
                     "image_4": "data/js/image/84.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1293,6 +2202,14 @@ function createProduct() {
                     "image_2": "data/js/image/85.2.png",
                     "image_3": "data/js/image/85.3.png",
                     "image_4": "data/js/image/85.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1309,6 +2226,14 @@ function createProduct() {
                     "image_2": "data/js/image/86.2.png",
                     "image_3": "data/js/image/86.3.png",
                     "image_4": "data/js/image/86.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1325,6 +2250,14 @@ function createProduct() {
                     "image_2": "data/js/image/87.2.png",
                     "image_3": "data/js/image/87.3.png",
                     "image_4": "data/js/image/87.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1341,6 +2274,14 @@ function createProduct() {
                     "image_2": "data/js/image/88.2.png",
                     "image_3": "data/js/image/88.3.png",
                     "image_4": "data/js/image/88.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1357,6 +2298,14 @@ function createProduct() {
                     "image_2": "data/js/image/89.2.png",
                     "image_3": "data/js/image/89.3.png",
                     "image_4": "data/js/image/89.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1373,6 +2322,14 @@ function createProduct() {
                     "image_2": "data/js/image/90.2.png",
                     "image_3": "data/js/image/90.3.png",
                     "image_4": "data/js/image/90.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1389,6 +2346,14 @@ function createProduct() {
                     "image_2": "data/js/image/91.2.png",
                     "image_3": "data/js/image/91.3.png",
                     "image_4": "data/js/image/91.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1405,6 +2370,14 @@ function createProduct() {
                     "image_2": "data/js/image/92.2.png",
                     "image_3": "data/js/image/92.3.png",
                     "image_4": "data/js/image/92.4.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1419,6 +2392,14 @@ function createProduct() {
                 promo_image: {
                     "image_1": "data/js/image/93.1.png",
                     "image_2": "data/js/image/93.2.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
             {
@@ -1433,12 +2414,17 @@ function createProduct() {
                 promo_image: {
                     "image_1": "data/js/image/94.1.png",
                     "image_2": "data/js/image/94.2.png"
+                },
+                size: {
+                    "S": 50,
+                    "M": 50,
+                    "L": 50,
+                    "XL": 50,
+                    "2XL": 50,
+                    "3XL": 50
                 }
             },
         ]
-        // for(let i = 0; i < products.length; i++){
-        //     products[i].image = "data/js/data/js/image/" + (i + 1) + ".png";
-        // }
         localStorage.setItem('products', JSON.stringify(products));
     }
 }
