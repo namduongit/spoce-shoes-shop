@@ -67,7 +67,7 @@ header .inner-wrap .inner-search a {
 header .inner-wrap .inner-user {
     width: 20%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     cursor: pointer;
 }
 
@@ -76,7 +76,7 @@ header .inner-wrap .inner-user span {
     color: black;
 }
 header .inner-wrap .inner-user .user, .cart {
-    width: 50%;
+    /* width: 50%; */
 }
 header .inner-wrap .inner-user .user .parent {
     cursor: pointer;
@@ -91,7 +91,7 @@ header .inner-wrap .inner-user .user .parent .icon-name > div {
 header .inner-wrap .inner-user .cart .parent {
     cursor: pointer;
     font-weight: 500;
-
+    margin-left: 16px;
     display: flex;
 }
 header .inner-wrap .inner-user .cart .parent > div {

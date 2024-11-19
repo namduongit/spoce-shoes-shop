@@ -130,7 +130,9 @@
 }
 
 .list-sort i {
-  padding-left: 52px;
+  position: absolute;
+  top: 20%;
+  right: 10%;
   font-size: 16px;
 }
 

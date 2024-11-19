@@ -1,221 +1,178 @@
-/* Mobile nhỏ */
-@media (max-width: 480px) {
-    /* CSS cho điện thoại nhỏ */
-    /* Slide bar */
-    .section-one ul > li:last-child {
-      display: block;
-    }
+/* PC 1024px*/
+@media (min-width: 1024px) {
 
-    .section-one .inner-wrap {
-      justify-content: flex-end;
-      margin-right: 20px;
-    }
+}
 
-    .section-one ul > li {
-      display: none;
-    }
+/* Tablet and mobile 1023px*/
+@media (max-width: 1023px) {
 
-    /* Product */
-    .inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
-      width: 100%;
-    }
-    .inner-content .section-four .inner-wrap .inner-content .inner-products .inner-box {
-      width: 100%;
-    }
-    .inner-content .section-five .inner-wrap .inner-content .inner-products .inner-box {
-      width: 100%;
-    }
-
-    .sidebar {
-      width: 100%;
-    }
-    header .inner-wrap {
-      width: 100%;
-    }
-    header .inner-wrap .inner-user {
-      display: none !important;
-    }
-    header .inner-wrap .inner-search {
-      width: 100%;
-    }
-    
-    header .inner-wrap .inner-logo {
-      display: none;
-    }
+}
 
 
-    /* Bài viết */
-  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+/* Tablet 740 - 1023*/
+@media (min-width: 740px) and (max-width: 1023px) {
+  /* dau trang */
+  header .inner-wrap .inner-content {
+    padding: 14px;
+
+}
+
+  header .inner-wrap .inner-search {
+    line-height: 36px;
+}
+
+header .inner-wrap .inner-user .cart .parent > div {
+  display: none;
+}
+
+  /* menu */
+  .section-one {
     display: none;
   }
-  .inner-content .section-six .inner-content .inner-items .inner-box:first-child {
+
+  /* product */
+
+  .grid__row {
+  margin: 0;
+}
+  .grid__col-3 {
     display: none;
   }
-  .inner-content .section-six .inner-content .inner-items .inner-box {
+  .grid__col-9 {
     width: 100%;
+    padding: 0 35px;
   }
 
-  /* Chính sách & hướng dẫn sử dụng */
-  .footer .inner-left {
-    display: none;
-  }
-  .footer .inner-wrap .inner-content .inner-mid-1 {
-    width: 100%;
-  }
-  .footer .inner-wrap .inner-content .inner-mid-2 {
-    width: 100%;
-  }
+    /* footer */
+  .footer .inner-wrap .inner-content {
+    margin: 20px 0;
+}
+
+  .footer .inner-wrap .inner-content .inner-left,
+  .footer .inner-wrap .inner-content .inner-mid-1,
+  .footer .inner-wrap .inner-content .inner-mid-2,
   .footer .inner-wrap .inner-content .inner-right {
-    display: none;
-  }
-
-  /* Liên hệ */
-  .inner-footer .inner-content .inner-left {
-    display: none;
-  }
-  .inner-footer .inner-content .inner-right {
-    width: 100% !important;
-  }
-  /* Icon điện thoại */
-  .inner-phone {
-    display: none;
-  }
-
-  }
-
-  /* Tablet */
-  @media (min-width: 481px) and (max-width: 768px) {
-    /* CSS cho tablet */
-    .section-one ul > li:last-child {
-      display: block;
-    }
-
-    .section-one .inner-wrap {
-      justify-content: flex-end;
-      margin-right: 20px;
-    }
-
-    .section-one ul > li {
-      display: none;
-    }
-
-    /* Product */
-    .inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
-      width: 50%;
-    }
-    .inner-content .section-four .inner-wrap .inner-content .inner-products .inner-box {
-      width: 50%;
-    }
-    .inner-content .section-five .inner-wrap .inner-content .inner-products .inner-box {
-      width: 50%;
-    }
-
-    /* User tools */
-    header .inner-wrap .inner-user .cart {
-      display: none;
-    }
-
-    /* Login/SignUp */
-    .user-content-selection .inner-content .left-card {
-      display: none;
-  }
-  .user-content-selection .inner-content .right-card {
-      width: 100%;
-  }
-  .user-content-selection .inner-content {
-      margin-top: 20%;
-      padding: 50px;
-      width: 60%;
-  }
-
-  /* Bài viết */
-  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
-    display: none;
-  }
-  .inner-content .section-six .inner-content .inner-items .inner-box {
     width: 50%;
   }
 
-  /* Chính sách & hướng dẫn sử dụng */
-  .footer .inner-left {
-    display: none;
-  }
   .footer .inner-wrap .inner-content .inner-mid-1 {
-    width: 40%;
+    position: relative;
+    top: -35px;
   }
-  .footer .inner-wrap .inner-content .inner-mid-2 {
-    width: 60%;
-  }
+
   .footer .inner-wrap .inner-content .inner-right {
+    margin-top: 24px;
+  }
+
+  /* copyright */
+  .inner-footer .inner-wrap .inner-content {
+    display: block;
+    text-align: center;
+}
+
+  .inner-footer .inner-wrap .inner-content .inner-left {
+    width: 100%;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-right span {
+  display: none;
+}
+
+  .inner-footer .inner-wrap .inner-content .inner-right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-left div {
+  margin-bottom: 4px;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-right ul li i {
+  margin: 8px 14px 0;
+}
+
+}
+
+/* Mobile 739px*/
+@media (max-width: 739px) {
+
+  /* search */
+  header .inner-wrap .inner-search select {
+    display: none;
+}
+
+.list-sort > li {
+  min-width: 150px;
+}
+
+  /* menu */
+  .section-one {
     display: none;
   }
 
-  }
+  /* tim kiem */
+  .total-product {
+    display: none;
+}
 
-  /* Desktop và Laptop */
-  @media (min-width: 769px) and (max-width: 1200px) {
-    /* CSS cho laptop và desktop */
-    /* Product */
-    .inner-content .section-three .inner-wrap .inner-content .inner-products .inner-box {
-      width: 33.33%;
-    }
-    .inner-content .section-four .inner-wrap .inner-content .inner-products .inner-box {
-      width: 33.33%;
-    }
-    .inner-content .section-five .inner-wrap .inner-content .inner-products .inner-box {
-      width: 33.33%;
-    }
+.sort-by {
+  display: none;
+}
 
-    /* User-tools */
-    header .inner-wrap .inner-user .cart {
-      display: none;
-    }
-
-
-    /* Menu */
-    #all_notice_products {
-      display: none;
-    }
-    #all_accessory_products {
-      display: none;
-    }
-
-
-    /* Login/SignUp Form */
-
-    .user-content-selection .inner-content .left-card {
-      width: 100%;
-    }
-    .user-content-selection .inner-content .right-card {
-      width: 100%;
-
-  }
-  /* Bài viết */
-  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+  /* san pham */
+  .grid__col-3 {
     display: none;
   }
-  .inner-content .section-six .inner-content .inner-items .inner-box {
+  .grid__col-9 {
+    width: 100%;
+    margin: 0 16px;
+  }
+
+  .grid_col-4 {
     width: 50%;
-  }
+}
 
-  /* Chính sách & hướng dẫn sử dụng */
-  .footer .inner-left {
-    display: none;
-  }
-  .footer .inner-wrap .inner-content .inner-mid-1 {
-    width: 30%;
-  }
-  .footer .inner-wrap .inner-content .inner-mid-2 {
-    width: 40%;
-  }
+  /* footer */
+  .footer .inner-wrap .inner-content .inner-left,
+  .footer .inner-wrap .inner-content .inner-mid-1,
+  .footer .inner-wrap .inner-content .inner-mid-2,
   .footer .inner-wrap .inner-content .inner-right {
-    width: 30%;
+    width: 100%;
   }
 
-  }
+  /* copyright */
+  .inner-footer .inner-wrap .inner-content {
+    display: block;
+    text-align: center;
+}
 
-  /* Màn hình lớn */
-  @media (min-width: 1201px) {
-    /* CSS cho màn hình lớn */
-  }
+  .inner-footer .inner-wrap .inner-content .inner-left {
+    width: 100%;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-right span {
+  display: none;
+}
+
+  .inner-footer .inner-wrap .inner-content .inner-right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-left div {
+  margin-bottom: 4px;
+}
+
+.inner-footer .inner-wrap .inner-content .inner-right ul li i {
+  margin: 8px 14px 0;
+}
+
+.footer .inner-wrap .inner-content {
+  margin-left: -20px;
+}
+
+}
+
 
