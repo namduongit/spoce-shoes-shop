@@ -650,8 +650,13 @@ function showCustomer() {
     document.querySelector('.content').innerHTML = `
     <div class="user-modify-form"></div>
 
+    <div class="customer-adding-form"></div>
+
     <div class="customer-title">
         <h1>Danh sách khách hàng</h1>
+        <a href="#" class="add-user-btn" onclick="showAddingCustomerForm()">
+            Thêm khách hàng
+        </a>
     </div>
 
     <div class="customer-content">
@@ -713,6 +718,7 @@ function showCustomer() {
                 <td><a href="#" class="warning" data-username="${userOfPage[i].username}" onclick="showUserModify(this)">Sửa</a></td>
             </tr>
             `;
+            stt++;
         }
 
         document.getElementById('customer-details').innerHTML = s;
@@ -802,7 +808,7 @@ function showUserModify(obj) {
         </div>
     `;
 
-    document.getElementById('account-status').value = user.active.toString();
+    document.getElementById('account-status').value = String(user.active);
     document.getElementById('user-save-btn').addEventListener('click', () => {
         var status = (document.getElementById('account-status').value === "true");
         users[indexOfUser].username = document.getElementById('username').value;
@@ -819,4 +825,170 @@ function showUserModify(obj) {
 
 function closeUserModifyForm() {
     document.querySelector('.user-modify-form').style.display = 'none';
+}
+
+function showAddingCustomerForm() {
+    document.querySelector('.customer-adding-form').style.display = 'block';
+    document.querySelector('.customer-adding-form').innerHTML = `
+        <div class="customer-adding-top">
+            Thông tin khách hàng
+        </div>
+
+        <div class="customer-adding-content">
+            <form>
+                <div class="form-item">
+                    <label for="username">Tài khoản: </label>
+                    <input type="text" id="username" placeholder="Nhập tài khoản">
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="password">Mật khẩu: </label>
+                    <input type="text" id="password" placeholder="Nhập mật khẩu">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="fullname">Họ tên: </label>
+                    <input type="text" id="fullname" placeholder="Nhập họ tên">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" placeholder="Nhập email">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="phone">Số điện thoại: </label>
+                    <input type="text" id="phone" placeholder="Nhập số điện thoại">
+                    
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="account-status">Trạng thái: </label>
+                    <select id="account-status">
+                        <option value="true">Hoạt động</option>
+                        <option value="false">Khóa</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="user-modify-btn-container">
+            <a href="#" id="customer-save-btn">
+                <div class="user-modify-btn">
+                    Thêm
+                </div>
+            </a>
+
+            <a href="#" onclick="closeCustomerAddingForm()">
+                <div class="user-modify-btn">
+                    Thoát
+                </div>
+            </a>
+        </div>
+    `;
+
+    document.getElementById('customer-save-btn').addEventListener('click', () => {
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var fullname = document.getElementById('fullname');
+        var emailAddress = document.getElementById('email');
+        var phoneNumber = document.getElementById('phone');
+        var status = document.getElementById('account-status').value === "true";
+        var currentTime = new Date();
+        currentTime = getCurrentDateTime(currentTime);
+
+        if (username.value === "") {
+            alert("Tài khoản không được để trống.");
+            return;
+        }
+
+        if (password.value === "") {
+            alert("Mật khẩu không được để trống.");
+            return;
+        }
+
+        if (password.value.length < 6) {
+            alert("Mật khẩu không được ít hơn 6 kí tự.");
+            return;
+        }
+
+        if (fullname.value === "") {
+            alert("Họ tên không được để trống.");
+            return;
+        }
+
+        if (emailAddress.value === "") {
+            alert("Email không được để trống.");
+            return;
+        }
+
+        if (phoneNumber.value === "") {
+            alert("Số điện thoại không được để trống.");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.username === username.value;
+        })) {
+            alert("Tài khoản đã tồn tại!");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.email === emailAddress.value;
+        })) {
+            alert("Email đã tồn tại");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.phone === phoneNumber.value;
+        })) {
+            alert("Số điện thoại đã tồn tại!");
+            return;
+        }
+
+        var newCustomer = {
+            username: username.value,
+            password: password.value,
+            fullname: fullname.value,
+            email: emailAddress.value,
+            phone: phoneNumber.value,
+            registrationTime: currentTime,
+            cart: [],
+            products: [],
+            active: status
+        };
+
+        users.push(newCustomer);
+        localStorage.setItem('users', JSON.stringify(users));
+        closeCustomerAddingForm();
+        showCustomer();
+    });
+}
+
+function closeCustomerAddingForm() {
+    document.querySelector('.customer-adding-form').style.display = 'none';
+}
+
+function getCurrentDateTime() {
+    const now = new Date();
+
+    const day = now.getDay() + 1;                                      // Thứ (0 - 6, nên cần + 1)
+    const date = now.getDate().toString().padStart(2, '0');            // Ngày (1-31)
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');    // Tháng (0-11, nên cần +1)
+    const year = now.getFullYear();                                    // Năm
+    const hours = now.getHours().toString().padStart(2, '0');          // Giờ (0-23)
+    const minutes = now.getMinutes().toString().padStart(2, '0');      // Phút (0-59)
+    const seconds = now.getSeconds().toString().padStart(2, '0');      // Giây (0-59)
+
+    return `Thứ ${day} ${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
