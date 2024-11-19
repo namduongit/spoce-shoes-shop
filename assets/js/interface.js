@@ -49,11 +49,12 @@ function writeLogoAndUserTools() {
                     </div>
 
                     <div class="cart">
-                        <div class="parent">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <div id="quantityOfCart">Giỏ hàng: </div>
-                        </div>
-                    </div>
+  <div class="parent">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <div id="quantityOfCart">Giỏ hàng </div>
+  </div>
+</div>
+
 
                     <!-- Thêm div cho popup giỏ hàng -->
                     <div class="cart-popup">

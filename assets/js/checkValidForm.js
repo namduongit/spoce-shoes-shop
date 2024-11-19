@@ -101,6 +101,10 @@ function checkValidLogin() {
     }
     const user = users.find(user => user.username === username && user.password === password);
     if (user) {
+        // Lưu currentUser trước khi gọi updateCartQuantity
+        localStorage.setItem("usercurrent", JSON.stringify(user));
+        
+        updateCartQuantity(); // Gọi sau khi lưu currentUser
         alert("Đăng nhập thành công!");
         document.querySelector("#errol_wrong").style.display = "none";
     } else {
@@ -108,17 +112,13 @@ function checkValidLogin() {
         document.querySelector("#errol_wrong").style.display = "block";
         return false;
     }
-    users.forEach(user => {
-        if (user.username === username) {
 
-            localStorage.setItem("usercurrent", JSON.stringify(user));
-        }
-    });
     hideTools();
     InterfaceLogin();
     return true;
-
 }
+
+
 
 function getCurrentDateTime() {
     const now = new Date();
