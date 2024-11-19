@@ -173,6 +173,17 @@ function InforClient() {
             address=use;
         }
     })
+     if(address===null){
+        address = {
+            id: "",
+            consignee: "",
+            phone: "",
+            city: "",
+            district: "",
+            street: "",
+            default: ""
+        }
+    }
     document.querySelector(".section-two").style.display = "none";
     let s = ``;
     s = `
@@ -203,7 +214,7 @@ function InforClient() {
         <div class="infor-client">
         <p>
         <i class="fa fa-user"></i>  Tên người nhận: <strong>${address.consignee}</strong> <br>
-        <i class="fa fa-map-marked"></i>  Địa chỉ: <span>${address.city}, ${address.district}, ${address.street}</span><br>
+        <i class="fa fa-map-marked"></i>  Địa chỉ: <span>${address.city} ${address.district} ${address.street}</span><br>
         <i class="fa fa-phone"></i>  Số điện thoại: <span>${address.phone}</span> <br>
         </p>
         </div>
