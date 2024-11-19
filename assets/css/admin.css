@@ -635,6 +635,7 @@ i {
 
 .user-modify-form .user-modify-content form .form-item {
     margin: 5px 0;
+    padding: 2px;
 }
 
 .user-modify-btn-container {
@@ -709,7 +710,7 @@ i {
     }
 
     .content {
-        height: fit-content;
+        height: 100vh;
     }
 
     .body .header-bar .sidebar-button {
