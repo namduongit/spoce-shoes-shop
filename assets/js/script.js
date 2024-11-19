@@ -84,16 +84,16 @@ function searchAndDisplay() {
                     <div class="grid__col-3">
                         <h3 class="title_size">Theo size giày</h3>
                         <ul class="sizeList grid__row">
-                            <li class="size grid__col-6"><input type="checkbox"><span>35</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>36</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>37</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>38</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>39</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>40</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>41</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>42</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>43</span></li>
-                            <li class="size grid__col-6"><input type="checkbox"><span>44</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>35</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>37</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>38</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>39</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>40</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>41</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>42</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>43</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
+                          <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
                         </ul>
                     </div>
 
@@ -119,11 +119,11 @@ function searchAndDisplay() {
                                             <li>
                                                 <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
                                                 <ul class="sort-options">
-                                                    <li  onclick="Default()"><a href="#">Mặc định</li>
-                                                    <li onclick="SortA_Z()"><a href="#">A → Z</li>
-                                                             <li onclick="SortZ_A()"><a href="#">Z → A</li>
-                                                             <li onclick="SortIncrease()"><a href="#" >Giá tăng dần</li>
-                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</li>
+                                                    <li  onclick="Default()"><a href="#">Mặc định</a></li>
+                                                    <li onclick="SortA_Z()"><a href="#">A → Z</a></li>
+                                                             <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
+                                                             <li onclick="SortIncrease()"><a href="#" >Giá tăng dần</a></li>
+                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -219,16 +219,16 @@ function displaylist(products) {
                              <div class="grid__col-3">
                                  <h3 class="title_size">Theo size giày</h3>
                                  <ul class="sizeList grid__row">
-                                     <li class="size grid__col-6"><input type="checkbox"><span>35</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>36</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>37</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>38</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>39</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>40</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>41</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>42</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>43</span></li>
-                                     <li class="size grid__col-6"><input type="checkbox"><span>44</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>35</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>37</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>38</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>39</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>40</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>41</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>42</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>43</span></li>
+                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
                                  </ul>
                              </div>
 
@@ -255,12 +255,11 @@ function displaylist(products) {
                                                      <li>
                                                          <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
                                                          <ul class="sort-options">
-                                                             <li  onclick="Default()"><a href="#">Mặc định</li>
-                                                             <li onclick="SortA_Z()"><a href="#">A → Z</li>
-                                                             <li onclick="SortZ_A()"><a href="#">Z → A</li>
-                                                             <li onclick="SortIncrease()"><a href="#" >Giá tăng dần</li>
-                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</li>
-
+                                                             <li onclick="Default()"><a href="#">Mặc định</a></li>
+                                                             <li onclick="SortA_Z()"><a href="#">A → Z</a></li>
+                                                             <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
+                                                             <li onclick="SortIncrease()"><a href="#" >Giá tăng dần</a></li>
+                                                             <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
                                                          </ul>
                                                      </li>
                                                  </ul>

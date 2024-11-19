@@ -315,3 +315,35 @@ html {
 
 /* End: pagination */
 
+/* Hien thi thong bao danh sach san pham trong */
+.noti-product {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border: 1px solid #faebcc;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 15px;
+
+}
+
+.noti-product__text {
+    font-size: 14px;
+}
+
+.noti-product i {
+    font-size: 14px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    margin-left: auto;
+    opacity: 0.5;
+}
+
+.noti-product i:hover {
+    opacity: 1;
+    cursor: pointer;
+}

@@ -72,7 +72,7 @@ function writeMenuSelection() {
                     <li id="all_products" class="ChiTietSanPham" onclick="showCategory('ALL')">
                         <a href="#">All</a>
                     </li>
-                    <li id="all_products_sale" class="ChiTietSanPham" onclick="showCategory('Sale')">
+                    <li id="all_products_sale" class="ChiTietSanPham" onclick="showCategory('SALE')">
                         <a href="#">Sale 40% - 80%</a>
                     </li>
                     <li id="all_nike_products" class="ChiTietSanPham" onclick="showCategory('NIKE')">
