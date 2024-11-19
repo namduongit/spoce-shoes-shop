@@ -64,7 +64,8 @@ function checkValidRegister() {
         phone: phone,
         registrationTime: currentTime,
         cart: [],
-        products: []
+        products: [],
+        active: true
     };
 
     // Thêm tài khoản mới vào mảng
