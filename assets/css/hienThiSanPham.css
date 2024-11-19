@@ -1,82 +1,81 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .grid {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .grid__row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
 }
 
 .grid__col-3 {
-    width: 25%;
-    padding: 0 15px;
+  width: 25%;
+  padding: 0 15px;
 }
 
 .grid__col-5 {
-    width: 41.66667%;
-    padding: 0 15px;
+  width: 41.66667%;
+  padding: 0 15px;
 }
 
 .grid__col-6 {
-    width: 50%;
-    padding: 0 15px;
+  width: 50%;
+  padding: 0 15px;
 }
 
 .grid__col-7 {
-    width: 58.33333%;
-    padding: 0 15px;
+  width: 58.33333%;
+  padding: 0 15px;
 }
 
 .grid__col-9 {
-    width: 75%;
-    padding: 0 15px;
+  width: 75%;
+  padding: 0 15px;
 }
 
 .grid_col-4 {
-    width: 33.33333%;
-    padding: 0 15px;
+  width: 33.33333%;
+  padding: 0 15px;
 }
 
 .wrapper {
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
 /* Begin: Kích thước giày  */
 
 .title_size {
-    font-size: 18px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #000;
-    display: inline-block;
-    padding-bottom: 6px;
-    margin: 36px 0 20px;
-
+  font-size: 18px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #000;
+  display: inline-block;
+  padding-bottom: 6px;
+  margin: 36px 0 20px;
 }
 
 .sizeList {
-    /* justify-content: space-around; */
-    list-style: none;
+  /* justify-content: space-around; */
+  list-style: none;
 }
 
 .size {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    color: #6F6F6F;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #6f6f6f;
 }
 
 .size span {
-    font-size: 16px;
-    margin-left: 8px;
+  font-size: 16px;
+  margin-left: 8px;
 }
 
 /* End: Kích thước giày  */
@@ -84,101 +83,99 @@
 /* Begin: PagiBar */
 
 .PagiBar {
-    border-bottom: 2px solid #ebebeb;
-    margin-bottom: 12px;
+  border-bottom: 2px solid #ebebeb;
+  margin-bottom: 12px;
 }
 
 .sortPagiBar {
-    padding-bottom: 16px;
-    display: flex;
-    align-items: center;
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .view-mode {
-    display: flex;
-    font-size: 14px;
-    line-height: 30px;
+  display: flex;
+  font-size: 14px;
+  line-height: 30px;
 }
 
 .view-mode__icon i {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    text-align: center;
-    line-height: 30px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 30px;
 }
 
 .total-product {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .sort {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  justify-content: flex-end;
 }
 
 .sort-by {
-    padding-right: 6px;
+  padding-right: 6px;
 }
 
 .list-sort {
-    list-style: none;
+  list-style: none;
 
-
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .list-sort i {
-    padding-left: 52px;
-    font-size: 16px;
+  padding-left: 52px;
+  font-size: 16px;
 }
 
 .list-sort li:hover .sort-options {
-    display: block;
-    cursor: pointer;
+  display: block;
+  cursor: pointer;
 }
 
 .list-sort > li {
-    color: #000;
-    padding: 0 20px;
-    min-width: 150px;
-    line-height: 30px;
-    position: relative;
-    border: 1px solid #ebebeb;
+  color: #000;
+  padding: 0 20px;
+  min-width: 150px;
+  line-height: 30px;
+  position: relative;
+  border: 1px solid #ebebeb;
 }
 
 .sort-options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    list-style: none;
-    display: none;
-    z-index: 1000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  display: none;
+  z-index: 1000;
 
-    width: 100%;
+  width: 100%;
 }
 
 .sort-options li {
-    min-width: 150px;
-    border: 1px solid #ebebeb;
-    line-height: 36px;
-    padding: 0 20px;
-    width: 100%;
-    background-color: #fff;
-
+  min-width: 150px;
+  border: 1px solid #ebebeb;
+  line-height: 36px;
+  padding: 0 20px;
+  width: 100%;
+  background-color: #fff;
 }
-.sort-options li:hover{
-    background-color: #0693e3;
+.sort-options li:hover {
+  background-color: #0693e3;
 }
-.sort-options li a{
-    color: black;
+.sort-options li a {
+  color: black;
 }
 .list-sort .sort-options li:hover {
-    color: #007fb8;
-    cursor: pointer;
+  color: #007fb8;
+  cursor: pointer;
 }
 
 /* End: PagiBar */
@@ -186,83 +183,82 @@
 /* Begin: Product  */
 
 .product__item {
-    position: relative;
-    margin-bottom: 16px;
-    /* box-shadow: 0 0 2px #999;
+  position: relative;
+  margin-bottom: 16px;
+  /* box-shadow: 0 0 2px #999;
     border-radius: 2px; */
 }
 
 .product__link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .product__link-img {
-    width: 100%;
-    /* padding: 18px 18px 0; */
-    margin: 0 5px 10px;
-    height: 158px;
-    object-fit: contain;
-    -webkit-transition: transform 0.4s ease;
-    -moz-transition: transform 0.4s ease;
-    -o-transition: transform 0.4s ease;
-    transition: transform 0.4s ease;
+  width: 100%;
+  /* padding: 18px 18px 0; */
+  margin: 0 5px 10px;
+  height: 158px;
+  object-fit: contain;
+  -webkit-transition: transform 0.4s ease;
+  -moz-transition: transform 0.4s ease;
+  -o-transition: transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 .product__link-img:hover {
-    -webkit-transform: scale(1.06);
-    -moz-transform: scale(1.06);
-    -o-transform: scale(1.06);
-    transform: scale(1.06);
-
+  -webkit-transform: scale(1.06);
+  -moz-transform: scale(1.06);
+  -o-transform: scale(1.06);
+  transform: scale(1.06);
 }
 
 .product__link-name {
-    font-size: 15px;
-    line-height: 1.4;
-    color: #000;
-    font-weight: 700;
-    text-align: center;
-    display: block;
-    /* padding-right: 38px; */
-    margin: 0 12px 12px;
-    /* can chinh toi da 2 dong cho ten */
-    height: 40px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; /*gioi han van ban toi da 2 dong*/
-    line-clamp: 2; /*gioi han van ban toi da 2 dong*/
-    overflow: hidden;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  /* padding-right: 38px; */
+  margin: 0 12px 12px;
+  /* can chinh toi da 2 dong cho ten */
+  height: 40px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*gioi han van ban toi da 2 dong*/
+  line-clamp: 2; /*gioi han van ban toi da 2 dong*/
+  overflow: hidden;
 }
 
 .product__link-sale {
-    position: absolute;
-    top: 5%;
-    right: 8%;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    background-color: #f00;
-    padding: 8px 12px;
-    border-radius: 4px;
+  position: absolute;
+  top: 5%;
+  right: 8%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #f00;
+  padding: 8px 12px;
+  border-radius: 4px;
 }
 
 .product__price {
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 12px;
 }
 
 .product__price-current {
-    font-size: 17px;
-    color: #f00;
+  font-size: 17px;
+  color: #f00;
 }
 
 .product__price-old {
-    font-size: 12px;
-    padding-left: 16px;
-    text-decoration: line-through;
-    color: rgb(0, 0, 0, 0.5);
+  font-size: 12px;
+  padding-left: 16px;
+  text-decoration: line-through;
+  color: rgb(0, 0, 0, 0.5);
 }
 
 /* End: Product  */
@@ -270,78 +266,76 @@
 /* Begin: pagination */
 
 .pagination {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .page-item {
-    border-top: 1px solid #e1e1e1;
-    padding-top: 30px;
-    margin: 20px 0 20px;
+  border-top: 1px solid #e1e1e1;
+  padding-top: 30px;
+  margin: 20px 0 20px;
 }
 
 .pagination .page-item:hover .page-link,
-.page-item .page-link.active{
-    color: #fff;
-    background-color: #252525;
-    border: 1px solid #e1e1e1;
-    border-radius: 2px;
+.page-item .page-link.active {
+  color: #fff;
+  background-color: #252525;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
 }
 
 .page-link {
-    display: block;
-    font-size: 14px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    color: #252525;
-    background-color: #fff;
-    border: 1px solid #e1e1e1;
-    border-radius: 2px;
-    text-decoration: none;
-    margin: 2.5px;
+  display: block;
+  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #252525;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
+  text-decoration: none;
+  margin: 2.5px;
 }
 
 .page-link i {
-    font-size: 10px;
+  font-size: 10px;
 }
-
 
 /* End: pagination */
 
 /* Hien thi thong bao danh sach san pham trong */
 .noti-product {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border: 1px solid #faebcc;
-    border-radius: 4px;
-    padding: 15px;
-    margin: 20px 15px;
-
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border: 1px solid #faebcc;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px 15px;
 }
 
 .noti-product__text {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .noti-product i {
-    font-size: 14px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    margin-left: auto;
-    opacity: 0.5;
+  font-size: 14px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  margin-left: auto;
+  opacity: 0.5;
 }
 
 .noti-product i:hover {
-    opacity: 1;
-    cursor: pointer;
+  opacity: 1;
+  cursor: pointer;
 }
