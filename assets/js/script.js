@@ -65,17 +65,18 @@ function searchAndDisplay() {
 
     let s = "";
     currentProducts.forEach((product) => {
-      s += `<div class="grid_col-4 product__item onclick="DetailProducts('${product.id}')"">
-                        <a href="javascipt:void(0)" class="product__link">
-                            <img src="${product.image}" alt="" class="product__link-img">
-                            <span class="product__link-name">${product.name_product}</span>
-                            <div class="product__link-sale">${product.discount}%</div>
-                        </a>
-                        <div class="product__price">
-                            <div class="product__price-current">${product.sell}đ</div>
-                            <div class="product__price-old">${product.price}đ</div>
-                        </div>
-                    </div>`;
+      s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+            <a href="javascript:void(0)" class="product__link">
+                <img src="${product.image}" alt="" class="product__link-img">
+                <span class="product__link-name">${product.name_product}</span>
+                <div class="product__link-sale">${product.discount}%</div>
+            </a>
+            <div class="product__price">
+                <div class="product__price-current">${product.sell}đ</div>
+                <div class="product__price-old">${product.price}đ</div>
+            </div>
+        </div>`;
+
     });
 
     let pageContent = `
@@ -201,16 +202,20 @@ function displaylist(products,brand) {
   let numPages = Math.ceil(products.length / productsPerPage);
   let currentPage = 1;
 
+
   let footPage = "";
-  for (let i = 1; i <= numPages; i++) {
-    footPage += `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`;
-  }
+for (let i = 1; i <= numPages; i++) {
+  footPage += `<li class="page-item" data-page="${i}">
+                 <a href="javascript:void(0);" class="page-link">${i}</a>
+               </li>`;
+}
+
 
   function loadPage(page) {
     currentPage = page;
-    let start = productsPerPage * (page - 1);
-    let end = productsPerPage * page;
-    let currentProducts = products.slice(start, end);
+  let start = productsPerPage * (page - 1);
+  let end = productsPerPage * page;
+  let currentProducts = products.slice(start, end);
 
     let s = "";
     currentProducts.forEach((product) => {
@@ -296,11 +301,13 @@ function displaylist(products,brand) {
 
     document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
     document
-      .querySelectorAll(".page-link")
-      .forEach((page) => page.classList.remove("active"));
-    document
-      .querySelector(`.page-item[data-page="${currentPage}"] .page-link`)
-      .classList.add("active");
+    .querySelectorAll(".page-link")
+    .forEach((page) => page.classList.remove("active"));
+
+  const activeLink = document.querySelector(`.page-item[data-page="${currentPage}"] .page-link`);
+  if (activeLink) {
+    activeLink.classList.add("active");
+  }
 
     const pageLinks = document.querySelectorAll(".page-item");
     pageLinks.forEach((pageLink) => {

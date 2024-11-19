@@ -1,5 +1,5 @@
 function writeLogoAndUserTools() {
-    document.write(`
+  document.write(`
     <header>
         <div class="inner-wrap">
             <div class="inner-content">
@@ -51,9 +51,44 @@ function writeLogoAndUserTools() {
                     <div class="cart">
                         <div class="parent">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <div>Giỏ hàng</div>
+                            <div id="quantityOfCart">Giỏ hàng: </div>
                         </div>
                     </div>
+
+                    <!-- Thêm div cho popup giỏ hàng -->
+                    <div class="cart-popup">
+                        <div class="cart-popup-content">
+                             <div class="cart-header">
+                                    <h2>Giỏ hàng của bạn</h2>
+                                    <span class="close-cart">&times;</span>
+                             </div>
+                                    <div class="cart-items">
+                                        <table id="cart-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Tên</th>
+                                                    <th>Size</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Đơn giá</th>
+                                                    <th>Thành tiền</th>
+                                                    <th>Xóa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cart-items-body">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="cart-total">
+                                        <h3>Tổng tiền: <span id="total-amount">0đ</span></h3>
+                                        <button class="checkout-btn">Thanh toán</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+
+                   
 
                 </div>
             </div>
@@ -63,7 +98,7 @@ function writeLogoAndUserTools() {
 }
 
 function writeMenuSelection() {
-    document.write(`
+  document.write(`
 <nav>
     <div class="section-one">
         <div class="inner-wrap">
@@ -140,7 +175,7 @@ function writeMenuSelection() {
 }
 
 function writeSlideShow() {
-    document.write(`
+  document.write(`
     <div class="section-two">
         <div class="inner-slide-show">
             <img src="assets/image/slide-show/slider_1.png" alt="image1">
@@ -153,7 +188,7 @@ function writeSlideShow() {
 }
 
 function writeStorePolicies() {
-    document.write(`
+  document.write(`
     <footer class="footer">
         <div class="inner-wrap">
             <div class="inner-content">
@@ -225,7 +260,7 @@ function writeStorePolicies() {
 }
 
 function writeContactUs() {
-    document.write(`
+  document.write(`
     <div class="inner-footer">
         <div class="inner-wrap">
             <div class="inner-content">
@@ -262,38 +297,37 @@ function writeContactUs() {
 }
 
 function parseCurrencyToNumber(currencyString) {
-    // Loại bỏ các ký tự không phải số và dấu thập phân
-    const cleanString = currencyString.replace(/[^\d]/g, "");
-    // Chuyển đổi chuỗi đã làm sạch thành số
-    return parseInt(cleanString, 10);
+  // Loại bỏ các ký tự không phải số và dấu thập phân
+  const cleanString = currencyString.replace(/[^\d]/g, "");
+  // Chuyển đổi chuỗi đã làm sạch thành số
+  return parseInt(cleanString, 10);
 }
 function averagePriceProduct() {
-    let sum = 0;
-    const products = JSON.parse(localStorage.getItem("products"));
-    for (let product of products) {
-        sum += parseCurrencyToNumber(product.sell)
-    }
-    return sum / products.length;
+  let sum = 0;
+  const products = JSON.parse(localStorage.getItem("products"));
+  for (let product of products) {
+    sum += parseCurrencyToNumber(product.sell);
+  }
+  return sum / products.length;
 }
 function OutStandingProduct() {
+  let outProductHTML = "";
+  averageProduct = averagePriceProduct();
 
-    let outProductHTML = ""
-    averageProduct = averagePriceProduct();
-
-    const products = JSON.parse(localStorage.getItem("products"));
-    const number_productsPage = 8;
-    var outstandingproducts_list = [];
-    for (let product of products) {
-        if (parseCurrencyToNumber(product.sell) >= averageProduct) {
-            outstandingproducts_list.push(product);
-            if (outstandingproducts_list.length === number_productsPage) {
-                break;
-            }
-        }
+  const products = JSON.parse(localStorage.getItem("products"));
+  const number_productsPage = 8;
+  var outstandingproducts_list = [];
+  for (let product of products) {
+    if (parseCurrencyToNumber(product.sell) >= averageProduct) {
+      outstandingproducts_list.push(product);
+      if (outstandingproducts_list.length === number_productsPage) {
+        break;
+      }
     }
-    outProductHTML = "";
-    outstandingproducts_list.forEach((product) => {
-        outProductHTML  += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+  }
+  outProductHTML = "";
+  outstandingproducts_list.forEach((product) => {
+    outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                         <a href="javascript:void(0)" class="product__link">
                             <img src="${product.image}" alt="" class="product__link-img">
                             <span class="product__link-name">${product.name_product}</span>
@@ -304,23 +338,22 @@ function OutStandingProduct() {
                             <div class="product__price-old">${product.price}</div>
                         </div>
                     </div>`;
-    });
-    document.querySelector(".outstandingproducts").innerHTML = outProductHTML;
+  });
+  document.querySelector(".outstandingproducts").innerHTML = outProductHTML;
 
-
-    var sellproducut = []
-    for (let product of products) {
-        if (product.discount >= 35 && product.discount <= 80) {
-            sellproducut.push(product);
-            if (sellproducut.length === number_productsPage) {
-                break;
-            }
-        }
+  var sellproducut = [];
+  for (let product of products) {
+    if (product.discount >= 35 && product.discount <= 80) {
+      sellproducut.push(product);
+      if (sellproducut.length === number_productsPage) {
+        break;
+      }
     }
+  }
 
-    outProductHTML = "";
-    sellproducut.forEach((product) => {
-        outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+  outProductHTML = "";
+  sellproducut.forEach((product) => {
+    outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                           <a href="javascript:void(0)" class="product__link">
                               <img src="${product.image}" alt="" class="product__link-img">
                               <span class="product__link-name">${product.name_product}</span>
@@ -331,23 +364,23 @@ function OutStandingProduct() {
                               <div class="product__price-old">${product.price}</div>
                           </div>
                       </div>`;
-    });
-    document.querySelector(".sell-products").innerHTML = outProductHTML;
+  });
+  document.querySelector(".sell-products").innerHTML = outProductHTML;
 
-    let product_fashion = [];
+  let product_fashion = [];
 
-    for (let product of products) {
-        if (product.brand.toUpperCase() === "CLOTHES") {
-            product_fashion.push(product);
-            if (product_fashion.length === number_productsPage) {
-                break;
-            }
-        }
+  for (let product of products) {
+    if (product.brand.toUpperCase() === "CLOTHES") {
+      product_fashion.push(product);
+      if (product_fashion.length === number_productsPage) {
+        break;
+      }
     }
+  }
 
-    outProductHTML = "";
-    product_fashion.forEach((product) => {
-        outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
+  outProductHTML = "";
+  product_fashion.forEach((product) => {
+    outProductHTML += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
                             <a href="javascript:void(0)" class="product__link">
                                 <img src="${product.image}" alt="" class="product__link-img">
                                 <span class="product__link-name">${product.name_product}</span>
@@ -358,6 +391,6 @@ function OutStandingProduct() {
                                 <div class="product__price-old">${product.price}</div>
                             </div>
                         </div>`;
-    });
-    document.querySelector(".clothes-products").innerHTML = outProductHTML;
+  });
+  document.querySelector(".clothes-products").innerHTML = outProductHTML;
 }
