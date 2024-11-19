@@ -173,7 +173,7 @@ function SortA_Z() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-  } else if (brand === "Sale") {
+  } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
       (item) => item.discount >= 40 && item.discount <= 80
@@ -326,7 +326,7 @@ function SortZ_A() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-  } else if (brand === "Sale") {
+  } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
       (item) => item.discount >= 40 && item.discount <= 80
@@ -355,7 +355,7 @@ function SortIncrease() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-  } else if (brand === "Sale") {
+  } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
       (item) => item.discount >= 40 && item.discount <= 80
@@ -386,7 +386,7 @@ function SortReduce() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-  } else if (brand === "Sale") {
+  } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
       (item) => item.discount >= 40 && item.discount <= 80
@@ -417,7 +417,7 @@ function Default(){
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-  } else if (brand === "Sale") {
+  } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
       (item) => item.discount >= 40 && item.discount <= 80
