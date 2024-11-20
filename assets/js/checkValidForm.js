@@ -85,15 +85,15 @@ function checkValidRegister() {
     // return true;
     localStorage.setItem("usercurrent", JSON.stringify(newUser));
 
-    
+
     if (guestCart.length > 0) {
         const userCartKey = `cart_${username}`;
         localStorage.setItem(userCartKey, JSON.stringify(guestCart));
-        
+
         localStorage.removeItem("guestCart");
     }
 
-    
+
     updateCartQuantity();
 
     alert("Đăng ký thành công!");
@@ -124,7 +124,7 @@ function checkValidLogin() {
         localStorage.setItem("usercurrent", JSON.stringify(user));
 
         updateCartQuantity(); // Gọi sau khi lưu currentUser
-        
+
         alert("Đăng nhập thành công!");
         document.querySelector("#errol_wrong").style.display = "none";
     } else {
@@ -209,25 +209,27 @@ function InforClient() {
     s = `
     <div class="row">
        <div class="col-account">
-       <div class="page-title">
-       <h2>Xin chào, ${user.fullname}</h2>
+            <div class="page-title">
+            <h2>Xin chào, ${user.fullname}</h2>
        </div>
-       <div class="table-order">
-       <table class="table">
-       <tr class="tHead">
-       <th>Đơn hàng</th>
-       <th>Ngày</th>
-       <th>Địa chỉ</th>
-       <th>Giá trị đơn hàng</th>
-       <th>Tình trạng thanh toán</th>
-       <th>Trạng thái</th>
-       </tr>
-       <tr class="tbody">
-       <td colspan="6">Không có đơn hàng.</td>
-       </tr>
-       </table>
+            <div class="table-order">
+                <table class="table">
+                    <tr class="tHead">
+                        <th>Đơn hàng</th>
+                        <th>Ngày</th>
+                        <th>Địa chỉ</th>
+                        <th>Giá trị đơn hàng</th>
+                        <th>Tình trạng thanh toán</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                    <tr class="tbody">
+                        ${showBillPay()}
+
+                    </tr>
+                </table>
+            </div>
        </div>
-       </div>
+
         <div class="col-infor">
         <div class="account">
         <h3>THÔNG TIN NGƯỜI NHẬN HÀNG</h3>
@@ -249,6 +251,46 @@ function InforClient() {
     document.querySelector(".body-content").innerHTML = s;
 
 }
+
+function showBillPay() {
+    const currentUser = JSON.parse(localStorage.getItem("usercurrent"));
+    const AllBill = JSON.parse(localStorage.getItem("Allbill"));
+
+    const userCurrentBill = AllBill.filter(oneBill => oneBill.username === currentUser.username);
+
+    if (userCurrentBill.length == 0) {
+        return `<td colspan="6">Không có đơn hàng.</td>`;
+    } else {
+        let html = "";
+        userCurrentBill.forEach(bill => {
+            // Xử lí dữ liệu
+            let billCode =  bill.code;
+            let billDay = bill.paymentdate;
+            let address = bill.district;
+            let allProduct = bill.products_buy;
+            let billMoney = 0;
+
+            // Sửa lỗi ở đây: sử dụng forEach đúng cách
+            allProduct.forEach(product => {
+                billMoney += parseInt(product.price.replace("₫", "").replace(/\./g, "").trim());
+            });
+
+            let status = bill.status;
+            html += `
+                <tr>
+                    <td>${billCode}</td>
+                    <td>${billDay}</td>
+                    <td>${address}</td>
+                    <td>${billMoney}</td>
+                    <td>Chưa thanh toán</td>
+                    <td>${status}</td>
+                </tr>
+            `;
+        });
+        return html;
+    }
+}
+
 function ChangePassword() {
     let s = "";
     s = `
@@ -302,6 +344,13 @@ function ChangePassword() {
     `
     document.querySelector(".detail-background").innerHTML = s;
     document.querySelector(".detail-background").classList.add("active");
+
+    // Để load đươc hết thông tin
+    document.addEventListener("DOMContentLoaded", function() {
+
+    })
+
+
 }
 function NewPassword() {
     let oldpass = document.getElementById("oldpassword").value;

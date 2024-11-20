@@ -1092,7 +1092,7 @@ a {
     top: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(83, 249, 33, 0.8);
+    background-color: green;
     font-size: 20px;
     padding: 5px 20px;
     border-radius: 5px;
@@ -1106,26 +1106,26 @@ a {
     gap: 15px;
     margin-top: 15px;
   }
-  
+
   .price-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  
+
   .price-group label {
     font-size: 14px;
     color: #333;
     font-weight: bold;
   }
-  
+
   .input-wrapper {
     display: flex;
     width: 220px;
     align-items: center;
     gap: 5px;
   }
-  
+
   .input-wrapper input {
     width: 100%;
     padding: 6px 10px;
@@ -1134,12 +1134,12 @@ a {
     border-radius: 4px;
     transition: border-color 0.3s ease;
   }
-  
+
   .input-wrapper input:focus {
     border-color: #007bff;
     outline: none;
   }
-  
+
   .currency-symbol {
     font-size: 14px;
     color: #666;

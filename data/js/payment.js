@@ -99,7 +99,7 @@ function Payment(product_list) {
                         <div class="payment__content">
                             <div class="payment-card">
                                 <input type="radio" class="input-radio" value="pay-by-card"  name="group1" id="payment-method">
-                                <label for="payment-method">Thanh toán online qua thẻ quốc tế (Visa, Master, JCB, UnionPay)	
+                                <label for="payment-method">Thanh toán online qua thẻ quốc tế (Visa, Master, JCB, UnionPay)
                                 </label>
                                 <div class="pay-card"></div>
                             </div>
@@ -113,7 +113,7 @@ function Payment(product_list) {
                                 <label for="payment-method2">Chuyển khoản ngân hàng</label>
                                 <div class="pay-bank"></div>
                             </div>
-                           
+
                         </div>
 
                     </div>
@@ -374,7 +374,7 @@ function InforInvoice(order){
                     </td>
                     </tr>
         `
-    
+
         })
         totalprice = totalprice.toLocaleString('vi-VN') + "đ";
     let pay=`
@@ -432,6 +432,16 @@ function InforInvoice(order){
         localStorage.setItem("Allbill", JSON.stringify(allbill));
         alert("Đặt hàng thành công!");
         location.reload;
+        boxThongBao.innerHTML = "Đặt hàng thành công ! Giỏ hàng của bạn đã được làm mới";
+        const usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+        localStorage.removeItem("cart_" + usercurrent.username);
+        document.getElementsByClassName("detail-background")[0].style.display = "none";
+        boxThongBao.style.display = "block";
+        setTimeout(function() {
+            boxThongBao.innerHTML = "";
+            boxThongBao.style.display = "none";
+        }, 3000);
+        location.reload()
     }
-  
+
 }

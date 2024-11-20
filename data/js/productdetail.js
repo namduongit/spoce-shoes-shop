@@ -212,7 +212,7 @@ function Detail_product(product) {
         </div>
 
         <div class="cart-pay">
-        
+
             <button class="btn-pay" onclick="document.querySelector('.detail-product').handleAddToCart()">Thêm vào giỏ hàng</button>
             <button class="btn-pay" onclick="showCart()">Thanh toán</button>
             </div>
@@ -446,7 +446,18 @@ function deleteItem(index) {
   updateCartQuantity();
 }
 
+const boxThongBao = document.getElementById("notice-web-user");
+
 document.querySelector(".checkout-btn").addEventListener("click", () => {
+  boxThongBao.innerHTML = "Chuyển đến trang toán";
+  boxThongBao.style.display = "block";
+
+  setTimeout(function() {
+    boxThongBao.innerHTML = "";
+    boxThongBao.style.display = "none";
+  }, 3000);
+
+  document.getElementsByClassName("cart-popup")[0].style.display = "none";
   const currentUser = JSON.parse(localStorage.getItem("usercurrent"));
 
   if (!currentUser) {
