@@ -68,4 +68,14 @@ var Validation = function () {
         document.querySelector(selector).style.display = "block";
         return false;
     }
+    this.kiemtraDateCard=function(value,selector){
+        let expiryDatePattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+        if(expiryDatePattern.test(value)){
+            document.querySelector(selector).style.display = "none";
+            return true;
+        }
+        document.querySelector(selector).innerHTML = "Ngày hết hạn không hợp lệ";
+        document.querySelector(selector).style.display = "block";
+        return false;
+    }
 }
