@@ -381,11 +381,11 @@ function updateCartTable(cart) {
             <td><img src="${item.image}" alt="${
       item.name_product
     }" style="width: 50px;"></td>
-            <td>${item.name_product}</td>
-            <td>${item.size}</td>
-            <td>
+            <td class="td_id" data-id=${item.id}>${item.name_product}</td>
+            <td class="td_size">${item.size}</td>
+            <td class="td_quantity">
                 <button onclick="updateQuantity(${index}, -1)">-</button>
-                ${item.quantity}
+               <span class="pquantity"> ${item.quantity}</span>
                 <button onclick="updateQuantity(${index}, 1)">+</button>
             </td>
             <td>${item.sell}</td>
@@ -463,5 +463,20 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
   }
 
   // Thực hiện xử lý thanh toán
-  alert("Chuyển đến trang thanh toán");
+   let products=JSON.parse(localStorage.getItem("products"));
+  let product_buy
+  let product_list=[];
+  var len=document.querySelectorAll(".td_id").length;
+  for(let i=0;i<len;i++){
+    products.forEach(product=>{
+      if(product.id== document.querySelectorAll(".td_id")[i].dataset.id) {
+        product_buy=product;
+      }
+    })
+    product_buy.size=document.querySelectorAll(".td_size")[i].innerHTML;
+    product_buy.quantity=document.querySelectorAll(".pquantity")[i].innerHTML;
+    product_list.push(product_buy);
+  }
+  // Thêm trang thanh toán ở đây
+  Payment(product_list);
 });
