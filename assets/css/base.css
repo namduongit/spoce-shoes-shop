@@ -72,6 +72,7 @@ body {
     border-radius: 5px;
 }
 /* INFOR_CLIENT */
+/* INFOR_CLIENT */
 .body-content>.row{
     width: 90%;
     margin: 50px auto 200px;
@@ -91,7 +92,7 @@ body {
     background-color: #33333346;
     padding: 10px;
 }
-.row .col-account .table-order .table .tHead th{
+.row .col-account .table-order .table .tHead th{ 
     padding: 10px 10px;
     font-size: 17px;
 }
@@ -107,7 +108,7 @@ body {
 .row .col-infor .account{
     border: solid 1px rgba(0, 0, 0, 0.304);
     padding: 20px;
-
+   
 }
 .row .col-infor .account h3{
     margin-bottom: 30px ;
@@ -139,7 +140,7 @@ body {
 .row .col-infor .change-pass a:hover{
     color: red;
     border-bottom: solid 1px red;
-}
+} 
 .card-changepass{
     position: relative;
     top: 50%;
@@ -209,7 +210,7 @@ body {
     margin: 10px 0 0;
     border: none;
     font-size: 17px;
-
+    
 }
 .input-box input:focus{
     outline: none;
@@ -218,7 +219,7 @@ body {
     color: white;
     background-color: black;
     width: 100px;
-    height: 100px;
+    height: 100px; 
     text-align: center;
     line-height: 140px;
     margin: 10px auto;
@@ -264,7 +265,7 @@ body {
 }
 .address {
     width: 70%;
-    /* margin: 20px auto; */
+    margin: 20px auto;
 }
 .address .page-back a{
     color: black;
@@ -306,7 +307,7 @@ body {
     padding-bottom: 20px;
     border-bottom: 1px solid #bebebe;
     position: relative;
-
+    
 }
 .row .export-address .form-address p{
     line-height: 30px;
@@ -648,274 +649,5 @@ width: 100%;
     border-bottom-left-radius:30px ;
     background-color: black;
     color: white;
-}
-/* INFOR_CLIENT */
-.body-content>.row{
-    width: 90%;
-    margin: 50px auto 200px;
-    display: flex;
-}
-.row .col-account{
-    width: 70%;
-}
-.row .col-account .table-order .table{
-    margin-top: 20px;
-    width: 100%;
-    border: solid 1px rgba(0, 0, 0, 0.304);
-    text-align: center;
-    border-spacing: 0;
-}
-.row .col-account .table-order .table .tHead{
-    background-color: #33333346;
-    padding: 10px;
-}
-.row .col-account .table-order .table .tHead th{ 
-    padding: 10px 10px;
-    font-size: 17px;
-}
-.row .col-account .table-order .table tr td{
-    padding: 10px 0;
-    color: #33333382;
-    font-style: italic;
-}
-.row .col-infor{
-    padding:  20px 0;
-    margin-left: 20px;
-}
-.row .col-infor .account{
-    border: solid 1px rgba(0, 0, 0, 0.304);
-    padding: 20px;
-   
-}
-.row .col-infor .account h3{
-    margin-bottom: 30px ;
-}
-.row .col-infor .account .infor-client{
-    line-height: 30px;
-}
-.row .col-infor .account .infor-client i{
-    margin-right: 5px;
-}
-.btn-update{
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    margin-bottom: 5px;
-}
-.btn-update:hover{
-    background-color: white;
-    color: black;
-    border: solid 1px black;
-    cursor: pointer;
-}
-.row .col-infor .change-pass a{
-    color: black;
-}
-.row .col-infor .change-pass a:hover{
-    color: red;
-    border-bottom: solid 1px red;
-} 
-.card-changepass{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border: solid 2px black;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    background-color: white;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    height: 400px;
-    transition: height .5s;
-}
-.open{
-    height: 550px;
-}
-.card-changepass .form-box{
-    width: 100%;
-}
-
-.card-changepass .newpass{
-    transform: translateX(400px);
-    position: absolute;
-    transition: all .5s;
-}
-.card-changepass .form-box i{
-    text-align: center;
-    width: 100%;
-    font-size: 70px;
-    margin-top: 10px;
-}
-.card-changepass h2{
-    font-size: 30px;
-    text-align: center;
-    margin: 30px 0;
-    text-transform: uppercase;
-}
-.card-changepass .form-group{
-    width: 70%;
-    margin: 0 auto;
-}
-.card-changepass .input-box{
-  border-bottom:solid 2px #162938;
-  position: relative;
-  margin-bottom: 15px;
-}
-.card-changepass .input-box label{
-    position: absolute;
-    pointer-events: none;
-    top: 40%;
-    left:5px;
-    font-size: 17px;
-    color: #162938;
-    transition: all .5s;
-    font-weight: 500;
-}
-.card-changepass .input-box input:focus~label,.card-changepass .input-box input:valid~label{
-    top: -10%;
-}
-.card-changepass input{
-    width: 100%;
-    height: 100%;
-    padding: 15px 10px;
-    margin: 10px 0 0;
-    border: none;
-    font-size: 17px;
-    
-}
-.input-box input:focus{
-    outline: none;
-}
-.card-changepass .next-icon{
-    color: white;
-    background-color: black;
-    width: 100px;
-    height: 100px; 
-    text-align: center;
-    line-height: 140px;
-    margin: 10px auto;
-    border-radius: 50%;
-}
-.card-changepass .next-icon:hover{
-    background-color: white;
-    color: #000;
-    border: solid 2px black;
-}
-.card-changepass span{
-    margin-top: 10px;
-}
-.card-changepass .iclose{
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    border: solid 2px black;
-    border-top: none;
-    border-right: none;
-    padding: 0 20px;
-    border-bottom-left-radius: 30px;
-    background-color: black;
-    color: white;
-}
-.card-changepass .success{
-    position: absolute;
-    transform: translateX(500px);
-    transition: all .5s;
-    text-align: center;
-    margin: 30% 0;
-    line-height: 50px;
-    font-size: 40px;
-}
-.card-changepass .success i{
-    margin-bottom: 20px;
-}
-.address .row{
-    width: 90%;
-    margin: 30px 0 50px;
-    display: flex;
-}
-.address {
-    width: 70%;
-    margin: 20px auto;
-}
-.address .page-back a{
-    color: black;
-}
-.address .page-back a i{
-    margin-right: 10px;
-}
-.row .enter-address{
-    width: 50%;
-}
-.row .enter-address p{
-    font-weight: 600;
-    font-size: 25px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-.row .enter-address .enter-input{
-    margin-bottom: 20px;
-}
-.row .enter-address .enter-input label{
-    display: block;
-}
-.row .enter-address .enter-input input{
-    width: 100%;
-    padding: 5px 10px;
-    margin-top: 5px;
-}
-.row .export-address{
-    width: 50%;
-    padding-left:50px ;
-}
-.row .export-address>p{
-    font-weight: 600;
-    font-size: 25px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-.row .export-address .form-address{
-    padding-bottom: 20px;
-    border-bottom: 1px solid #bebebe;
-    position: relative;
-    
-}
-.row .export-address .form-address p{
-    line-height: 30px;
-    margin-right: 45px;
-}
-.row .export-address .form-address .address-default{
-    margin-top: 5px;
-}
-.row .export-address .form-address .btn-delete{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 10%;
-}
-.row .export-address .form-address .btn-fix{
-    position: absolute;
-    top: 40px;
-    right: 0;
-    width: 10%;
-}
-.fix-infor .form-group{
-    margin-top: 10px;
-}
-.fix-infor .form-group .enter-input{
-    margin-bottom: 10px;
-}
-.fix-infor .form-group .enter-input label{
-    display: block;
-}
-.fix-infor .form-group .enter-input input{
-    width: 100%;
-    padding: 3px 10px;
 }
 
