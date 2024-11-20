@@ -1,3 +1,42 @@
+var admins = [
+    {
+        username: "admin",
+        password: "admin@12345"
+    }
+];
+
+function checkLogin() {
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+
+    if (username.value === "") {
+        alert("Tài khoản không được để trống!");
+        return;
+    }
+
+    if (password.value === "") {
+        alert("Mật khẩu không được để trống!");
+        return;
+    }
+
+    if (admins.some(admin => {
+        return admin.username === username.value && admin.password === password.value
+    })) {
+        document.querySelector('.container').style.display = 'flex';
+        document.querySelector('.login').style.display = 'none';
+        writeMainContent();
+        alert('Đăng nhập thành công!');
+    } else {
+        alert('Tài khoản hoặc mật khẩu không đúng');
+    }
+}
+
+function logOut() {
+    document.querySelector('.container').style.display = 'none';
+    document.querySelector('.login').style.display = 'block';
+    alert('Đã đăng xuất!');
+}
+
 function showSideBar() {
     const sidebar = document.getElementById('side-bar');
     sidebar.classList.remove('slide-to-left');

@@ -18,13 +18,83 @@ img {
 .container {
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
 }
 
 i {
     margin: auto;
 }
 
+/* LOGIN FORM */
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.login-container .login-form {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 80vh;
+    padding: 20px;
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-container .login-form .top-form {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-container .login-form .top-form img {
+    width: 100%;
+}
+
+.login-container .login-form .form-content {
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container .login-form .form-content form {
+    width: 35%;
+}
+
+.login-container .login-form .form-content form input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 15px;
+}
+
+.login-container .login-form .bottom-form {
+    /* background-color:aquamarine; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container .login-form .bottom-form .login-btn {
+    background-color: #855e3e;
+    padding: 10px 50px;
+    color: whitesmoke;
+}
+
+.login-container .login-form .bottom-form .login-btn:hover {
+    background-color: #725031;
+}
 
 /* SIDEBAR */
 .sidebar {
