@@ -21,13 +21,22 @@ function writeLogoAndUserTools() {
                         <option value="converse" id="converse-products">CONVERSE</option>
                         <option value="clothes" id="clothes-products">QUẦN ÁO</option>
                     </select>
+                    <button id="price-toggle">Giá <i class="fa-solid fa-angle-down" id="toggle-icon"></i></button>
+
+
+    <div id="price-inputs" class="price-inputs" style="display: none;">
+        <input type="number" id="min-price" placeholder="Giá thấp nhất">
+        <input type="number" id="max-price" placeholder="Giá cao nhất">
+    </div>
+            
                     <div class="search">
-                        <input type="text" id="search-inp" placeholder="Tìm kiếm">
+                        <input type="text" id="search-inp" placeholder="Tìm kiếm...">
                         <a href="" id="button-search">
                             <i class="fa-solid fa-magnifying-glass" style="color: black;"></i>
                         </a>
 
                     </div>
+                   
                 </div>
 
                 <div class="inner-user">
