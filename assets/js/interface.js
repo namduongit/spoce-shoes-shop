@@ -3,6 +3,9 @@ function writeLogoAndUserTools() {
     <header>
         <div class="inner-wrap">
             <div class="inner-content">
+                <div class="inner-menu_mobile" onclick="hideSideBar()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
                 <div class="inner-logo">
                     <a href="">
                         <img src="assets/image/logo/logo-header-2.png" alt="">

@@ -122,7 +122,7 @@ function checkValidLogin() {
         mergeGuestCartToUserCart(username);
         // Lưu currentUser trước khi gọi updateCartQuantity
         localStorage.setItem("usercurrent", JSON.stringify(user));
-        
+
         updateCartQuantity(); // Gọi sau khi lưu currentUser
         
         alert("Đăng nhập thành công!");
@@ -226,7 +226,7 @@ function InforClient() {
        <td colspan="6">Không có đơn hàng.</td>
        </tr>
        </table>
-       </div>   
+       </div>
        </div>
         <div class="col-infor">
         <div class="account">
@@ -266,7 +266,7 @@ function ChangePassword() {
         <div class="next-icon" onclick="NewPassword()">
         <i class="fa fa-arrow-right"></i>
         </div>
-        
+
         </div>
           <div class="iclose" onclick="Hide()">
         <i class="fa fa-times"></i>
@@ -276,13 +276,13 @@ function ChangePassword() {
       <h2>Đổi mật khẩu</h2>
         <form class="form-group">
         <div class="input-box">
-        <input type="password"id="newpassword" required> 
+        <input type="password"id="newpassword" required>
         <label for="newpassword">Nhập mật khẩu mới:</label>
          </div>
           <span class="errol_pass_disable text-danger"></span>
           <span class="errol_pass_length text-danger"></span>
          <div class="input-box" >
-        <input type="password" id="confirmpassword" required> 
+        <input type="password" id="confirmpassword" required>
          <label for="confirmpassword">Xác nhận mật khẩu:</label>
        </div>
        <span class="errol_confirm_disable text-danger"></span>
@@ -390,7 +390,7 @@ function UpdateUser() {
     s = `
     <div class="address">
       <div class="page-back">
-     
+
       <a href="javascript:void(0)" onclick="InforClient()" > <i class="fa fa-angle-double-left"></i>Quay lại trang thông tin tài khoản</a>
       </div>
       <div class="row">
@@ -618,7 +618,7 @@ function SaveAddress(value){
     });
     usercurrent.address.forEach(user => {
         if (user.city.trim() === address.city.trim() && user.district.trim() === address.district.trim() && user.street.trim() === address.street.trim()&& user.name==address.name&&user.phone==address.phone) {
-            
+
             test = true;
         }
     });
@@ -627,7 +627,7 @@ function SaveAddress(value){
     if (test === false){
         alert("Dia chi da ton tai!");
         return false;
-    } 
+    }
     console.log(usercurrent);
     localStorage.setItem("usercurrent", JSON.stringify(usercurrent));
     let users = JSON.parse(localStorage.getItem("users"));

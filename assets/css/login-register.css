@@ -117,10 +117,9 @@
     width: 50%;
     padding-left: 5px;
 }
-.user-content-selection .inner-content .group-form {
-    margin: 10px 0;
-    min-height: 70px;
-}
+
 .text-danger{
     color:red;
+    font-size: 14px;
+    margin: 3px 0;
 }
