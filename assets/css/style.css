@@ -14,6 +14,15 @@ header .inner-wrap .inner-content {
     justify-content: space-between;
     align-items: center;
 }
+header .inner-wrap .inner-menu_mobile{
+    /* width: 10%; */
+}
+header .inner-wrap .inner-menu_mobile i {
+    color: #000;
+    margin-left: 6px;
+    display: none;
+}
+
 header .inner-wrap .inner-logo {
     width: 20%;
 }
