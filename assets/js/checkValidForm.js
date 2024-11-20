@@ -187,13 +187,13 @@ function Logout() {
 }
 function InforClient() {
     let user = JSON.parse(localStorage.getItem("usercurrent"));
-    let address=null;
-    user.address.forEach(use=>{
-        if(use.default=="true"){
-            address=use;
+    let address = null;
+    user.address.forEach(use => {
+        if (use.default == "true") {
+            address = use;
         }
     })
-     if(address===null){
+    if (address === null) {
         address = {
             id: "",
             consignee: "",
@@ -256,27 +256,28 @@ function showBillPay() {
     const currentUser = JSON.parse(localStorage.getItem("usercurrent"));
     const AllBill = JSON.parse(localStorage.getItem("Allbill"));
 
-    const userCurrentBill = AllBill.filter(oneBill => oneBill.username === currentUser.username);
+    if (currentUser && AllBill) {
+        const userCurrentBill = AllBill.filter(oneBill => oneBill.username === currentUser.username);
 
-    if (userCurrentBill.length == 0) {
-        return `<td colspan="6">Không có đơn hàng.</td>`;
-    } else {
-        let html = "";
-        userCurrentBill.forEach(bill => {
-            // Xử lí dữ liệu
-            let billCode =  bill.code;
-            let billDay = bill.paymentdate;
-            let address = bill.district;
-            let allProduct = bill.products_buy;
-            let billMoney = 0;
+        if (userCurrentBill.length == 0) {
+            return `<td colspan="6">Không có đơn hàng.</td>`;
+        } else {
+            let html = "";
+            userCurrentBill.forEach(bill => {
+                // Xử lí dữ liệu
+                let billCode = bill.code;
+                let billDay = bill.paymentdate;
+                let address = bill.district;
+                let allProduct = bill.products_buy;
+                let billMoney = 0;
 
-            // Sửa lỗi ở đây: sử dụng forEach đúng cách
-            allProduct.forEach(product => {
-                billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
-            });
+                // Sửa lỗi ở đây: sử dụng forEach đúng cách
+                allProduct.forEach(product => {
+                    billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
+                });
 
-            let status = bill.status;
-            html += `
+                let status = bill.status;
+                html += `
                 <tr>
                     <td>${billCode}</td>
                     <td>${billDay}</td>
@@ -286,8 +287,12 @@ function showBillPay() {
                     <td>${status}</td>
                 </tr>
             `;
-        });
-        return html;
+            });
+            return html;
+        }
+    }
+    else {
+        return `<td colspan="6">Không có đơn hàng.</td>`;
     }
 }
 
@@ -346,7 +351,7 @@ function ChangePassword() {
     document.querySelector(".detail-background").classList.add("active");
 
     // Để load đươc hết thông tin
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
 
     })
 
@@ -512,12 +517,12 @@ function Addaddress() {
     }
     let id;
     let usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
-    if(usercurrent.address.length==0){
-        id=0;
+    if (usercurrent.address.length == 0) {
+        id = 0;
     }
-    else{
+    else {
         usercurrent.address.forEach(user => {
-            id=user.id+1;
+            id = user.id + 1;
         });
     }
     let address = {
@@ -531,7 +536,7 @@ function Addaddress() {
     }
     let test = true;
     usercurrent.address.forEach(user => {
-        if (user.city.trim() === city.trim() && user.district.trim() === district.trim() && user.street.trim() === street.trim()&&user.phone==address.phone) {
+        if (user.city.trim() === city.trim() && user.district.trim() === district.trim() && user.street.trim() === street.trim() && user.phone == address.phone) {
             alert("Dia chi da ton tai!");
             test = false;
         }
@@ -603,8 +608,8 @@ function DeleteAddress(value) {
     UpdateUser();
 
 }
-function FixAddress(value){
-   let s=` <form class="form-group">
+function FixAddress(value) {
+    let s = ` <form class="form-group">
         <div class="enter-input">
         <label>Họ tên người nhận:</label>
         <input type="text" id="fname${value}_user">
@@ -633,19 +638,19 @@ function FixAddress(value){
         </div>
         <button class="btn-update btn-save" onclick="SaveAddress(${value})">Lưu</button>
         </form>`
-        document.querySelectorAll(".fix-infor")[value].innerHTML=s;
+    document.querySelectorAll(".fix-infor")[value].innerHTML = s;
 
 }
-function SaveAddress(value){
+function SaveAddress(value) {
     event.preventDefault();
-    let name = document.getElementById("fname"+value+"_user").value;
-    let phone = document.getElementById("fphone"+value+"_user").value;
-    let city = document.getElementById("fcity"+value+"_user").value;
-    let district = document.getElementById("fdistrict"+value+"_user").value;
-    let street = document.getElementById("fstreet"+value+"_user").value;
+    let name = document.getElementById("fname" + value + "_user").value;
+    let phone = document.getElementById("fphone" + value + "_user").value;
+    let city = document.getElementById("fcity" + value + "_user").value;
+    let district = document.getElementById("fdistrict" + value + "_user").value;
+    let street = document.getElementById("fstreet" + value + "_user").value;
     let validation = new Validation();
     let valid = true;
-    valid &= validation.kiemtraRong(name, "#errol_fuser"+value+"_disable") & validation.kiemtraRong(phone, "#errol_fphone"+value+"_disable") & validation.kiemtraRong(city, "#errol_fcity"+value+"_disable") & validation.kiemtraRong(district, "#errol_fdistrict"+value+"_disable") & validation.kiemtraRong(street, "#errol_fstreet"+value+"_disable") & validation.kiemtraSDT(phone, "#errol_fphone"+value+"_wrong");
+    valid &= validation.kiemtraRong(name, "#errol_fuser" + value + "_disable") & validation.kiemtraRong(phone, "#errol_fphone" + value + "_disable") & validation.kiemtraRong(city, "#errol_fcity" + value + "_disable") & validation.kiemtraRong(district, "#errol_fdistrict" + value + "_disable") & validation.kiemtraRong(street, "#errol_fstreet" + value + "_disable") & validation.kiemtraSDT(phone, "#errol_fphone" + value + "_wrong");
     if (valid == 0) {
         return false;
     }
@@ -661,19 +666,19 @@ function SaveAddress(value){
     }
     let test = true;
     usercurrent.address.forEach(user => {
-        if (user.city.trim() === city.trim() && user.district.trim() === district.trim() && user.street.trim() === street.trim()&&user.phone==address.phone) {
+        if (user.city.trim() === city.trim() && user.district.trim() === district.trim() && user.street.trim() === street.trim() && user.phone == address.phone) {
             test = false;
         }
     });
     usercurrent.address.forEach(user => {
-        if (user.city.trim() === address.city.trim() && user.district.trim() === address.district.trim() && user.street.trim() === address.street.trim()&& user.name==address.name&&user.phone==address.phone) {
+        if (user.city.trim() === address.city.trim() && user.district.trim() === address.district.trim() && user.street.trim() === address.street.trim() && user.name == address.name && user.phone == address.phone) {
 
             test = true;
         }
     });
     const indexToUpdate = usercurrent.address.findIndex(user => user.id === address.id);
-    usercurrent.address[indexToUpdate]=address;
-    if (test === false){
+    usercurrent.address[indexToUpdate] = address;
+    if (test === false) {
         alert("Dia chi da ton tai!");
         return false;
     }
