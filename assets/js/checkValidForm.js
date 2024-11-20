@@ -272,7 +272,7 @@ function showBillPay() {
 
             // Sửa lỗi ở đây: sử dụng forEach đúng cách
             allProduct.forEach(product => {
-                billMoney += parseInt(product.price.replace("₫", "").replace(/\./g, "").trim());
+                billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
             });
 
             let status = bill.status;
