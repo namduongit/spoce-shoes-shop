@@ -187,7 +187,7 @@ function Logout() {
 }
 function InforClient() {
     let user = JSON.parse(localStorage.getItem("usercurrent"));
-    let address;
+    let address=null;
     user.address.forEach(use=>{
         if(use.default=="true"){
             address=use;
