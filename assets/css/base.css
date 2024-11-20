@@ -262,7 +262,7 @@ body {
 }
 .address {
     width: 70%;
-    margin: 20px auto;
+    /* margin: 20px auto; */
 }
 .address .page-back a{
     color: black;

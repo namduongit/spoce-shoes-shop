@@ -68,6 +68,7 @@ header .inner-wrap .inner-user {
     width: 20%;
     display: flex;
     justify-content: end;
+    align-items: center;
     cursor: pointer;
 }
 
