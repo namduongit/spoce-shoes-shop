@@ -502,8 +502,11 @@ i {
 }
 
 .modify-btn-container .modify-btn {
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 5px;
+    padding: 5px;
 }
 
 .modify-btn-container .modify-btn:hover {
@@ -709,6 +712,10 @@ i {
 
 .customer-adding-form .customer-adding-content {
     padding: 20px 10px 10px 10px;
+}
+
+.customer-adding-form .customer-adding-content .form-item input {
+    padding: 10px;
 }
 
 

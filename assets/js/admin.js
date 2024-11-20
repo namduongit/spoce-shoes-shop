@@ -379,7 +379,8 @@ function showModifyingForm(productId) {
     var form = document.querySelector('.modifying');
     form.style.display = 'block';
     var product = products.find(item => item.id === productId.getAttribute('data-id'));
-    form.innerHTML = `
+    if (product.brand === 'clothes') {
+        form.innerHTML = `
     <div class="modifying-top">
         SỬA SẢN PHẨM
     </div>
@@ -422,6 +423,19 @@ function showModifyingForm(productId) {
             <input type="text" id="discount" value="${product.discount}">
             </div>
             <br>
+            <div class="form-item">
+            <label for="quantity">Số lượng: </label>
+            <select id="size-select" onchange="updateSizeQuantity(${product.id}, this)">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
+            </select>
+            <input type="text" id="quantity" value="${product.size.S}">
+            </div>
+            <br>
             <div class="form-image">
                 <div class="form-image-item">
                     <label value="image">Hình ảnh: </label>
@@ -452,9 +466,103 @@ function showModifyingForm(productId) {
         </a>
     </div>
     `;
+    } else {
+        form.innerHTML = `
+    <div class="modifying-top">
+        SỬA SẢN PHẨM
+    </div>
+
+    <div class="modifying-content">
+        <form>
+            <div class="form-item">
+            <label for="id">ID: </label>
+            <input type="text" id="id" value="${product.id}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="name">Tên sản phẩm: </label>
+            <input type="text" id="name" value="${product.name_product}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="brand-select">Nhãn hiệu: </label>
+            <select id="brand-select">
+                <option value="nike">Nike</option>
+                <option value="adidas">Adidas</option>
+                <option value="VANS">Vans</option>
+                <option value="converse">Converse</option>
+                <option value="clothes">Clothes</option>
+            </select>
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="original-price">Giá gốc: </label>
+            <input type="text" id="original-price" value="${product.price}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="sell-price">Giá bán: </label>
+            <input type="text" id="sell-price" value="${product.sell}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="discount">Giảm: </label>
+            <input type="text" id="discount" value="${product.discount}">
+            </div>
+            <br>
+            <div class="form-item">
+            <label for="quantity">Số lượng: </label>
+            <select id="size-select" onchange="updateSizeQuantity(${product.id}, this)">
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+            </select>
+            <input type="text" id="quantity" value="${product.size["35"]}">
+            </div>
+            <br>
+            <div class="form-image">
+                <div class="form-image-item">
+                    <label value="image">Hình ảnh: </label>
+                </div>
+
+                <div class="form-image-item">
+                    <img src="${product.image}" id="form-img" alt="product-image">
+                </div>
+            
+                <div class="form-image-item">
+                    <button onclick="deleteImage(${product.id})">Xóa ảnh</button>
+                </div>
+
+                <div class="form-image-item">
+                    <input type="file" onchange="changeImage(event)" accept="image/*">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modify-btn-container">
+        <a href="#" id="save-btn">
+            <div class="modify-btn">Lưu</div>
+        </a>
+
+        <a href="#" onclick="closeModifyingForm()">
+            <div class="modify-btn">Thoát</div>
+        </a>
+    </div>
+    `;
+    }
+    
     document.getElementById('brand-select').value = product.brand;
     document.getElementById('save-btn').addEventListener('click', () => {
         var changedProductIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
+        var sizeSelect = document.getElementById('size-select').value;
         products[changedProductIndex].id = document.getElementById('id').value;
         products[changedProductIndex].name_product = document.getElementById('name').value;
         products[changedProductIndex].brand = document.getElementById('brand-select').value;
@@ -462,11 +570,80 @@ function showModifyingForm(productId) {
         products[changedProductIndex].sell = document.getElementById('sell-price').value;
         products[changedProductIndex].discount = document.getElementById('discount').value;
         products[changedProductIndex].image = document.getElementById('form-img').src;
+        products[changedProductIndex].size[sizeSelect] = parseInt(document.getElementById('quantity').value);
 
         localStorage.setItem('products', JSON.stringify(products));
         closeModifyingForm();
         showProducts();
     });
+}
+
+function updateSizeQuantity(productID, obj) {
+    var quantityField = document.getElementById('quantity');
+    var product = products.find(item => item.id == productID);
+    if (obj.value === 'S') {
+        quantityField.value = product.size["S"];
+    }
+
+    if (obj.value === 'M') {
+        quantityField.value = product.size["M"];
+    }
+
+    if (obj.value === 'L') {
+        quantityField.value = product.size["L"];
+    }
+
+    if (obj.value === 'XL') {
+        quantityField.value = product.size["XL"];
+    }
+
+    if (obj.value === '2XL') {
+        quantityField.value = product.size["2XL"];
+    }
+
+    if (obj.value === '3XL') {
+        quantityField.value = product.size["3XL"];
+    }
+
+    if (obj.value === '35') {
+        quantityField.value = product.size["35"];
+    }
+
+    if (obj.value === '36') {
+        quantityField.value = product.size["36"];
+    }
+
+    if (obj.value === '37') {
+        quantityField.value = product.size["37"];
+    }
+
+    if (obj.value === '38') {
+        quantityField.value = product.size["38"];
+    }
+
+    if (obj.value === '39') {
+        quantityField.value = product.size["39"];
+    }
+
+    if (obj.value === '40') {
+        quantityField.value = product.size["40"];
+    }
+
+    if (obj.value === '41') {
+        quantityField.value = product.size["41"];
+    }
+
+    if (obj.value === '42') {
+        quantityField.value = product.size["42"];
+    }
+
+    if (obj.value === '43') {
+        quantityField.value = product.size["43"];
+    }
+
+    if (obj.value === '44') {
+        quantityField.value = product.size["44"];
+    }
 }
 
 // hàm xóa sản phẩm khỏi mảng và cập nhật lên local storage
