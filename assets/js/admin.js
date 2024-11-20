@@ -669,13 +669,13 @@ function showAddingProduct() {
         <form>
             <div class="adding-content-item">
                 <label for="id">ID: </label>
-                <input type="text" id="id">
+                <input type="text" id="id" placeholder="Nhập ID sản phẩm">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="name">Tên sản phẩm:</label>
-                <input type="text" id="name">
+                <input type="text" id="name" placeholder="Nhập tên sản phẩm">
                 <br>
             </div>
 
@@ -693,19 +693,19 @@ function showAddingProduct() {
 
             <div class="adding-content-item">
                 <label for="original-price">Giá gốc: </label>
-                <input type="text" id="original-price">
+                <input type="text" id="original-price" placeholder="Nhập giá gốc">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="sell-price">Giá bán: </label>
-                <input type="text" id="sell-price">
+                <input type="text" id="sell-price" placeholder="Nhập giá bán">
                 <br>
             </div>
 
             <div class="adding-content-item">
                 <label for="discount">Giảm: </label>
-                <input type="text" id="discount">
+                <input type="text" id="discount" placeholder="Nhập phần trăm giảm">
                 <br>
             </div>
 
