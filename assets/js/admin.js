@@ -34,6 +34,8 @@ function checkLogin() {
 function logOut() {
     document.querySelector('.container').style.display = 'none';
     document.querySelector('.login').style.display = 'block';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
     alert('Đã đăng xuất!');
 }
 

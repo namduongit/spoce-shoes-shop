@@ -6,7 +6,35 @@ function DetailProducts(id) {
     if (id === products[i].id) product = products[i];
   }
 
+product_buy=product;
+
+  var product_list=[];
+
   Detail_product(product);
+
+  document.querySelector(".btn-paym").onclick=function(){
+     let usercurrent=JSON.parse(localStorage.getItem("usercurrent"));
+  if(!usercurrent){
+    alert("Vui lòng đăng nhập để tiếp tục");
+    return;
+  }
+    if (!document.querySelector(".size_product .check")) {
+      alert("Vui lòng chọn size");
+      return;
+  }
+  
+  let payall = document.querySelector(".pay-all").innerHTML;
+  if (payall.replace(/[.đ₫]/g, "") === "0") {
+      alert("Số lượng không hợp lệ!");
+      return;
+  }
+    let size = document.querySelector(".size_product .check").innerHTML;
+    let quantity = document.querySelector(".input-quantity").value;
+    product_buy.size=size;
+    product_buy.quantity=quantity;
+    product_list.push(product_buy);
+    Payment(product_list);
+  };
 
   document.querySelector(".detail-background").classList.add("active");
   document.querySelector(".close-icon").onclick = function () {
@@ -214,7 +242,7 @@ function Detail_product(product) {
         <div class="cart-pay">
 
             <button class="btn-pay" onclick="document.querySelector('.detail-product').handleAddToCart()">Thêm vào giỏ hàng</button>
-            <button class="btn-pay" onclick="showCart()">Thanh toán</button>
+           <button class="btn-pay btn-paym" >Thanh toán</button>
             </div>
             </div>
             <div class="close-icon">
