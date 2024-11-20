@@ -8,6 +8,7 @@ function checkValidRegister() {
     var validation = new Validation();
     // Lấy mảng người dùng từ localStorage hoặc tạo mảng mới nếu chưa tồn tại
     let users = JSON.parse(localStorage.getItem("users")) || [];
+    let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
     var valid = true;
     //Check validation
     valid &= validation.kiemtraRong(username, "#errol_user_disable") & validation.kiemtraRong(password, "#errol_password_disable") & validation.kiemtraRong(password2, "#errol_confirm_disable") & validation.kiemtraRong(fullname, "#errol_name_disable") & validation.kiemtraRong(email, "#errol_email_disable") & validation.kiemtraRong(phone, "#errol_tel_disable") & validation.kiemtraDodai(username, "#errol_user_length", 6) & validation.kiemtraDodai(password, "#errol_password_length", 6) & validation.kiemtraDodai(fullname, "#errol_name_length", 6) & validation.kiemtraEmail(email, "#errol_email_wrongpattern") & validation.kiemtraSDT(phone, "#errol_tel_pattern");
@@ -72,13 +73,30 @@ function checkValidRegister() {
     users.push(newUser);
     // lưu tài khoản vào localStorage
     localStorage.setItem("users", JSON.stringify(users));
-    alert("Đăng ký thành công!");
-    users.forEach(user => {
-        if (user.username === username) {
+    // alert("Đăng ký thành công!");
+    // users.forEach(user => {
+    //     if (user.username === username) {
 
-            localStorage.setItem("usercurrent", JSON.stringify(user));
-        }
-    });
+    //         localStorage.setItem("usercurrent", JSON.stringify(user));
+    //     }
+    // });
+    // hideTools();
+    // InterfaceLogin();
+    // return true;
+    localStorage.setItem("usercurrent", JSON.stringify(newUser));
+
+    
+    if (guestCart.length > 0) {
+        const userCartKey = `cart_${username}`;
+        localStorage.setItem(userCartKey, JSON.stringify(guestCart));
+        
+        localStorage.removeItem("guestCart");
+    }
+
+    
+    updateCartQuantity();
+
+    alert("Đăng ký thành công!");
     hideTools();
     InterfaceLogin();
     return true;
@@ -101,10 +119,12 @@ function checkValidLogin() {
     }
     const user = users.find(user => user.username === username && user.password === password);
     if (user) {
+        mergeGuestCartToUserCart(username);
         // Lưu currentUser trước khi gọi updateCartQuantity
         localStorage.setItem("usercurrent", JSON.stringify(user));
         
         updateCartQuantity(); // Gọi sau khi lưu currentUser
+        
         alert("Đăng nhập thành công!");
         document.querySelector("#errol_wrong").style.display = "none";
     } else {

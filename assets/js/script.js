@@ -1,4 +1,5 @@
 //start tim kiếm theo tên + brand
+
 document
   .getElementById("button-search")
   .addEventListener("click", function (event) {
@@ -19,7 +20,7 @@ document.getElementById("brand-select").addEventListener("change", function () {
 });
 
 function searchAndDisplay() {
-   let brand=document.querySelector("#brand-select").value;
+  let brand = document.querySelector("#brand-select").value;
   const searchQuery = document
     .getElementById("search-inp")
     .value.trim()
@@ -76,7 +77,6 @@ function searchAndDisplay() {
                 <div class="product__price-old">${product.price}đ</div>
             </div>
         </div>`;
-
     });
 
     let pageContent = `
@@ -97,6 +97,24 @@ function searchAndDisplay() {
                           <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
                           <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
                         </ul>
+
+                        <h3 class="title_size">Theo khoảng giá</h3>
+                              <div class="grid__row price-filter">
+                                <div class="price-group">
+                                  <label for="min-price">Giá từ:</label>
+                                  <div class="input-wrapper">
+                                    <input type="number" id="min-price" placeholder="0" />
+                                    <span class="currency-symbol">₫</span>
+                                  </div>
+                                </div>
+                                <div class="price-group">
+                                  <label for="max-price">Đến:</label>
+                                  <div class="input-wrapper">
+                                    <input type="number" id="max-price" placeholder="1000000" />
+                                    <span class="currency-symbol">₫</span>
+                                  </div>
+                                </div>
+                              </div>
                     </div>
 
                     <div class="grid__col-9">
@@ -109,8 +127,9 @@ function searchAndDisplay() {
                                             <i class="fa-solid fa-bars"></i>
                                         </div>
                                         <div class="total-product">
-                                            <span> Hiển thị ${start + 1} - ${start + currentProducts.length
-      } trong tổng số ${filteredProducts.length} sản phẩm </span>
+                                            <span> Hiển thị ${start + 1} - ${
+      start + currentProducts.length
+    } trong tổng số ${filteredProducts.length} sản phẩm </span>
                                         </div>
                                     </div>
                                 </div>
@@ -194,28 +213,27 @@ function SortA_Z() {
     return 0;
   });
   console.log(products);
-  displaylist(products,brand);
-  document.querySelector(".text-default").innerHTML = "A → Z <i class='fa-solid fa-caret-down'></i>"
+  displaylist(products, brand);
+  document.querySelector(".text-default").innerHTML =
+    "A → Z <i class='fa-solid fa-caret-down'></i>";
 }
-function displaylist(products,brand) {
+function displaylist(products, brand) {
   const productsPerPage = 6;
   let numPages = Math.ceil(products.length / productsPerPage);
   let currentPage = 1;
 
-
   let footPage = "";
-for (let i = 1; i <= numPages; i++) {
-  footPage += `<li class="page-item" data-page="${i}">
+  for (let i = 1; i <= numPages; i++) {
+    footPage += `<li class="page-item" data-page="${i}">
                  <a href="javascript:void(0);" class="page-link">${i}</a>
                </li>`;
-}
-
+  }
 
   function loadPage(page) {
     currentPage = page;
-  let start = productsPerPage * (page - 1);
-  let end = productsPerPage * page;
-  let currentProducts = products.slice(start, end);
+    let start = productsPerPage * (page - 1);
+    let end = productsPerPage * page;
+    let currentProducts = products.slice(start, end);
 
     let s = "";
     currentProducts.forEach((product) => {
@@ -262,9 +280,11 @@ for (let i = 1; i <= numPages; i++) {
                                                      <i class="fa-solid fa-bars"></i>
                                                  </div>
                                                  <div class="total-product">
-                                                     <span> Hiển thị ${start + 1
-      } - ${start + currentProducts.length
-      } trong tổng số ${products.length} sản phẩm </span>
+                                                     <span> Hiển thị ${
+                                                       start + 1
+                                                     } - ${
+      start + currentProducts.length
+    } trong tổng số ${products.length} sản phẩm </span>
                                                  </div>
                                              </div>
                                          </div>
@@ -301,13 +321,15 @@ for (let i = 1; i <= numPages; i++) {
 
     document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
     document
-    .querySelectorAll(".page-link")
-    .forEach((page) => page.classList.remove("active"));
+      .querySelectorAll(".page-link")
+      .forEach((page) => page.classList.remove("active"));
 
-  const activeLink = document.querySelector(`.page-item[data-page="${currentPage}"] .page-link`);
-  if (activeLink) {
-    activeLink.classList.add("active");
-  }
+    const activeLink = document.querySelector(
+      `.page-item[data-page="${currentPage}"] .page-link`
+    );
+    if (activeLink) {
+      activeLink.classList.add("active");
+    }
 
     const pageLinks = document.querySelectorAll(".page-item");
     pageLinks.forEach((pageLink) => {
@@ -346,8 +368,9 @@ function SortZ_A() {
     }
     return 0;
   });
-  displaylist(products,brand);
-  document.querySelector(".text-default").innerHTML = "Z → A <i class='fa-solid fa-caret-down'></i>"
+  displaylist(products, brand);
+  document.querySelector(".text-default").innerHTML =
+    "Z → A <i class='fa-solid fa-caret-down'></i>";
 }
 function SortIncrease() {
   var brand = document.querySelector(".product_list").dataset.brand;
@@ -377,8 +400,9 @@ function SortIncrease() {
       }
     }
   }
-  displaylist(products,brand);
-  document.querySelector(".text-default").innerHTML = "Giá tăng dần <i class='fa-solid fa-caret-down'></i>"
+  displaylist(products, brand);
+  document.querySelector(".text-default").innerHTML =
+    "Giá tăng dần <i class='fa-solid fa-caret-down'></i>";
 }
 function SortReduce() {
   var brand = document.querySelector(".product_list").dataset.brand;
@@ -408,10 +432,11 @@ function SortReduce() {
       }
     }
   }
-  displaylist(products,brand);
-  document.querySelector(".text-default").innerHTML = "Giá giảm dần <i class='fa-solid fa-caret-down'></i>"
+  displaylist(products, brand);
+  document.querySelector(".text-default").innerHTML =
+    "Giá giảm dần <i class='fa-solid fa-caret-down'></i>";
 }
-function Default(){
+function Default() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
   if (brand === "ALL") {
@@ -428,6 +453,7 @@ function Default(){
       (item) => item.brand.toUpperCase() === brand.toUpperCase()
     );
   }
-  displaylist(products,brand);
-  document.querySelector(".text-default").innerHTML = "Mặc định <i class='fa-solid fa-caret-down'></i>";
+  displaylist(products, brand);
+  document.querySelector(".text-default").innerHTML =
+    "Mặc định <i class='fa-solid fa-caret-down'></i>";
 }
