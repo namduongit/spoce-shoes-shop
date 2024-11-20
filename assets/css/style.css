@@ -20,7 +20,8 @@ header .inner-wrap .inner-menu_mobile{
 header .inner-wrap .inner-menu_mobile i {
     color: #000;
     margin-left: 6px;
-    display: none;
+    display: block;
+    /* display: none; */
 }
 
 header .inner-wrap .inner-logo {

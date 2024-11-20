@@ -107,6 +107,11 @@ header .inner-wrap .inner-user .cart .parent > div {
 
 /* Mobile 739px*/
 @media (max-width: 739px) {
+  .section-two {
+    display: none;
+  }
+
+
   header .inner-wrap .inner-menu_mobile i {
     display: block;
 }

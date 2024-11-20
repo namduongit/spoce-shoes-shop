@@ -3,7 +3,7 @@ function writeLogoAndUserTools() {
     <header>
         <div class="inner-wrap">
             <div class="inner-content">
-                <div class="inner-menu_mobile">
+                <div class="inner-menu_mobile" onclick="hideSideBar()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="inner-logo">
