@@ -1829,9 +1829,8 @@ function createProduct() {
                     "image_2": "data/js/image/71.2.png",
                     "image_3": "data/js/image/71.3.png",
                     "image_4": "data/js/image/71.4.png"
-                }
-            },
-              size: {
+                },
+                size: {
                     "35": 50,
                     "36": 50,
                     "37": 50,
@@ -1843,6 +1842,7 @@ function createProduct() {
                     "43": 50,
                     "44": 50
                 }
+            },
 
             {
                 id: "72",

@@ -1075,7 +1075,7 @@ input[type=number]::-webkit-outer-spin-button {
   top: 100px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(72, 245, 20);
+  background-color: green;
   font-size: 20px;
   padding: 5px 20px;
   border-radius: 5px;
@@ -1198,7 +1198,6 @@ input[type=number]::-webkit-outer-spin-button {
   width: fit-content;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 #showProductCode {
@@ -1258,13 +1257,5 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .foot-content {
-  justify-items: center;
-}
-.head-content {
-  justify-items: center;
-}
-
-.head-content h4 {
-  color: red;
-  margin-bottom: 20px;
+  
 }

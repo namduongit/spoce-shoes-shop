@@ -119,18 +119,10 @@ function checkValidLogin() {
     if (valid == 0) {
         return false;
     }
-<<<<<<< HEAD
     users.forEach(user => {
         if (user.username == username && user.active == false) {
             alert("Tài khoản đã bị khóa");
             valid = false;
-=======
-        users.forEach(user=>{
-        if(user.username==username && user.active==false){
-            toast({title:'ERROL',message:'Tài khoản của bạn đã bị khóa',type:'errol',duration:3000});
-
-            valid=false;
->>>>>>> 29dee69fdd15c926aae163fc9d0a0b0b6612cb8b
         }
     })
     if (valid == false) {
@@ -175,13 +167,8 @@ function getCurrentDateTime() {
 function InterfaceLogin() {
     let currenuser = JSON.parse(localStorage.getItem("usercurrent"));
     if (currenuser != null) {
-<<<<<<< HEAD
         if (currenuser.active == false) {
             alert("Tài khoản đã bị khóa");
-=======
-        if(currenuser.active==false) {
-            toast({title:'ERROL',message:'Tài khoản của bạn đã bị khóa',type:'success',duration:3000});
->>>>>>> 29dee69fdd15c926aae163fc9d0a0b0b6612cb8b
             Logout();
             return;
         }
@@ -799,7 +786,7 @@ function outInfoCode(billCode) {
                     <h4>Chi tiết đơn hàng</h4>
                     <div class="info-user">
 
-                        
+
                     </div>
                 </div>
                 <div class="body-content">

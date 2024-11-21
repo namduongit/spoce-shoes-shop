@@ -392,7 +392,7 @@ width: 100%;
 }
 .col-two .payment .payment__content{
     width: 100%;
-    border: solid 2px #3333336d;
+    border: solid 3px #3333336d;
     border-bottom: none;
     border-radius: 5px;
 }
