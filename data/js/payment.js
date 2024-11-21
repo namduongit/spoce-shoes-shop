@@ -440,7 +440,6 @@ function InforInvoice(order){
   
         localStorage.removeItem("cart_" + usercurrent.username);
         document.querySelector(".detail-background").classList.remove("active");
-        boxThongBao.style.display = "block";
         InforClient();
     }
 
