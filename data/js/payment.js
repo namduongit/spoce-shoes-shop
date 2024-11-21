@@ -263,6 +263,7 @@ function Payment(product_list) {
 
 
 function Order(product_list) {
+
     let validation = new Validation();
     let name = document.querySelector(".input_name").value;
     let email = document.querySelector(".input_email").value;
@@ -420,28 +421,31 @@ function InforInvoice(order){
     `
     document.querySelector(".detail-background").innerHTML=pay;
     document.querySelector(".detail-background").classList.add("active");
+    const usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
     document.querySelector(".iclose").onclick=function(){
+       
         document.querySelector(".detail-background").classList.remove("active");
     }
     document.querySelector(".btn-confirm").onclick=function(){
+        if(usercurrent.active==false){
+            location.reload();
+        }
         let allbill = JSON.parse(localStorage.getItem("Allbill"));
         if(allbill==null){
             allbill = [];
         }
         allbill.push(order);
         localStorage.setItem("Allbill", JSON.stringify(allbill));
-        alert("Đặt hàng thành công!");
-        location.reload;
         boxThongBao.innerHTML = "Đặt hàng thành công ! Giỏ hàng của bạn đã được làm mới";
-        const usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+  
         localStorage.removeItem("cart_" + usercurrent.username);
-        document.getElementsByClassName("detail-background")[0].style.display = "none";
+        document.querySelector(".detail-background").classList.remove("active");
         boxThongBao.style.display = "block";
         setTimeout(function() {
             boxThongBao.innerHTML = "";
             boxThongBao.style.display = "none";
         }, 3000);
-        location.reload()
+        InforClient();
     }
 
 }
