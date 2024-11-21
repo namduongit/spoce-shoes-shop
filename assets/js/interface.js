@@ -191,10 +191,13 @@ function writeSlideShow() {
   document.write(`
     <div class="section-two">
         <div class="inner-slide-show">
-            <img src="assets/image/slide-show/slider_1.png" alt="image1">
+            <img src="assets/image/slide-show/1.jpg" alt="image1">
         </div>
         <div class="inner-slide-show">
-            <img src="assets/image/slide-show/slider_2.png" alt="image2">
+            <img src="assets/image/slide-show/3.jpg" alt="image2">
+        </div>
+        <div class="inner-slide-show">
+            <img src="assets/image/slide-show/2.jpg" alt="image2">
         </div>
     </div>
     `);
