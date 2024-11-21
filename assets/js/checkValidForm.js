@@ -117,6 +117,15 @@ function checkValidLogin() {
     if (valid == 0) {
         return false;
     }
+        users.forEach(user=>{
+        if(user.username==username && user.active==false){
+            alert("Tài khoản đã bị khóa");
+            valid=false;
+        }
+    })
+    if(valid==false){
+        return;
+    }
     const user = users.find(user => user.username === username && user.password === password);
     if (user) {
         mergeGuestCartToUserCart(username);
@@ -281,14 +290,15 @@ function showBillPay() {
                 // Xử lí dữ liệu
                 let billCode = bill.code;
                 let billDay = bill.paymentdate;
-                let address = bill.district;
+                let address = bill.city+";"+bill.district+","+bill.street;
                 let allProduct = bill.products_buy;
                 let billMoney = 0;
                 let paymethod = bill.paymethod
                 // Sửa lỗi ở đây: sử dụng forEach đúng cách
                 allProduct.forEach(product => {
-                    billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
+                    billMoney += parseInt(product.sell.replace("₫đ", "").replace(/\./g, "").trim());
                 });
+
 
                 let status = bill.status;
                 html += `

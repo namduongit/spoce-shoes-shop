@@ -1,3 +1,21 @@
+document.getElementById("price-toggle").addEventListener("click", function () {
+  const priceInputs = document.getElementById("price-inputs");
+  const icon = document.getElementById("toggle-icon");
+
+  if (
+    priceInputs.style.display === "none" ||
+    priceInputs.style.display === ""
+  ) {
+    priceInputs.style.display = "block";
+    icon.classList.remove("fa-angle-down");
+    icon.classList.add("fa-angle-up");
+  } else {
+    priceInputs.style.display = "none";
+    icon.classList.remove("fa-angle-up");
+    icon.classList.add("fa-angle-down");
+  }
+});
+
 //start tim kiếm theo tên + brand
 
 document
@@ -18,6 +36,20 @@ document
 document.getElementById("brand-select").addEventListener("change", function () {
   searchAndDisplay();
 });
+document
+  .getElementById("min-price")
+  .addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      searchAndDisplay();
+    }
+  });
+document
+  .getElementById("max-price")
+  .addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      searchAndDisplay();
+    }
+  });
 
 function searchAndDisplay() {
   let brand = document.querySelector("#brand-select").value;
@@ -26,12 +58,21 @@ function searchAndDisplay() {
     .value.trim()
     .toLowerCase();
   const selectedBrand = document.getElementById("brand-select").value;
+
+  const minPriceInput = document.getElementById("min-price").value;
+  const maxPriceInput = document.getElementById("max-price").value;
+
+  const minPrice = minPriceInput
+    ? parseFloat(minPriceInput.replace(/[^0-9]/g, ""))
+    : 0;
+  const maxPrice = maxPriceInput
+    ? parseFloat(maxPriceInput.replace(/[^0-9]/g, ""))
+    : Infinity;
+
   document.querySelector(".section-two").style.display = "none";
 
-  // Lấy dữ liệu từ localStorage
   const allProducts = JSON.parse(localStorage.getItem("products")) || [];
 
-  // Lọc sản phẩm dựa trên tên và thương hiệu
   const filteredProducts = allProducts.filter((product) => {
     const matchesName = product.name_product
       .toLowerCase()
@@ -39,7 +80,12 @@ function searchAndDisplay() {
     const matchesBrand =
       selectedBrand === "" ||
       product.brand.toLowerCase() === selectedBrand.toLowerCase();
-    return matchesName && matchesBrand;
+
+    // Chuyển giá về dạng số để so sánh
+    const productPrice = parseFloat(product.price.replace(/[^0-9]/g, ""));
+    const matchesPrice = productPrice >= minPrice && productPrice <= maxPrice;
+
+    return matchesName && matchesBrand && matchesPrice;
   });
 
   if (filteredProducts.length === 0) {
@@ -98,23 +144,9 @@ function searchAndDisplay() {
                           <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
                         </ul>
 
-                        <h3 class="title_size">Theo khoảng giá</h3>
-                              <div class="grid__row price-filter">
-                                <div class="price-group">
-                                  <label for="min-price">Giá từ:</label>
-                                  <div class="input-wrapper">
-                                    <input type="number" id="min-price" placeholder="0" />
-                                    <span class="currency-symbol">₫</span>
-                                  </div>
-                                </div>
-                                <div class="price-group">
-                                  <label for="max-price">Đến:</label>
-                                  <div class="input-wrapper">
-                                    <input type="number" id="max-price" placeholder="1000000" />
-                                    <span class="currency-symbol">₫</span>
-                                  </div>
-                                </div>
-                              </div>
+                       
+
+                        
                     </div>
 
                     <div class="grid__col-9">
@@ -182,16 +214,19 @@ function searchAndDisplay() {
     });
   }
 
-  loadPage(1); // Hiển thị trang đầu tiên
+  loadPage(1);
 }
+
 //end tìm kiếm theo tên + brand
 // SORT
 function SortA_Z() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
+  
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
+   
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
@@ -348,6 +383,7 @@ function SortZ_A() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
+   
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
@@ -378,6 +414,7 @@ function SortIncrease() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
+    products = [...originalProducts];
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
@@ -410,6 +447,7 @@ function SortReduce() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
+    
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(

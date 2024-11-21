@@ -3,7 +3,7 @@ const selectSizes = [];
 
 function showCategory(value) {
   selectSizes.length = 0; // Reset mảng về trạng thái rỗng
-  console.log('Mảng đã reset:', selectSizes);
+  console.log("Mảng đã reset:", selectSizes);
 
   document.querySelector(".section-two").style.display = "none";
 
@@ -80,7 +80,9 @@ function showCategory(value) {
                                   <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>43</span></li>
                                   <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
                                 </ul>
-                             </div>
+
+                                
+                  </div>
 
                              <div class="grid__col-9">
                               <div class="listProductByBrand">
@@ -96,8 +98,8 @@ function showCategory(value) {
                                                         <span> Hiển thị ${
                                                           start + 1
                                                         } - ${
-        start + currentProducts.length
-      } trong tổng số ${products.length} sản phẩm </span>
+      start + currentProducts.length
+    } trong tổng số ${products.length} sản phẩm </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,8 +156,6 @@ function showCategory(value) {
   loadPage(1);
 }
 
-
-
 // xu li 2 truong hop all va sale =))
 function displayProductBySize(products, value) {
   const productsPerPage = 6;
@@ -198,9 +198,9 @@ function displayProductBySize(products, value) {
                                         <i class="fa-solid fa-bars"></i>
                                     </div>
                                     <div class="total-product">
-                                        <span> Hiển thị ${start + 1
-} - ${start + currentProducts.length
-} trong tổng số ${products.length} sản phẩm </span>
+                                        <span> Hiển thị ${start + 1} - ${
+      start + currentProducts.length
+    } trong tổng số ${products.length} sản phẩm </span>
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +232,8 @@ function displayProductBySize(products, value) {
                         </ul>
                     </div>`;
 
-    document.getElementsByClassName("listProductByBrand")[0].innerHTML = pageContent;
+    document.getElementsByClassName("listProductByBrand")[0].innerHTML =
+      pageContent;
     document
       .querySelectorAll(".page-link")
       .forEach((page) => page.classList.remove("active"));
@@ -253,13 +254,12 @@ function displayProductBySize(products, value) {
 }
 
 function emptyList(brand) {
-
   let s = `<div class="noti-product">
               <p class="noti-product__text">Không có sản phẩm nào trong danh sách này.</p>
               <i class="fa-solid fa-xmark" id="close_message"></i>
             </div>`;
 
-      let pageContent =`  
+  let pageContent = `  
                         <div class="PagiBar">
                           <div class="grid__row sortPagiBar">
                             <div class="grid__col-7">
@@ -296,13 +296,14 @@ function emptyList(brand) {
                         </div>
 
    `;
-   document.getElementsByClassName("listProductByBrand")[0].innerHTML = pageContent;
+  document.getElementsByClassName("listProductByBrand")[0].innerHTML =
+    pageContent;
 }
 
 function handleSelectSizes(event) {
   //   // Khởi tạo mảng selectSizes để lưu kích thước đã chọn
   // const selectSizes = [];
- 
+
   let size = event.target.nextElementSibling.textContent;
 
   // Thêm hoặc loại bỏ kích thước khỏi mảng selectSizes
@@ -330,15 +331,17 @@ function handleSelectSizes(event) {
     );
   } else {
     // Lọc sản phẩm theo thương hiệu (NIKE, ADIDAS, VANS, v.v.)
-    products = products.filter(item => item.brand.toLowerCase() === brand.toLowerCase());
+    products = products.filter(
+      (item) => item.brand.toLowerCase() === brand.toLowerCase()
+    );
   }
 
   // // Lọc sản phẩm theo thương hiệu
   // products = products.filter(item => item.brand.toLowerCase() === brand.toLowerCase());
 
   // Lọc sản phẩm theo kích thước đã chọn
-  products = products.filter(item => 
-    item.sizes.some(size => selectSizes.includes(size))  // Điều kiện lọc các sản phẩm có kích thước đã chọn
+  products = products.filter(
+    (item) => item.sizes.some((size) => selectSizes.includes(size)) // Điều kiện lọc các sản phẩm có kích thước đã chọn
   );
 
   if (selectSizes == 0) {
@@ -348,7 +351,8 @@ function handleSelectSizes(event) {
   } else if (selectSizes != 0 && products.length == 0) {
     brand = brand.toUpperCase();
     emptyList(brand);
-  } else { // product != 0 && selectSizes != 0
+  } else {
+    // product != 0 && selectSizes != 0
     displayProductBySize(products, brand);
   }
   // Hiển thị danh sách sản phẩm sau khi lọc
@@ -368,8 +372,3 @@ function handleSelectSizes(event) {
 //     })
 //   });
 // });
-
-
-
-
-
