@@ -228,7 +228,7 @@ function InforClient() {
                         <th>Ngày</th>
                         <th>Địa chỉ</th>
                         <th>Giá trị đơn hàng</th>
-                        <th>Tình trạng thanh toán</th>
+                        <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
                         <th>Thông tin</th>
                     </tr>
