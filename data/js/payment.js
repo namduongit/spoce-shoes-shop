@@ -436,15 +436,11 @@ function InforInvoice(order){
         }
         allbill.push(order);
         localStorage.setItem("Allbill", JSON.stringify(allbill));
-        boxThongBao.innerHTML = "Đặt hàng thành công ! Giỏ hàng của bạn đã được làm mới";
+        toast({title:'SUCCESS',message:"Đặt hàng thành công ! Giỏ hàng của bạn đã được làm mới",type:'success',duration:3000});
   
         localStorage.removeItem("cart_" + usercurrent.username);
         document.querySelector(".detail-background").classList.remove("active");
         boxThongBao.style.display = "block";
-        setTimeout(function() {
-            boxThongBao.innerHTML = "";
-            boxThongBao.style.display = "none";
-        }, 3000);
         InforClient();
     }
 
