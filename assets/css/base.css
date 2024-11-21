@@ -557,7 +557,7 @@ width: 100%;
     z-index: 100;
    transform: translate(-50%,-50%);
    width:700px;
-   height: 720px;
+   max-height: 720px;
    background-color: white;
    border: solid 2px black;
    border-radius: 6px;
@@ -574,6 +574,9 @@ width: 100%;
 .see-bill .bill-content{
     margin-left: 20px;
     line-height: 25px;
+}
+.see-bill .products__list{
+    width: 100%;
 }
 .see-bill .product_item .product__image{
     width: 60px;
