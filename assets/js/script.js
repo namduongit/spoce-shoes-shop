@@ -51,6 +51,8 @@ document
     }
   });
 
+
+
 function searchAndDisplay() {
   let brand = document.querySelector("#brand-select").value;
   const searchQuery = document
@@ -72,6 +74,10 @@ function searchAndDisplay() {
   document.querySelector(".section-two").style.display = "none";
 
   const allProducts = JSON.parse(localStorage.getItem("products")) || [];
+  function parsePrice(priceString) {
+    
+    return parseFloat(priceString.replace(/[^0-9]/g, ''));
+  }
 
   const filteredProducts = allProducts.filter((product) => {
     const matchesName = product.name_product
@@ -80,11 +86,13 @@ function searchAndDisplay() {
     const matchesBrand =
       selectedBrand === "" ||
       product.brand.toLowerCase() === selectedBrand.toLowerCase();
-
-    // Chuyển giá về dạng số để so sánh
-    const productPrice = parseFloat(product.price.replace(/[^0-9]/g, ""));
-    const matchesPrice = productPrice >= minPrice && productPrice <= maxPrice;
-
+  
+   
+    const productPrice = parsePrice(product.sell);
+    const matchesPrice = 
+      productPrice >= minPrice && 
+      productPrice <= (maxPriceInput ? maxPrice : Infinity);
+  
     return matchesName && matchesBrand && matchesPrice;
   });
 
