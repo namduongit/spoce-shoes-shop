@@ -165,6 +165,11 @@ function getCurrentDateTime() {
 function InterfaceLogin() {
     let currenuser = JSON.parse(localStorage.getItem("usercurrent"));
     if (currenuser != null) {
+        if(currenuser.active==false) {
+            alert("Tài khoản đã bị khóa");
+            Logout();
+            return;
+        }
         const nameParts = currenuser.fullname.split(" ");
         const shortName = nameParts[nameParts.length - 2] + " " + nameParts[nameParts.length - 1];
         document.querySelector(".inner-user .user").innerHTML = `
@@ -228,7 +233,7 @@ function InforClient() {
                         <th>Ngày</th>
                         <th>Địa chỉ</th>
                         <th>Giá trị đơn hàng</th>
-                        <th>Phương thức thanh toán</th>
+                        <th>Tình trạng thanh toán</th>
                         <th>Trạng thái</th>
                         <th>Thông tin</th>
                     </tr>

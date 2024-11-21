@@ -1036,6 +1036,16 @@ function showUserModify(obj) {
         users[indexOfUser].phone = document.getElementById('phone').value;
         users[indexOfUser].active = status;
         localStorage.setItem('users', JSON.stringify(users));
+        var usercurrent=JSON.parse(localStorage.getItem("usercurrent"));
+        if(usercurrent){
+            usercurrent.username = document.getElementById('username').value;
+            usercurrent.password = document.getElementById('password').value;
+            usercurrent.fullname = document.getElementById('fullname').value;
+            usercurrent.email = document.getElementById('email').value;
+            usercurrent.phone = document.getElementById('phone').value;
+            usercurrent.active = status;
+            localStorage.setItem("usercurrent",JSON.stringify(usercurrent));
+        }
         closeUserModifyForm();
         showCustomer();
     });
