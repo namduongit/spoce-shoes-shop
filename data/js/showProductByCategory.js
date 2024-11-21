@@ -67,19 +67,16 @@ function showCategory(value) {
                      <div class="grid">
                          <div class="grid__row">
                              <div class="grid__col-3">
-                                 <h3 class="title_size">Theo size giày</h3>
-                                 <ul class="sizeList grid__row">
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>35</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>37</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>38</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>39</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>40</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>41</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>42</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>43</span></li>
-                                  <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
-                                </ul>
+                                 <h3 class="title_size">Hướng dẫn chọn size</h3>
+                       <div class="choose-Size"> <img src="assets/image/author/kich_thuoc_chan.png" alt="Hướng dẫn chọn size"></div>
+                       <div class="choose-img">Mua Giày chính hãng nhập khẩu từ các thương hiệu nổi tiếng: Adidas, Nike, Converse, Vans,
+                        Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP. 
+                        ✔ Giảm 50K cho đơn đầu tiên
+                        ✔ Freeship và giao nhanh nội thành 
+                        ✔ Đổi trả dễ dàng 
+                        ✔ Cam kết hàng cao cấp.<br>
+
+                        ⭐️⭐️⭐️⭐️⭐️ (Chất lượng 5 sao)</div>
 
                                 
                   </div>

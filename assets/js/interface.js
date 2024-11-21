@@ -72,7 +72,7 @@ function writeLogoAndUserTools() {
                     <div class="cart-popup">
                         <div class="cart-popup-content">
                              <div class="cart-header">
-                                    <h2>Giỏ hàng của bạn</h2>
+                                    <h2><i class="fa-solid fa-cart-plus"></i>Giỏ hàng của bạn </h2>
                                     <span class="close-cart">&times;</span>
                              </div>
                                     <div class="cart-items">

@@ -341,3 +341,15 @@
   opacity: 1;
   cursor: pointer;
 }
+
+.choose-Size img {
+  position: relative;
+  top: 0px;
+  width: 800px; /* Chiều rộng mong muốn */
+  height: auto; /* Giữ tỉ lệ ảnh gốc */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng container */
+}
+.choose-img {
+  text-align: justify;
+  
+}
