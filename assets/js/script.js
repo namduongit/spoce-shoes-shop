@@ -24,9 +24,9 @@ document
     event.preventDefault();
     const icon = document.getElementById("toggle-icon");
     searchAndDisplay();
-    document.getElementById("min-price").value="";
-    document.getElementById("max-price").value="";
-    document.getElementById("price-inputs").style.display="none";
+    document.getElementById("min-price").value = "";
+    document.getElementById("max-price").value = "";
+    document.getElementById("price-inputs").style.display = "none";
     icon.classList.remove("fa-angle-up");
     icon.classList.add("fa-angle-down");
   });
@@ -49,9 +49,9 @@ document
     if (event.key === "Enter") {
       searchAndDisplay();
       const icon = document.getElementById("toggle-icon");
-      document.getElementById("min-price").value="";
-      document.getElementById("max-price").value="";
-      document.getElementById("price-inputs").style.display="none";
+      document.getElementById("min-price").value = "";
+      document.getElementById("max-price").value = "";
+      document.getElementById("price-inputs").style.display = "none";
       icon.classList.remove("fa-angle-up");
       icon.classList.add("fa-angle-down");
     }
@@ -62,9 +62,9 @@ document
     if (event.key === "Enter") {
       searchAndDisplay();
       const icon = document.getElementById("toggle-icon");
-      document.getElementById("min-price").value="";
-      document.getElementById("max-price").value="";
-      document.getElementById("price-inputs").style.display="none";
+      document.getElementById("min-price").value = "";
+      document.getElementById("max-price").value = "";
+      document.getElementById("price-inputs").style.display = "none";
       icon.classList.remove("fa-angle-up");
       icon.classList.add("fa-angle-down");
     }
@@ -94,7 +94,7 @@ function searchAndDisplay() {
 
   const allProducts = JSON.parse(localStorage.getItem("products")) || [];
   function parsePrice(priceString) {
-    
+
     return parseFloat(priceString.replace(/[^0-9]/g, ''));
   }
 
@@ -105,18 +105,18 @@ function searchAndDisplay() {
     const matchesBrand =
       selectedBrand === "" ||
       product.brand.toLowerCase() === selectedBrand.toLowerCase();
-  
-   
+
+
     const productPrice = parsePrice(product.sell);
-    const matchesPrice = 
-      productPrice >= minPrice && 
+    const matchesPrice =
+      productPrice >= minPrice &&
       productPrice <= (maxPriceInput ? maxPrice : Infinity);
-  
+
     return matchesName && matchesBrand && matchesPrice;
   });
 
   if (filteredProducts.length === 0) {
-    alert("Không tìm thấy sản phẩm.");
+    toast({title:'WARNING',message:"Không tìm thấy sản phẩm",type:'warning',duration:3000});
     return;
   }
 
@@ -183,9 +183,8 @@ function searchAndDisplay() {
                                             <i class="fa-solid fa-bars"></i>
                                         </div>
                                         <div class="total-product">
-                                            <span> Hiển thị ${start + 1} - ${
-      start + currentProducts.length
-    } trong tổng số ${filteredProducts.length} sản phẩm </span>
+                                            <span> Hiển thị ${start + 1} - ${start + currentProducts.length
+      } trong tổng số ${filteredProducts.length} sản phẩm </span>
                                         </div>
                                     </div>
                                 </div>
@@ -336,11 +335,9 @@ function displaylist(products, brand) {
                                                      <i class="fa-solid fa-bars"></i>
                                                  </div>
                                                  <div class="total-product">
-                                                     <span> Hiển thị ${
-                                                       start + 1
-                                                     } - ${
-      start + currentProducts.length
-    } trong tổng số ${products.length} sản phẩm </span>
+                                                     <span> Hiển thị ${start + 1
+      } - ${start + currentProducts.length
+      } trong tổng số ${products.length} sản phẩm </span>
                                                  </div>
                                              </div>
                                          </div>
@@ -515,4 +512,52 @@ function Default() {
   displaylist(products, brand);
   document.querySelector(".text-default").innerHTML =
     "Mặc định <i class='fa-solid fa-caret-down'></i>";
+}
+function toast({ title = '', message = '', type = 'success', duration = 3000 }) {
+  const main = document.getElementById('toast');
+  if (main) {
+    const toast = document.createElement("div");
+    const autoremoveId=setTimeout(function (){
+      main.removeChild(toast);
+  },duration+1000
+  )
+    toast.onclick = function (e) {
+      if (e.target.closest('.toast_close')) {
+        main.removeChild(toast);
+        clearTimeout(autoremoveId);
+      }
+    }
+    const colors = {
+      success: '#47d864',
+      info: '#2f86eb',
+      warning: '#ffc021',
+      error: '#ff6243'
+    }
+    const icon = {
+      success: "fa fa-check-circle",
+      errol: "fa fa-times",
+      warning: "fa fa-info"
+    }
+    toast.classList.add("toast", `toast--${type}`);
+    toast.innerHTML = `       
+<div class="toast_icon">
+    <i class="${icon[type]}"></i>
+</div>
+<div class="toast_body">
+    <h3 class="toast_title">${title}</h3>
+    <p class="toast_msg">${message}</p>
+</div>
+<div class="toast_close">
+      <i class="fa fa-times"></i>
+</div>
+ <div class="toast__background"style="background-color: ${colors[type]};">
+        `
+    delay = (duration / 1000).toFixed(2);
+    toast.style.animation = `animation: slideInLeft ease 0.3  s,fadeOut linear 1s ${delay}s forwards;`
+    main.appendChild(toast);
+
+
+  }
+
+
 }

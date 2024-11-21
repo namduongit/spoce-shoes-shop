@@ -1075,7 +1075,7 @@ input[type=number]::-webkit-outer-spin-button {
   top: 100px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: green;
+  background-color: rgb(72, 245, 20);
   font-size: 20px;
   padding: 5px 20px;
   border-radius: 5px;
