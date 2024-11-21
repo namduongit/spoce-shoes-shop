@@ -104,6 +104,7 @@ function checkValidRegister() {
 
 function checkValidLogin() {
     event.preventDefault();
+      document.querySelector("#errol_wrong").style.display = "none";
     var username = document.getElementById('input_username_login').value;
     var password = document.getElementById('input_password_login').value;
     let users = JSON.parse(localStorage.getItem("users")) || [];
