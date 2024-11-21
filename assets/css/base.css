@@ -92,7 +92,7 @@ body {
     background-color: #33333346;
     padding: 10px;
 }
-.row .col-account .table-order .table .tHead th{ 
+.row .col-account .table-order .table .tHead th{
     padding: 10px 10px;
     font-size: 17px;
 }
@@ -108,7 +108,7 @@ body {
 .row .col-infor .account{
     border: solid 1px rgba(0, 0, 0, 0.304);
     padding: 20px;
-   
+
 }
 .row .col-infor .account h3{
     margin-bottom: 30px ;
@@ -140,7 +140,7 @@ body {
 .row .col-infor .change-pass a:hover{
     color: red;
     border-bottom: solid 1px red;
-} 
+}
 .card-changepass{
     position: relative;
     top: 50%;
@@ -210,7 +210,7 @@ body {
     margin: 10px 0 0;
     border: none;
     font-size: 17px;
-    
+
 }
 .input-box input:focus{
     outline: none;
@@ -219,7 +219,7 @@ body {
     color: white;
     background-color: black;
     width: 100px;
-    height: 100px; 
+    height: 100px;
     text-align: center;
     line-height: 140px;
     margin: 10px auto;
@@ -307,7 +307,7 @@ body {
     padding-bottom: 20px;
     border-bottom: 1px solid #bebebe;
     position: relative;
-    
+
 }
 .row .export-address .form-address p{
     line-height: 30px;
@@ -392,7 +392,7 @@ width: 100%;
 }
 .col-two .payment .payment__content{
     width: 100%;
-    border: solid 3px #3333336d;
+    border: solid 2px #3333336d;
     border-bottom: none;
     border-radius: 5px;
 }
@@ -404,7 +404,7 @@ width: 100%;
     border-bottom: solid 3px #33333369;
 }
 .payment-page .bill{
-    width: 100%;    
+    width: 100%;
 }
 .bill .oder-list{
     width:100%;

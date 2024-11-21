@@ -1148,6 +1148,39 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+
+/* Css table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+.table td {
+  border: 1px solid #ccc;
+  padding: 8px 20px;
+  white-space: nowrap;
+}
+
+.table th {
+  background-color: #f4f4f4; /* Màu nền cho tiêu đề bảng */
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Màu nền cho dòng chẵn */
+}
+
+.table tr:hover {
+  background-color: #eaeaea; /* Hiệu ứng khi di chuột qua */
+}
+
+
 .info-product-user {
   color: black !important;
   font-style: normal !important;
@@ -1165,6 +1198,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: fit-content;
   padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 #showProductCode {
@@ -1186,16 +1220,25 @@ input[type=number]::-webkit-outer-spin-button {
   max-height: 700px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 50px 100px;
+  padding: 50px 60px;
   border-radius: 5px;
   border: 1px solid #ddd;
   overflow-y: auto;
 }
-
+#showProductCode .head-content span {
+  margin-right: 100px;
+}
 .group-product {
   padding: 10px 0px;
   border-bottom: 2px solid #ddd;
-
+  margin-bottom: 10px;
+  display: flex;
+}
+.group-product span {
+  margin-right: 100px;
+}
+.group-product div {
+  margin-bottom: 5px;
 }
 
 .hideShowProduct {
@@ -1203,7 +1246,25 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: red;
   width: fit-content;
   color: white;
-  padding: 3px 5px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.info-product-tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.foot-content {
+  justify-items: center;
+}
+.head-content {
+  justify-items: center;
+}
+
+.head-content h4 {
+  color: red;
+  margin-bottom: 20px;
 }

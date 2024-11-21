@@ -104,7 +104,7 @@ function checkValidRegister() {
 
 function checkValidLogin() {
     event.preventDefault();
-      document.querySelector("#errol_wrong").style.display = "none";
+    document.querySelector("#errol_wrong").style.display = "none";
     var username = document.getElementById('input_username_login').value;
     var password = document.getElementById('input_password_login').value;
     let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -118,13 +118,13 @@ function checkValidLogin() {
     if (valid == 0) {
         return false;
     }
-        users.forEach(user=>{
-        if(user.username==username && user.active==false){
+    users.forEach(user => {
+        if (user.username == username && user.active == false) {
             alert("Tài khoản đã bị khóa");
-            valid=false;
+            valid = false;
         }
     })
-    if(valid==false){
+    if (valid == false) {
         return;
     }
     const user = users.find(user => user.username === username && user.password === password);
@@ -166,7 +166,7 @@ function getCurrentDateTime() {
 function InterfaceLogin() {
     let currenuser = JSON.parse(localStorage.getItem("usercurrent"));
     if (currenuser != null) {
-        if(currenuser.active==false) {
+        if (currenuser.active == false) {
             alert("Tài khoản đã bị khóa");
             Logout();
             return;
@@ -240,7 +240,6 @@ function InforClient() {
                     </tr>
                     <tr class="tbody">
                         ${showBillPay()}
-
                     </tr>
                 </table>
             </div>
@@ -280,6 +279,22 @@ function InforClient() {
     document.querySelector(".body-content").innerHTML = s;
 
 }
+function convertIntToString(number) {
+    let convertMoney = "";
+    let index = 0;
+    let strMoney = number.toString();
+    for (let i = strMoney.length - 1; i >= 0; i--) {
+        convertMoney += strMoney[i];
+        index++;
+        if (index % 3 == 0) {
+            if (i != 0) {
+                convertMoney += '.';
+            }
+        }
+    }
+    convertMoney = convertMoney.split('').reverse().join('');
+    return convertMoney;
+}
 
 function showBillPay() {
     const currentUser = JSON.parse(localStorage.getItem("usercurrent"));
@@ -296,27 +311,28 @@ function showBillPay() {
                 // Xử lí dữ liệu
                 let billCode = bill.code;
                 let billDay = bill.paymentdate;
-                let address = bill.city+";"+bill.district+","+bill.street;
+                billDay = billDay.split(" ")[2];
+                let address = bill.city + ", " + bill.district;
                 let allProduct = bill.products_buy;
                 let billMoney = 0;
                 let paymethod = bill.paymethod
                 // Sửa lỗi ở đây: sử dụng forEach đúng cách
                 allProduct.forEach(product => {
-                    billMoney += parseInt(product.sell.replace("₫đ", "").replace(/\./g, "").trim());
+                    billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
                 });
-
+                let resultMoney = convertIntToString(billMoney);
 
                 let status = bill.status;
                 html += `
-                <tr>
+                <tr class="info-product-tr">
                     <td class="info-product-user">${billCode}</td>
                     <td class="info-product-user">${billDay}</td>
                     <td class="info-product-user">${address}</td>
-                    <td class="info-product-user">${billMoney}</td>
+                    <td class="info-product-user">${resultMoney}đ</td>
                     <td class="info-product-user">${paymethod}</td>
                     <td class="info-product-user">${status}</td>
-                    <td class="out-info">
-                        <div onclick="outInfoCode(${billCode})">Xem</div>
+                    <td class="out-info" onclick="outInfoCode(${billCode})">
+                        <div>Xem</div>
                     </td>
                 </tr>
             `;
@@ -726,42 +742,67 @@ function SaveAddress(value) {
     localStorage.setItem("users", JSON.stringify(users));
     UpdateUser();
 }
+function converStringToNumber(str) {
+    let result = str.match(/\d+/g)?.join("") || "0";
+    return parseInt(result);
+}
 
 function outInfoCode(billCode) {
     const AllBill = JSON.parse(localStorage.getItem("Allbill"));
     const usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
 
     if (AllBill && usercurrent) {
-        // Lọc hóa đơn của người dùng hiện tại
         const productsUser = AllBill.filter(bill => bill.username === usercurrent.username);
 
-        // Lọc hóa đơn có mã billCode
         const productInfoCurrent = productsUser.find(pro => pro.code === billCode);
 
         if (productInfoCurrent) {
-            // Lấy danh sách sản phẩm từ hóa đơn
+            // Lấy tất cả sản phẩm mua ra
             const productBuy = productInfoCurrent.products_buy;
+            console.log(productBuy);
 
             // Lấy thẻ đựng chứa nội dung
             const element = document.getElementById("head-content");
-            let html = ``;
+            let rowsHtml = ``;
 
-            // Duyệt qua danh sách sản phẩm và tạo HTML
+            // Duyệt qua danh sách sản phẩm và tạo các dòng cho bảng
             productBuy.forEach(product => {
-                html += `
-                    <div class="group-product">
-                        <div>Tên sản phẩm: <strong>${product.name_product}</strong></div>
-                        <div>Giá: ${product.price}</div>
-                        <div>Size: ${product.sizes || 'Không xác định'}</div>
-                        <div>Phương thức thanh toán: ${productInfoCurrent.paymethod}</div>
-                    </div>
+                rowsHtml += `
+                    <tr>
+                        <td>${product.name_product}</td>
+                        <td>${product.size}</td>
+                        <td>${product.quantity}</td>
+                        <td>${convertIntToString(converStringToNumber(product.sell) * product.quantity)}đ</td>
+                    </tr>
                 `;
             });
+
+            // Cấu trúc bảng HTML
             let str = `
-                <h4>Chi tiết đơn hàng</h4>
+                <div class="head-content">
+                    <h4>Chi tiết đơn hàng</h4>
+                    <div class="info-user">
 
-                ${html}
-
+                        
+                    </div>
+                </div>
+                <div class="body-content">
+                    <div class="table-order">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${rowsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             `;
 
             // Cập nhật nội dung vào thẻ
@@ -774,6 +815,7 @@ function outInfoCode(billCode) {
         console.log("Dữ liệu không hợp lệ hoặc người dùng chưa đăng nhập.");
     }
 }
+
 
 function hideShowProduct() {
     document.getElementById("showProductCode").style.display = "none";
