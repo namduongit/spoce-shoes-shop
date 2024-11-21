@@ -751,7 +751,7 @@ function outInfoCode(billCode) {
                     <div class="group-product">
                         <div>Tên sản phẩm: <strong>${product.name_product}</strong></div>
                         <div>Giá: ${product.price}</div>
-                        <div>Size: ${product.size || 'Không xác định'}</div>
+                        <div>Size: ${product.sizes || 'Không xác định'}</div>
                         <div>Phương thức thanh toán: ${productInfoCurrent.paymethod}</div>
                     </div>
                 `;
