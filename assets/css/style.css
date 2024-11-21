@@ -1189,18 +1189,20 @@ a {
   z-index: 30;
   width: 100%;
   justify-items: center;
-  height: 100vh;
+  height: 100%;
   align-content: center;
   display: none;
   background-color: rgba(128, 128, 128, 0.150);
-  overflow-y:auto;
+
 }
 #showProductCode .wrap-content {
+  max-height: 700px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 50px 100px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  overflow-y:auto;
 }
 
 .group-product {
