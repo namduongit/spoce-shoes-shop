@@ -22,7 +22,13 @@ document
   .getElementById("button-search")
   .addEventListener("click", function (event) {
     event.preventDefault();
+    const icon = document.getElementById("toggle-icon");
     searchAndDisplay();
+    document.getElementById("min-price").value="";
+    document.getElementById("max-price").value="";
+    document.getElementById("price-inputs").style.display="none";
+    icon.classList.remove("fa-angle-up");
+    icon.classList.add("fa-angle-down");
   });
 
 document
@@ -30,6 +36,7 @@ document
   .addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
       searchAndDisplay();
+
     }
   });
 
@@ -41,6 +48,12 @@ document
   .addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
       searchAndDisplay();
+      const icon = document.getElementById("toggle-icon");
+      document.getElementById("min-price").value="";
+      document.getElementById("max-price").value="";
+      document.getElementById("price-inputs").style.display="none";
+      icon.classList.remove("fa-angle-up");
+      icon.classList.add("fa-angle-down");
     }
   });
 document
@@ -48,6 +61,12 @@ document
   .addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
       searchAndDisplay();
+      const icon = document.getElementById("toggle-icon");
+      document.getElementById("min-price").value="";
+      document.getElementById("max-price").value="";
+      document.getElementById("price-inputs").style.display="none";
+      icon.classList.remove("fa-angle-up");
+      icon.classList.add("fa-angle-down");
     }
   });
 
