@@ -6,33 +6,41 @@ function DetailProducts(id) {
     if (id === products[i].id) product = products[i];
   }
 
-product_buy=product;
+  product_buy = product;
 
-  var product_list=[];
+  var product_list = [];
 
   Detail_product(product);
-
-  document.querySelector(".btn-paym").onclick=function(){
-     let usercurrent=JSON.parse(localStorage.getItem("usercurrent"));
-  if(!usercurrent){
-    alert("Vui lòng đăng nhập để tiếp tục");
-    return;
+  document.querySelector(".input-quantity").oninput = function () {
+    let price = document.querySelector(".product__price-current").innerHTML;
+    price = price.replace(/[.đ₫]/g, "");
+    document.querySelector(".pay-all").innerHTML = (Number(price) * Number(this.value)).toLocaleString("vi-VN") + "đ";
   }
+  document.querySelector(".btn-paym").onclick = function () {
+    let usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+    if (!usercurrent) {
+      alert("Vui lòng đăng nhập để tiếp tục");
+      return;
+    }
     if (!document.querySelector(".size_product .check")) {
       alert("Vui lòng chọn size");
       return;
-  }
-  
-  let payall = document.querySelector(".pay-all").innerHTML;
-  if (payall.replace(/[.đ₫]/g, "") === "0") {
+    }
+    
+    let payall = document.querySelector(".pay-all").innerHTML;
+    if (payall.replace(/[.đ₫]/g, "") === "0") {
       alert("Số lượng không hợp lệ!");
       return;
-  }
+    }
     let size = document.querySelector(".size_product .check").innerHTML;
     let quantity = document.querySelector(".input-quantity").value;
-    product_buy.size=size;
-    product_buy.quantity=quantity;
+    product_buy.sizes = size;
+    product_buy.quantity = quantity;
     product_list.push(product_buy);
+    if(document.querySelector(".input-quantity").value>product_buy.size[size]){
+      alert("Không đủ số lượng tồn kho");
+      return;
+    }
     Payment(product_list);
   };
 
@@ -211,22 +219,19 @@ function Detail_product(product) {
                     <p>📦Đóng box carton kèm chống sốc, bảo vệ hộp giày</p>
                 </div>
 
-                <div class= "product__price-old" style="font-size: 17px">${
-                  product.price
-                } </div>
+                <div class= "product__price-old" style="font-size: 17px">${product.price
+    } </div>
                 <div class="product__price-current" style="font-size: 20px">
                     <strong>${product.sell}</strong>
                 </div>
 
                 <div class="product-quantity">
                     <span> Số lượng: </span>
-                        <button class="btn-down btn" onclick="Quantity('down','${
-                          product.sell
-                        }')">-</button>
-                            <input type="text"class="input-quantity" value="1" pattern="/d*" title="Chỉ cho phép nhập số">
-                            <button class="btn-up btn" onclick="Quantity('up','${
-                              product.sell
-                            }')">+</button>
+                        <button class="btn-down btn" onclick="Quantity('down','${product.sell
+    }')">-</button>
+                            <input type="number"class="input-quantity" value="1"  title="Chỉ cho phép nhập số">
+                            <button class="btn-up btn" onclick="Quantity('up','${product.sell
+    }')">+</button>
                 </div>
             </div>
         </div>
@@ -406,9 +411,8 @@ function updateCartTable(cart) {
     totalAmount += itemTotal;
 
     row.innerHTML = `
-            <td><img src="${item.image}" alt="${
-      item.name_product
-    }" style="width: 50px;"></td>
+            <td><img src="${item.image}" alt="${item.name_product
+      }" style="width: 50px;"></td>
             <td class="td_id" data-id=${item.id}>${item.name_product}</td>
             <td class="td_size">${item.size}</td>
             <td class="td_quantity">
@@ -480,7 +484,7 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
   boxThongBao.innerHTML = "Chuyển đến trang toán";
   boxThongBao.style.display = "block";
 
-  setTimeout(function() {
+  setTimeout(function () {
     boxThongBao.innerHTML = "";
     boxThongBao.style.display = "none";
   }, 3000);
@@ -502,18 +506,18 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
   }
 
   // Thực hiện xử lý thanh toán
-   let products=JSON.parse(localStorage.getItem("products"));
+  let products = JSON.parse(localStorage.getItem("products"));
   let product_buy
-  let product_list=[];
-  var len=document.querySelectorAll(".td_id").length;
-  for(let i=0;i<len;i++){
-    products.forEach(product=>{
-      if(product.id== document.querySelectorAll(".td_id")[i].dataset.id) {
-        product_buy=product;
+  let product_list = [];
+  var len = document.querySelectorAll(".td_id").length;
+  for (let i = 0; i < len; i++) {
+    products.forEach(product => {
+      if (product.id == document.querySelectorAll(".td_id")[i].dataset.id) {
+        product_buy = product;
       }
     })
-    product_buy.size=document.querySelectorAll(".td_size")[i].innerHTML;
-    product_buy.quantity=document.querySelectorAll(".pquantity")[i].innerHTML;
+    product_buy.size = document.querySelectorAll(".td_size")[i].innerHTML;
+    product_buy.quantity = document.querySelectorAll(".pquantity")[i].innerHTML;
     product_list.push(product_buy);
   }
   // Thêm trang thanh toán ở đây

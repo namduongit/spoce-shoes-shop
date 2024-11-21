@@ -25,7 +25,7 @@ function Payment(product_list) {
                 <td>
                 <div class="product__name">
                 <span class="product">${product.name_product}</span>
-                <span class="product psize">Size: ${product.size}</span>
+                <span class="product psize">Size: ${product.sizes}</span>
                 <span class=" product product_quantity">Số lượng: ${product.quantity}</span>
                 </div>
                 </td>
@@ -364,7 +364,7 @@ function InforInvoice(order){
                     <td>
                     <div class="product__name">
                     <span class="product">${product.name_product}</span>
-                    <span class="product psize">Size: ${product.size}</span>
+                    <span class="product psize">Size: ${product.sizes}</span>
                     <span class=" product product_quantity">Số lượng: ${product.quantity}</span>
                     </div>
                     </td>
