@@ -221,6 +221,7 @@ function InforClient() {
                         <th>Giá trị đơn hàng</th>
                         <th>Tình trạng thanh toán</th>
                         <th>Trạng thái</th>
+                        <th>Thông tin</th>
                     </tr>
                     <tr class="tbody">
                         ${showBillPay()}
@@ -247,6 +248,19 @@ function InforClient() {
         <div class="change-pass" ><a onclick="ChangePassword()" href="javascirp:void(0)">Đổi mật khẩu</a></div>
         </div>
     </div>
+
+    <div id="showProductCode">
+        <div class="wrap-content">
+            <div id="head-content">
+
+            </div>
+            <div class="foot-content">
+                <div class="hideShowProduct" onclick="hideShowProduct()">Đóng</div>
+            </div>
+        </div>
+    </div>
+
+
     `
     document.querySelector(".body-content").innerHTML = s;
 
@@ -270,7 +284,7 @@ function showBillPay() {
                 let address = bill.district;
                 let allProduct = bill.products_buy;
                 let billMoney = 0;
-
+                let paymethod = bill.paymethod
                 // Sửa lỗi ở đây: sử dụng forEach đúng cách
                 allProduct.forEach(product => {
                     billMoney += parseInt(product.sell.replace("₫", "").replace(/\./g, "").trim());
@@ -279,12 +293,15 @@ function showBillPay() {
                 let status = bill.status;
                 html += `
                 <tr>
-                    <td>${billCode}</td>
-                    <td>${billDay}</td>
-                    <td>${address}</td>
-                    <td>${billMoney}</td>
-                    <td>Chưa thanh toán</td>
-                    <td>${status}</td>
+                    <td class="info-product-user">${billCode}</td>
+                    <td class="info-product-user">${billDay}</td>
+                    <td class="info-product-user">${address}</td>
+                    <td class="info-product-user">${billMoney}</td>
+                    <td class="info-product-user">${paymethod}</td>
+                    <td class="info-product-user">${status}</td>
+                    <td class="out-info">
+                        <div onclick="outInfoCode(${billCode})">Xem</div>
+                    </td>
                 </tr>
             `;
             });
@@ -692,4 +709,56 @@ function SaveAddress(value) {
     });
     localStorage.setItem("users", JSON.stringify(users));
     UpdateUser();
+}
+
+function outInfoCode(billCode) {
+    const AllBill = JSON.parse(localStorage.getItem("Allbill"));
+    const usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+
+    if (AllBill && usercurrent) {
+        // Lọc hóa đơn của người dùng hiện tại
+        const productsUser = AllBill.filter(bill => bill.username === usercurrent.username);
+
+        // Lọc hóa đơn có mã billCode
+        const productInfoCurrent = productsUser.find(pro => pro.code === billCode);
+
+        if (productInfoCurrent) {
+            // Lấy danh sách sản phẩm từ hóa đơn
+            const productBuy = productInfoCurrent.products_buy;
+
+            // Lấy thẻ đựng chứa nội dung
+            const element = document.getElementById("head-content");
+            let html = ``;
+
+            // Duyệt qua danh sách sản phẩm và tạo HTML
+            productBuy.forEach(product => {
+                html += `
+                    <div class="group-product">
+                        <div>Tên sản phẩm: <strong>${product.name_product}</strong></div>
+                        <div>Giá: ${product.price}</div>
+                        <div>Size: ${product.size || 'Không xác định'}</div>
+                        <div>Phương thức thanh toán: ${productInfoCurrent.paymethod}</div>
+                    </div>
+                `;
+            });
+            let str = `
+                <h4>Chi tiết đơn hàng</h4>
+
+                ${html}
+
+            `;
+
+            // Cập nhật nội dung vào thẻ
+            element.innerHTML = str;
+            document.getElementById("showProductCode").style.display = "block";
+        } else {
+            console.log("Không tìm thấy hóa đơn với mã:", billCode);
+        }
+    } else {
+        console.log("Dữ liệu không hợp lệ hoặc người dùng chưa đăng nhập.");
+    }
+}
+
+function hideShowProduct() {
+    document.getElementById("showProductCode").style.display = "none";
 }

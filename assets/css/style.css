@@ -15,9 +15,7 @@ header .inner-wrap .inner-content {
   justify-content: space-between;
   align-items: center;
 }
-header .inner-wrap .inner-menu_mobile{
-    /* width: 10%; */
-}
+
 header .inner-wrap .inner-menu_mobile i {
     color: #000;
     margin-left: 6px;
@@ -1144,4 +1142,57 @@ a {
     font-size: 14px;
     color: #666;
   }
+
+  .info-product-user {
+    color: black !important;
+    font-style: normal !important;
+  }
+.out-info {
+  display: flex;
+  justify-content: center;
+}
+.out-info div {
+  background-color: rgb(16, 163, 16);
+  color: white !important;
+  font-style: normal !important;
+  width: fit-content;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#showProductCode {
+  position: fixed;
+  color: black;
+  font-size: 19px;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  justify-items: center;
+  height: 100vh;
+  align-content: center;
+  display: none;
+  background-color: rgba(128, 128, 128, 0.150);
+}
+#showProductCode .wrap-content {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 50px 100px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.group-product {
+  padding: 10px 0px;
+  border-bottom: 2px solid #ddd;
+
+}
+.hideShowProduct {
+  margin-top: 20px;
+  background-color: red;
+  width: fit-content;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
