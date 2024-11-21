@@ -1220,3 +1220,109 @@ function getCurrentDateTime() {
 
     return `Thứ ${day} ${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
+
+
+var orders = JSON.parse(localStorage.getItem('Allbill'));
+
+function showOrders() {
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Đơn hàng</h2>
+    `;
+
+    document.querySelector('.content').innerHTML = `
+    <div class="order-title">
+        <h1>Danh sách đơn hàng</h1>
+    </div>
+
+    <div class="order-sort">
+        <div class="sort-content">
+        
+            <h3>Tìm kiếm</h3>
+
+            <form>
+                <input type="date" id="start-date">
+                <input type="date" id="end-date">
+                <br>
+                <label for="order-status">Tình trạng</label>
+                <select id="order-status">
+                    <option value="1">Đang xử lí</option>
+                    <option value="2">Đã xác nhận</option>
+                    <option value="3">Đã giao</option>
+                    <option value="4">Đã hủy</option>
+                </select>
+                <br>
+                <input type="checkbox" id="sortDistrict">
+                <label for="sortDistrict">Sắp xếp theo quận</label>
+            </form>
+
+            <div>
+                <a href="#" onclick="sortOrder()">Lọc</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Khách hàng</th>
+                    <th>Quận</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="order-details">
+
+            </tbody>
+        </table>
+                    
+    </div>
+
+    <ul id="page-select" class="page-select"></ul>
+    `;
+
+    var orderPerPage = 5;
+    var numOfPages = Math.ceil(orders.length / orderPerPage);
+    
+    var str = "";
+    for (let i=1; i<=numOfPages; i++) {
+        str = str + `
+        <li class="page-item" data-page="${i}">
+            <a class="page-item-text" href="javascript:void(0);">${i}</a>
+        </li>
+        `;
+    }
+
+    function loadOrder(page) {
+        var start = orderPerPage * (page - 1);
+        var end = orderPerPage * page;
+        var ordersOfPage = orders.slice(start,end);
+
+        var s = "";
+        for (let i=0; i<ordersOfPage.length; i++) {
+            s = s + `
+            <tr>
+                <td>${ordersOfPage[i].code}</td>
+                <td>${ordersOfPage[i].name}</td>
+                <td>${ordersOfPage[i].district.toUpperCase()}</td>
+                <td>${ordersOfPage[i].status}</td>
+                <td><a href="#" class="warning" data-username="${ordersOfPage[i].code}" onclick="showUserModify(this)">Chi tiết</a></td>
+            </tr>
+            `;
+        }
+
+        document.getElementById('page-select').innerHTML = str;
+        document.getElementById('order-details').innerHTML = s;
+
+        var pageBtns = document.querySelectorAll('.page-item');
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                var newPage = btn.getAttribute('data-page');
+                loadOrder(newPage);
+            });
+        });
+    }
+    loadOrder(1);
+}

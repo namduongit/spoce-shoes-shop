@@ -605,7 +605,7 @@ i {
 
 .customer-content table {
     width: 100%;
-    border-collapse: collaspe;
+    border-collapse: collapse;
     text-align: center;
 }
 
@@ -722,13 +722,52 @@ i {
     padding: 10px;
 }
 
+/* Order */
+.order-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.order-content {
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.order-content table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.order-content table tbody td {
+    height: 50px;
+}
 
 
+/* SORT */
+.order-sort {
+    background-color: grey;
+    display: flex;
+}
 
+.sort-content {
+    background-color: white;
+    margin-left: 65px;
+    padding: 20px;
+}
 
-
-
-
+.sort-content h3 {
+    margin-bottom: 5px;
+}
 
 
 
