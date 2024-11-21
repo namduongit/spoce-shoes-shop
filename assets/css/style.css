@@ -15,13 +15,6 @@ header .inner-wrap .inner-content {
   justify-content: space-between;
   align-items: center;
 }
-<<<<<<< HEAD
-
-=======
-header .inner-wrap .inner-menu_mobile {
-  /* width: 10%; */
-}
->>>>>>> 3136ce8ab161bd2c461533dfc42a547fad372c41
 header .inner-wrap .inner-menu_mobile i {
   color: #000;
   margin-left: 6px;
@@ -1156,13 +1149,13 @@ a {
 
 .price-inputs {
   margin-top: 40px;
-  position: absolute; 
-  background-color: white; 
+  position: absolute;
+  background-color: white;
   padding: 10px;
   border: 1px solid #ccc;
-  z-index: 9999; 
+  z-index: 9999;
   display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 

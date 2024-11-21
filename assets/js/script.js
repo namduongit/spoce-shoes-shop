@@ -119,8 +119,8 @@ function searchAndDisplay() {
                 <div class="product__link-sale">${product.discount}%</div>
             </a>
             <div class="product__price">
-                <div class="product__price-current">${product.sell}đ</div>
-                <div class="product__price-old">${product.price}đ</div>
+                <div class="product__price-current">${product.sell}</div>
+                <div class="product__price-old">${product.price}</div>
             </div>
         </div>`;
     });
@@ -144,9 +144,9 @@ function searchAndDisplay() {
                           <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>36</span></li>
                         </ul>
 
-                       
 
-                        
+
+
                     </div>
 
                     <div class="grid__col-9">
@@ -222,11 +222,11 @@ function searchAndDisplay() {
 function SortA_Z() {
   var brand = document.querySelector(".product_list").dataset.brand;
   var products = JSON.parse(localStorage.getItem("products"));
-  
+
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-   
+
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
@@ -304,7 +304,7 @@ function displaylist(products, brand) {
                                   <li class="size grid__col-6"><input type="checkbox" onclick="handleSelectSizes(event)"><span>44</span></li>
                                  </ul>
                              </div>
-        
+
                              <div class="grid__col-9">
                                  <div class="PagiBar">
                                      <div class="grid__row sortPagiBar">
@@ -342,7 +342,7 @@ function displaylist(products, brand) {
                                          </div>
                                      </div>
                                  </div>
-        
+
                                 <div class="grid__row product_list "data-brand="${brand}">
                                     ${s}
                                     <ul class="pagination">
@@ -383,7 +383,7 @@ function SortZ_A() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-   
+
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
@@ -447,7 +447,7 @@ function SortReduce() {
   if (brand === "ALL") {
     // Trường hợp hiển thị tất cả sản phẩm
     // Không cần lọc, giữ nguyên danh sách sản phẩm
-    
+
   } else if (brand === "SALE") {
     // Lọc sản phẩm có giảm giá từ 40% đến 80%
     products = products.filter(
