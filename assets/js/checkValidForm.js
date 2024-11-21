@@ -96,7 +96,7 @@ function checkValidRegister() {
 
     updateCartQuantity();
 
-    alert("Đăng ký thành công!");
+    toast({title:'SUCCESS',message:'Đăng ký tài khoản thành công!',type:'success',duration:3000});
     hideTools();
     InterfaceLogin();
     return true;
@@ -104,12 +104,13 @@ function checkValidRegister() {
 
 function checkValidLogin() {
     event.preventDefault();
-      document.querySelector("#errol_wrong").style.display = "none";
+    document.querySelector("#errol_wrong").style.display = "none";
     var username = document.getElementById('input_username_login').value;
     var password = document.getElementById('input_password_login').value;
     let users = JSON.parse(localStorage.getItem("users")) || [];
     if (users.length === 0) {
-        alert("Không có người dùng nào trong hệ thống.");
+        toast({title:'ERROL',message:'Không có người dùng nào trong hệ thống!',type:'errol',duration:3000});
+
         return false;
     }
     var validation = new Validation();
@@ -120,7 +121,8 @@ function checkValidLogin() {
     }
         users.forEach(user=>{
         if(user.username==username && user.active==false){
-            alert("Tài khoản đã bị khóa");
+            toast({title:'ERROL',message:'Tài khoản của bạn đã bị khóa',type:'errol',duration:3000});
+
             valid=false;
         }
     })
@@ -135,7 +137,7 @@ function checkValidLogin() {
 
         updateCartQuantity(); // Gọi sau khi lưu currentUser
 
-        alert("Đăng nhập thành công!");
+        toast({title:'SUCCESS',message:'Đăng nhập thành công!',type:'success',duration:3000});
         document.querySelector("#errol_wrong").style.display = "none";
     } else {
         document.querySelector("#errol_wrong").innerHTML = "Thông tin đăng nhập không đúng. Vui lòng kiểm tra và thử lại!";
@@ -167,7 +169,7 @@ function InterfaceLogin() {
     let currenuser = JSON.parse(localStorage.getItem("usercurrent"));
     if (currenuser != null) {
         if(currenuser.active==false) {
-            alert("Tài khoản đã bị khóa");
+            toast({title:'ERROL',message:'Tài khoản của bạn đã bị khóa',type:'success',duration:3000});
             Logout();
             return;
         }
@@ -570,7 +572,8 @@ function Addaddress() {
     let test = true;
     usercurrent.address.forEach(user => {
         if (user.city.trim() === city.trim() && user.district.trim() === district.trim() && user.street.trim() === street.trim() && user.phone == address.phone) {
-            alert("Dia chi da ton tai!");
+            toast({title:'WARNING',message:'Địa chỉ đã tồn tại',type:'warning',duration:3000});
+
             test = false;
         }
     });
@@ -712,7 +715,8 @@ function SaveAddress(value) {
     const indexToUpdate = usercurrent.address.findIndex(user => user.id === address.id);
     usercurrent.address[indexToUpdate] = address;
     if (test === false) {
-        alert("Dia chi da ton tai!");
+        toast({title:'WARNING',message:'Địa chỉ đã tồn tại',type:'warning',duration:3000});
+
         return false;
     }
     console.log(usercurrent);
