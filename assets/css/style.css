@@ -822,7 +822,7 @@ a {
   z-index: 100;
   transform: translate(-50%, -50%);
   width: 800px;
-  height: 720px;
+  max-height: 720px;
   background-color: white;
   border: solid 2px black;
   border-radius: 6px;
@@ -971,11 +971,16 @@ a {
   width: 35px;
   text-align: center;
 }
+/* Ẩn spin buttons trên Chrome, Safari và Edge */
+.product-quantity input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+    margin: 0; 
+  } 
 .product-quantity .input-quantity:focus {
   outline: none;
 }
 .detail-product .product-pay {
-  margin: 10px 0 0;
+  margin: 10px 0 20px;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -1188,6 +1193,7 @@ a {
   align-content: center;
   display: none;
   background-color: rgba(128, 128, 128, 0.150);
+  overflow-y:auto;
 }
 #showProductCode .wrap-content {
   background-color: white;
