@@ -796,7 +796,42 @@ i {
     background-color: black;
 }
 
+/* ORDER DETAIL */
+.order-detail {
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 20px;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    overflow: auto;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+}
 
+.order-detail .close-detail {
+    display: flex;
+    justify-content: end;
+}
+
+.order-detail .close-detail a {
+    color: black;
+}
+
+.order-print {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.order-print:hover {
+    color: white;
+    background-color: black;
+}
 
 
 /* RESPONSIVE CHO Desktop và Laptop */

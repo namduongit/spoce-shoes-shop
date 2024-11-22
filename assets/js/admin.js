@@ -1234,6 +1234,8 @@ function showOrders() {
         <h1>Danh sách đơn hàng</h1>
     </div>
 
+    <div class="order-detail"></div>
+
     <div class="order-sort">
         <div class="sort-content">
         
@@ -1314,7 +1316,7 @@ function showOrders() {
                 <td>${ordersOfPage[i].name}</td>
                 <td>${ordersOfPage[i].district.toUpperCase()}</td>
                 <td>${ordersOfPage[i].status}</td>
-                <td><a href="#" class="warning" data-username="${ordersOfPage[i].code}" onclick="showUserModify(this)">Chi tiết</a></td>
+                <td><a href="#" class="warning" data-code="${ordersOfPage[i].code}" onclick="showOrderDetail(this)">Chi tiết</a></td>
             </tr>
             `;
         }
@@ -1331,4 +1333,91 @@ function showOrders() {
         });
     }
     loadOrder(1);
+}
+
+function showOrderDetail(obj) {
+    var order = orders.find(item => item.code == obj.getAttribute('data-code'));
+    var index = orders.findIndex(item => item.code == obj.getAttribute('data-code'));
+
+    var str = "";
+    var price = 0;
+    order.products_buy.forEach(item => {
+        str = str + item.quantity + "x " + item.name_product + "; ";
+        var priceOfProduct = parseInt(item.sell.replace(/[^0-9]/g, ""));
+        var quantity = parseInt(item.quantity);
+        price = price + quantity * priceOfProduct;
+    });
+    var priceString = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");
+    priceString = priceString + "₫";
+
+
+    document.querySelector('.order-detail').style.display = 'flex';
+    document.querySelector('.order-detail').innerHTML = `
+    <div class="close-detail">
+        <a href="#" onclick="closeOrderDetail()"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    <h4>Thông tin đơn hàng</h4>
+    <p>${str}</p>
+    <h4>Tên khách hàng</h4>
+    <p>${order.name}</p>
+    <h4>Số điện thoại</h4>
+    <p>${order.phone}</p>
+    <h4>Địa chỉ</h4>
+    <p>${order.street}</p>
+    <h4>Tổng giá tiền</h4>
+    <p>${priceString}</p>
+    <h4>Tình trạng</h4>
+    <select id="status-select">
+        <option value="1">Đang xử lý</option>
+        <option value="2">Đã xác nhận</option>
+        <option value="3">Đã giao thành công</option>
+        <option value="4">Đã hủy</option>
+    </select>
+    <a class="order-print" href="#" onclick="window.print()">In hóa đơn</a>
+    `;
+    var statusCode;
+    if (order.status === "Đang xử lý") {
+        statusCode = 1;
+    }
+
+    if (order.status === "Đã xác nhận") {
+        statusCode = 2;
+    }
+
+    if (order.status === "Đã giao thành công") {
+        statusCode = 3;
+    }
+
+    if (order.status === "Đã hủy") {
+        statusCode = 4;
+    }
+
+    document.getElementById('status-select').value = statusCode;
+
+    document.getElementById('status-select').addEventListener('change', () => {
+        var currentStatusCode = document.getElementById('status-select').value;
+        var currentStatus;
+        if (currentStatusCode === "1") {
+            currentStatus = "Đang xử lý";
+        }
+
+        if (currentStatusCode === "2") {
+            currentStatus = "Đã xác nhận";
+        }
+
+        if (currentStatusCode === "3") {
+            currentStatus = "Đã giao thành công";
+        }
+
+        if (currentStatusCode === "4") {
+            currentStatus = "Đã hủy";
+        }
+        orders[index].status = currentStatus;
+        localStorage.setItem('Allbill', JSON.stringify(orders));
+    });
+}
+
+function closeOrderDetail() {
+    document.querySelector('.order-detail').style.display = 'none';
+    loadOrder();
 }
