@@ -805,11 +805,17 @@ i {
     display: none;
     flex-direction: column;
     overflow: auto;
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     left: 50%;
     top: 40%;
     transform: translate(-50%, -40%);
+}
+
+.order-detail select {
+    width: 20%;
+    padding: 5px;
+    margin: 5px 0;
 }
 
 .order-detail .close-detail {
@@ -826,11 +832,29 @@ i {
     background-color: white;
     border: 1px solid black;
     padding: 5px;
+    margin: 10px 0;
+    width: fit-content;
 }
 
 .order-print:hover {
     color: white;
     background-color: black;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .to-print, .to-print * {
+        visibility: visible;
+    }
+
+    .to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
 

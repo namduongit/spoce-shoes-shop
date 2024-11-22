@@ -1356,16 +1356,18 @@ function showOrderDetail(obj) {
     <div class="close-detail">
         <a href="#" onclick="closeOrderDetail()"><i class="fa-solid fa-xmark"></i></a>
     </div>
-    <h4>Thông tin đơn hàng</h4>
-    <p>${str}</p>
-    <h4>Tên khách hàng</h4>
-    <p>${order.name}</p>
-    <h4>Số điện thoại</h4>
-    <p>${order.phone}</p>
-    <h4>Địa chỉ</h4>
-    <p>${order.street}</p>
-    <h4>Tổng giá tiền</h4>
-    <p>${priceString}</p>
+    <div class="to-print">
+        <h4>Thông tin đơn hàng</h4>
+        <p>${str}</p>
+        <h4>Tên khách hàng</h4>
+        <p>${order.name}</p>
+        <h4>Số điện thoại</h4>
+        <p>${order.phone}</p>
+        <h4>Địa chỉ</h4>
+        <p>${order.street}</p>
+        <h4>Tổng giá tiền</h4>
+        <p>${priceString}</p>
+    </div>
     <h4>Tình trạng</h4>
     <select id="status-select">
         <option value="1">Đang xử lý</option>
@@ -1419,5 +1421,5 @@ function showOrderDetail(obj) {
 
 function closeOrderDetail() {
     document.querySelector('.order-detail').style.display = 'none';
-    loadOrder();
+    showOrders();
 }
