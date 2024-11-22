@@ -8,26 +8,26 @@ var admins = [
 function checkLogin() {
     var username = document.getElementById('username');
     var password = document.getElementById('password');
-
-    if (username.value === "") {
-        alert("Tài khoản không được để trống!");
-        return;
+    var validation=new Validation();
+    let valid=true;
+    valid&=validation.kiemtraRong(username.value,"#errol_user_disabled")&validation.kiemtraRong(password.value,"#errol_pass_disabled");
+    if(valid==0){
+        return false;
     }
-
-    if (password.value === "") {
-        alert("Mật khẩu không được để trống!");
-        return;
-    }
+    
 
     if (admins.some(admin => {
         return admin.username === username.value && admin.password === password.value
     })) {
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
+        toast({title:'SUCCESS',message:'Đăng nhập thành công"',type:'success',duration:3000});
         writeMainContent();
-        alert('Đăng nhập thành công!');
+
+        document.getElementById("errol_pass_disabled").style.display=="none";
     } else {
-        alert('Tài khoản hoặc mật khẩu không đúng');
+        document.getElementById("errol_pass_disabled").innerHTML='Tài khoản hoặc mật khẩu không đúng';
+        document.getElementById("errol_pass_disabled").style.display="block";
     }
 }
 
