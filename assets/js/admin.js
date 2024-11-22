@@ -8,16 +8,13 @@ var admins = [
 function checkLogin() {
     var username = document.getElementById('username');
     var password = document.getElementById('password');
-
-    if (username.value === "") {
-        alert("Tài khoản không được để trống!");
-        return;
+    var validation=new Validation();
+    let valid=true;
+    valid&=validation.kiemtraRong(username.value,"#errol_user_disabled")&validation.kiemtraRong(password.value,"#errol_pass_disabled");
+    if(valid==0){
+        return false;
     }
 
-    if (password.value === "") {
-        alert("Mật khẩu không được để trống!");
-        return;
-    }
 
     if (admins.some(admin => {
         return admin.username === username.value && admin.password === password.value
@@ -30,11 +27,13 @@ function checkLogin() {
 
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
+        toast({title:'SUCCESS',message:'Đăng nhập thành công"',type:'success',duration:3000});
         writeMainContent();
         alert('Đăng nhập thành công!');
 
     } else {
-        alert('Tài khoản hoặc mật khẩu không đúng');
+        document.getElementById("errol_pass_disabled").innerHTML='Tài khoản hoặc mật khẩu không đúng';
+        document.getElementById("errol_pass_disabled").style.display="block";
     }
 }
 
@@ -1416,9 +1415,10 @@ function showOrders() {
                 <div class="form-item">
                 <label for="order-status">Tình trạng</label>
                 <select id="order-status">
-                    <option value="1">Đang xử lí</option>
+                    <option value="0">Chọn tình trạng</option>
+                    <option value="1">Đang xử lý</option>
                     <option value="2">Đã xác nhận</option>
-                    <option value="3">Đã giao</option>
+                    <option value="3">Đã giao thành công</option>
                     <option value="4">Đã hủy</option>
                 </select>
                 </div>
@@ -1489,6 +1489,8 @@ function showOrders() {
 
         document.getElementById('page-select').innerHTML = str;
         document.getElementById('order-details').innerHTML = s;
+        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
         pageBtns.forEach(btn => {
@@ -1523,6 +1525,7 @@ function showOrderDetail(obj) {
         <a href="#" onclick="closeOrderDetail()"><i class="fa-solid fa-xmark"></i></a>
     </div>
     <div class="to-print">
+        <h2>Chi tiết đơn hàng</h2>
         <h4>Thông tin đơn hàng</h4>
         <p>${str}</p>
         <h4>Tên khách hàng</h4>
@@ -1588,4 +1591,173 @@ function showOrderDetail(obj) {
 function closeOrderDetail() {
     document.querySelector('.order-detail').style.display = 'none';
     showOrders();
+}
+
+function sortOrder() {
+    var startDate = document.getElementById('start-date');
+    var endDate = document.getElementById('end-date');
+    var orderStatus = document.getElementById('order-status');
+    var toSort = document.getElementById('sortDistrict');
+
+    if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
+        if (startDate.value == "") {
+            alert('Ngày bắt đầu chưa được chọn!');
+            return;
+        }
+
+        if (endDate.value == "") {
+            alert('Ngày kết thúc chưa được chọn!');
+            return;
+        }
+    }
+
+    var start, end;
+    var ordersSelected = [];
+    if (startDate.value != "" && endDate.value != "") {
+        start = new Date(startDate.value);
+        end = new Date(endDate.value);
+        console.log(start);
+        console.log(end);
+
+        if (orderStatus.value != "0") {
+            if (orderStatus.value == "1") {
+                orders.forEach(item => {
+                    var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
+                    var dateArr = dateStr[0].split('/');
+                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    if (item.status == "Đang xử lý" && orderDate >= start && orderDate <= end) {
+                         ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "2") {
+                orders.forEach(item => {
+                    var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
+                    var dateArr = dateStr[0].split('/');
+                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    if (item.status == "Đã xác nhận" && orderDate >= start && orderDate <= end) {
+                        ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "3") {
+                orders.forEach(item => {
+                    var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
+                    var dateArr = dateStr[0].split('/');
+                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    if (item.status == "Đã giao thành công" && orderDate >= start && orderDate <= end) {
+                        ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "4" && orderDate >= start && orderDate <= end) {
+                orders.forEach(item => {
+                    var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
+                    var dateArr = dateStr[0].split('/');
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+                    if (item.status == "Đã hủy") {
+                        ordersSelected.push(item);
+                    }
+                });
+            }
+        } else {
+            orders.forEach(item => {
+                var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
+                var dateArr = dateStr[0].split('/');
+                var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                if (orderDate >= start && orderDate <= end) {
+                    ordersSelected.push(item);
+                }
+            });
+        }
+    } else {
+        if (orderStatus.value != "0") {
+            if (orderStatus.value == "1") {
+                orders.forEach(item => {
+                    if (item.status == "Đang xử lý") {
+                        ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "2") {
+                orders.forEach(item => {
+                    if (item.status == "Đã xác nhận") {
+                        ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "3") {
+                orders.forEach(item => {
+                    if (item.status == "Đã giao thành công") {
+                        ordersSelected.push(item);
+                    }
+                });
+            } else if (orderStatus.value == "4") {
+                orders.forEach(item => {
+                    if (item.status == "Đã hủy") {
+                        ordersSelected.push(item);
+                    }
+                });
+            }
+        } else {
+            ordersSelected = orders.slice();
+        }
+    }
+
+    function standardlizeDistrict(str) {
+        return str.replace(/Quận/g,"").trim();
+    }
+
+    if (toSort.checked) {
+        ordersSelected.sort((a,b) => {
+            var districtOfA = standardlizeDistrict(a.district);
+            var districtOfB = standardlizeDistrict(b.district);
+
+            if (!isNaN(districtOfA) && !isNaN(districtOfB)) {
+                return districtOfA - districtOfB;
+            }
+
+            return districtOfA.localeCompare(districtOfB);
+        });
+    }
+
+    var orderPerPage = 5;
+    var numOfPages = Math.ceil(ordersSelected.length / orderPerPage);
+
+    var str = "";
+    for (let i=1; i<=numOfPages; i++) {
+        str = str + `
+        <li class="page-item" data-page="${i}">
+            <a class="page-item-text" href="javascript:void(0);">${i}</a>
+        </li>
+        `;
+    }
+
+    function loadOrder(page) {
+        var start = orderPerPage * (page - 1);
+        var end = orderPerPage * page;
+        var ordersOfPage = ordersSelected.slice(start,end);
+
+        var s = "";
+        for (let i=0; i<ordersOfPage.length; i++) {
+            s = s + `
+            <tr>
+                <td>${ordersOfPage[i].code}</td>
+                <td>${ordersOfPage[i].name}</td>
+                <td>${ordersOfPage[i].district.toUpperCase()}</td>
+                <td>${ordersOfPage[i].status}</td>
+                <td><a href="#" class="warning" data-code="${ordersOfPage[i].code}" onclick="showOrderDetail(this)">Chi tiết</a></td>
+            </tr>
+            `;
+        }
+
+        document.getElementById('page-select').innerHTML = str;
+        document.getElementById('order-details').innerHTML = s;
+        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+
+        var pageBtns = document.querySelectorAll('.page-item');
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                var newPage = btn.getAttribute('data-page');
+                loadOrder(newPage);
+            });
+        });
+    }
+    loadOrder(1);
 }

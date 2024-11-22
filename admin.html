@@ -8,6 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/admin.css">
 
+
     <!-- Fonts -->
     <link rel="stylesheet" href="assets/css/font.css">
     <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
@@ -15,10 +16,9 @@
     <!-- Favicon -->
     <link rel="icon" href="assets/image/logo/logo-shop-2.png" type="image/png">
 
-    <!-- Scripts -->
-    <script src="assets/js/admin.js"></script>
 </head>
 <body>
+    <div id="toast"></div>
     <div class="container">
         <div class="sidebar">
             <div class="top-sidebar">
@@ -161,8 +161,11 @@
                 <div class="form-content">
                     <form>
                         <input type="text" id="username" placeholder="Tài khoản">
+                        <span class="text-danger" id="errol_user_disabled"></span>
                         <br>
                         <input type="password" id="password" placeholder="Mật khẩu">
+                        <span class="text-danger" id="errol_pass_disabled"></span>
+
                     </form>
                 </div>
 

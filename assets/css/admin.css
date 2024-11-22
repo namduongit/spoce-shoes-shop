@@ -841,6 +841,10 @@ i {
     background-color: black;
 }
 
+.to-print h2 {
+    text-align: center;
+}
+
 @media print {
     body * {
         visibility: hidden;
