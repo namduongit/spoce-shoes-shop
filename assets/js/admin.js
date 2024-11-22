@@ -1240,9 +1240,12 @@ function showOrders() {
             <h3>Tìm kiếm</h3>
 
             <form>
+                <div class="form-item">
                 <input type="date" id="start-date">
                 <input type="date" id="end-date">
+                </div>
                 <br>
+                <div class="form-item">
                 <label for="order-status">Tình trạng</label>
                 <select id="order-status">
                     <option value="1">Đang xử lí</option>
@@ -1250,12 +1253,15 @@ function showOrders() {
                     <option value="3">Đã giao</option>
                     <option value="4">Đã hủy</option>
                 </select>
+                </div>
                 <br>
+                <div class="form-item">
                 <input type="checkbox" id="sortDistrict">
                 <label for="sortDistrict">Sắp xếp theo quận</label>
+                </div>
             </form>
 
-            <div>
+            <div class="sort-submt">
                 <a href="#" onclick="sortOrder()">Lọc</a>
             </div>
         </div>
