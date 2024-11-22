@@ -29,7 +29,6 @@ function checkLogin() {
         document.querySelector('.login').style.display = 'none';
         toast({title:'SUCCESS',message:'Đăng nhập thành công"',type:'success',duration:3000});
         writeMainContent();
-        alert('Đăng nhập thành công!');
 
     } else {
         document.getElementById("errol_pass_disabled").innerHTML='Tài khoản hoặc mật khẩu không đúng';
