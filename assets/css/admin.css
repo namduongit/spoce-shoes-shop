@@ -529,7 +529,7 @@ i {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 20px 50px;
     width: 90%;
     /* height: 40%;
     overflow: auto; */
@@ -537,6 +537,11 @@ i {
     border-radius: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+.adding-content form {
+    display: flex;
+
+}
+
 
 .adding-content .adding-content-item {
     margin: 10px 0 20px 10px;
@@ -544,11 +549,10 @@ i {
     gap: 10px;
 }
 
-.adding-content .adding-content-item input {
-    width: 200px;
-    margin-right: 50px;
-    margin-left: 10px;
+.adding-content .inner-left .adding-content-item:last-child {
+    display: block;
 }
+
 
 .adding-btn-container {
     display: flex;
@@ -1077,13 +1081,22 @@ i {
                             </select>
                         </div>
 */
+
+.statistics .head-content .section-three {
+    margin-top: 50px;
+    background-color: #f1f1f1;
+    padding: 20px 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    line-height: 2;
+}
 #toast{
     position: fixed;
     top:32px;
-    right: 32px;  
+    right: 32px;
     z-index: 10000;
   }
-  
+
   .toast {
     display: flex;
     align-items: center;
@@ -1117,61 +1130,61 @@ i {
     position: absolute;
     bottom: 0;
   }
-  
+
   @keyframes background_time {
     0% {
         width: 100%;
     }
-  
+
     10% {
         width: 90%;
     }
-  
+
     20% {
         width: 80%;
     }
-  
+
     30% {
         width: 70%;
     }
-  
+
     40% {
         width: 60%;
     }
-  
+
     50% {
         width: 50%;
     }
-  
+
     60% {
         width: 40%;
     }
-  
+
     70% {
         width: 30%;
     }
-  
+
     80% {
         width: 20%;
     }
-  
+
     90% {
         width: 10%;
     }
-  
+
     100% {
         width: 0;
     }
   }
-  
+
   .toast--success{
     border-color: #47d864;
-  
-  
+
+
   }
   .toast--success .toast_icon{
     color: #47d864;
-  
+
   }
   .toast_body{
     flex-grow: 1;
@@ -1190,11 +1203,11 @@ i {
   }
   .toast_icon{
     font-size: 24px;
-    
+
   }
   .toast_icon,.toast_close{
     padding: 0 16px;
-  
+
   }
   .toast_close{
     cursor: pointer;
@@ -1205,7 +1218,7 @@ i {
     font-size: 16px;
     font-weight: 600;
     color: #333;
-  
+
   }
   .toast_msg{
     font-size:14px;
@@ -1218,4 +1231,5 @@ i {
   }
 .text-danger{
     color: red;
-}  
+}
+

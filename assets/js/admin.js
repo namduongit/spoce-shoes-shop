@@ -680,6 +680,9 @@ function deleteProduct(productId) {
 
 
 function showAddingProduct() {
+
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+
     document.getElementById('bar-title').innerHTML = `
     <h2>Thêm sản phẩm</h2>
     `;
@@ -691,77 +694,98 @@ function showAddingProduct() {
 
     <div class="adding-content">
         <form>
-            <div class="adding-content-item">
-                <label for="id">ID: </label>
-                <input type="text" id="id" placeholder="Nhập ID sản phẩm">
-                <br>
+            <div class="inner-left">
+                <div class="adding-content-item">
+                    <label for="id">ID: </label>
+                    <input type="text" id="id" placeholder="Nhập ID sản phẩm" disabled value="${parseInt(products[products.length - 1].id) + 1}">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="name">Tên sản phẩm:</label>
+                    <input type="text" id="name" placeholder="Nhập tên sản phẩm">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="brand-select">Nhãn hiệu: </label>
+                    <select id="brand-select">
+                        <option value="nike">Nike</option>
+                        <option value="adidas">Adidas</option>
+                        <option value="VANS">Vans</option>
+                        <option value="converse">Converse</option>
+                        <option value="clothes">Clothes</option>
+                    </select>
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="original-price">Giá gốc: </label>
+                    <input type="text" id="original-price" placeholder="Nhập giá gốc">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="sell-price">Giá bán: </label>
+                    <input type="text" id="sell-price" placeholder="Nhập giá bán">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <button onclick="calculateDiscount()">Tính giảm</button>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="discount">Giảm: </label>
+                    <input type="text" id="discount" placeholder="Ấn nút để tính" disabled>
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="size-select">Thêm tất cả số lượng cho size: </label>
+                    <select id="size-select" disabled>
+                    </select>
+
+                </div>
             </div>
 
-            <div class="adding-content-item">
-                <label for="name">Tên sản phẩm:</label>
-                <input type="text" id="name" placeholder="Nhập tên sản phẩm">
-                <br>
+            <div class="inner-right">
+                <div class="adding-content-item">
+                    <label for="quantity">Số lượng: </label>
+                    <input type="text" id="quantity" placeholder="Nhập số lượng">
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="main-img">Ảnh chính:</label>
+                    <input type="file" id="main-img" accept="image/*">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="promo-1">Ảnh Promo 1: </label>
+                    <input type="file" id="promo-1" accept="image/*">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="promo-2">Ảnh Promo 2: </label>
+                    <input type="file" id="promo-2" accept="image/*">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="promo-3">Ảnh Promo 3: </label>
+                    <input type="file" id="promo-3" accept="image/*">
+                    <br>
+                </div>
+
+                <div class="adding-content-item">
+                    <label for="promo-4">Ảnh Promo 4: </label>
+                    <input type="file" id="promo-4" accept="image/*">
+                    <br>
+                </div>
             </div>
 
-            <div class="adding-content-item">
-                <label for="brand-select">Nhãn hiệu: </label>
-                <select id="brand-select">
-                    <option value="nike">Nike</option>
-                    <option value="adidas">Adidas</option>
-                    <option value="VANS">Vans</option>
-                    <option value="converse">Converse</option>
-                    <option value="clothes">Clothes</option>
-                </select>
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="original-price">Giá gốc: </label>
-                <input type="text" id="original-price" placeholder="Nhập giá gốc">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="sell-price">Giá bán: </label>
-                <input type="text" id="sell-price" placeholder="Nhập giá bán">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="discount">Giảm: </label>
-                <input type="text" id="discount" placeholder="Nhập phần trăm giảm">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="main-img">Ảnh chính:</label>
-                <input type="file" id="main-img" accept="image/*">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="promo-1">Ảnh Promo 1: </label>
-                <input type="file" id="promo-1" accept="image/*">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="promo-2">Ảnh Promo 2: </label>
-                <input type="file" id="promo-2" accept="image/*">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="promo-3">Ảnh Promo 3: </label>
-                <input type="file" id="promo-3" accept="image/*">
-                <br>
-            </div>
-
-            <div class="adding-content-item">
-                <label for="promo-4">Ảnh Promo 4: </label>
-                <input type="file" id="promo-4" accept="image/*">
-                <br>
-            </div>
         </form>
     </div>
 
@@ -775,14 +799,78 @@ function showAddingProduct() {
         </a>
     </div>
     `;
+
+    // Add event listener to brand select
+    document.getElementById('brand-select').addEventListener('change', () => {
+    const brand = document.getElementById('brand-select').value;
+    const select = document.getElementById('size-select');
+    if (brand === 'clothes') {
+        select.innerHTML = `
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="2XL">2XL</option>
+        <option value="3XL">3XL</option>
+        `;
+    }
+    else if (brand === 'nike' || brand === 'adidas' || brand === 'VANS' || brand === 'converse') {
+        select.innerHTML = `
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        `;
+    }
+    });
+}
+
+function calculateDiscount() {
+    var originalPrice = document.getElementById('original-price').value;
+    var sellPrice = document.getElementById('sell-price').value;
+    // Loại bỏ để đưa về thành số
+    originalPrice = originalPrice.replace(/\./g, '');
+    originalPrice = originalPrice.replace('đ', '');
+    sellPrice = sellPrice.replace(/\./g, '');
+    sellPrice = sellPrice.replace('đ', '');
+    // Tính giảm theo phần trăm
+    var discount = (originalPrice - sellPrice) / originalPrice * 100;
+    // Đưa giá trị vào ô giảm
+    document.getElementById('discount').value = discount;
+
+
+    // Cho 2 thẻ kia thay đổi theo formatMoney
+    document.getElementById('original-price').value = formatMoney(parseInt(originalPrice));
+    document.getElementById('sell-price').value = formatMoney(parseInt(sellPrice));
+}
+
+function formatMoney(money) {
+    let result = '';
+    let count = 0;
+    let moneyStr = money.toString();
+
+    for (let i = moneyStr.length - 1; i >= 0; i--) {
+        result = moneyStr[i] + result;
+        count++;
+        if (count % 3 === 0 && i !== 0) { // Đảm bảo không thêm dấu '.' ở đầu chuỗi
+            result = '.' + result;
+        }
+    }
+    return result + "đ"; // Thêm "đ" vào cuối chuỗi
 }
 
 // hàm để đặt lại dữ liệu trong form
 function resetForm() {
-    document.getElementById('id').value = '';
     document.getElementById('name').value = '';
     document.getElementById('brand-select').value = 'nike';
     document.getElementById('original-price').value = '';
+    document.getElementById('quantity').value = '';
     document.getElementById('sell-price').value = '';
     document.getElementById('discount').value = '';
     document.getElementById('main-img').value = '';
@@ -794,22 +882,21 @@ function resetForm() {
 
 // hàm để kiểm tra và tạo sản phẩm mới đồng thời cập nhật lên local storage
 function addingProduct() {
+
     var idField = document.getElementById('id');
     var nameField = document.getElementById('name');
     var brandField = document.getElementById('brand-select');
     var orgPriceField = document.getElementById('original-price');
     var sellPriceField = document.getElementById('sell-price');
     var discountField = document.getElementById('discount');
+    var qualityField = document.getElementById('quantity');
+    var sizeField = document.getElementById('size-select');
     var mainImg = document.getElementById('main-img');
     var promo1 = document.getElementById('promo-1');
     var promo2 = document.getElementById('promo-2');
     var promo3 = document.getElementById('promo-3');
     var promo4 = document.getElementById('promo-4');
 
-    if (idField.value === '') {
-        alert('ID sản phẩm không được bỏ trống');
-        return;
-    }
 
     if (nameField.value === '') {
         alert('Tên sản phẩm không được bỏ trống');
@@ -826,8 +913,18 @@ function addingProduct() {
         return;
     }
 
-    if (discountField.value === '') {
-        alert('Phẩn trăm giảm của sản phẩm không được bỏ trống');
+    if (discountField.value === '' || isNaN(discountField.value)) {
+        alert('Giảm giá sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (qualityField.value === '') {
+        alert('Số lượng sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (sizeField.value === '') {
+        alert('Size sản phẩm không được bỏ trống');
         return;
     }
 
@@ -836,6 +933,7 @@ function addingProduct() {
         return;
     }
 
+
     var mainImgFile = mainImg.files[0];
     var mainImgURL = URL.createObjectURL(mainImgFile);
 
@@ -843,11 +941,48 @@ function addingProduct() {
     newProduct.id = idField.value;
     newProduct.name_product = nameField.value;
     newProduct.brand = brandField.value;
-    newProduct.price = orgPriceField.value;
-    newProduct.sell = sellPriceField.value;
     newProduct.discount = discountField.value;
     newProduct.image = mainImgURL;
+    // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
+    var originalPrice = orgPriceField.value;
+    var sellPrice = sellPriceField.value;
+
+    originalPrice = originalPrice.replace(/\./g, '');
+    originalPrice = originalPrice.replace('đ', '');
+    sellPrice = sellPrice.replace(/\./g, '');
+    sellPrice = sellPrice.replace('đ', '');
+    newProduct.price = formatMoney(parseInt(originalPrice));
+    newProduct.sell = formatMoney(parseInt(sellPrice));
+    // Mảng con
+    newProduct.size = {};
+    newProduct.sizes =
+    ["39", "40", "41", "42", "43", "44"];
     newProduct.promo_image = {};
+
+    // Nếu size là clothes thì thêm size và số lượng vào mảng size
+    // VD: size: {S: 50, M: 50, L: 50, XL: 50, 2XL: 50, 3XL: 50}
+    if (newProduct.brand === 'clothes') {
+        newProduct.size.S = parseInt(qualityField.value);
+        newProduct.size.M = parseInt(qualityField.value);
+        newProduct.size.L = parseInt(qualityField.value);
+        newProduct.size.XL = parseInt(qualityField.value);
+        newProduct.size['2XL'] = parseInt(qualityField.value);
+        newProduct.size['3XL'] = parseInt(qualityField.value);
+        newProduct.sizes.push('S');
+        newProduct.sizes.push('M');
+        newProduct.sizes.push('L');
+        newProduct.sizes.push('XL');
+        newProduct.sizes.push('2XL');
+        newProduct.sizes.push('3XL');
+    } else {
+        // Size từ 39 -> 40
+        newProduct.size['39'] = parseInt(qualityField.value);
+        newProduct.size['40'] = parseInt(qualityField.value);
+        newProduct.size['41'] = parseInt(qualityField.value);
+        newProduct.size['42'] = parseInt(qualityField.value);
+        newProduct.size['43'] = parseInt(qualityField.value);
+        newProduct.size['44'] = parseInt(qualityField.value);
+    }
 
     if (promo1.value !== '') {
         let promoImgFile = promo1.files[0];
@@ -875,12 +1010,64 @@ function addingProduct() {
 
     products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products));
+    alert('Thêm sản phẩm thành công');
     resetForm();
 }
 
 
 
 var users = JSON.parse(localStorage.getItem('users'));
+
+var productsList = JSON.parse(localStorage.getItem('products'));
+
+var brandList = []
+var productsName = []
+
+productsList.forEach(product => {
+    // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
+    if (!brandList.some(b => b.brand === product.brand)) {
+        let newBrand = {
+            brand: product.brand,
+            count: 0
+        };
+        brandList.push(newBrand);
+    }
+
+    // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
+    if (!productsName.some(p => p.name === product.name_product)) {
+        let newProduct = {
+            name: product.name_product,
+            count: 0
+        };
+        productsName.push(newProduct);
+    }
+});
+function resetDataList() {
+    brandList = [];
+    productsName = [];
+
+    productsList.forEach(product => {
+        // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
+        if (!brandList.some(b => b.brand === product.brand)) {
+            let newBrand = {
+                brand: product.brand,
+                count: 0
+            };
+            brandList.push(newBrand);
+        }
+
+        // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
+        if (!productsName.some(p => p.name === product.name_product)) {
+            let newProduct = {
+                name: product.name_product,
+                count: 0
+            };
+            productsName.push(newProduct);
+        }
+    });
+}
+console.log(brandList);
+console.log(productsName);
 
 function showCustomer() {
     document.getElementById('bar-title').innerHTML = `
@@ -1246,6 +1433,8 @@ function getCurrentDateTime() {
 
 var orders = JSON.parse(localStorage.getItem('Allbill'));
 
+
+
 function getCurrentDateTime() {
     const now = new Date();
 
@@ -1291,16 +1480,27 @@ function showStatistics() {
                 </div>
                 <div class="section-two">
                     <div class="statistic-info">
-                        <h3>Đơn hàng:
-                            <span id="total-orders"></span>
-                        </h3>
-                        <span id="first-month"></span>
-                        <span id ="last-month"></span>
+                        <h3>Thống kể tổng đơn hàng theo ngày</h3>
+                        <div class="date-info">
+                            <p class="date-start">Từ: </p>
+                            <p class="date-end">Đến: </p>
+                        </div>
                     </div>
+
                     <div class="chart-container">
-                        <!-- Biểu đồ cột sẽ được vẽ ở đây -->
-                        <canvas id="orderChart"></canvas>
+
+                            <!-- Biểu đồ cột sẽ được vẽ ở đây -->
+                            <canvas id="orderChart"></canvas>
+
+
                     </div>
+                </div>
+                <div class="section-three">
+                    <p class="total-order"></p>
+                    <p class="total-quantity"></p>
+                    <p class="total-revenue"></p>
+                    <p class="most-brand"></p>
+                    <p class="most-product"></p>
                 </div>
             </div>
             <div class="foot-content">
@@ -1316,26 +1516,53 @@ function showStatistics() {
         data: {
             labels: [], // Nhãn sẽ được cập nhật trong searchOrder
             datasets: [{
-                label: 'Tổng đơn hàng',
+                label: 'Hàng',
                 data: [], // Số liệu sẽ được cập nhật trong searchOrder
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 1,
+                barThickness: 15 // Điều chỉnh độ dày của cột (giảm bớt nếu cần)
             }]
         },
         options: {
             scales: {
+                x: {
+                    ticks: {
+                        color: 'rgba(0, 0, 0, 0.8)', // Màu của các nhãn trên trục X
+                        font: {
+                            weight: 'bold' // Độ đậm của font chữ trục X
+                        },
+                        maxRotation: 45, // Cho phép xoay nhãn nếu quá dài
+                        minRotation: 0
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.3)' // Màu của đường lưới trục X
+                    }
+                },
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        stepSize: 1 // Các bước nhảy trên trục y
+                        stepSize: 1, // Các bước nhảy trên trục y
+                        color: 'rgba(0, 0, 0, 0.8)', // Màu của các nhãn trên trục Y
+                        font: {
+                            weight: 'bold' // Độ đậm của font chữ trục Y
+                        }
                     },
-                    max: undefined // Tự động tính, sẽ cập nhật trong searchOrder
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.5)' // Màu của đường lưới trục Y
+                    }
                 }
             },
-            responsive: true
+            responsive: true,
+            elements: {
+                bar: {
+                    categoryPercentage: 0.85, // Giảm khoảng cách giữa các cột
+                    barPercentage: 0.7 // Điều chỉnh chiều rộng cột để có thêm không gian
+                }
+            }
         }
     });
+
 }
 
 function searchOrder() {
@@ -1343,7 +1570,9 @@ function searchOrder() {
     var year = parseInt(document.getElementById('year-select').value);
 
     var allBill = JSON.parse(localStorage.getItem('Allbill'));
-
+    resetDataList();
+    console.log(brandList);
+    console.log(productsName);
     // Kiểm tra dữ liệu nhập
     if (isNaN(month) || isNaN(year)) {
         alert('Vui lòng nhập tháng và năm hợp lệ');
@@ -1357,6 +1586,15 @@ function searchOrder() {
         alert('Năm không hợp lệ');
         return;
     }
+
+    let totalQuantity = 0;
+    let totalMoney = 0;
+    let mostBrand = '';
+    let mostProduct = '';
+
+
+    document.querySelector('.date-info .date-start').innerText = `Từ: 01/${month}/${year}`;
+    document.querySelector('.date-info .date-end').innerText = `Đến: ${new Date(year, month, 0).getDate()}/${month}/${year}`;
 
     // Lấy danh sách các hóa đơn trong tháng/năm
     const billOfSelectDate = allBill.filter(item => {
@@ -1374,18 +1612,66 @@ function searchOrder() {
         let dateOfBill = item.paymentdate.split(' ')[2];
         let day = parseInt(dateOfBill.split('/')[0]);
         dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
+
+        let products_buy = item.products_buy;
+        products_buy.forEach(pro => {
+            totalQuantity += parseInt(pro.quantity);
+            totalMoney += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
+            let nameBrand = pro.brand;
+            let nameProduct = pro.name_product;
+            brandList.forEach(brand => {
+                if (brand.brand === nameBrand) {
+                    brand.count += parseInt(pro.quantity);
+                }
+            });
+
+            productsName.forEach(product => {
+                if (product.name === nameProduct) {
+                    product.count += parseInt(pro.quantity);
+                }
+            });
+
+
+        });
+        let max_brand = 0;
+        brandList.forEach(brand => {
+            if (brand.count > max_brand) {
+                max_brand = brand.count;
+                mostBrand = brand.brand;
+            };
+        });
+        let max_product = 0;
+        productsName.forEach(product => {
+            if (product.count > max_product) {
+                max_product = product.count;
+                mostProduct = product.name;
+            };
+        });
+
     });
 
+    // Tìm giá trị lớn nhất trong mảng dayCounts
+    const maxOrders = Math.max(...dayCounts);
+    const maxValue = Math.ceil(maxOrders * 1.1);
+
     // Tạo nhãn (labels) cho từng ngày trong tháng
-    let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}/${year}`);
+    let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}`);
 
-    // Hiển thị tổng số đơn hàng
-    document.getElementById('total-orders').innerText = billOfSelectDate.length;
 
-    // Cập nhật dữ liệu biểu đồ
+
+    // Cập nhật dữ liệu và trục y của biểu đồ
     orderChart.data.labels = labels;
     orderChart.data.datasets[0].data = dayCounts;
+    orderChart.options.scales.y.max = maxValue;
     orderChart.update();
+
+
+    // Cập nhật dữ liệu vào total
+    document.getElementById('total-order').innerHTML = `Tổng số đơn hàng: ${billOfSelectDate.length}`;
+    document.getElementById('total-quantity').innerHTML = `Tổng số lượng: ${totalQuantity}`;
+    document.getElementById('total-revenue').innerHTML = `Tổng doanh thu: ${totalMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
+    document.getElementById('most-brand').innerHTML = `Brand bán chạy nhất: ${mostBrand}`;
+    document.getElementById('most-product').innerHTML = `Sản phẩm bán chạy nhất: ${mostProduct}`;
 }
 
 function showOrders() {
