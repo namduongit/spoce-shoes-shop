@@ -22,16 +22,40 @@ function checkLogin() {
     if (admins.some(admin => {
         return admin.username === username.value && admin.password === password.value
     })) {
+        let currentAdmin = {
+            username: username.value,
+            loginTime: new Date().toISOString()
+        };
+        localStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
+
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
         writeMainContent();
         alert('Đăng nhập thành công!');
+
     } else {
         alert('Tài khoản hoặc mật khẩu không đúng');
     }
 }
 
+function interFaceAdmin() {
+    const adminCurrent = JSON.parse(localStorage.getItem('currentAdmin'));
+    if (adminCurrent) {
+        console.log("Admin hiện tại:", adminCurrent);
+        document.querySelector('.container').style.display = 'flex';
+        document.querySelector('.login').style.display = 'none';
+        writeMainContent();
+    } else {
+        console.log("Không tìm thấy admin trong localStorage");
+    }
+}
+
+window.onload = function() {
+    interFaceAdmin();
+}
+
 function logOut() {
+    localStorage.removeItem('currentAdmin'); // Xóa thông tin admin khỏi localStorage
     document.querySelector('.container').style.display = 'none';
     document.querySelector('.login').style.display = 'block';
     document.getElementById('username').value = '';
@@ -178,7 +202,7 @@ var products = JSON.parse(localStorage.getItem('products'));
 
 function showProducts() {
 
-    
+
     document.getElementById('bar-title').innerHTML = `
         <h2>Sản phẩm</h2>
     `;
@@ -186,11 +210,11 @@ function showProducts() {
 
     document.querySelector('.content').innerHTML = `
     <div class="delete-confirm">
-        
+
     </div>
 
     <div class="modifying">
-    
+
     </div>
 
     <div class="product-title">
@@ -213,14 +237,14 @@ function showProducts() {
 
             </tbody>
         </table>
-                    
+
     </div>
 
     <ul id="page-select" class="page-select"></ul>
     `;
 
 
-    
+
     const itemsPerPage = 8;
     var numOfPages = Math.ceil(products.length / itemsPerPage);
 
@@ -234,7 +258,7 @@ function showProducts() {
         `;
     }
 
-    
+
     function loadProducts(page) {
 
 
@@ -446,7 +470,7 @@ function showModifyingForm(productId) {
                 <div class="form-image-item">
                     <img src="${product.image}" id="form-img" alt="product-image">
                 </div>
-            
+
                 <div class="form-image-item">
                     <button onclick="deleteImage(${product.id})">Xóa ảnh</button>
                 </div>
@@ -537,7 +561,7 @@ function showModifyingForm(productId) {
                 <div class="form-image-item">
                     <img src="${product.image}" id="form-img" alt="product-image">
                 </div>
-            
+
                 <div class="form-image-item">
                     <button onclick="deleteImage(${product.id})">Xóa ảnh</button>
                 </div>
@@ -560,7 +584,7 @@ function showModifyingForm(productId) {
     </div>
     `;
     }
-    
+
     document.getElementById('brand-select').value = product.brand;
     document.getElementById('save-btn').addEventListener('click', () => {
         var changedProductIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
@@ -728,7 +752,7 @@ function showAddingProduct() {
                 <input type="file" id="promo-2" accept="image/*">
                 <br>
             </div>
-            
+
             <div class="adding-content-item">
                 <label for="promo-3">Ảnh Promo 3: </label>
                 <input type="file" id="promo-3" accept="image/*">
@@ -893,13 +917,13 @@ function showCustomer() {
 
             </tbody>
         </table>
-                    
+
     </div>
 
     <ul id="page-select" class="page-select"></ul>
     `;
 
-    
+
     var userPerPage = 8;
     var numOfPages = Math.ceil(users.length / userPerPage);
 
@@ -976,28 +1000,28 @@ function showUserModify(obj) {
                 <div class="form-item">
                     <label for="password">Mật khẩu: </label>
                     <input type="text" id="password" value="${user.password}">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="fullname">Họ tên: </label>
                     <input type="text" id="fullname" value="${user.fullname}">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="email">Email: </label>
                     <input type="text" id="email" value="${user.email}">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="phone">Số điện thoại: </label>
                     <input type="text" id="phone" value="${user.phone}">
-                    
+
                 </div>
                 <br>
 
@@ -1073,28 +1097,28 @@ function showAddingCustomerForm() {
                 <div class="form-item">
                     <label for="password">Mật khẩu: </label>
                     <input type="text" id="password" placeholder="Nhập mật khẩu">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="fullname">Họ tên: </label>
                     <input type="text" id="fullname" placeholder="Nhập họ tên">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Nhập email">
-                    
+
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="phone">Số điện thoại: </label>
                     <input type="text" id="phone" placeholder="Nhập số điện thoại">
-                    
+
                 </div>
                 <br>
 
@@ -1224,6 +1248,148 @@ function getCurrentDateTime() {
 
 var orders = JSON.parse(localStorage.getItem('Allbill'));
 
+function getCurrentDateTime() {
+    const now = new Date();
+
+    const day = now.getDay() + 1;
+    const date = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const year = now.getFullYear();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+
+    return `Thứ ${day} ${date}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
+
+function showStatistics() {
+    var currentTime = new Date();
+    currentTime = getCurrentDateTime(currentTime); // Giả sử bạn có hàm này để định dạng thời gian
+
+    document.getElementById('bar-title').innerHTML = `
+        <h2>Thống kê đơn hàng từng tháng</h2>
+    `;
+    document.querySelector('.content').innerHTML = `
+        <div class="statistics">
+            <div class="head-content">
+                <div class="section-one">
+                    <div class="section-one-title">
+                        <h3>Thống kê đơn hàng</h3>
+                    </div>
+                    <div class="section-one-info">
+                        <div class="month-info">
+                            <label for="month-select">Chọn tháng: </label>
+                            <input type="text" id="month-select" placeholder="Nhập tháng">
+                        </div>
+                        <div class="year-info">
+                            <label for="year-select">Chọn năm: </label>
+                            <input type="text" id="year-select" placeholder="Nhập năm">
+                        </div>
+                    </div>
+                    <div class="search-btn">
+                        <a href="#" onclick="searchOrder()">Tìm kiếm</a>
+                    </div>
+                </div>
+                <div class="section-two">
+                    <div class="statistic-info">
+                        <h3>Đơn hàng:
+                            <span id="total-orders"></span>
+                        </h3>
+                        <span id="first-month"></span>
+                        <span id ="last-month"></span>
+                    </div>
+                    <div class="chart-container">
+                        <!-- Biểu đồ cột sẽ được vẽ ở đây -->
+                        <canvas id="orderChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-content">
+                <!-- Các thông tin thêm có thể thêm ở đây -->
+            </div>
+        </div>
+    `;
+
+    // Vẽ biểu đồ sau khi chèn nội dung
+    var ctx = document.getElementById('orderChart').getContext('2d');
+    orderChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [], // Nhãn sẽ được cập nhật trong searchOrder
+            datasets: [{
+                label: 'Tổng đơn hàng',
+                data: [], // Số liệu sẽ được cập nhật trong searchOrder
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1 // Các bước nhảy trên trục y
+                    },
+                    max: undefined // Tự động tính, sẽ cập nhật trong searchOrder
+                }
+            },
+            responsive: true
+        }
+    });
+}
+
+function searchOrder() {
+    var month = parseInt(document.getElementById('month-select').value);
+    var year = parseInt(document.getElementById('year-select').value);
+
+    var allBill = JSON.parse(localStorage.getItem('Allbill'));
+
+    // Kiểm tra dữ liệu nhập
+    if (isNaN(month) || isNaN(year)) {
+        alert('Vui lòng nhập tháng và năm hợp lệ');
+        return;
+    }
+    if (month < 1 || month > 12) {
+        alert('Tháng không hợp lệ');
+        return;
+    }
+    if (year < 2020 || year > new Date().getFullYear()) {
+        alert('Năm không hợp lệ');
+        return;
+    }
+
+    // Lấy danh sách các hóa đơn trong tháng/năm
+    const billOfSelectDate = allBill.filter(item => {
+        let dateOfBill = item.paymentdate.split(' ')[2];
+        let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
+        return parseInt(monthOfBill) === month && parseInt(yearOfBill) === year;
+    });
+
+    // Tính số ngày trong tháng
+    const daysInMonth = new Date(year, month, 0).getDate(); // Lấy ngày cuối cùng của tháng
+    let dayCounts = Array(daysInMonth).fill(0); // Khởi tạo mảng với giá trị 0
+
+    // Đếm số đơn hàng theo từng ngày
+    billOfSelectDate.forEach(item => {
+        let dateOfBill = item.paymentdate.split(' ')[2];
+        let day = parseInt(dateOfBill.split('/')[0]);
+        dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
+    });
+
+    // Tạo nhãn (labels) cho từng ngày trong tháng
+    let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}/${year}`);
+
+    // Hiển thị tổng số đơn hàng
+    document.getElementById('total-orders').innerText = billOfSelectDate.length;
+
+    // Cập nhật dữ liệu biểu đồ
+    orderChart.data.labels = labels;
+    orderChart.data.datasets[0].data = dayCounts;
+    orderChart.update();
+}
+
 function showOrders() {
     document.getElementById('bar-title').innerHTML = `
     <h2>Đơn hàng</h2>
@@ -1238,7 +1404,7 @@ function showOrders() {
 
     <div class="order-sort">
         <div class="sort-content">
-        
+
             <h3>Tìm kiếm</h3>
 
             <form>
@@ -1285,7 +1451,7 @@ function showOrders() {
 
             </tbody>
         </table>
-                    
+
     </div>
 
     <ul id="page-select" class="page-select"></ul>
@@ -1293,7 +1459,7 @@ function showOrders() {
 
     var orderPerPage = 5;
     var numOfPages = Math.ceil(orders.length / orderPerPage);
-    
+
     var str = "";
     for (let i=1; i<=numOfPages; i++) {
         str = str + `

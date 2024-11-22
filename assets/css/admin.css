@@ -1023,3 +1023,53 @@ i {
     animation-direction: normal;
     animation-fill-mode: both;
 }
+
+
+/* CSS Thống Kê */
+.statistics {
+    padding: 50px 100px;
+    margin-top: 20px;
+}
+.statistics .head-content .section-one {
+    background-color: #f1f1f1;
+    padding: 20px 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    line-height: 2;
+}
+.statistics .head-content .section-one .search-btn a {
+    color: white;
+    background-color: green;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 3px solid green;
+    font-weight: bold;
+    font-size: 14px;
+}
+.statistics .head-content .section-one .search-btn a:hover {
+    background-color: white;
+    color: green;
+    transition: all 0.3s ease;
+}
+.statistics .head-content .section-two {
+    margin-top: 50px;
+    background-color: #f1f1f1;
+    padding: 20px 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    line-height: 2;
+}
+
+/*                      <div class="brand-info">
+                            <label for="brand-select">Chọn nhãn hiệu: </label>
+                            <select id="brand-select">
+                                <option value="all" selected>Tất cả</option>
+                            </select>
+                        </div>
+                        <div class="product-info">
+                            <label for="product-select">Chọn sản phẩm: </label>
+                            <select id="product-select">
+                                <option value="all" selected>Tất cả</option>
+                            </select>
+                        </div>
+*/
