@@ -1451,7 +1451,10 @@ function sortOrder() {
     if (startDate.value != "" && endDate.value != "") {
         start = new Date(startDate.value);
         end = new Date(endDate.value);
-        if (orderStatus != "0") {
+        console.log(start);
+        console.log(end);
+
+        if (orderStatus.value != "0") {
             if (orderStatus.value == "1") {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
@@ -1483,7 +1486,7 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
                     if (item.status == "Đã hủy") {
                         ordersSelected.push(item);
                     }
