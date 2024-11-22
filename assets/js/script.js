@@ -511,7 +511,7 @@ function toast({ title = '', message = '', type = 'success', duration = 3000 }) 
  <div class="toast__background"style="background-color: ${colors[type]};">
         `
     delay = (duration / 1000).toFixed(2);
-    toast.style.animation = `animation: slideInLeft ease 0.3  s,fadeOut linear 1s ${delay}s forwards`;
+    toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
     main.appendChild(toast);
 
 
