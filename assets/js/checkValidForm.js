@@ -773,7 +773,7 @@ function outInfoCode(billCode) {
                 rowsHtml += `
                     <tr>
                         <td>${product.name_product}</td>
-                        <td>${product.size}</td>
+                        <td>${product.sizes}</td>
                         <td>${product.quantity}</td>
                         <td>${convertIntToString(converStringToNumber(product.sell) * product.quantity)}đ</td>
                     </tr>
