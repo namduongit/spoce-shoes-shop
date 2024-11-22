@@ -755,7 +755,7 @@ i {
 
 /* SORT */
 .order-sort {
-    background-color: grey;
+    /* background-color: grey; */
     display: flex;
 }
 
@@ -763,16 +763,38 @@ i {
     background-color: white;
     margin-left: 65px;
     padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid grey;
 }
 
 .sort-content h3 {
     margin-bottom: 5px;
 }
 
+.sort-content form input {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
 
+.sort-submt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.sort-submt a {
+    color:black;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 5px;
+}
 
-
+.sort-submt a:hover {
+    color: white;
+    background-color: black;
+}
 
 
 
