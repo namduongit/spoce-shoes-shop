@@ -128,119 +128,14 @@ function showCategory(value) {
       document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
       loadPage();
   }
-  // let currentPage = 1;
-  // const productsPerPage = 6;
-  // let numPages = Math.ceil(products.length / productsPerPage);
 
   loadItem();
-  // function loadItem() {
-  //   let start = productsPerPage * (currentPage - 1);
-  //   let end = productsPerPage * currentPage;
-  //   let currentProducts = products.slice(start, end);
-  
-  //   let s = "";
-  //     currentProducts.forEach((product) => {
-  //       s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
-  //                         <a href="javascript:void(0)" class="product__link">
-  //                             <img src="${product.image}" alt="" class="product__link-img">
-  //                             <span class="product__link-name">${product.name_product}</span>
-  //                             <div class="product__link-sale">${product.discount}%</div>
-  //                         </a>
-  //                         <div class="product__price">
-  //                             <div class="product__price-current">${product.sell}</div>
-  //                             <div class="product__price-old">${product.price}</div>
-  //                         </div>
-  //                     </div>`;
-  //     });
-  
-  //     let pageContent = `
-  //                  <div class="wrapper">
-  //                      <div class="grid">
-  //                          <div class="grid__row">
-  //                              <div class="grid__col-3">
-  //                                  <h3 class="title_size">Hướng dẫn chọn size</h3>
-  //                        <div class="choose-Size"> <img src="assets/image/author/kich_thuoc_chan.png" alt="Hướng dẫn chọn size"></div>
-  //                        <div class="choose-img">Mua Giày chính hãng nhập khẩu từ các thương hiệu nổi tiếng: Adidas, Nike, Converse, Vans,
-  //                         Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP. 
-  //                         ✔ Giảm 50K cho đơn đầu tiên
-  //                         ✔ Freeship và giao nhanh nội thành 
-  //                         ✔ Đổi trả dễ dàng 
-  //                         ✔ Cam kết hàng cao cấp.<br>
-  
-  //                         ⭐️⭐️⭐️⭐️⭐️ (Chất lượng 5 sao)</div>
-  
-                                  
-  //                   </div>
-  
-  //                              <div class="grid__col-9">
-  //                               <div class="listProductByBrand">
-  //                                     <div class="PagiBar">
-  //                                         <div class="grid__row sortPagiBar">
-  //                                             <div class="grid__col-7">
-  //                                                 <div class="view-mode">
-  //                                                     <div class="view-mode__icon">
-  //                                                         <i class="fa-solid fa-grip"></i>
-  //                                                         <i class="fa-solid fa-bars"></i>
-  //                                                     </div>
-  //                                                     <div class="total-product">
-  //                                                         <span> Hiển thị ${
-  //                                                           start + 1
-  //                                                         } - ${
-  //       start + currentProducts.length
-  //     } trong tổng số ${products.length} sản phẩm </span>
-  //                                                     </div>
-  //                                                 </div>
-  //                                             </div>
-  //                                             <div class="grid__col-5">
-  //                                                 <div class="sort">
-  //                                                     <label class="sort-by">Sắp xếp: </label>
-  //                                                     <ul class="list-sort">
-  //                                                         <li>
-  //                                                             <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
-  //                                                             <ul class="sort-options">
-  //                                                                 <li onclick="Default()"><a href="#">Mặc định</a></li>
-  //                                                                 <li onclick="SortA_Z()"><a href="#" >A → Z</a></li>
-  //                                                                 <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
-  //                                                                 <li onclick="SortIncrease()"><a href="#">Giá tăng dần</a></li>
-  //                                                                 <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
-    
-  //                                                             </ul>
-  //                                                         </li>
-  //                                                     </ul>
-  //                                                 </div>
-  //                                             </div>
-  //                                         </div>
-  //                                     </div>
-            
-  //                                   <div class="grid__row product_list" data-brand="${products[1].brand}">
-  //                                       ${s}
-  //                                       <ul class="pagination">
-  //                                       </ul>
-  //                                   </div>
-  //                                 </div>
-  //                             </div>
-  //                         </div>
-  //                     </div>
-  //                 </div>`;
-  //     document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
-  //     loadPage(products);
-  // }
-  
-  // function changePage(page) {
-  //   currentPage = page;
-  //   loadItem();
-  // }
   
   function loadPage() {
     let numPages = Math.ceil(products.length / productsPerPage);
   
     let footPage = "";
   
-    // for (let i = 1; i <= numPages; i++) {
-    //   footPage += `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`;
-    // }
-  
-      // footPage += `<li onclick="loadPage(1)"><i class="fa-solid fa-angles-left"></i></li>`;
       // them nut tro ve trang dau tien
       footPage += `<li class="page-item" onclick="changePage(1)">
                     <a href="javascript:void(0);" class="page-link">
@@ -249,15 +144,7 @@ function showCategory(value) {
                   </li>`;
   
       if (currentPage != 1) {
-          // let prev = document.createElement('li');
-          // prev.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
-          // prev.setAttribute('onclick', "loadPage("+ (currentPage - 1) +")");
-          // footPage += prev;
-          // footPage += `<li class="page-item" onclick="loadPage(${currentPage - 1})">
-          //               <a href="javascript:void(0);" class="page-link">
-          //                 <i class="fa-solid fa-angle-left"></i>
-          //               </a>
-          //             </li>`;
+
           footPage += `<li class="page-item" onclick="changePage(${currentPage - 1})">
                     <a href="javascript:void(0);" class="page-link">
                       <i class="fa-solid fa-angle-left"></i>
@@ -272,11 +159,7 @@ function showCategory(value) {
       const range = numLinksTwoSide + 4;
       let render = "";
       let renderTwoSide = "";
-      // `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`
-      // let dot = `<li>...</li>`;
-      // let dot = `<li class="page-item">
-      // <a href="javascript:void(0);" class="page-link">...</a>
-      // </li>`;
+
       let dot = `<li class="page-item">
       <a href="javascript:void(0);" class="page-link">...</a>
       </li>`;
@@ -317,10 +200,6 @@ function showCategory(value) {
       }
   
       if (currentPage != numPages) {
-          // let next = document.createElement('li');
-          // next.innerHTML = '<i class="fa-solid fa-angle-right"></i>';
-          // next.setAttribute('onclick', "loadPage("+ (currentPage + 1) +")");
-          // footPage += next;
           footPage += `<li class="page-item" onclick="changePage(${currentPage + 1})">
                         <a href="javascript:void(0);" class="page-link">
                           <i class="fa-solid fa-angle-right"></i>
@@ -328,13 +207,11 @@ function showCategory(value) {
                       </li>`;
       }
   
-      // footPage += `<li onclick="loadPage(${numPages})"><i class="fa-solid fa-angles-right"></i></li>`;
-      // footPage += `<li onclick="loadPage(${numPages})"><i class="fa-solid fa-angles-right"></i></li>`;
       footPage += `<li class="page-item" onclick="changePage(${numPages})">
-                        <a href="javascript:void(0);" class="page-link">
-                          <i class="fa-solid fa-angles-right"></i>
-                        </a>
-                      </li>`;
+                    <a href="javascript:void(0);" class="page-link">
+                      <i class="fa-solid fa-angles-right"></i>
+                    </a>
+                  </li>`;
       document.querySelector('.pagination').innerHTML = footPage;
   }
 
@@ -344,238 +221,12 @@ function showCategory(value) {
   }
   
   function renderPage(index, active) {
-    // `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`
-    // return `<li class="page-item ${active}" data-page="${index}" onclick="loadPage(${index})>
-    //           <a href="javascript:void(0);" class="page-link">${index}</a>
-    //         </li>`;
-    // return `<li class="page-item ${active}" onclick="loadPage(${numPages})">
-    //                     <a href="javascript:void(0);" class="page-link"></a>
-    //                   </li>`;
     return `<li class="page-item" data-page="${index}" onclick="changePage(${index})">
-                        <a href="javascript:void(0);" class="page-link ${active}">${index}</a>
-                      </li>`
-    // return `<li class="${active}" onclick="loadPage(${index})">${index}</li>`
+              <a href="javascript:void(0);" class="page-link ${active}">${index}</a>
+            </li>`
   }
 }
 
-// function loadItem() {
-//   let start = productsPerPage * (currentPage - 1);
-//   let end = productsPerPage * currentPage;
-//   let currentProducts = products.slice(start, end);
-
-//   let s = "";
-//     currentProducts.forEach((product) => {
-//       s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
-//                         <a href="javascript:void(0)" class="product__link">
-//                             <img src="${product.image}" alt="" class="product__link-img">
-//                             <span class="product__link-name">${product.name_product}</span>
-//                             <div class="product__link-sale">${product.discount}%</div>
-//                         </a>
-//                         <div class="product__price">
-//                             <div class="product__price-current">${product.sell}</div>
-//                             <div class="product__price-old">${product.price}</div>
-//                         </div>
-//                     </div>`;
-//     });
-
-//     let pageContent = `
-//                  <div class="wrapper">
-//                      <div class="grid">
-//                          <div class="grid__row">
-//                              <div class="grid__col-3">
-//                                  <h3 class="title_size">Hướng dẫn chọn size</h3>
-//                        <div class="choose-Size"> <img src="assets/image/author/kich_thuoc_chan.png" alt="Hướng dẫn chọn size"></div>
-//                        <div class="choose-img">Mua Giày chính hãng nhập khẩu từ các thương hiệu nổi tiếng: Adidas, Nike, Converse, Vans,
-//                         Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP. 
-//                         ✔ Giảm 50K cho đơn đầu tiên
-//                         ✔ Freeship và giao nhanh nội thành 
-//                         ✔ Đổi trả dễ dàng 
-//                         ✔ Cam kết hàng cao cấp.<br>
-
-//                         ⭐️⭐️⭐️⭐️⭐️ (Chất lượng 5 sao)</div>
-
-                                
-//                   </div>
-
-//                              <div class="grid__col-9">
-//                               <div class="listProductByBrand">
-//                                     <div class="PagiBar">
-//                                         <div class="grid__row sortPagiBar">
-//                                             <div class="grid__col-7">
-//                                                 <div class="view-mode">
-//                                                     <div class="view-mode__icon">
-//                                                         <i class="fa-solid fa-grip"></i>
-//                                                         <i class="fa-solid fa-bars"></i>
-//                                                     </div>
-//                                                     <div class="total-product">
-//                                                         <span> Hiển thị ${
-//                                                           start + 1
-//                                                         } - ${
-//       start + currentProducts.length
-//     } trong tổng số ${products.length} sản phẩm </span>
-//                                                     </div>
-//                                                 </div>
-//                                             </div>
-//                                             <div class="grid__col-5">
-//                                                 <div class="sort">
-//                                                     <label class="sort-by">Sắp xếp: </label>
-//                                                     <ul class="list-sort">
-//                                                         <li>
-//                                                             <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
-//                                                             <ul class="sort-options">
-//                                                                 <li onclick="Default()"><a href="#">Mặc định</a></li>
-//                                                                 <li onclick="SortA_Z()"><a href="#" >A → Z</a></li>
-//                                                                 <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
-//                                                                 <li onclick="SortIncrease()"><a href="#">Giá tăng dần</a></li>
-//                                                                 <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
-  
-//                                                             </ul>
-//                                                         </li>
-//                                                     </ul>
-//                                                 </div>
-//                                             </div>
-//                                         </div>
-//                                     </div>
-          
-//                                   <div class="grid__row product_list" data-brand="${products[1].brand}">
-//                                       ${s}
-//                                       <ul class="pagination">
-//                                       </ul>
-//                                   </div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>`;
-//     document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
-//     loadPage(products);
-// }
-
-// function changePage(page) {
-//   currentPage = page;
-//   loadItem();
-// }
-
-// function loadPage() {
-//   let numPages = Math.ceil(products.length / productsPerPage);
-
-//   let footPage = "";
-
-//   // for (let i = 1; i <= numPages; i++) {
-//   //   footPage += `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`;
-//   // }
-
-//     // footPage += `<li onclick="loadPage(1)"><i class="fa-solid fa-angles-left"></i></li>`;
-//     // them nut tro ve trang dau tien
-//     footPage += `<li class="page-item" onclick="changePage(1)">
-//                   <a href="javascript:void(0);" class="page-link">
-//                     <i class="fa-solid fa-angles-left"></i>
-//                   </a>
-//                 </li>`;
-
-//     if (currentPage != 1) {
-//         // let prev = document.createElement('li');
-//         // prev.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
-//         // prev.setAttribute('onclick', "loadPage("+ (currentPage - 1) +")");
-//         // footPage += prev;
-//         // footPage += `<li class="page-item" onclick="loadPage(${currentPage - 1})">
-//         //               <a href="javascript:void(0);" class="page-link">
-//         //                 <i class="fa-solid fa-angle-left"></i>
-//         //               </a>
-//         //             </li>`;
-//         footPage += `<li class="page-item" onclick="changePage(${currentPage - 1})">
-//                   <a href="javascript:void(0);" class="page-link">
-//                     <i class="fa-solid fa-angle-left"></i>
-//                   </a>
-//                 </li>`;
-//     }
-
-    
-//     let truncate = true; // rut gon lien ket trang hoac khong
-//     let numLinksTwoSide = 1; // so lien ket muon hien thi 2 ben
-
-//     const range = numLinksTwoSide + 4;
-//     let render = "";
-//     let renderTwoSide = "";
-//     // `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`
-//     // let dot = `<li>...</li>`;
-//     // let dot = `<li class="page-item">
-//     // <a href="javascript:void(0);" class="page-link">...</a>
-//     // </li>`;
-//     let dot = `<li class="page-item">
-//     <a href="javascript:void(0);" class="page-link">...</a>
-//     </li>`;
-//     let countTruncate = 0;
-
-//     const numberTruncateLeft = currentPage - numLinksTwoSide;
-//     const numberTruncateRight = currentPage + numLinksTwoSide;
-
-//     let active = "";
-//     for (let pos = 1; pos <= numPages; pos++) {
-//         active = pos == currentPage ? "active" : "";
-//         if (numPages >= 2 * range - 1 && truncate) {
-//             // rut gon 2 ben
-//             if (numberTruncateLeft > 3 && numberTruncateRight < numPages - 3 + 1) {
-//                 if (pos >= numberTruncateLeft && pos <= numberTruncateRight)
-//                     renderTwoSide += renderPage(pos, active);
-//             } else {
-//                 // rut gon 1 ben
-//                 if ((currentPage < range && pos <= range) || (currentPage > numPages - range && pos >= numPages - range + 1)
-//                 || pos == numPages || pos == 1) {
-//                     render += renderPage(pos, active)
-//                 } else {
-//                     countTruncate++;
-//                     if (countTruncate == 1) render += dot;
-//                 }
-//             }
-//         } else {
-//             // khong rut gon duoc
-//             render += renderPage(pos, active)
-//         }
-//     }
-
-//     if (renderTwoSide) {
-//         renderTwoSide = renderPage(1) + dot + renderTwoSide + dot + renderPage(numPages);
-//         footPage += renderTwoSide;
-//     } else {
-//         footPage += render;
-//     }
-
-//     if (currentPage != numPages) {
-//         // let next = document.createElement('li');
-//         // next.innerHTML = '<i class="fa-solid fa-angle-right"></i>';
-//         // next.setAttribute('onclick', "loadPage("+ (currentPage + 1) +")");
-//         // footPage += next;
-//         footPage += `<li class="page-item" onclick="changePage(${currentPage - 1})">
-//                       <a href="javascript:void(0);" class="page-link">
-//                         <i class="fa-solid fa-angle-right"></i>
-//                       </a>
-//                     </li>`;
-//     }
-
-//     // footPage += `<li onclick="loadPage(${numPages})"><i class="fa-solid fa-angles-right"></i></li>`;
-//     // footPage += `<li onclick="loadPage(${numPages})"><i class="fa-solid fa-angles-right"></i></li>`;
-//     footPage += `<li class="page-item" onclick="changePage(${numPages})">
-//                       <a href="javascript:void(0);" class="page-link">
-//                         <i class="fa-solid fa-angles-right"></i>
-//                       </a>
-//                     </li>`;
-//     document.querySelector('.pagination').innerHTML = footPage;
-// }
-
-// function renderPage(index, active) {
-//   // `<li class="page-item" data-page="${i}"><a href="javascript:void(0);" class="page-link">${i}</a></li>`
-//   // return `<li class="page-item ${active}" data-page="${index}" onclick="loadPage(${index})>
-//   //           <a href="javascript:void(0);" class="page-link">${index}</a>
-//   //         </li>`;
-//   // return `<li class="page-item ${active}" onclick="loadPage(${numPages})">
-//   //                     <a href="javascript:void(0);" class="page-link"></a>
-//   //                   </li>`;
-//   return `<li class="page-item ${active}" data-page="${index}" onclick="loadPage(${index})">
-//                       <a href="javascript:void(0);" class="page-link">${index}</a>
-//                     </li>`
-//   // return `<li class="${active}" onclick="loadPage(${index})">${index}</li>`
-// }
 
 // xu li 2 truong hop all va sale =))
 function displayProductBySize(products, value) {
