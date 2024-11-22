@@ -3,8 +3,8 @@ function writeLogoAndUserTools() {
     <header>
         <div class="inner-wrap">
             <div class="inner-content">
-                <div class="inner-menu_mobile" onclick="hideSideBar()">
-                    <i class="fa-solid fa-bars"></i>
+                <div class="inner-menu_mobile" >
+                    <i class="fa-solid fa-bars" id="menu" onclick="showMenuMobile()"></i>
                 </div>
                 <div class="inner-logo">
                     <a href="">
@@ -144,44 +144,6 @@ function writeMenuSelection() {
                 </ul>
             </div>
         </div>
-    </div>
-
-    <div class="sidebar">
-        <ul class="menu-1">
-            <li>
-            <a onclick="hideSideBar()"><i class="fa-solid fa-xmark"></i></a>
-            </li>
-            <li>
-            <a href="">All</a>
-            </li>
-            <li>
-            <a href="">Sale 40% - 80%</a>
-            </li>
-            <li>
-            <a href="">NIKE</a>
-            </li>
-            <li>
-            <a href="">ADIDAS</a>
-            </li>
-            <li>
-            <a href="">VANS</a>
-            </li>
-            <li>
-            <a href="">CONVERSE</a>
-            </li>
-            <li>
-            <a href="">HÃNG KHÁC</a>
-            </li>
-            <li>
-            <a href="">QUẦN ÁO</a>
-            </li>
-            <li>
-            <a href="">PHỤ KIỆN</a>
-            </li>
-            <li>
-            <a href="">NHẬN THÔNG BÁO SALE</a>
-            </li>
-        </ul>
     </div>
 </nav>
     `);

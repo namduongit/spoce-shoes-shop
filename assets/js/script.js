@@ -264,11 +264,11 @@ function displaylist(products, brand) {
     let footPage = "";
   
       // them nut tro ve trang dau tien
-      footPage += `<li class="page-item" onclick="changePage(1)">
-                    <a href="javascript:void(0);" class="page-link">
-                      <i class="fa-solid fa-angles-left"></i>
-                    </a>
-                  </li>`;
+      // footPage += `<li class="page-item" onclick="changePage(1)">
+      //               <a href="javascript:void(0);" class="page-link">
+      //                 <i class="fa-solid fa-angles-left"></i>
+      //               </a>
+      //             </li>`;
   
       if (currentPage != 1) {
 
@@ -334,11 +334,11 @@ function displaylist(products, brand) {
                       </li>`;
       }
   
-      footPage += `<li class="page-item" onclick="changePage(${numPages})">
-                    <a href="javascript:void(0);" class="page-link">
-                      <i class="fa-solid fa-angles-right"></i>
-                    </a>
-                  </li>`;
+      // footPage += `<li class="page-item" onclick="changePage(${numPages})">
+      //               <a href="javascript:void(0);" class="page-link">
+      //                 <i class="fa-solid fa-angles-right"></i>
+      //               </a>
+      //             </li>`;
       document.querySelector('.pagination').innerHTML = footPage;
   }
 
@@ -518,4 +518,57 @@ function toast({ title = '', message = '', type = 'success', duration = 3000 }) 
   }
 
 
+}
+
+
+// menu mobile
+
+function writeMenuMobile() {
+  return `
+        <div class="menu-mobile">
+            <div class="menu-mobile__popup">
+                <h3 class="menu-mobile__tittle">Menu</h3>
+                <i class="fa-solid fa-xmark" onclick="closeMenuMobile()"></i>
+                <ul class="menu-mobile__list">
+                    <li id="all_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ALL')">
+                        <a href="#">All</a>
+                    </li>
+                    <li id="all_products_sale" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('SALE')">
+                        <a href="#">Sale 40% - 80%</a>
+                    </li>
+                    <li id="all_nike_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('NIKE')">
+                        <a href="#">NIKE</a>
+                    </li>
+                    <li id="all_adidas_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ADIDAS')">
+                        <a href="#">ADIDAS</a>
+                    </li>
+                    <li id="all_vans_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('VANS')">
+                        <a href="#">VANS</a>
+                    </li>
+                    <li id="all_converse_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CONVERSE')">
+                        <a href="#">CONVERSE</a>
+                    </li>
+                    <li id="all_clothes_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CLOTHES')">
+                        <a href="#">QUẦN ÁO</a>
+                    </li>
+                </ul>
+                <div class="moreMenu">
+                    <p>Chất lượng vượt niềm tin.</p>
+                </div>
+            </div>
+        </div>`;
+}
+
+function showMenuMobile() {
+  document.querySelector('.inner-menu_mobile').innerHTML += writeMenuMobile();
+  document.querySelector('.menu-mobile').style.display = 'block';
+  document.querySelectorAll('.menu-mobile__list li').forEach(function(li) {
+    li.addEventListener('click', function() {
+      document.querySelector('.menu-mobile').style.display = 'none';
+    });
+  });
+}
+
+function closeMenuMobile() {
+  document.querySelector('.menu-mobile').style.display = 'none';
 }

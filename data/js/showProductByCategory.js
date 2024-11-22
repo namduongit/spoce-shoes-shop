@@ -137,14 +137,14 @@ function showCategory(value) {
     let footPage = "";
   
       // them nut tro ve trang dau tien
-      footPage += `<li class="page-item" onclick="changePage(1)">
-                    <a href="javascript:void(0);" class="page-link">
-                      <i class="fa-solid fa-angles-left"></i>
-                    </a>
-                  </li>`;
+      // footPage += `<li class="page-item" onclick="changePage(1)">
+      //               <a href="javascript:void(0);" class="page-link">
+      //                 <i class="fa-solid fa-angles-left"></i>
+      //               </a>
+      //             </li>`;
   
+      
       if (currentPage != 1) {
-
           footPage += `<li class="page-item" onclick="changePage(${currentPage - 1})">
                     <a href="javascript:void(0);" class="page-link">
                       <i class="fa-solid fa-angle-left"></i>
@@ -152,8 +152,7 @@ function showCategory(value) {
                   </li>`;
       }
   
-      
-      let truncate = true; // rut gon lien ket trang hoac khong
+  
       let numLinksTwoSide = 1; // so lien ket muon hien thi 2 ben
   
       const range = numLinksTwoSide + 4;
@@ -171,7 +170,7 @@ function showCategory(value) {
       let active = "";
       for (let pos = 1; pos <= numPages; pos++) {
           active = pos == currentPage ? "active" : "";
-          if (numPages >= 2 * range - 1 && truncate) {
+          if (numPages >= 2 * range - 1) {
               // rut gon 2 ben
               if (numberTruncateLeft > 3 && numberTruncateRight < numPages - 3 + 1) {
                   if (pos >= numberTruncateLeft && pos <= numberTruncateRight)
@@ -207,11 +206,11 @@ function showCategory(value) {
                       </li>`;
       }
   
-      footPage += `<li class="page-item" onclick="changePage(${numPages})">
-                    <a href="javascript:void(0);" class="page-link">
-                      <i class="fa-solid fa-angles-right"></i>
-                    </a>
-                  </li>`;
+      // footPage += `<li class="page-item" onclick="changePage(${numPages})">
+      //               <a href="javascript:void(0);" class="page-link">
+      //                 <i class="fa-solid fa-angles-right"></i>
+      //               </a>
+      //             </li>`;
       document.querySelector('.pagination').innerHTML = footPage;
   }
 
