@@ -129,11 +129,18 @@ function Quantity(value, price) {
 
 function writeSelectionSize(product) {
   let sizeObj = product.size;
+  console.log(sizeObj);
   let html = ``;
   for (let size in sizeObj) {
-    html += `
+    if (sizeObj[size] === 0) {
+      html += `
+            <button class="btn disabled">${size}</button>
+        `;
+    } else {
+      html += `
             <button class="btn">${size}</button>
         `;
+    }
   }
   return html;
 }

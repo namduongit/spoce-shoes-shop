@@ -861,22 +861,39 @@ a {
 .size_product {
   text-align: center;
   font-size: 20px;
+  margin-bottom: 16px;
 }
 
 .size_product button {
-  padding: 5px;
-  background-color: white;
-  transition: all 0.3s;
-  margin-top: 10px;
+  margin: 10px 2px 0;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  /* transition: all 0.3s; */
+  border: 1px solid #252525;
+  border-radius: 2px;
+}
+
+.size_product button.disabled {
+  color: #c5c5c5;
+  border: 1px solid #c5c5c5;
+  pointer-events: none;
+  /* color: red; */
 }
 
 .size_product button:hover {
-  background-color: #f44236;
+  /* background-color: #f44236; */
   cursor: pointer;
 }
 
-.check {
-  background-color: #f44236 !important;
+.size_product button.check {
+  border-color: red;
+  background: url(/assets/image/effect/sticked.png) right bottom no-repeat #fff;
+  background-position: right bottom;
+  background-attachment: fixed;  /* Giữ hình nền cố định khi cuộn trang */
+
+  /* border: 1px solid #000; */
+  /* background-color: #fff !important; */
 }
 
 .details-pro {
@@ -955,8 +972,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .detail-product .product-pay {
   margin: 10px 0 20px;
-  padding-top: 10px;
+  padding-top: 16px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-top: solid 2px rgba(0, 0, 0, 0.345);
 }
@@ -975,11 +993,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .detail-product .product-pay .cart-pay {
   margin-right: 50px;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 .detail-product .product-pay .cart-pay .btn-pay {
   padding: 10px 25px;
+  margin-left: 6px;
   border-radius: 25px;
   font-size: 15px;
   font-weight: 500;
