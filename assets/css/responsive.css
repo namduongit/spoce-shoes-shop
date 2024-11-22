@@ -160,9 +160,8 @@ header .inner-wrap .inner-user .user, .cart {
 }
 
 header .inner-wrap .inner-menu_mobile i {
-  margin-left: 6px;
-  display: block;
-  font-size: 16px;
+  position: absolute;
+  left: 20px;
 }
 
 header .inner-wrap .inner-logo img {
