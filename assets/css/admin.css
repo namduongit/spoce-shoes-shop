@@ -468,7 +468,6 @@ i {
     width: 50%;
     background-color: whitesmoke;
     border: 2px solid black;
-    border-radius: 5px;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -503,15 +502,33 @@ i {
 
 .modifying .modifying-content form .form-image {
     display: flex;
+    height: 100px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  
 }
 
 .modifying .modifying-content form .form-image .form-image-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 5px;
 }
 
+.modifying .modifying-content form .form-image .form-image-item .promo_image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.modifying .modifying-content form .form-image .form-image-item .item-image{
+    margin-right: 20px;
+}
+.modifying .modifying-content form .form-image .form-image-item .btn-delete{
+    margin-right: 20px;
+}
+.modifying .modifying-content form  .choose-img{
+    margin-top: 10px;
+}
 .modifying .modifying-content form input {
     width: 70%;
 }
@@ -526,18 +543,14 @@ i {
 .modify-btn-container .modify-btn {
     color: black;
     background-color: white;
-    border: 2px solid black;
-    border-radius: 5px;
+    border: 1px solid black;
     margin: 0 5px;
     padding: 5px;
-    font-size: 14px;
-    font-weight: bold;
 }
 
 .modify-btn-container .modify-btn:hover {
-    background-color: #373333;
+    background-color: black;
     color: white;
-    transition: 0.3s all ease;
 }
 
 /* Adding Product Form */
