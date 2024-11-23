@@ -550,23 +550,23 @@ function showModifyingForm(productId) {
     </div>
     </div>`;
     let number=1;
-for (key in product.promo_image) {
-    number++;
-if (product.promo_image[key] == '') {
-    imgp += ` <div class="form-image-item img_${number}">
-    </div>`
- continue;
-}
+    for (key in product.promo_image) {
+        number++;
+        if (product.promo_image[key] == '') {
+            imgp += ` <div class="form-image-item img_${number}">
+            </div>`
+            continue;
+        }
 
-imgp += ` <div class="form-image-item img_${number}">
-    <div class="promo_image">
-    <div class="item-image "><img src=${product.promo_image[key]}></div>
-    <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
-    </div>
-    </div>`
-}
+        imgp += ` <div class="form-image-item img_${number}">
+        <div class="promo_image">
+        <div class="item-image "><img src=${product.promo_image[key]}></div>
+        <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
+        </div>
+        </div>`
+    }
 
-document.querySelector(".form-image").innerHTML=imgp;
+    document.querySelector(".form-image").innerHTML=imgp;
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = product.size[document.getElementById("size-select").value.toString()];
     document.getElementById("size-select").onchange = function () {
@@ -1187,6 +1187,27 @@ function showUserModify(obj) {
     document.getElementById('account-status').value = String(user.active);
     document.getElementById('user-save-btn').addEventListener('click', () => {
         var status = (document.getElementById('account-status').value === "true");
+        const emailRegex = /@[a-zA-z0-9]+\.[a-zA-z]{2,}$/;
+
+        if (users.some(user => user.username == document.getElementById('username').value) && user.username != document.getElementById('username').value) {
+            alert('Username đã tồn tại trong hệ thống!');
+            return;
+        }
+
+        if (document.getElementById('password').value.length < 6) {
+            alert('Mật khẩu không được ngắn hơn 6 kí tự!');
+            return;
+        }
+
+        if (!emailRegex.test(document.getElementById('email').value)) {
+            alert('Email không đúng định dạng!');
+            return;
+        }
+
+        if (isNaN(document.getElementById('phone').value) || document.getElementById('phone').value.length != 10) {
+            alert('Số điện thoại không đúng định dạng!');
+            return;
+        }
         users[indexOfUser].username = document.getElementById('username').value;
         users[indexOfUser].password = document.getElementById('password').value;
         users[indexOfUser].fullname = document.getElementById('fullname').value;
@@ -1291,8 +1312,17 @@ function showAddingCustomerForm() {
         var currentTime = new Date();
         currentTime = getCurrentDateTime(currentTime);
 
+        const emailRegex = /@[a-zA-Z]+\.[a-z]{2,}$/;
+
         if (username.value === "") {
             alert("Tài khoản không được để trống.");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.username === username.value;
+        })) {
+            alert("Tài khoản đã tồn tại!");
             return;
         }
 
@@ -1316,18 +1346,6 @@ function showAddingCustomerForm() {
             return;
         }
 
-        if (phoneNumber.value === "") {
-            alert("Số điện thoại không được để trống.");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.username === username.value;
-        })) {
-            alert("Tài khoản đã tồn tại!");
-            return;
-        }
-
         if (users.some(user => {
             return user.email === emailAddress.value;
         })) {
@@ -1335,10 +1353,25 @@ function showAddingCustomerForm() {
             return;
         }
 
+        if (!emailRegex.test(emailAddress.value)) {
+            alert('Email không đúng định dạng!');
+            return;
+        }
+
+        if (phoneNumber.value === "") {
+            alert("Số điện thoại không được để trống.");
+            return;
+        }
+
         if (users.some(user => {
             return user.phone === phoneNumber.value;
         })) {
             alert("Số điện thoại đã tồn tại!");
+            return;
+        }
+
+        if (phoneNumber.value.length != 10 || isNaN(phoneNumber.value)) {
+            alert('Số điện thoại không đúng định dạng');
             return;
         }
 
@@ -1938,6 +1971,10 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "2") {
             currentStatus = "Đã xác nhận";
+            orders[index].products_buy.forEach(product => {
+                var productIndex = products.findIndex(item => product.id == item.id);
+                products[productIndex].size[product.size] -= product.quantity;
+            });
         }
 
         if (currentStatusCode === "3") {
@@ -1946,9 +1983,14 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "4") {
             currentStatus = "Đã hủy";
+            orders[index].products_buy.forEach(product => {
+                var productIndex = products.findIndex(item => product.id == item.id);
+                products[productIndex].size[product.size] += parseInt(product.quantity);
+            });
         }
         orders[index].status = currentStatus;
         localStorage.setItem('Allbill', JSON.stringify(orders));
+        localStorage.setItem('products', JSON.stringify(products)); 
     });
 }
 
