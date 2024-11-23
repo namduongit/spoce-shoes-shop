@@ -550,23 +550,23 @@ function showModifyingForm(productId) {
     </div>
     </div>`;
     let number=1;
-for (key in product.promo_image) {
-    number++;
-if (product.promo_image[key] == '') {
-    imgp += ` <div class="form-image-item img_${number}">
-    </div>`
- continue;
-}
+    for (key in product.promo_image) {
+        number++;
+        if (product.promo_image[key] == '') {
+            imgp += ` <div class="form-image-item img_${number}">
+            </div>`
+            continue;
+        }
 
-imgp += ` <div class="form-image-item img_${number}">
-    <div class="promo_image">
-    <div class="item-image "><img src=${product.promo_image[key]}></div>
-    <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
-    </div>
-    </div>`
-}
+        imgp += ` <div class="form-image-item img_${number}">
+        <div class="promo_image">
+        <div class="item-image "><img src=${product.promo_image[key]}></div>
+        <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
+        </div>
+        </div>`
+    }
 
-document.querySelector(".form-image").innerHTML=imgp;
+    document.querySelector(".form-image").innerHTML=imgp;
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = product.size[document.getElementById("size-select").value.toString()];
     document.getElementById("size-select").onchange = function () {
@@ -1312,8 +1312,17 @@ function showAddingCustomerForm() {
         var currentTime = new Date();
         currentTime = getCurrentDateTime(currentTime);
 
+        const emailRegex = /@[a-zA-Z]+\.[a-z]{2,}$/;
+
         if (username.value === "") {
             alert("Tài khoản không được để trống.");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.username === username.value;
+        })) {
+            alert("Tài khoản đã tồn tại!");
             return;
         }
 
@@ -1337,18 +1346,6 @@ function showAddingCustomerForm() {
             return;
         }
 
-        if (phoneNumber.value === "") {
-            alert("Số điện thoại không được để trống.");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.username === username.value;
-        })) {
-            alert("Tài khoản đã tồn tại!");
-            return;
-        }
-
         if (users.some(user => {
             return user.email === emailAddress.value;
         })) {
@@ -1356,10 +1353,25 @@ function showAddingCustomerForm() {
             return;
         }
 
+        if (!emailRegex.test(emailAddress.value)) {
+            alert('Email không đúng định dạng!');
+            return;
+        }
+
+        if (phoneNumber.value === "") {
+            alert("Số điện thoại không được để trống.");
+            return;
+        }
+
         if (users.some(user => {
             return user.phone === phoneNumber.value;
         })) {
             alert("Số điện thoại đã tồn tại!");
+            return;
+        }
+
+        if (phoneNumber.value.length != 10 || isNaN(phoneNumber.value)) {
+            alert('Số điện thoại không đúng định dạng');
             return;
         }
 
