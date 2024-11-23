@@ -1165,29 +1165,39 @@ function showUserModify(obj) {
 
                 <div class="form-item">
                     <label for="password">Mật khẩu: </label>
-                    <input type="text" id="password" value="${user.password}" >
+                    <input type="text" id="password" value="${user.password}">
+                    <span class="text-danger" id="errol_pass_disable"></span>
+                     
+                    <span class="text-danger" id="errol_pass_length"></span>
+                </div>
 
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="fullname">Họ tên: </label>
-                    <input type="text" id="fullname" value="${user.fullname}" >
-
+                    <input type="text" id="fullname" value="${user.fullname}">
+                    <span class="text-danger" id="errol_name_disable"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="email">Email: </label>
-                    <input type="text" id="email" value="${user.email}" disabled>
+                    <input type="text" id="email" value="${user.email}">
+                    <span class="text-danger" id="errol_email_disable"></span>
+                      <span class="text-danger" id="errol_email_wrong"></span>
+                    <span class="text-danger" id="errol_email_same"></span>
+                </div>
 
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="phone">Số điện thoại: </label>
-                    <input type="text" id="phone" value="${user.phone}" disabled>
-
+                    <input type="text" id="phone" value="${user.phone}">
+                    <span class="text-danger" id="errol_phone_disable"></span>
+                    <span class="text-danger" id="errol_phone_wrong"></span>
+                    <span class="text-danger" id="errol_phone_same"></span>
                 </div>
                 <br>
 
@@ -1225,20 +1235,41 @@ function showUserModify(obj) {
             alert('Username đã tồn tại trong hệ thống!');
             return;
         }
-
-        if (document.getElementById('password').value.length < 6) {
-            alert('Mật khẩu không được ngắn hơn 6 kí tự!');
-            return;
+        valid=true;
+        let username=document.getElementById("username").value;
+        let password=document.getElementById("password").value;
+        let name=document.getElementById("fullname").value;
+        let email=document.getElementById("email").value;
+        let phone=document.getElementById("phone").value;
+        var validation=new Validation();
+        valid&=validation.kiemtraRong(password,"#errol_pass_disable")&validation.kiemtraRong(email,"#errol_email_disable")&validation.kiemtraRong(name,"#errol_name_disable")&validation.kiemtraRong(phone,"#errol_phone_disable")&validation.kiemtraDodai(password,"#errol_pass_length",6)&validation.kiemtraEmail(email,"#errol_email_wrong")&validation.kiemtraSDT(phone,"#errol_phone_wrong");
+        if(valid==0) {
+            return false;
         }
-
-        if (!emailRegex.test(document.getElementById('email').value)) {
-            alert('Email không đúng định dạng!');
-            return;
+        let i=0;
+        if(users.some(user=>{
+          return user.email==email && username!=user.username;
+        })){
+            document.getElementById("errol_email_same").innerHTML="Email đã có người khác đăng ký";
+            document.getElementById("errol_email_same").display="block";
+            valid=false;
+        } else{
+            document.getElementById("errol_email_same").display="none";
         }
-
-        if (isNaN(document.getElementById('phone').value) || document.getElementById('phone').value.length != 10) {
-            alert('Số điện thoại không đúng định dạng!');
-            return;
+        if(users.some(user=>{
+         return   user.phone==phone && username!=user.username;;
+        })){
+            
+            document.getElementById("errol_phone_same").innerHTML="Số điện thoại đã có người khác đăng ký";
+            document.getElementById("errol_phone_same").display="block";
+            valid=false;
+        }
+        else{
+          
+            document.getElementById("errol_phone_same").display="none";
+        }
+        if(valid==false){
+            return false;
         }
         users[indexOfUser].username = document.getElementById('username').value;
         users[indexOfUser].password = document.getElementById('password').value;
@@ -1278,12 +1309,17 @@ function showAddingCustomerForm() {
                 <div class="form-item">
                     <label for="username">Tài khoản: </label>
                     <input type="text" id="username" placeholder="Nhập tài khoản">
+                    <span class="text-danger" id="errol_user_disable"></span>
+                              <span class="text-danger" id="errol_user_length"></span>
+                    <span class="text-danger" id="errol_user_same"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="password">Mật khẩu: </label>
                     <input type="text" id="password" placeholder="Nhập mật khẩu">
+                    <span class="text-danger" id="errol_password_disable"></span>
+                    <span class="text-danger" id="errol_password_length"></span>
 
                 </div>
                 <br>
@@ -1291,21 +1327,25 @@ function showAddingCustomerForm() {
                 <div class="form-item">
                     <label for="fullname">Họ tên: </label>
                     <input type="text" id="fullname" placeholder="Nhập họ tên">
-
+                    <span class="text-danger" id="errol_name_disable"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="email">Email: </label>
                     <input type="text" id="email" placeholder="Nhập email">
-
+                     <span class="text-danger" id="errol_email_disable"></span>
+                      <span class="text-danger" id="errol_email_wrong"></span>
+                       <span class="text-danger" id="errol_email_same"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="phone">Số điện thoại: </label>
                     <input type="text" id="phone" placeholder="Nhập số điện thoại">
-
+ <span class="text-danger" id="errol_tel_disable"></span>
+                      <span class="text-danger" id="errol_tel_pattern"></span>
+                       <span class="text-danger" id="errol_tel_same"></span>
                 </div>
                 <br>
 
@@ -1344,57 +1384,44 @@ function showAddingCustomerForm() {
         var currentTime = new Date();
         currentTime = getCurrentDateTime(currentTime);
 
-        if (username.value === "") {
-            alert("Tài khoản không được để trống.");
-            return;
-        }
-
-        if (password.value === "") {
-            alert("Mật khẩu không được để trống.");
-            return;
-        }
-
-        if (password.value.length < 6) {
-            alert("Mật khẩu không được ít hơn 6 kí tự.");
-            return;
-        }
-
-        if (fullname.value === "") {
-            alert("Họ tên không được để trống.");
-            return;
-        }
-
-        if (emailAddress.value === "") {
-            alert("Email không được để trống.");
-            return;
-        }
-
-        if (phoneNumber.value === "") {
-            alert("Số điện thoại không được để trống.");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.username === username.value;
-        })) {
-            alert("Tài khoản đã tồn tại!");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.email === emailAddress.value;
-        })) {
-            alert("Email đã tồn tại");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.phone === phoneNumber.value;
-        })) {
-            alert("Số điện thoại đã tồn tại!");
-            return;
-        }
-
+        var validation = new Validation();
+        var valid = true;
+    //Check validation
+    valid &= validation.kiemtraRong(username.value, "#errol_user_disable") & validation.kiemtraRong(password.value, "#errol_password_disable") & validation.kiemtraRong(fullname.value, "#errol_name_disable") & validation.kiemtraRong(emailAddress.value, "#errol_email_disable") & validation.kiemtraRong(phoneNumber.value, "#errol_tel_disable") & validation.kiemtraDodai(username.value, "#errol_user_length", 6) & validation.kiemtraDodai(password.value, "#errol_password_length", 6) & validation.kiemtraEmail(emailAddress.value, "#errol_email_wrong") & validation.kiemtraSDT(phoneNumber.value,"#errol_tel_pattern");
+    if (valid === 0) {
+        return false;
+    }
+    if (users.some(user => {
+        return user.username === username.value;
+    })) {
+        document.querySelector("#errol_user_same").innerHTML = "Tên tài khoản đã tồn tại!";
+        document.querySelector("#errol_user_same").style.display = "block";
+        valid=false;
+    } else {
+        document.querySelector("#errol_user_same").style.display = "none";
+    }
+    if (users.some(user => {
+        return user.email === email.value;
+    })) {
+        document.querySelector("#errol_email_same").innerHTML = "email đã được đăng ký cho tài khoản khác!";
+        document.querySelector("#errol_email_same").style.display = "block";
+        valid=false;
+    }
+    else {
+        document.querySelector("#errol_email_same").style.display = "none";
+    }
+    if (users.some(user => {
+        return user.phone === phone.value;
+    })) {
+        document.querySelector("#errol_tel_same").innerHTML = "Số điện thoại đã được đăng ký cho tài khoản khác!";
+        document.querySelector("#errol_tel_same").style.display = "block";
+        valid=false;
+    } else {
+        document.querySelector("#errol_tel_same").style.display = "none";
+    }
+    if(valid==false){
+        return;
+    }
         var newCustomer = {
             username: username.value,
             password: password.value,
@@ -1413,7 +1440,6 @@ function showAddingCustomerForm() {
         showCustomer();
     });
 }
-
 function closeCustomerAddingForm() {
     document.querySelector('.customer-adding-form').style.display = 'none';
 }
