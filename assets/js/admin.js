@@ -371,7 +371,7 @@ function closeDeleteConfirmation() {
 
 function deleteImage(keyw){
     let key="."+keyw;
-    document.querySelector(key  ).innerHTML="";
+    document.querySelector(key).innerHTML="";
   }
 
 // Hàm để đổi ảnh
