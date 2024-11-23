@@ -8,10 +8,10 @@ var admins = [
 function checkLogin() {
     var username = document.getElementById('username');
     var password = document.getElementById('password');
-    var validation=new Validation();
-    let valid=true;
-    valid&=validation.kiemtraRong(username.value,"#errol_user_disabled")&validation.kiemtraRong(password.value,"#errol_pass_disabled");
-    if(valid==0){
+    var validation = new Validation();
+    let valid = true;
+    valid &= validation.kiemtraRong(username.value, "#errol_user_disabled") & validation.kiemtraRong(password.value, "#errol_pass_disabled");
+    if (valid == 0) {
         return false;
     }
 
@@ -27,19 +27,18 @@ function checkLogin() {
 
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
-        toast({title:'SUCCESS',message:'Đăng nhập thành công"',type:'success',duration:3000});
+        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công"', type: 'success', duration: 3000 });
         writeMainContent();
 
     } else {
-        document.getElementById("errol_pass_disabled").innerHTML='Tài khoản hoặc mật khẩu không đúng';
-        document.getElementById("errol_pass_disabled").style.display="block";
+        document.getElementById("errol_pass_disabled").innerHTML = 'Tài khoản hoặc mật khẩu không đúng';
+        document.getElementById("errol_pass_disabled").style.display = "block";
     }
 }
 
 function interFaceAdmin() {
     const adminCurrent = JSON.parse(localStorage.getItem('currentAdmin'));
     if (adminCurrent) {
-        console.log("Admin hiện tại:", adminCurrent);
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
         writeMainContent();
@@ -48,7 +47,7 @@ function interFaceAdmin() {
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     interFaceAdmin();
 }
 
@@ -70,7 +69,7 @@ function showSideBar() {
 
 function hideSideBar() {
     const sidebar = document.getElementById('side-bar');
-    sidebar.classList.replace('slide-to-right','slide-to-left');
+    sidebar.classList.replace('slide-to-right', 'slide-to-left');
     sidebar.addEventListener('animationend', () => {
         sidebar.style.display = 'none';
     }, { once: true });
@@ -86,11 +85,78 @@ function checkResolution() {
 }
 
 // hàm này sẽ được gọi mỗi khi load web và khi web bị thay đổi kích thước
-window.addEventListener('load',checkResolution);
-window.addEventListener('resize',checkResolution);
+window.addEventListener('load', checkResolution);
+window.addEventListener('resize', checkResolution);
 
 // hàm khởi tạo giao diện chính
+function convertCurrencyToNumber(currencyString) {
+    // Loại bỏ ký tự không phải số và dấu '.'
+    const cleanedString = currencyString.replace(/[^\d]/g, '');
+    // Chuyển đổi chuỗi thành số nguyên
+    return parseInt(cleanedString, 10);
+}
 function writeMainContent() {
+    // Lấy dữ liệu hôm nay
+    let date = getCurrentDateTime()
+    // Cắt dữ liệu để lấy dd/mm/yyyy
+    let currentDate = date.split(' ')[2];
+    console.log(currentDate);
+
+    let countNewUser = 0;
+    let countNewMoney = 0;
+    let countNewOrder = 0;
+
+    let Allbill = JSON.parse(localStorage.getItem('Allbill'));
+    let Alluser = JSON.parse(localStorage.getItem('users'));
+
+    let currentBill = Allbill.filter(bill => {
+        let paymentdate = bill.paymentdate;
+        let current = paymentdate.split(' ')[2];
+        return current === currentDate;
+    });
+    countNewOrder = currentBill.length;
+
+    let currentUser = Alluser.filter(us => {
+        let registrationTime = us.registrationTime;
+        let current = registrationTime.split(' ')[2];
+        return current == currentDate
+    });
+    countNewUser = currentUser.length;
+
+    currentBill.forEach(bill => {
+        let products_buy = bill.products_buy;
+        let totalBillMoney = 0;
+        products_buy.forEach(pro => {
+            let quantity = parseInt(convertCurrencyToNumber(pro.quantity));
+            let sell = parseInt(convertCurrencyToNumber(pro.sell));
+            totalBillMoney += quantity * sell;
+        });
+        countNewMoney += totalBillMoney;
+
+    });
+
+    // Xử lí đơn hàng gần đây
+    function currentBillNow() {
+        let html = ``;
+        // <tr>
+        //     <td>001</td>
+        //     <td>namduongit</td>
+        //     <td>ABC</td>
+        //     <td>Chưa xử lí</td>
+        // </tr>
+        currentBill.forEach(bill => {
+            html += `
+            <tr>
+                <td>${bill.code}</td>
+                <td>${bill.username}</td>
+                <td>${bill.street}</td>
+                <td>${bill.status}</td>
+            </tr>
+        `
+        });
+        return html;
+    }
+
     document.getElementById('bar-title').innerHTML = `
     <h2>Tổng quan</h2>
     `;
@@ -107,7 +173,7 @@ function writeMainContent() {
                             </div>
 
                             <div class="bottom-content">
-                                0
+                                ${countNewOrder}
                             </div>
                         </div>
                     </div>
@@ -123,7 +189,7 @@ function writeMainContent() {
                             </div>
 
                             <div class="bottom-content">
-                                0
+                                ${formatMoney(countNewMoney)}
                             </div>
                         </div>
                     </div>
@@ -139,7 +205,7 @@ function writeMainContent() {
                             </div>
 
                             <div class="bottom-content">
-                                0
+                                ${countNewUser}
                             </div>
                         </div>
                     </div>
@@ -154,40 +220,13 @@ function writeMainContent() {
                         <table>
                             <thead>
                                 <td>Mã đơn hàng</td>
+                                <td>Username</td>
                                 <td>Địa chỉ</td>
                                 <td>Tình trạng</td>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>001</td>
-                                    <td>ABC</td>
-                                    <td>Chưa xử lí</td>
-                                </tr>
-
-                                <tr>
-                                    <td>001</td>
-                                    <td>ABC</td>
-                                    <td>Chưa xử lí</td>
-                                </tr>
-
-                                <tr>
-                                    <td>001</td>
-                                    <td>ABC</td>
-                                    <td>Chưa xử lí</td>
-                                </tr>
-
-                                <tr>
-                                    <td>001</td>
-                                    <td>ABC</td>
-                                    <td>Chưa xử lí</td>
-                                </tr>
-
-                                <tr>
-                                    <td>001</td>
-                                    <td>ABC</td>
-                                    <td>Chưa xử lí</td>
-                                </tr>
+                            <tbody id="body-table">
+                                ${currentBillNow()}
                             </tbody>
                         </table>
                     </div>
@@ -248,7 +287,7 @@ function showProducts() {
 
 
     var str = "";
-    for (let i=1; i<=numOfPages; i++) {
+    for (let i = 1; i <= numOfPages; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
                 <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -262,11 +301,11 @@ function showProducts() {
 
         var start = itemsPerPage * (page - 1);
         var end = itemsPerPage * page;
-        var productsOfPage = products.slice(start,end);
+        var productsOfPage = products.slice(start, end);
 
 
         var s = "";
-        for (let i=0; i<productsOfPage.length; i++) {
+        for (let i = 0; i < productsOfPage.length; i++) {
             s = s + `
                 <tr>
                     <td>${productsOfPage[i].id}</td>
@@ -281,8 +320,8 @@ function showProducts() {
 
         document.getElementById('product-details').innerHTML = s;
         document.getElementById('page-select').innerHTML = str;
-        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
-        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
 
         var pageSelectors = document.querySelectorAll('.page-item');
@@ -357,7 +396,7 @@ function addImage(event, img) {
 
     if (file) {
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             if (imgId === 'main-img') {
                 imgDiv[0].innerHTML = `
                 <img src="${e.target.result}" alt="main-image">
@@ -673,7 +712,7 @@ function updateSizeQuantity(productID, obj) {
 // hàm xóa sản phẩm khỏi mảng và cập nhật lên local storage
 function deleteProduct(productId) {
     var productToBeRemovedIndex = products.findIndex(item => item.id === productId.getAttribute('data-id'));
-    products.splice(productToBeRemovedIndex,1);
+    products.splice(productToBeRemovedIndex, 1);
     localStorage.setItem('products', JSON.stringify(products));
     showProducts();
 }
@@ -802,10 +841,10 @@ function showAddingProduct() {
 
     // Add event listener to brand select
     document.getElementById('brand-select').addEventListener('change', () => {
-    const brand = document.getElementById('brand-select').value;
-    const select = document.getElementById('size-select');
-    if (brand === 'clothes') {
-        select.innerHTML = `
+        const brand = document.getElementById('brand-select').value;
+        const select = document.getElementById('size-select');
+        if (brand === 'clothes') {
+            select.innerHTML = `
         <option value="S">S</option>
         <option value="M">M</option>
         <option value="L">L</option>
@@ -813,9 +852,9 @@ function showAddingProduct() {
         <option value="2XL">2XL</option>
         <option value="3XL">3XL</option>
         `;
-    }
-    else if (brand === 'nike' || brand === 'adidas' || brand === 'VANS' || brand === 'converse') {
-        select.innerHTML = `
+        }
+        else if (brand === 'nike' || brand === 'adidas' || brand === 'VANS' || brand === 'converse') {
+            select.innerHTML = `
         <option value="35">35</option>
         <option value="36">36</option>
         <option value="37">37</option>
@@ -827,7 +866,7 @@ function showAddingProduct() {
         <option value="43">43</option>
         <option value="44">44</option>
         `;
-    }
+        }
     });
 }
 
@@ -956,7 +995,7 @@ function addingProduct() {
     // Mảng con
     newProduct.size = {};
     newProduct.sizes =
-    ["39", "40", "41", "42", "43", "44"];
+        ["39", "40", "41", "42", "43", "44"];
     newProduct.promo_image = {};
 
     // Nếu size là clothes thì thêm size và số lượng vào mảng size
@@ -1043,8 +1082,6 @@ function resetDataList() {
         }
     });
 }
-console.log(brandList);
-console.log(productsName);
 
 function showCustomer() {
     document.getElementById('bar-title').innerHTML = `
@@ -1090,7 +1127,7 @@ function showCustomer() {
     var numOfPages = Math.ceil(users.length / userPerPage);
 
     var str = "";
-    for (let i=1; i<=numOfPages; i++) {
+    for (let i = 1; i <= numOfPages; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
                 <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -1101,7 +1138,7 @@ function showCustomer() {
     function loadPage(page) {
         var start = userPerPage * (page - 1);
         var end = userPerPage * page;
-        var userOfPage = users.slice(start,end);
+        var userOfPage = users.slice(start, end);
         var stt = start + 1;
 
         var s = "";
@@ -1127,8 +1164,8 @@ function showCustomer() {
 
         document.getElementById('customer-details').innerHTML = s;
         document.getElementById('page-select').innerHTML = str;
-        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
-        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
         pageBtns.forEach(btn => {
@@ -1222,15 +1259,15 @@ function showUserModify(obj) {
         users[indexOfUser].phone = document.getElementById('phone').value;
         users[indexOfUser].active = status;
         localStorage.setItem('users', JSON.stringify(users));
-        var usercurrent=JSON.parse(localStorage.getItem("usercurrent"));
-        if(usercurrent){
+        var usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+        if (usercurrent) {
             usercurrent.username = document.getElementById('username').value;
             usercurrent.password = document.getElementById('password').value;
             usercurrent.fullname = document.getElementById('fullname').value;
             usercurrent.email = document.getElementById('email').value;
             usercurrent.phone = document.getElementById('phone').value;
             usercurrent.active = status;
-            localStorage.setItem("usercurrent",JSON.stringify(usercurrent));
+            localStorage.setItem("usercurrent", JSON.stringify(usercurrent));
         }
         closeUserModifyForm();
         showCustomer();
@@ -1457,7 +1494,7 @@ function showStatistics() {
                 </div>
                 <div class="section-two">
                     <div class="statistic-info">
-                        <h3>Thống kể tổng đơn hàng theo ngày</h3>
+                        <h2>Biểu đồ đơn hàng</h2>
                         <div class="date-info">
                             <p class="date-start">Từ: </p>
                             <p class="date-end">Đến: </p>
@@ -1853,7 +1890,7 @@ function showOrders() {
     var numOfPages = Math.ceil(orders.length / orderPerPage);
 
     var str = "";
-    for (let i=1; i<=numOfPages; i++) {
+    for (let i = 1; i <= numOfPages; i++) {
         str = str + `
         <li class="page-item" data-page="${i}">
             <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -1864,10 +1901,10 @@ function showOrders() {
     function loadOrder(page) {
         var start = orderPerPage * (page - 1);
         var end = orderPerPage * page;
-        var ordersOfPage = orders.slice(start,end);
+        var ordersOfPage = orders.slice(start, end);
 
         var s = "";
-        for (let i=0; i<ordersOfPage.length; i++) {
+        for (let i = 0; i < ordersOfPage.length; i++) {
             s = s + `
             <tr>
                 <td>${ordersOfPage[i].code}</td>
@@ -1881,8 +1918,8 @@ function showOrders() {
 
         document.getElementById('page-select').innerHTML = str;
         document.getElementById('order-details').innerHTML = s;
-        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
-        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
         pageBtns.forEach(btn => {
@@ -1907,7 +1944,7 @@ function showOrderDetail(obj) {
         var quantity = parseInt(item.quantity);
         price = price + quantity * priceOfProduct;
     });
-    var priceString = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");
+    var priceString = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     priceString = priceString + "₫";
 
 
@@ -2016,16 +2053,16 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
                     if (item.status == "Đang xử lý" && orderDate >= start && orderDate <= end) {
-                         ordersSelected.push(item);
+                        ordersSelected.push(item);
                     }
                 });
             } else if (orderStatus.value == "2") {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
                     if (item.status == "Đã xác nhận" && orderDate >= start && orderDate <= end) {
                         ordersSelected.push(item);
                     }
@@ -2034,7 +2071,7 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
                     if (item.status == "Đã giao thành công" && orderDate >= start && orderDate <= end) {
                         ordersSelected.push(item);
                     }
@@ -2053,7 +2090,7 @@ function sortOrder() {
             orders.forEach(item => {
                 var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                 var dateArr = dateStr[0].split('/');
-                var orderDate = new Date(dateArr[2],dateArr[1]-1,dateArr[0]);
+                var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
                 if (orderDate >= start && orderDate <= end) {
                     ordersSelected.push(item);
                 }
@@ -2092,11 +2129,11 @@ function sortOrder() {
     }
 
     function standardlizeDistrict(str) {
-        return str.replace(/Quận/g,"").trim();
+        return str.replace(/Quận/g, "").trim();
     }
 
     if (toSort.checked) {
-        ordersSelected.sort((a,b) => {
+        ordersSelected.sort((a, b) => {
             var districtOfA = standardlizeDistrict(a.district);
             var districtOfB = standardlizeDistrict(b.district);
 
@@ -2112,7 +2149,7 @@ function sortOrder() {
     var numOfPages = Math.ceil(ordersSelected.length / orderPerPage);
 
     var str = "";
-    for (let i=1; i<=numOfPages; i++) {
+    for (let i = 1; i <= numOfPages; i++) {
         str = str + `
         <li class="page-item" data-page="${i}">
             <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -2123,10 +2160,10 @@ function sortOrder() {
     function loadOrder(page) {
         var start = orderPerPage * (page - 1);
         var end = orderPerPage * page;
-        var ordersOfPage = ordersSelected.slice(start,end);
+        var ordersOfPage = ordersSelected.slice(start, end);
 
         var s = "";
-        for (let i=0; i<ordersOfPage.length; i++) {
+        for (let i = 0; i < ordersOfPage.length; i++) {
             s = s + `
             <tr>
                 <td>${ordersOfPage[i].code}</td>
@@ -2140,8 +2177,8 @@ function sortOrder() {
 
         document.getElementById('page-select').innerHTML = str;
         document.getElementById('order-details').innerHTML = s;
-        document.querySelectorAll('.page-item')[page-1].style.backgroundColor = 'black';
-        document.querySelectorAll('.page-item-text')[page-1].style.color = 'white';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
         pageBtns.forEach(btn => {

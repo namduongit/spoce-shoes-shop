@@ -28,7 +28,7 @@ function writeLogoAndUserTools() {
         <input type="number" id="min-price" placeholder="Giá thấp nhất">
         <input type="number" id="max-price" placeholder="Giá cao nhất">
     </div>
-            
+
                     <div class="search">
                         <input type="text" id="search-inp" placeholder="Tìm kiếm...">
                         <a href="" id="button-search">
@@ -36,7 +36,7 @@ function writeLogoAndUserTools() {
                         </a>
 
                     </div>
-                   
+
                 </div>
 
                 <div class="inner-user">
@@ -99,9 +99,9 @@ function writeLogoAndUserTools() {
                                 </div>
                             </div>
 
-                    
 
-                   
+
+
 
                 </div>
             </div>
