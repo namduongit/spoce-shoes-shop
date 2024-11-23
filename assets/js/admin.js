@@ -1187,6 +1187,27 @@ function showUserModify(obj) {
     document.getElementById('account-status').value = String(user.active);
     document.getElementById('user-save-btn').addEventListener('click', () => {
         var status = (document.getElementById('account-status').value === "true");
+        const emailRegex = /@[a-zA-z0-9]+\.[a-zA-z]{2,}$/;
+
+        if (users.some(user => user.username == document.getElementById('username').value) && user.username != document.getElementById('username').value) {
+            alert('Username đã tồn tại trong hệ thống!');
+            return;
+        }
+
+        if (document.getElementById('password').value.length < 6) {
+            alert('Mật khẩu không được ngắn hơn 6 kí tự!');
+            return;
+        }
+
+        if (!emailRegex.test(document.getElementById('email').value)) {
+            alert('Email không đúng định dạng!');
+            return;
+        }
+
+        if (isNaN(document.getElementById('phone').value) || document.getElementById('phone').value.length != 10) {
+            alert('Số điện thoại không đúng định dạng!');
+            return;
+        }
         users[indexOfUser].username = document.getElementById('username').value;
         users[indexOfUser].password = document.getElementById('password').value;
         users[indexOfUser].fullname = document.getElementById('fullname').value;
