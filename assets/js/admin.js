@@ -98,11 +98,8 @@ function convertCurrencyToNumber(currencyString) {
 
 // hàm khởi tạo giao diện chính
 function writeMainContent() {
-    // Lấy dữ liệu hôm nay
-    let date = getCurrentDateTime()
-    // Cắt dữ liệu để lấy dd/mm/yyyy
+    let date = getCurrentDateTime();
     let currentDate = date.split(' ')[2];
-    console.log(currentDate);
 
     let countNewUser = 0;
     let countNewMoney = 0;
@@ -121,7 +118,7 @@ function writeMainContent() {
     let currentUser = Alluser.filter(us => {
         let registrationTime = us.registrationTime;
         let current = registrationTime.split(' ')[2];
-        return current == currentDate
+        return current == currentDate;
     });
     countNewUser = currentUser.length;
 
@@ -134,19 +131,18 @@ function writeMainContent() {
             totalBillMoney += quantity * sell;
         });
         countNewMoney += totalBillMoney;
-
     });
 
-    // Xử lí đơn hàng gần đây
-    function currentBillNow() {
+    let itemsPerPage = 5;
+    let totalPages = Math.ceil(currentBill.length / itemsPerPage);
+
+    function loadPage(page) {
+        let start = (page - 1) * itemsPerPage;
+        let end = page * itemsPerPage;
+        let ordersToShow = currentBill.slice(start, end);
+
         let html = ``;
-        // <tr>
-        //     <td>001</td>
-        //     <td>namduongit</td>
-        //     <td>ABC</td>
-        //     <td>Chưa xử lí</td>
-        // </tr>
-        currentBill.forEach(bill => {
+        ordersToShow.forEach(bill => {
             html += `
             <tr>
                 <td>${bill.code}</td>
@@ -154,87 +150,76 @@ function writeMainContent() {
                 <td>${bill.street}</td>
                 <td>${bill.status}</td>
             </tr>
-        `
+            `;
         });
-        return html;
+
+        document.getElementById("body-table").innerHTML = html;
+
     }
 
-    document.getElementById('bar-title').innerHTML = `
-    <h2>Tổng quan</h2>
-    `;
+    let paginationHTML = ``;
+    for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `
+        <li class="page-item" data-page="${i}">
+            <a class="page-item-text" href="javascript:void(0);">${i}</a>
+        </li>
+        `;
+    }
+
+    document.getElementById('bar-title').innerHTML = `<h2>Tổng quan</h2>`;
     document.querySelector('.content').innerHTML = `
         <div class="analytics">
-                    <div class="today-sales analytics-item">
-                        <div class="analytics-icon">
-                            <i class="fa-solid fa-chart-simple"></i>
-                        </div>
-
-                        <div class="analytics-content">
-                            <div class="top-content">
-                                Đơn hàng hôm nay
-                            </div>
-
-                            <div class="bottom-content">
-                                ${countNewOrder}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="today-income analytics-item">
-                        <div class="analytics-icon">
-                            <i class="fa-solid fa-money-bill"></i>
-                        </div>
-
-                        <div class="analytics-content">
-                            <div class="top-content">
-                                Doanh thu hôm nay
-                            </div>
-
-                            <div class="bottom-content">
-                                ${formatMoney(countNewMoney)}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="new-guests analytics-item">
-                        <div class="analytics-icon">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-
-                        <div class="analytics-content">
-                            <div class="top-content">
-                                Khách mới trong ngày
-                            </div>
-
-                            <div class="bottom-content">
-                                ${countNewUser}
-                            </div>
-                        </div>
-                    </div>
+            <div class="today-sales analytics-item">
+                <div class="analytics-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                <div class="analytics-content">
+                    <div class="top-content">Đơn hàng hôm nay</div>
+                    <div class="bottom-content">${countNewOrder}</div>
                 </div>
-
-                <div class="recent-orders">
-                    <div class="title">
-                        Đơn hàng gần đây
-                    </div>
-
-                    <div class="recent-orders-content">
-                        <table>
-                            <thead>
-                                <td>Mã đơn hàng</td>
-                                <td>Username</td>
-                                <td>Địa chỉ</td>
-                                <td>Tình trạng</td>
-                            </thead>
-
-                            <tbody id="body-table">
-                                ${currentBillNow()}
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="today-income analytics-item">
+                <div class="analytics-icon"><i class="fa-solid fa-money-bill"></i></div>
+                <div class="analytics-content">
+                    <div class="top-content">Doanh thu hôm nay</div>
+                    <div class="bottom-content">${formatMoney(countNewMoney)}</div>
                 </div>
+            </div>
+            <div class="new-guests analytics-item">
+                <div class="analytics-icon"><i class="fa-solid fa-user"></i></div>
+                <div class="analytics-content">
+                    <div class="top-content">Khách mới trong ngày</div>
+                    <div class="bottom-content">${countNewUser}</div>
+                </div>
+            </div>
+        </div>
+        <div class="recent-orders">
+            <div class="title">Đơn hàng gần đây</div>
+            <div class="recent-orders-content">
+                <table>
+                    <thead>
+                        <td>Mã đơn hàng</td>
+                        <td>Username</td>
+                        <td>Địa chỉ</td>
+                        <td>Tình trạng</td>
+                    </thead>
+                    <tbody id="body-table"></tbody>
+                </table>
+            </div>
+            <div class="main-pagination">
+                <ul id="pagination" class="page-select">${paginationHTML}</ul>
+            </div>
+        </div>
     `;
+
+    document.querySelectorAll('.page-item').forEach(item => {
+        item.addEventListener('click', () => {
+            let page = parseInt(item.getAttribute('data-page'));
+            loadPage(page);
+        });
+    });
+
+    loadPage(1);
 }
+
 
 // đọc mảng products từ local storage về ở dạng biến toàn cục
 var products = JSON.parse(localStorage.getItem('products'));
@@ -450,7 +435,7 @@ function AddImage(event){
 }
 // hàm đóng form chỉnh sửa
 function closeModifyingForm() {
-   
+
     document.querySelector('.modifying').innerHTML = '';
     document.querySelector('.modifying').style.display = 'none';
 }
@@ -515,13 +500,13 @@ function showModifyingForm(productId) {
             <div class="form-item">
             <label for="quantity">Số lượng: </label>
             <select id="size-select" >
-               
+
             </select>
             <input type="number" id="quantity" >
             </div>
             <br>
             <div class="form-image">
-              
+
             </div>
               <div class="choose-img">Thêm ảnh:<input type="file" accept="image/*" onchange="AddImage(event)"></div>
         </form>
@@ -579,26 +564,26 @@ document.querySelector(".form-image").innerHTML=imgp;
     document.getElementById("discount").value = discount;
 
     document.getElementById("original-price").onchange = function () {
-       
+
         document.getElementById("original-price").value=ChangetoVND(document.getElementById("original-price").value);
         price = this.value;
         if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price)<parsePricetoNumber(sell)) {
             document.getElementById("discount").value = "0";
             return;
         }
-       
+
         discount = 100 - Math.floor((parsePricetoNumber(sell) / parsePricetoNumber(price)) * 100);
         document.getElementById("discount").value = discount;
     }
     document.getElementById("sell-price").onchange = function () {
-       
+
         document.getElementById("sell-price").value=ChangetoVND( document.getElementById("sell-price").value);
         sell = this.value;
         if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price)<parsePricetoNumber(sell)) {
             document.getElementById("discount").value = "0";
             return;
         }
-       
+
         discount = 100 - Math.floor((parsePricetoNumber(sell) / parsePricetoNumber(price)) * 100);
 
         document.getElementById("discount").value = discount;
@@ -614,7 +599,7 @@ document.querySelector(".form-image").innerHTML=imgp;
         for(key in product.promo_image){
             product.promo_image[key]="";
         }
-        document.querySelectorAll(".form-image-item .promo_image").forEach(element=>{ 
+        document.querySelectorAll(".form-image-item .promo_image").forEach(element=>{
             console.log();
             if(i==-1){
                 product.image=element.querySelector(".item-image img").getAttribute("src");
@@ -627,7 +612,7 @@ document.querySelector(".form-image").innerHTML=imgp;
                         break;
                     };
                 }
-                
+
             }
             i+=1;
         });
@@ -1127,7 +1112,7 @@ function showUserModify(obj) {
             <form>
                 <div class="form-item">
                     <label for="username">Tài khoản: </label>
-                    <input type="text" id="username" value="${user.username}">
+                    <input type="text" id="username" value="${user.username}" disabled>
                 </div>
                 <br>
 
@@ -1978,7 +1963,7 @@ function showOrderDetail(obj) {
         }
         orders[index].status = currentStatus;
         localStorage.setItem('Allbill', JSON.stringify(orders));
-        localStorage.setItem('products', JSON.stringify(products)); 
+        localStorage.setItem('products', JSON.stringify(products));
     });
 }
 
