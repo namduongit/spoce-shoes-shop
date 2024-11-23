@@ -1,12 +1,168 @@
 /* PC 1024px*/
-@media (min-width: 1024px) {
-
-}
+@media (min-width: 1024px) {}
 
 /* Tablet and mobile 1023px*/
 @media (max-width: 1023px) {
 
+  /* Cục login-resgister */
+  .user-content-selection {
+    .inner-content {
+      height: fit-content;
+
+
+      .left-card {
+        display: none;
+      }
+
+      .right-card {
+        width: 100%;
+        height: 100%;
+        align-content: unset;
+        justify-items: center;
+        padding: 50px 50px;
+
+        .card-content {
+          form .register-form {
+            display: flex;
+            flex-direction: column;
+
+            input {
+              width: 100%;
+            }
+          }
+
+          form .register-form .left-form {
+            width: 100%;
+            padding: 0;
+          }
+
+          form .register-form .right-form {
+            width: 100%;
+            padding: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+  /* Cục hiển thị thông tin sản phẩm */
+  .detail-background {
+    .detail-product {
+      width: 80%;
+
+      .detail-flex {
+        .details-pro {
+          .details-pro__content {
+            p {
+              display: none;
+            }
+          }
+        }
+
+        .image {
+          .main-img {
+            height: fit-content;
+          }
+        }
+      }
+    }
+  }
+
+  .detail-product .product-pay .pay-total {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 50px;
+    width: 40%;
+  }
+
+  .detail-product .product-pay .cart-pay {
+    width: 60%;
+    display: flex;
+  }
+
+  /* Trang thanh toán */
+  .payment-page {
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 30px;
+
+    .Infor-Client {
+      margin-bottom: 0;
+
+      .col-two {
+        .payment .payment__content {
+          width: 100%;
+          border: solid 2px #3333336d;
+          border-bottom: none;
+          border-radius: 5px;
+
+          .payment-card {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .bill {
+
+      .oder-list {
+        width: 100%;
+        background-color: #F8F8F8;
+        height: 100%;
+        border: solid 2px #837b7bcc;
+        padding: 20px 50px 20px 50px;
+      }
+    }
+  }
+
+  .payment-page .bill {
+    padding-top: 50px;
+    margin-bottom: 100px;
+    border-top: 2px solid #ddd;
+  }
+
+  /* Cục thông tin trogn mục cài đặt */
+  .body-content>.row {
+    width: 100%;
+    margin: 50px auto 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+
+    .col-account {
+      width: 100%;
+      /* Chiều rộng khối hiển thị */
+      max-width: 100%;
+      /* Không vượt quá chiều rộng container cha */
+      overflow-x: auto;
+      /* Thanh cuộn ngang tự động */
+      overflow-y: hidden;
+      /* Ẩn thanh cuộn dọc nếu không cần */
+      white-space: nowrap;
+      /* Không cho phép ngắt dòng để dữ liệu nằm ngang */
+    }
+
+    .col-infor {
+      margin: 0;
+    }
+  }
+  #showProductCode {
+    .wrap-content {
+      width: fit-content  ;
+      
+    }
+  }
+
+
+
+
+
 }
+
+
+
 
 
 /* Tablet 740 - 1023*/
@@ -16,20 +172,20 @@
   .inner-wrap {
     width: 100%;
     padding: 0 12px;
-}
+  }
 
   header .inner-wrap .inner-content {
     padding: 14px;
 
-}
+  }
 
   header .inner-wrap .inner-search {
     line-height: 36px;
-}
+  }
 
-header .inner-wrap .inner-user .cart .parent > div {
-  display: none;
-}
+  header .inner-wrap .inner-user .cart .parent>div {
+    display: none;
+  }
 
   /* menu */
   .section-one {
@@ -49,15 +205,16 @@ header .inner-wrap .inner-user .cart .parent > div {
   .grid__col-3 {
     display: none;
   }
+
   .grid__col-9 {
     width: 100%;
     padding: 0 35px;
   }
 
-    /* footer */
+  /* footer */
   .footer .inner-wrap .inner-content {
     margin: 20px 0;
-}
+  }
 
   .footer .inner-wrap .inner-content .inner-left,
   .footer .inner-wrap .inner-content .inner-mid-1,
@@ -79,29 +236,29 @@ header .inner-wrap .inner-user .cart .parent > div {
   .inner-footer .inner-wrap .inner-content {
     display: block;
     text-align: center;
-}
+  }
 
   .inner-footer .inner-wrap .inner-content .inner-left {
     width: 100%;
-}
+  }
 
-.inner-footer .inner-wrap .inner-content .inner-right span {
-  display: none;
-}
+  .inner-footer .inner-wrap .inner-content .inner-right span {
+    display: none;
+  }
 
   .inner-footer .inner-wrap .inner-content .inner-right {
     display: flex;
     justify-content: center;
     width: 100%;
-}
+  }
 
-.inner-footer .inner-wrap .inner-content .inner-left div {
-  margin-bottom: 4px;
-}
+  .inner-footer .inner-wrap .inner-content .inner-left div {
+    margin-bottom: 4px;
+  }
 
-.inner-footer .inner-wrap .inner-content .inner-right ul li i {
-  margin: 8px 14px 0;
-}
+  .inner-footer .inner-wrap .inner-content .inner-right ul li i {
+    margin: 8px 14px 0;
+  }
 
 }
 
@@ -114,7 +271,7 @@ header .inner-wrap .inner-user .cart .parent > div {
 
   header .inner-wrap .inner-menu_mobile i {
     display: block;
-}
+  }
 
   .grid__row {
     margin: 0;
@@ -131,54 +288,55 @@ header .inner-wrap .inner-user .cart .parent > div {
 
   .inner-wrap {
     width: 100%;
-}
+  }
 
-.inner-content .section-three .inner-wrap .outstandingproducts .product__item {
+  .inner-content .section-three .inner-wrap .outstandingproducts .product__item {
     width: 50%;
-}
+  }
 
-header .inner-wrap .inner-user {
-  width: auto;
-}
+  header .inner-wrap .inner-user {
+    width: auto;
+  }
 
-header .inner-wrap .inner-search {
-  width: auto;
-  display: none;
-}
+  header .inner-wrap .inner-search {
+    width: auto;
+    display: none;
+  }
 
-header .inner-wrap .inner-user .cart .parent > div {
-  display: none;
-}
+  header .inner-wrap .inner-user .cart .parent>div {
+    display: none;
+  }
 
-header .inner-wrap .inner-user .user .parent .icon-name > div {
-  display: none;
-  margin: 0 ;
-}
+  header .inner-wrap .inner-user .user .parent .icon-name>div {
+    display: none;
+    margin: 0;
+  }
 
-header .inner-wrap .inner-user .user, .cart {
-  margin-right: 12px;
-}
+  header .inner-wrap .inner-user .user,
+  .cart {
+    margin-right: 12px;
+  }
 
-header .inner-wrap .inner-menu_mobile i {
-  position: absolute;
-  left: 20px;
-}
+  header .inner-wrap .inner-menu_mobile i {
+    position: absolute;
+    left: 20px;
+  }
 
-header .inner-wrap .inner-logo img {
+  header .inner-wrap .inner-logo img {
     width: 100px;
-}
+  }
 
   /* search */
   header .inner-wrap .inner-search select {
     display: none;
-    
-}
+
+  }
 
 
 
-.list-sort > li {
-  min-width: 150px;
-}
+  .list-sort>li {
+    min-width: 150px;
+  }
 
   /* menu */
   .section-one {
@@ -188,16 +346,17 @@ header .inner-wrap .inner-logo img {
   /* tim kiem */
   .total-product {
     display: none;
-}
+  }
 
-.sort-by {
-  display: none;
-}
+  .sort-by {
+    display: none;
+  }
 
   /* san pham */
   .grid__col-3 {
     display: none;
   }
+
   .grid__col-9 {
     width: 100%;
     margin: 0 16px;
@@ -205,15 +364,15 @@ header .inner-wrap .inner-logo img {
 
   .grid_col-4 {
     width: 50%;
-}
+  }
 
-.inner-content .section-six .inner-content .inner-items .inner-box {
-  width: 50%;
-}
+  .inner-content .section-six .inner-content .inner-items .inner-box {
+    width: 50%;
+  }
 
-.inner-content .section-six .inner-content .inner-items .inner-box:last-child {
- display: none;
-}
+  .inner-content .section-six .inner-content .inner-items .inner-box:last-child {
+    display: none;
+  }
 
 
   /* footer */
@@ -227,39 +386,37 @@ header .inner-wrap .inner-logo img {
   /* copyright */
   .address {
     width: 100%;
-}
+  }
 
   .inner-footer .inner-wrap .inner-content {
     display: block;
     text-align: center;
-}
+  }
 
   .inner-footer .inner-wrap .inner-content .inner-left {
     width: 100%;
-}
+  }
 
-.inner-footer .inner-wrap .inner-content .inner-right span {
-  display: none;
-}
+  .inner-footer .inner-wrap .inner-content .inner-right span {
+    display: none;
+  }
 
   .inner-footer .inner-wrap .inner-content .inner-right {
     display: flex;
     justify-content: center;
     width: 100%;
+  }
+
+  .inner-footer .inner-wrap .inner-content .inner-left div {
+    margin-bottom: 4px;
+  }
+
+  .inner-footer .inner-wrap .inner-content .inner-right ul li i {
+    margin: 8px 14px 0;
+  }
+
+  .footer .inner-wrap .inner-content {
+    margin-left: -20px;
+  }
+
 }
-
-.inner-footer .inner-wrap .inner-content .inner-left div {
-  margin-bottom: 4px;
-}
-
-.inner-footer .inner-wrap .inner-content .inner-right ul li i {
-  margin: 8px 14px 0;
-}
-
-.footer .inner-wrap .inner-content {
-  margin-left: -20px;
-}
-
-}
-
-
