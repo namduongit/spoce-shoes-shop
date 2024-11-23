@@ -88,13 +88,15 @@ function checkResolution() {
 window.addEventListener('load', checkResolution);
 window.addEventListener('resize', checkResolution);
 
-// hàm khởi tạo giao diện chính
+
 function convertCurrencyToNumber(currencyString) {
     // Loại bỏ ký tự không phải số và dấu '.'
     const cleanedString = currencyString.replace(/[^\d]/g, '');
     // Chuyển đổi chuỗi thành số nguyên
     return parseInt(cleanedString, 10);
 }
+
+// hàm khởi tạo giao diện chính
 function writeMainContent() {
     // Lấy dữ liệu hôm nay
     let date = getCurrentDateTime()
