@@ -628,6 +628,7 @@ i {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: auto;
 }
 
 .user-modify-form .user-modify-top {
@@ -649,6 +650,7 @@ i {
 
 .user-modify-form .user-modify-content form input {
     width: 60%;
+    padding: 5px;
 }
 
 .user-modify-form .user-modify-content form .form-item {
@@ -682,18 +684,22 @@ i {
 }
 
 .customer-title .add-user-btn {
-    border: 1px solid black;
-    background-color: white;
+    border: 3px solid green;
+    border-radius: 5px;
+    background-color: green;
     width: fit-content;
     padding: 5px;
     margin-left: auto;
     margin-right: 80px;
-    color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .customer-title .add-user-btn:hover {
-    color: white;
-    background-color: black;
+    color: green;
+    background-color: white;
+    transition: 0.3s all ease;
 }
 
 
@@ -788,16 +794,20 @@ i {
 }
 
 .sort-submt a {
-    color:black;
-    background-color: whitesmoke;
-    border: 1px solid black;
+    color: white;
+    background-color: green;
+    border: 3px solid green;
     padding: 5px;
     margin-top: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .sort-submt a:hover {
-    color: white;
-    background-color: black;
+    color: green;
+    background-color: white;
+    transition: 0.3s all ease;
 }
 
 /* ORDER DETAIL */
@@ -967,7 +977,7 @@ i {
     }
 
     .content {
-        height: fit-content;
+        height: 100vh;
     }
 
     .body .header-bar .sidebar-button {
