@@ -561,7 +561,7 @@ if (product.promo_image[key] == '') {
 imgp += ` <div class="form-image-item img_${number}">
     <div class="promo_image">
     <div class="item-image "><img src=${product.promo_image[key]}></div>
-    <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}}')">Xoá ảnh</button></div>
+    <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
     </div>
     </div>`
 }
