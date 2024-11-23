@@ -505,7 +505,7 @@ i {
     height: 100px;
     flex-wrap: wrap;
     overflow-y: auto;
-  
+
 }
 
 .modifying .modifying-content form .form-image .form-image-item {
@@ -579,7 +579,6 @@ i {
 }
 .adding-content form {
     display: flex;
-
 }
 
 
@@ -593,6 +592,9 @@ i {
     display: block;
 }
 
+.size-content {
+    line-height: 2;
+}
 
 .adding-btn-container {
     display: flex;
@@ -1301,3 +1303,6 @@ i {
     color: red;
 }
 
+.model-1, .model-2 {
+    display: none;
+}

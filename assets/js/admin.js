@@ -363,10 +363,10 @@ function closeDeleteConfirmation() {
 }
 
 
-function deleteImage(keyw){
-    let key="."+keyw;
-    document.querySelector(key).innerHTML="";
-  }
+function deleteImage(keyw) {
+    let key = "." + keyw;
+    document.querySelector(key).innerHTML = "";
+}
 
 // Hàm để đổi ảnh
 function changeImage(event) {
@@ -424,17 +424,17 @@ function addImage(event, img) {
         reader.readAsDataURL(file);
     }
 }
-function AddImage(event){
-    let len=document.querySelectorAll(".delete-img").length+1;
-    if(document.querySelectorAll(".delete-img").length==5){
-        toast({title:'WARNING',message:"Tối đa 5 ảnh",type:'warning',duration:3000});
+function AddImage(event) {
+    let len = document.querySelectorAll(".delete-img").length + 1;
+    if (document.querySelectorAll(".delete-img").length == 5) {
+        toast({ title: 'WARNING', message: "Tối đa 5 ảnh", type: 'warning', duration: 3000 });
         return;
     }
-    const file=event.target.files[0];
-    if(file){
-        const reader=new FileReader();
-        reader.onload=function(e){
-            document.querySelector( `.img_${len}`).innerHTML+= `<div class="promo_image">
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.querySelector(`.img_${len}`).innerHTML += `<div class="promo_image">
             <div class="item-image "><img src=${e.target.result}></div>
             <div class="delete-img"><button onclick="deleteImage('img_${len}')" class="btn-delete">Xoá ảnh</button></div></div>
             `
@@ -455,12 +455,12 @@ function parsePricetoNumber(price) {
 function parseNumbertoPrice(number) {
     return number.toLocaleString("vi-VN") + "đ";
 }
-function ChangetoVND(value){
+function ChangetoVND(value) {
     return parseNumbertoPrice(parsePricetoNumber(value));
 }
 // Form để sửa sản phẩm
 function showModifyingForm(productId) {
-    products_list=JSON.parse(localStorage.getItem("products"));
+    products_list = JSON.parse(localStorage.getItem("products"));
     var form = document.querySelector('.modifying');
     form.style.display = 'block';
     let product = products_list.find(item => item.id === productId.getAttribute('data-id'));
@@ -543,24 +543,24 @@ function showModifyingForm(productId) {
     <div class="delete-img"><button onclick="deleteImage('img_1')" class="btn-delete">Xoá ảnh</button></div>
     </div>
     </div>`;
-    let number=1;
-for (key in product.promo_image) {
-    number++;
-if (product.promo_image[key] == '') {
-    imgp += ` <div class="form-image-item img_${number}">
+    let number = 1;
+    for (key in product.promo_image) {
+        number++;
+        if (product.promo_image[key] == '') {
+            imgp += ` <div class="form-image-item img_${number}">
     </div>`
- continue;
-}
+            continue;
+        }
 
-imgp += ` <div class="form-image-item img_${number}">
+        imgp += ` <div class="form-image-item img_${number}">
     <div class="promo_image">
     <div class="item-image "><img src=${product.promo_image[key]}></div>
     <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
     </div>
     </div>`
-}
+    }
 
-document.querySelector(".form-image").innerHTML=imgp;
+    document.querySelector(".form-image").innerHTML = imgp;
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = product.size[document.getElementById("size-select").value.toString()];
     document.getElementById("size-select").onchange = function () {
@@ -574,9 +574,9 @@ document.querySelector(".form-image").innerHTML=imgp;
 
     document.getElementById("original-price").onchange = function () {
 
-        document.getElementById("original-price").value=ChangetoVND(document.getElementById("original-price").value);
+        document.getElementById("original-price").value = ChangetoVND(document.getElementById("original-price").value);
         price = this.value;
-        if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price)<parsePricetoNumber(sell)) {
+        if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price) < parsePricetoNumber(sell)) {
             document.getElementById("discount").value = "0";
             return;
         }
@@ -586,9 +586,9 @@ document.querySelector(".form-image").innerHTML=imgp;
     }
     document.getElementById("sell-price").onchange = function () {
 
-        document.getElementById("sell-price").value=ChangetoVND( document.getElementById("sell-price").value);
+        document.getElementById("sell-price").value = ChangetoVND(document.getElementById("sell-price").value);
         sell = this.value;
-        if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price)<parsePricetoNumber(sell)) {
+        if (parsePricetoNumber(price) == 0 || parsePricetoNumber(price) < parsePricetoNumber(sell)) {
             document.getElementById("discount").value = "0";
             return;
         }
@@ -597,41 +597,41 @@ document.querySelector(".form-image").innerHTML=imgp;
 
         document.getElementById("discount").value = discount;
     }
-    document.querySelector(".modify-btn").addEventListener("click",()=>{
-        product.brand=document.getElementById("brand-select").value;
-        product.price=document.getElementById("original-price").value;
-        product.sell=document.getElementById("sell-price").value;
-        product.discount=document.getElementById("discount").value;
-        product.name_product=document.getElementById("name").value;
-        let i=-1;
-        product.image="";
-        for(key in product.promo_image){
-            product.promo_image[key]="";
+    document.querySelector(".modify-btn").addEventListener("click", () => {
+        product.brand = document.getElementById("brand-select").value;
+        product.price = document.getElementById("original-price").value;
+        product.sell = document.getElementById("sell-price").value;
+        product.discount = document.getElementById("discount").value;
+        product.name_product = document.getElementById("name").value;
+        let i = -1;
+        product.image = "";
+        for (key in product.promo_image) {
+            product.promo_image[key] = "";
         }
-        document.querySelectorAll(".form-image-item .promo_image").forEach(element=>{
+        document.querySelectorAll(".form-image-item .promo_image").forEach(element => {
             console.log();
-            if(i==-1){
-                product.image=element.querySelector(".item-image img").getAttribute("src");
+            if (i == -1) {
+                product.image = element.querySelector(".item-image img").getAttribute("src");
             }
-            else{
-                for(key in product.promo_image){
-                    if(product.promo_image[key]==""){
+            else {
+                for (key in product.promo_image) {
+                    if (product.promo_image[key] == "") {
                         console.log("Aaa");
-                        product.promo_image[key]=element.querySelector(".item-image img").getAttribute("src");
+                        product.promo_image[key] = element.querySelector(".item-image img").getAttribute("src");
                         break;
                     };
                 }
 
             }
-            i+=1;
+            i += 1;
         });
-        for(let r=0;r<products_list.length;r++){
-           if(products_list[r].id==product.id){
-            products_list[r]=product;
-            break;
-           }
+        for (let r = 0; r < products_list.length; r++) {
+            if (products_list[r].id == product.id) {
+                products_list[r] = product;
+                break;
+            }
         }
-        localStorage.setItem("products",JSON.stringify(products_list));
+        localStorage.setItem("products", JSON.stringify(products_list));
         closeModifyingForm();
         showProducts();
     });
@@ -709,19 +709,9 @@ function showAddingProduct() {
                     <br>
                 </div>
 
-                <div class="adding-content-item">
-                    <label for="size-select">Thêm tất cả số lượng cho size: </label>
-                    <select id="size-select" disabled>
-                    </select>
-
-                </div>
             </div>
 
             <div class="inner-right">
-                <div class="adding-content-item">
-                    <label for="quantity">Số lượng: </label>
-                    <input type="text" id="quantity" placeholder="Nhập số lượng">
-                </div>
 
                 <div class="adding-content-item">
                     <label for="main-img">Ảnh chính:</label>
@@ -753,6 +743,51 @@ function showAddingProduct() {
                     <br>
                 </div>
             </div>
+            <div class="size-content">
+                <div class="size-option">
+                    <h4>Chọn size:</h4>
+                </div>
+                <div class="quantity-option">
+                    <div class="model-1">
+                        <label for="">39: </label>
+                        <input type="number" id="size-39" value="0">
+                        <br>
+                        <label for="">40: </label>
+                        <input type="number" id="size-40" value="0">
+                        <br>
+                        <label for="">41: </label>
+                        <input type="number" id="size-41" value="0">
+                        <br>
+                        <label for="">42: </label>
+                        <input type="number" id="size-42" value="0">
+                        <br>
+                        <label for="">43: </label>
+                        <input type="number" id="size-43" value="0">
+                        <br>
+                        <label for="">44: </label>
+                        <input type="number" id="size-44" value="0">
+                    </div>
+                    <div class="model-2">
+                        <label for="">S: </label>
+                        <input type="number" id="size-S" value="0">
+                        <br>
+                        <label for="">M: </label>
+                        <input type="number" id="size-M" value="0">
+                        <br>
+                        <label for="">L: </label>
+                        <input type="number" id="size-L" value="0">
+                        <br>
+                        <label for="">XL: </label>
+                        <input type="number" id="size-XL" value="0">
+                        <br>
+                        <label for="">2XL: </label>
+                        <input type="number" id="size-2XL" value="0">
+                        <br>
+                        <label for="">3XL: </label>
+                        <input type="number" id="size-3XL" value="0">
+                    </div>
+                </div>
+            </div>
 
         </form>
     </div>
@@ -768,34 +803,23 @@ function showAddingProduct() {
     </div>
     `;
 
-    // Add event listener to brand select
+    // Add event listener để thay đổi size theo nhãn hiệu
     document.getElementById('brand-select').addEventListener('change', () => {
         const brand = document.getElementById('brand-select').value;
-        const select = document.getElementById('size-select');
+        const quantityOption = document.querySelector('.quantity-option');
         if (brand === 'clothes') {
-            select.innerHTML = `
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-        <option value="2XL">2XL</option>
-        <option value="3XL">3XL</option>
-        `;
+
+            quantityOption.querySelector('.model-1').style.display = 'none';
+            quantityOption.querySelector('.model-2').style.display = 'block';
+
         }
         else if (brand === 'nike' || brand === 'adidas' || brand === 'VANS' || brand === 'converse') {
-            select.innerHTML = `
-        <option value="35">35</option>
-        <option value="36">36</option>
-        <option value="37">37</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-        <option value="41">41</option>
-        <option value="42">42</option>
-        <option value="43">43</option>
-        <option value="44">44</option>
-        `;
+
+            quantityOption.querySelector('.model-1').style.display = 'block';
+            quantityOption.querySelector('.model-2').style.display = 'none';
         }
+
+
     });
 }
 
@@ -833,12 +857,13 @@ function formatMoney(money) {
     return result + "đ"; // Thêm "đ" vào cuối chuỗi
 }
 
+
+
 // hàm để đặt lại dữ liệu trong form
 function resetForm() {
     document.getElementById('name').value = '';
     document.getElementById('brand-select').value = 'nike';
     document.getElementById('original-price').value = '';
-    document.getElementById('quantity').value = '';
     document.getElementById('sell-price').value = '';
     document.getElementById('discount').value = '';
     document.getElementById('main-img').value = '';
@@ -857,13 +882,52 @@ function addingProduct() {
     var orgPriceField = document.getElementById('original-price');
     var sellPriceField = document.getElementById('sell-price');
     var discountField = document.getElementById('discount');
-    var qualityField = document.getElementById('quantity');
-    var sizeField = document.getElementById('size-select');
+
     var mainImg = document.getElementById('main-img');
     var promo1 = document.getElementById('promo-1');
     var promo2 = document.getElementById('promo-2');
     var promo3 = document.getElementById('promo-3');
     var promo4 = document.getElementById('promo-4');
+
+    var sizeOption = document.getElementById('size-select');
+    var sizeArray = {};
+    if (sizeOption.value === 'clothes') {
+        // Lấy các thẻ input
+        var sizeS = document.getElementById('size-S');
+        var sizeM = document.getElementById('size-M');
+        var sizeL = document.getElementById('size-L');
+        var sizeXL = document.getElementById('size-XL');
+        var size2XL = document.getElementById('size-2XL');
+        var size3XL = document.getElementById('size-3XL');
+        // Đưa vào mảng theo từng giá trị value chuyển sang int
+        sizeArray = {
+            S: parseInt(sizeS.value),
+            M: parseInt(sizeM.value),
+            L: parseInt(sizeL.value),
+            XL: parseInt(sizeXL.value),
+            '2XL': parseInt(size2XL.value),
+            '3XL': parseInt(size3XL.value)
+        };
+    }
+    else {
+        // Lấy các thẻ input
+
+        var size39 = document.getElementById('size-39');
+        var size40 = document.getElementById('size-40');
+        var size41 = document.getElementById('size-41');
+        var size42 = document.getElementById('size-42');
+        var size43 = document.getElementById('size-43');
+        var size44 = document.getElementById('size-44');
+        // Đưa vào mảng theo từng giá trị value chuyển sang int
+        sizeArray = {
+            39: parseInt(size39.value),
+            40: parseInt(size40.value),
+            41: parseInt(size41.value),
+            42: parseInt(size42.value),
+            43: parseInt(size43.value),
+            44: parseInt(size44.value)
+        };
+    }
 
 
     if (nameField.value === '') {
@@ -886,15 +950,6 @@ function addingProduct() {
         return;
     }
 
-    if (qualityField.value === '') {
-        alert('Số lượng sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (sizeField.value === '') {
-        alert('Size sản phẩm không được bỏ trống');
-        return;
-    }
 
     if (mainImg.value === '') {
         alert('Ảnh sản phẩm không được bỏ trống');
@@ -921,36 +976,12 @@ function addingProduct() {
     sellPrice = sellPrice.replace('đ', '');
     newProduct.price = formatMoney(parseInt(originalPrice));
     newProduct.sell = formatMoney(parseInt(sellPrice));
-    // Mảng con
-    newProduct.size = {};
+    newProduct.size = sizeArray;
     newProduct.sizes =
         ["39", "40", "41", "42", "43", "44"];
     newProduct.promo_image = {};
 
-    // Nếu size là clothes thì thêm size và số lượng vào mảng size
-    // VD: size: {S: 50, M: 50, L: 50, XL: 50, 2XL: 50, 3XL: 50}
-    if (newProduct.brand === 'clothes') {
-        newProduct.size.S = parseInt(qualityField.value);
-        newProduct.size.M = parseInt(qualityField.value);
-        newProduct.size.L = parseInt(qualityField.value);
-        newProduct.size.XL = parseInt(qualityField.value);
-        newProduct.size['2XL'] = parseInt(qualityField.value);
-        newProduct.size['3XL'] = parseInt(qualityField.value);
-        newProduct.sizes.push('S');
-        newProduct.sizes.push('M');
-        newProduct.sizes.push('L');
-        newProduct.sizes.push('XL');
-        newProduct.sizes.push('2XL');
-        newProduct.sizes.push('3XL');
-    } else {
-        // Size từ 39 -> 40
-        newProduct.size['39'] = parseInt(qualityField.value);
-        newProduct.size['40'] = parseInt(qualityField.value);
-        newProduct.size['41'] = parseInt(qualityField.value);
-        newProduct.size['42'] = parseInt(qualityField.value);
-        newProduct.size['43'] = parseInt(qualityField.value);
-        newProduct.size['44'] = parseInt(qualityField.value);
-    }
+
 
     if (promo1.value !== '') {
         let promoImgFile = promo1.files[0];
@@ -976,11 +1007,18 @@ function addingProduct() {
         newProduct.promo_image.image_4 = promoImgURL;
     }
 
+
+
+
+
+
     products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products));
     alert('Thêm sản phẩm thành công');
     resetForm();
 }
+
+
 
 
 
