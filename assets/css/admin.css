@@ -8,7 +8,19 @@
 }
 
 .warning {
+    color: white;
+    border: 3px solid red;
+    border-radius: 5px;
+    background-color: red;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.warning:hover {
     color: red;
+    background-color: white;
+    transition: 0.3s all ease;
 }
 
 img {
@@ -343,9 +355,8 @@ i {
 
 .product-content {
     background-color: white;
-    border: 1px solid grey;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -374,6 +385,7 @@ i {
 .page-select .page-item {
     background-color: white;
     border: 1px solid grey;
+    border-radius: 5px;
     padding: 15px;
     margin: 0 2.5px;
     width: 20px;
@@ -384,16 +396,18 @@ i {
 }
 
 .page-select .page-item a {
-    color: black;
+    color: #11112f;
 }
 
 /* PAGE SELECT HOVER */
 .page-select .page-item:hover {
-    background-color: black;
+    background-color: #11112f;
+    transition: 0.3s all ease;
 }
 
 .page-select .page-item:hover .page-item-text {
     color: white;
+    transition: 0.3s all ease;
 }
 
 /* Delete Confirmation */
@@ -402,6 +416,7 @@ i {
     width: 50%;
     background-color: whitesmoke;
     border: 2px solid black;
+    border-radius: 5px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -432,14 +447,18 @@ i {
 .delete-confirm .confirm-btn {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
     margin: 0 5px;
     padding: 5px;
 }
 
 .delete-confirm .confirm-btn:hover {
-    background-color: black;
+    background-color: #373333;
     color: white;
+    transition: 0.3s all ease;
 }
 
 
@@ -449,6 +468,7 @@ i {
     width: 50%;
     background-color: whitesmoke;
     border: 2px solid black;
+    border-radius: 5px;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -506,14 +526,18 @@ i {
 .modify-btn-container .modify-btn {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
     margin: 0 5px;
     padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .modify-btn-container .modify-btn:hover {
-    background-color: black;
+    background-color: #373333;
     color: white;
+    transition: 0.3s all ease;
 }
 
 /* Adding Product Form */
@@ -533,9 +557,8 @@ i {
     width: 90%;
     /* height: 40%;
     overflow: auto; */
-    border: 1px solid grey;
-    border-radius: 20px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .adding-content form {
     display: flex;
@@ -566,6 +589,7 @@ i {
     color: black;
     background-color: white;
     border: 1px solid black;
+    border-radius: 5px;
     margin: 0 5px;
     padding: 5px;
 }
@@ -576,8 +600,9 @@ i {
 } */
 
 .adding-btn-container .adding-btn:hover {
-    background-color: black;
+    background-color: #11112f;
     color: white;
+    transition: 0.3s all ease;
 }
 
 /* HEADER HOVER */
@@ -597,9 +622,8 @@ i {
 
 .customer-content {
     background-color: white;
-    border: 1px solid grey;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -624,6 +648,7 @@ i {
     width: 50%;
     background-color: whitesmoke;
     border: 2px solid black;
+    border-radius: 5px;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -668,14 +693,16 @@ i {
 .user-modify-btn-container .user-modify-btn {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
     margin: 0 5px;
     padding: 5px;
 }
 
 .user-modify-btn-container .user-modify-btn:hover {
+    background-color: #373333;
     color: white;
-    background-color: black;
+    transition: 0.3s all ease;
 }
 
 .customer-title h1 {
@@ -742,9 +769,8 @@ i {
 
 .order-content {
     background-color: white;
-    border: 1px solid grey;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -773,9 +799,8 @@ i {
     background-color: white;
     margin-left: 65px;
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .sort-content h3 {
@@ -814,6 +839,7 @@ i {
 .order-detail {
     background-color: whitesmoke;
     border: 1px solid black;
+    border-radius: 5px;
     padding: 20px;
     position: absolute;
     display: none;
@@ -844,15 +870,17 @@ i {
 .order-print {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
     padding: 5px;
     margin: 10px 0;
     width: fit-content;
 }
 
 .order-print:hover {
-    color: white;
-    background-color: black;
+    color: #11112f;
+    background-color: #cacacb;
+    transition: 0.3s all ease;
 }
 
 .to-print h2 {

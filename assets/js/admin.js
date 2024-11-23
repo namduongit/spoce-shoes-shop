@@ -320,7 +320,7 @@ function showProducts() {
 
         document.getElementById('product-details').innerHTML = s;
         document.getElementById('page-select').innerHTML = str;
-        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = '#11112f';
         document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
 
@@ -1164,7 +1164,7 @@ function showCustomer() {
 
         document.getElementById('customer-details').innerHTML = s;
         document.getElementById('page-select').innerHTML = str;
-        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = '#11112f';
         document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
@@ -1918,7 +1918,7 @@ function showOrders() {
 
         document.getElementById('page-select').innerHTML = str;
         document.getElementById('order-details').innerHTML = s;
-        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = '#11112f';
         document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
@@ -2177,7 +2177,7 @@ function sortOrder() {
 
         document.getElementById('page-select').innerHTML = str;
         document.getElementById('order-details').innerHTML = s;
-        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = 'black';
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = '#11112f';
         document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
 
         var pageBtns = document.querySelectorAll('.page-item');
