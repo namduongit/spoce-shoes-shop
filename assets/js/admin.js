@@ -1132,14 +1132,14 @@ function showUserModify(obj) {
 
                 <div class="form-item">
                     <label for="email">Email: </label>
-                    <input type="text" id="email" value="${user.email}">
+                    <input type="text" id="email" value="${user.email}" disabled>
 
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="phone">Số điện thoại: </label>
-                    <input type="text" id="phone" value="${user.phone}">
+                    <input type="text" id="phone" value="${user.phone}" disabled>
 
                 </div>
                 <br>
