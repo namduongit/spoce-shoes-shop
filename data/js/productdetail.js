@@ -520,7 +520,7 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
 
     return;
   }
-
+  
   // Thực hiện xử lý thanh toán
   let product_buy
   let product_list = [];
@@ -531,10 +531,19 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
         product_buy = product;
       }
     })
-    product_buy.size = document.querySelectorAll(".td_size")[i].innerHTML;
+    product_buy.sizes = document.querySelectorAll(".td_size")[i].innerHTML;
     product_buy.quantity = document.querySelectorAll(".pquantity")[i].innerHTML;
     product_list.push(product_buy);
   }
   // Thêm trang thanh toán ở đây
   Payment(product_list);
 });
+
+
+
+
+
+
+
+
+

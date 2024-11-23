@@ -442,5 +442,6 @@ function InforInvoice(order){
         document.querySelector(".detail-background").classList.remove("active");
         InforClient();
     }
+    
 
 }

@@ -182,22 +182,22 @@ function writeStorePolicies() {
                     <div class="title">Thông tin</div>
                     <ul>
                         <li>
-                            <div data-name="home-page">Trang chủ</div>
+                            <div data-name="home-page" onclick="changeContent('home')">Trang chủ</div>
                         </li>
                         <li>
-                            <div data-name="introduce">Giới thiệu</div>
+                            <div data-name="introduce" onclick="changeContent('gioithieu')">Giới thiệu</div>
                         </li>
                         <li>
-                            <div data-name="products">Sản phẩm</div>
+                            <div data-name="products" onclick="changeContent('sanpham')">Sản phẩm</div>
                         </li>
                         <li>
-                            <div data-name="promotion">Khuyến mãi</div>
+                            <div data-name="promotion" onclick="changeContent('khuyenmai')">Khuyến mãi</div>
                         </li>
                         <li>
-                            <div data-name="news">Tin tức</div>
+                            <div data-name="news" onclick="changeContent('tintuc')">Thông báo</div>
                         </li>
                         <li>
-                            <div data-name="contact">Liên hệ</div>
+                            <div data-name="contact" onclick="changeContent('lienhe')">Liên hệ</div>
                         </li>
                     </ul>
                 </div>
@@ -205,22 +205,23 @@ function writeStorePolicies() {
                     <div class="title">Hướng dẫn & Chính sách</div>
                     <ul>
                         <li>
-                            <a href="">Hướng dẫn mua hàng</a>
+                            <a href="javascript:void(0)" onclick="changeContent('huongDanMuaHang')">Hướng dẫn mua hàng</a>
                         </li>
                         <li>
-                            <a href="">Thẻ Thành Viên</a>
+                             <a href="javascript:void(0)" onclick="changeContent('thanhvien')">Thẻ Thành Viên</a>
                         </li>
                         <li>
-                            <a href="">Chính sách đổi trả & hoàn tiền</a>
+                            <a href="javascript:void(0)" onclick="changeContent('chinhSachBaoHanh')">Chính sách đổi trả & hoàn tiền</a>
+
                         </li>
                         <li>
-                            <a href="">Chính sách thanh toán</a>
+                            <a href="javascript:void(0)" onclick="changeContent('thanhtoan')">Chính sách thanh toán</a>
                         </li>
                         <li>
-                            <a href="">Chính sách vận chuyển</a>
+                            <a href="javascript:void(0)" onclick="changeContent('vanchuyen')">Chính sách vận chuyển</a>
                         </li>
                         <li>
-                            <a href="">Chính sách bảo mật</a>
+                            <a href="javascript:void(0)" onclick="changeContent('baomat')">Chính sách bảo mật</a>
                         </li>
                     </ul>
                 </div>
