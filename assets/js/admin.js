@@ -98,15 +98,18 @@ function convertCurrencyToNumber(currencyString) {
 
 // hàm khởi tạo giao diện chính
 function writeMainContent() {
-    let date = getCurrentDateTime();
+    // Lấy dữ liệu hôm nay
+    let date = getCurrentDateTime()
+    // Cắt dữ liệu để lấy dd/mm/yyyy
     let currentDate = date.split(' ')[2];
+    console.log(currentDate);
 
     let countNewUser = 0;
     let countNewMoney = 0;
     let countNewOrder = 0;
 
-    let Allbill = JSON.parse(localStorage.getItem('Allbill'));
-    let Alluser = JSON.parse(localStorage.getItem('users'));
+    let Allbill = JSON.parse(localStorage.getItem('Allbill')) || [];
+    let Alluser = JSON.parse(localStorage.getItem('users')) || [];
 
     let currentBill = Allbill.filter(bill => {
         let paymentdate = bill.paymentdate;
@@ -118,7 +121,7 @@ function writeMainContent() {
     let currentUser = Alluser.filter(us => {
         let registrationTime = us.registrationTime;
         let current = registrationTime.split(' ')[2];
-        return current == currentDate;
+        return current == currentDate
     });
     countNewUser = currentUser.length;
 
@@ -131,18 +134,13 @@ function writeMainContent() {
             totalBillMoney += quantity * sell;
         });
         countNewMoney += totalBillMoney;
+
     });
 
-    let itemsPerPage = 5;
-    let totalPages = Math.ceil(currentBill.length / itemsPerPage);
-
-    function loadPage(page) {
-        let start = (page - 1) * itemsPerPage;
-        let end = page * itemsPerPage;
-        let ordersToShow = currentBill.slice(start, end);
-
+    // Xử lí đơn hàng gần đây
+    function currentBillNow() {
         let html = ``;
-        ordersToShow.forEach(bill => {
+        currentBill.forEach(bill => {
             html += `
             <tr>
                 <td>${bill.code}</td>
@@ -150,76 +148,87 @@ function writeMainContent() {
                 <td>${bill.street}</td>
                 <td>${bill.status}</td>
             </tr>
-            `;
+        `
         });
-
-        document.getElementById("body-table").innerHTML = html;
-
+        return html;
     }
 
-    let paginationHTML = ``;
-    for (let i = 1; i <= totalPages; i++) {
-        paginationHTML += `
-        <li class="page-item" data-page="${i}">
-            <a class="page-item-text" href="javascript:void(0);">${i}</a>
-        </li>
-        `;
-    }
-
-    document.getElementById('bar-title').innerHTML = `<h2>Tổng quan</h2>`;
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Tổng quan</h2>
+    `;
     document.querySelector('.content').innerHTML = `
         <div class="analytics">
-            <div class="today-sales analytics-item">
-                <div class="analytics-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                <div class="analytics-content">
-                    <div class="top-content">Đơn hàng hôm nay</div>
-                    <div class="bottom-content">${countNewOrder}</div>
+                    <div class="today-sales analytics-item">
+                        <div class="analytics-icon">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+
+                        <div class="analytics-content">
+                            <div class="top-content">
+                                Đơn hàng hôm nay
+                            </div>
+
+                            <div class="bottom-content">
+                                ${countNewOrder}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="today-income analytics-item">
+                        <div class="analytics-icon">
+                            <i class="fa-solid fa-money-bill"></i>
+                        </div>
+
+                        <div class="analytics-content">
+                            <div class="top-content">
+                                Doanh thu hôm nay
+                            </div>
+
+                            <div class="bottom-content">
+                                ${formatMoney(countNewMoney)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-guests analytics-item">
+                        <div class="analytics-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div class="analytics-content">
+                            <div class="top-content">
+                                Khách mới trong ngày
+                            </div>
+
+                            <div class="bottom-content">
+                                ${countNewUser}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="today-income analytics-item">
-                <div class="analytics-icon"><i class="fa-solid fa-money-bill"></i></div>
-                <div class="analytics-content">
-                    <div class="top-content">Doanh thu hôm nay</div>
-                    <div class="bottom-content">${formatMoney(countNewMoney)}</div>
+
+                <div class="recent-orders">
+                    <div class="title">
+                        Đơn hàng gần đây
+                    </div>
+
+                    <div class="recent-orders-content">
+                        <table>
+                            <thead>
+                                <td>Mã đơn hàng</td>
+                                <td>Username</td>
+                                <td>Địa chỉ</td>
+                                <td>Tình trạng</td>
+                            </thead>
+
+                            <tbody id="body-table">
+                                ${currentBillNow()}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="new-guests analytics-item">
-                <div class="analytics-icon"><i class="fa-solid fa-user"></i></div>
-                <div class="analytics-content">
-                    <div class="top-content">Khách mới trong ngày</div>
-                    <div class="bottom-content">${countNewUser}</div>
-                </div>
-            </div>
-        </div>
-        <div class="recent-orders">
-            <div class="title">Đơn hàng gần đây</div>
-            <div class="recent-orders-content">
-                <table>
-                    <thead>
-                        <td>Mã đơn hàng</td>
-                        <td>Username</td>
-                        <td>Địa chỉ</td>
-                        <td>Tình trạng</td>
-                    </thead>
-                    <tbody id="body-table"></tbody>
-                </table>
-            </div>
-            <div class="main-pagination">
-                <ul id="pagination" class="page-select">${paginationHTML}</ul>
-            </div>
-        </div>
     `;
-
-    document.querySelectorAll('.page-item').forEach(item => {
-        item.addEventListener('click', () => {
-            let page = parseInt(item.getAttribute('data-page'));
-            loadPage(page);
-        });
-    });
-
-    loadPage(1);
 }
-
 
 // đọc mảng products từ local storage về ở dạng biến toàn cục
 var products = JSON.parse(localStorage.getItem('products'));
@@ -535,23 +544,23 @@ function showModifyingForm(productId) {
     </div>
     </div>`;
     let number=1;
-    for (key in product.promo_image) {
-        number++;
-        if (product.promo_image[key] == '') {
-            imgp += ` <div class="form-image-item img_${number}">
-            </div>`
-            continue;
-        }
+for (key in product.promo_image) {
+    number++;
+if (product.promo_image[key] == '') {
+    imgp += ` <div class="form-image-item img_${number}">
+    </div>`
+ continue;
+}
 
-        imgp += ` <div class="form-image-item img_${number}">
-        <div class="promo_image">
-        <div class="item-image "><img src=${product.promo_image[key]}></div>
-        <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
-        </div>
-        </div>`
-    }
+imgp += ` <div class="form-image-item img_${number}">
+    <div class="promo_image">
+    <div class="item-image "><img src=${product.promo_image[key]}></div>
+    <div class="delete-img"><button class="btn-delete" onclick="deleteImage( 'img_${number}')">Xoá ảnh</button></div>
+    </div>
+    </div>`
+}
 
-    document.querySelector(".form-image").innerHTML=imgp;
+document.querySelector(".form-image").innerHTML=imgp;
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = product.size[document.getElementById("size-select").value.toString()];
     document.getElementById("size-select").onchange = function () {
@@ -1118,14 +1127,14 @@ function showUserModify(obj) {
 
                 <div class="form-item">
                     <label for="password">Mật khẩu: </label>
-                    <input type="text" id="password" value="${user.password}">
+                    <input type="text" id="password" value="${user.password}" >
 
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="fullname">Họ tên: </label>
-                    <input type="text" id="fullname" value="${user.fullname}">
+                    <input type="text" id="fullname" value="${user.fullname}" >
 
                 </div>
                 <br>
@@ -1297,17 +1306,8 @@ function showAddingCustomerForm() {
         var currentTime = new Date();
         currentTime = getCurrentDateTime(currentTime);
 
-        const emailRegex = /@[a-zA-Z]+\.[a-z]{2,}$/;
-
         if (username.value === "") {
             alert("Tài khoản không được để trống.");
-            return;
-        }
-
-        if (users.some(user => {
-            return user.username === username.value;
-        })) {
-            alert("Tài khoản đã tồn tại!");
             return;
         }
 
@@ -1331,6 +1331,18 @@ function showAddingCustomerForm() {
             return;
         }
 
+        if (phoneNumber.value === "") {
+            alert("Số điện thoại không được để trống.");
+            return;
+        }
+
+        if (users.some(user => {
+            return user.username === username.value;
+        })) {
+            alert("Tài khoản đã tồn tại!");
+            return;
+        }
+
         if (users.some(user => {
             return user.email === emailAddress.value;
         })) {
@@ -1338,25 +1350,10 @@ function showAddingCustomerForm() {
             return;
         }
 
-        if (!emailRegex.test(emailAddress.value)) {
-            alert('Email không đúng định dạng!');
-            return;
-        }
-
-        if (phoneNumber.value === "") {
-            alert("Số điện thoại không được để trống.");
-            return;
-        }
-
         if (users.some(user => {
             return user.phone === phoneNumber.value;
         })) {
             alert("Số điện thoại đã tồn tại!");
-            return;
-        }
-
-        if (phoneNumber.value.length != 10 || isNaN(phoneNumber.value)) {
-            alert('Số điện thoại không đúng định dạng');
             return;
         }
 
