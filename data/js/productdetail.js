@@ -531,7 +531,7 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
         product_buy = product;
       }
     })
-    product_buy.size = document.querySelectorAll(".td_size")[i].innerHTML;
+    product_buy.sizes = document.querySelectorAll(".td_size")[i].innerHTML;
     product_buy.quantity = document.querySelectorAll(".pquantity")[i].innerHTML;
     product_list.push(product_buy);
   }
