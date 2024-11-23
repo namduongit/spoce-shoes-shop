@@ -543,14 +543,18 @@ i {
 .modify-btn-container .modify-btn {
     color: black;
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid black;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
     margin: 0 5px;
     padding: 5px;
 }
 
 .modify-btn-container .modify-btn:hover {
-    background-color: black;
+    background-color: #373333;
     color: white;
+    transition: 0.3s all ease;
 }
 
 /* Adding Product Form */
