@@ -1938,6 +1938,10 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "2") {
             currentStatus = "Đã xác nhận";
+            orders[index].products_buy.forEach(product => {
+                var productIndex = products.findIndex(item => product.id == item.id);
+                products[productIndex].size[product.size] -= product.quantity;
+            });
         }
 
         if (currentStatusCode === "3") {
@@ -1946,9 +1950,14 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "4") {
             currentStatus = "Đã hủy";
+            orders[index].products_buy.forEach(product => {
+                var productIndex = products.findIndex(item => product.id == item.id);
+                products[productIndex].size[product.size] += parseInt(product.quantity);
+            });
         }
         orders[index].status = currentStatus;
         localStorage.setItem('Allbill', JSON.stringify(orders));
+        localStorage.setItem('products', JSON.stringify(products)); 
     });
 }
 
