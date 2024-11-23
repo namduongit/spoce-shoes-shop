@@ -1,7 +1,7 @@
 // Khởi tạo danh sách sản phẩm
 function loadProduct() {
     document.addEventListener("DOMContentLoaded", function () {
-        // Xóa dữ liệu cũ trong localStorage
+        // Xóa dữ liệu cũ trong localStorage    
         localStorage.removeItem("products");
         console.log("LocalStorage đã được xóa khi tải trang!");
 
@@ -2111,7 +2111,7 @@ function createProduct() {
                 price: "500.000đ",
                 sell: "220.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/81.png",
                 promo_image: {
                     "image_1": "data/js/image/81.1.png",
@@ -2135,7 +2135,7 @@ function createProduct() {
                 price: "800.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/82.png",
                 promo_image: {
                     "image_1": "data/js/image/82.1.png",
@@ -2159,7 +2159,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/83.png",
                 promo_image: {
                     "image_1": "data/js/image/83.1.png",
@@ -2183,7 +2183,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/84.png",
                 promo_image: {
                     "image_1": "data/js/image/84.1.png",
@@ -2207,7 +2207,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/85.png",
                 promo_image: {
                     "image_1": "data/js/image/85.1.png",
@@ -2231,7 +2231,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/86.png",
                 promo_image: {
                     "image_1": "data/js/image/86.1.png",
@@ -2255,7 +2255,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/87.png",
                 promo_image: {
                     "image_1": "data/js/image/87.1.png",
@@ -2279,7 +2279,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/88.png",
                 promo_image: {
                     "image_1": "data/js/image/88.1.png",
@@ -2303,7 +2303,7 @@ function createProduct() {
                 price: "700.000đ",
                 sell: "290.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/89.png",
                 promo_image: {
                     "image_1": "data/js/image/89.1.png",
@@ -2327,7 +2327,7 @@ function createProduct() {
                 price: "1300.000đ",
                 sell: "780.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/90.png",
                 promo_image: {
                     "image_1": "data/js/image/90.1.png",
@@ -2351,7 +2351,7 @@ function createProduct() {
                 price: "990.000đ",
                 sell: "594.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/91.png",
                 promo_image: {
                     "image_1": "data/js/image/91.1.png",
@@ -2375,7 +2375,7 @@ function createProduct() {
                 price: "990.000đ",
                 sell: "594.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/92.png",
                 promo_image: {
                     "image_1": "data/js/image/92.1.png",
@@ -2399,7 +2399,7 @@ function createProduct() {
                 price: "800.000đ",
                 sell: "640.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/93.png",
                 promo_image: {
                     "image_1": "data/js/image/93.1.png",
@@ -2421,7 +2421,7 @@ function createProduct() {
                 price: "800.000đ",
                 sell: "640.000đ",
                 discount: "30",
-                sizes: ["39", "40", "41", "42", "43", "44"],
+                sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
                 image: "data/js/image/94.png",
                 promo_image: {
                     "image_1": "data/js/image/94.1.png",
