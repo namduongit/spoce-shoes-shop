@@ -1018,30 +1018,7 @@ function addingProduct() {
 
 var users = JSON.parse(localStorage.getItem('users'));
 
-var productsList = JSON.parse(localStorage.getItem('products'));
 
-var brandList = []
-var productsName = []
-
-productsList.forEach(product => {
-    // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
-    if (!brandList.some(b => b.brand === product.brand)) {
-        let newBrand = {
-            brand: product.brand,
-            count: 0
-        };
-        brandList.push(newBrand);
-    }
-
-    // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
-    if (!productsName.some(p => p.name === product.name_product)) {
-        let newProduct = {
-            name: product.name_product,
-            count: 0
-        };
-        productsName.push(newProduct);
-    }
-});
 function resetDataList() {
     brandList = [];
     productsName = [];
@@ -1492,15 +1469,31 @@ function showStatistics() {
                             <!-- Biểu đồ cột sẽ được vẽ ở đây -->
                             <canvas id="orderChart"></canvas>
 
-
                     </div>
                 </div>
                 <div class="section-three">
-                    <p class="total-order"></p>
-                    <p class="total-quantity"></p>
-                    <p class="total-revenue"></p>
-                    <p class="most-brand"></p>
-                    <p class="most-product"></p>
+                        <div class="total-info-now">
+                            <div>
+                                <h3 class="total-info-now-title">Thống kê hàng tháng: </h3>
+                            </div>
+                            <p id="total-order">Tổng số đơn hàng: </p>
+                            <p id="total-quantity">Tổng số lượng: </p>
+                            <p id="total-revenue">Tổng doanh thu: </p>
+                            <p id="most-brand">Band bán chạy nhất: </p>
+                            <p id="most-product">Sản phẩm bán chạy nhất: </p>
+                        </div>
+
+                        <div class="total-info-last">
+                            <div>
+                                <h3 class="total-info-last-title">Thống kê hàng tháng trước: </h3>
+                            </div>
+                            <div class="total-info-last-content">
+                                <p id="total-order-last">Tổng đơn tháng trước: </p>
+                                <p id="total-quantity-last">Tổng số lượng tháng trước: </p>
+                                <p id="total-revenue-last">Tổng doanh thu tháng trước</p>
+                                <p id="most-brand-last">Brand bán chạy nhất tháng trước: </p>
+                                <p id="most-product-last">Sản phẩm bán chạy nhất tháng trước: </p>
+                            </div>
                 </div>
             </div>
             <div class="foot-content">
@@ -1565,14 +1558,63 @@ function showStatistics() {
 
 }
 
+var productsList = JSON.parse(localStorage.getItem('products'));
+
+var brandList = []
+var productsName = []
+
+productsList.forEach(product => {
+    // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
+    if (!brandList.some(b => b.brand === product.brand)) {
+        let newBrand = {
+            brand: product.brand,
+            count: 0
+        };
+        brandList.push(newBrand);
+    }
+
+    // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
+    if (!productsName.some(p => p.name === product.name_product)) {
+        let newProduct = {
+            name: product.name_product,
+            count: 0
+        };
+        productsName.push(newProduct);
+    }
+});
+
+function resetDataList() {
+    brandList = [];
+    productsName = [];
+
+    productsList.forEach(product => {
+        // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
+        if (!brandList.some(b => b.brand === product.brand)) {
+            let newBrand = {
+                brand: product.brand,
+                count: 0
+            };
+            brandList.push(newBrand);
+        }
+
+        // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
+        if (!productsName.some(p => p.name === product.name_product)) {
+            let newProduct = {
+                name: product.name_product,
+                count: 0
+            };
+            productsName.push(newProduct);
+        }
+    });
+}
+
 function searchOrder() {
     var month = parseInt(document.getElementById('month-select').value);
     var year = parseInt(document.getElementById('year-select').value);
 
     var allBill = JSON.parse(localStorage.getItem('Allbill'));
-    resetDataList();
-    console.log(brandList);
-    console.log(productsName);
+
+
     // Kiểm tra dữ liệu nhập
     if (isNaN(month) || isNaN(year)) {
         alert('Vui lòng nhập tháng và năm hợp lệ');
@@ -1604,15 +1646,16 @@ function searchOrder() {
     });
 
     // Tính số ngày trong tháng
-    const daysInMonth = new Date(year, month, 0).getDate(); // Lấy ngày cuối cùng của tháng
-    let dayCounts = Array(daysInMonth).fill(0); // Khởi tạo mảng với giá trị 0
-
+    const daysInMonth = new Date(year, month, 0).getDate();
+    // Tạo mảng có số ngày trong tháng và khởi tạo bằng 0
+    let dayCounts = Array(daysInMonth).fill(0);
+    resetDataList();
     // Đếm số đơn hàng theo từng ngày
     billOfSelectDate.forEach(item => {
         let dateOfBill = item.paymentdate.split(' ')[2];
         let day = parseInt(dateOfBill.split('/')[0]);
         dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
-
+        // Tính tổng số lượng và doanh thu
         let products_buy = item.products_buy;
         products_buy.forEach(pro => {
             totalQuantity += parseInt(pro.quantity);
@@ -1657,8 +1700,6 @@ function searchOrder() {
     // Tạo nhãn (labels) cho từng ngày trong tháng
     let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}`);
 
-
-
     // Cập nhật dữ liệu và trục y của biểu đồ
     orderChart.data.labels = labels;
     orderChart.data.datasets[0].data = dayCounts;
@@ -1666,12 +1707,78 @@ function searchOrder() {
     orderChart.update();
 
 
-    // Cập nhật dữ liệu vào total
+    // Cập nhật dữ liệu vào total now
+    document.getElementsByClassName('total-info-now-title')[0].innerHTML += ` ${month}/${year}`;
     document.getElementById('total-order').innerHTML = `Tổng số đơn hàng: ${billOfSelectDate.length}`;
     document.getElementById('total-quantity').innerHTML = `Tổng số lượng: ${totalQuantity}`;
     document.getElementById('total-revenue').innerHTML = `Tổng doanh thu: ${totalMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
     document.getElementById('most-brand').innerHTML = `Brand bán chạy nhất: ${mostBrand}`;
     document.getElementById('most-product').innerHTML = `Sản phẩm bán chạy nhất: ${mostProduct}`;
+
+
+    // Làm dữ liệu cho tháng trước
+
+    let totalQuantityLast = 0;
+    let totalMoneyLast = 0;
+    let mostBrandLast = 0;
+    let mostProductLast = 0;
+
+    let lastMonth = month - 1; // Js tự hiểu phép trừ
+    let lastYear = year;
+    if (lastMonth === 0) {
+        lastMonth = 12;
+        lastYear = year - 1;
+    }
+    const billOfLastMonth = allBill.filter(item => {
+        let dateOfBill = item.paymentdate.split(' ')[2];
+        let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
+        return parseInt(monthOfBill) === lastMonth && parseInt(yearOfBill) === lastYear;
+    });
+
+    // Đếm thông tin trong billOfLastMonth
+    resetDataList();
+    billOfLastMonth.forEach(item => {
+        let products_buy = item.products_buy;
+        products_buy.forEach(pro => {
+            totalQuantityLast += parseInt(pro.quantity);
+            totalMoneyLast += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
+            let nameBrand = pro.brand;
+            let nameProduct = pro.name_product;
+            brandList.forEach(brand => {
+                if (brand.brand === nameBrand) {
+                    brand.count += parseInt(pro.quantity);
+                }
+            });
+
+            productsName.forEach(product => {
+                if (product.name === nameProduct) {
+                    product.count += parseInt(pro.quantity);
+                }
+            });
+        });
+    });
+    let max_brand_last = 0;
+    brandList.forEach(brand => {
+        if (brand.count > max_brand_last) {
+            max_brand_last = brand.count;
+            mostBrandLast = brand.brand;
+        };
+    });
+    let max_product_last = 0;
+    productsName.forEach(product => {
+        if (product.count > max_product_last) {
+            max_product_last = product.count;
+            mostProductLast = product.name;
+        };
+    });
+
+    // Câp nhật dữ liệu vào total last
+    document.getElementsByClassName('total-info-last-title')[0].innerHTML += ` ${lastMonth}/${lastYear}`;
+    document.getElementById('total-order-last').innerHTML = `Tổng số đơn hàng tháng trước: ${billOfLastMonth.length}`;
+    document.getElementById('total-quantity-last').innerHTML = `Tổng số lượng tháng trước: ${totalQuantityLast}`;
+    document.getElementById('total-revenue-last').innerHTML = `Tổng doanh thu tháng trước: ${totalMoneyLast.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
+    document.getElementById('most-brand-last').innerHTML = `Brand bán chạy nhất tháng trước: ${mostBrandLast}`;
+    document.getElementById('most-product-last').innerHTML = `Sản phẩm bán chạy nhất tháng trước: ${mostProductLast}`;
 }
 
 function showOrders() {

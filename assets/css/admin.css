@@ -984,13 +984,6 @@ i {
 }
 
 
-
-
-
-
-
-
-
 /* ANIMATION */
 @keyframes slideToRight {
     from {
@@ -1089,6 +1082,26 @@ i {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 5px;
     line-height: 2;
+    display: flex;
+}
+.statistics .head-content .section-three {
+    .total-info-now  {
+        padding-left: 20px;
+        width: 50%;
+        border-right: 1px solid black;
+    }
+    .total-info-last {
+        padding-left: 20px;
+        width: 50%;
+        border-left: 1px solid black;
+    }
+}
+.statistics .head-content .section-three h3 {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: black 2px solid;
+    margin-bottom: 10px;
+    width: fit-content;
 }
 #toast{
     position: fixed;
