@@ -520,7 +520,7 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
 
     return;
   }
-
+  
   // Thực hiện xử lý thanh toán
   let product_buy
   let product_list = [];
@@ -538,3 +538,12 @@ document.querySelector(".checkout-btn").addEventListener("click", () => {
   // Thêm trang thanh toán ở đây
   Payment(product_list);
 });
+
+
+
+
+
+
+
+
+
