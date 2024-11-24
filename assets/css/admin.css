@@ -877,7 +877,7 @@ i {
 }
 
 .order-detail select {
-    width: 25%;
+    width: fit-content;
     padding: 5px;
     margin: 5px 0;
 }
@@ -980,7 +980,7 @@ i {
 
 
 /* RESPONSIVE CHO Tablet */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (max-width: 768px) {
     .content .analytics {
         flex-direction: column;
         align-items: flex-start;
@@ -1048,6 +1048,10 @@ i {
     .adding-content form {
         display: flex;
         flex-direction: column;
+    }
+
+    .warning {
+        font-size: 10px;
     }
 }
 
