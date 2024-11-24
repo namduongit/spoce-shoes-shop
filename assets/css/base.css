@@ -453,7 +453,7 @@ body {
 }
 .bill .oder-list .products__list .product_item .product__image img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 .bill .oder-list .products__list .product_item .product__name {
   padding: 10px 30px;

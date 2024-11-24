@@ -804,4 +804,8 @@
     margin-left: -20px;
   }
 
+  #showProductCode .wrap-content {
+    padding: 30px;
+  }
+
 }
