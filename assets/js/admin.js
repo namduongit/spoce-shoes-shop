@@ -1970,6 +1970,8 @@ function showOrderDetail(obj) {
         <h2>Chi tiết đơn hàng</h2>
         <h4>Thông tin đơn hàng</h4>
         <p>${str}</p>
+        <h4>Mã đơn hàng</h4>
+        <p>${order.code}</p>
         <h4>Tên khách hàng</h4>
         <p>${order.name}</p>
         <h4>Số điện thoại</h4>
