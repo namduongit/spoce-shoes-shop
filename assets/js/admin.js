@@ -1952,7 +1952,7 @@ function showOrderDetail(obj) {
     var str = "";
     var price = 0;
     order.products_buy.forEach(item => {
-        str = str + item.quantity + "x " + item.name_product + "; ";
+        str = str + item.quantity + "x " + "SIZE " + item.sizes + " " + item.name_product + "; ";
         var priceOfProduct = parseInt(item.sell.replace(/[^0-9]/g, ""));
         var quantity = parseInt(item.quantity);
         price = price + quantity * priceOfProduct;
