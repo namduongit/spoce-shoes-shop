@@ -889,7 +889,6 @@ function addingProduct() {
     var promo3 = document.getElementById('promo-3');
     var promo4 = document.getElementById('promo-4');
 
-    var sizeOption = document.getElementById('size-select');
     var sizeArray = {};
     if (brandField.value === 'clothes') {
         // Lấy các thẻ input
