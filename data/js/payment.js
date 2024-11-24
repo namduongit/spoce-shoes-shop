@@ -168,12 +168,27 @@ function Payment(product_list) {
             document.querySelector(".input_street").disabled = true;
         }
     });
+    let i=0;
     usercurrent.address.forEach(user => {
         if (user.default == "none") {
+            i++;
             listaddress += `
         <option  value="op${user.id}">${user.city}, ${user.district}, ${user.street}</option>
         `}
+        if(i==usercurrent.address.length){
+            document.querySelector(".input_name").value = user.consignee;
+            document.querySelector(".input_name").disabled = true;
+            document.querySelector(".input_phone").value = user.phone;
+            document.querySelector(".input_phone").disabled = true;
+            document.querySelector(".input_city").value = user.city;
+            document.querySelector(".input_city").disabled = true;
+            document.querySelector(".input_district").value = user.district;
+            document.querySelector(".input_district").disabled = true;
+            document.querySelector(".input_street").value = user.street;
+            document.querySelector(".input_street").disabled = true;
+        }
     })
+   
     listaddress += `
         <option value="op">Địa chỉ khác</option>`
     document.querySelector(".list-address").innerHTML = listaddress;
@@ -309,7 +324,41 @@ function Order(product_list) {
         var csc = "";
         var namecard = "";
     }
+    let id=0;
+    let address = {
+        id: id,
+        consignee: name,
+        phone: phone,
+        city: city,
+        district: district,
+        street: street,
+        default: "none"
+    }
     let usercurrent = JSON.parse(localStorage.getItem("usercurrent"));
+    if(usercurrent.address.length==0){
+        usercurrent.address.push(address);
+    }
+    else{
+        usercurrent.address.forEach(user => {
+            id = user.id + 1;
+        });
+        if(usercurrent.address.some(user=>{
+            return user.name==name && user.phone==phone && user.city==city && user.district==district && user.street==street;
+        })){
+        } else{
+            address.id=id;
+            usercurrent.address.push(address);
+        }
+    }
+    localStorage.setItem("usercurrent",JSON.stringify(usercurrent));
+    let users=JSON.parse(localStorage.getItem("users"));
+    users.forEach(user => {
+        if (user.username == usercurrent.username) {
+            user.address = usercurrent.address;
+        }
+    });
+    localStorage.setItem("users",JSON.stringify(users));
+
     let code = 0;
     let allbill = JSON.parse(localStorage.getItem("Allbill"));
     if (allbill != null) {
@@ -437,7 +486,7 @@ function InforInvoice(order){
         allbill.push(order);
         localStorage.setItem("Allbill", JSON.stringify(allbill));
         toast({title:'SUCCESS',message:"Đặt hàng thành công ! Giỏ hàng của bạn đã được làm mới",type:'success',duration:3000});
-  
+        document.getElementById("quantityOfCart").innerHTML="Giỏ hàng: 0";
         localStorage.removeItem("cart_" + usercurrent.username);
         document.querySelector(".detail-background").classList.remove("active");
         InforClient();
