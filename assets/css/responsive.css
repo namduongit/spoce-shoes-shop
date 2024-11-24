@@ -2,7 +2,7 @@
 @media (min-width: 1024px) {}
 
 /* Tablet and mobile 1023px*/
-@media (max-width: 1023px) {
+@media (min-width: 740px) and (max-width: 1023px) {
 
   /* Cục login-resgister */
   .user-content-selection {
@@ -468,6 +468,37 @@
 
 /* Mobile 739px*/
 @media (max-width: 739px) {
+
+  /* login */
+  .user-content-selection .inner-content {
+    width: 100%;
+  }
+
+  .user-content-selection .inner-content .left-card {
+    display: none;
+  }
+
+  .user-content-selection .inner-content .right-card {
+    width: 100%;
+  }
+
+  .user-content-selection .inner-content .right-card .group-form {
+    margin-bottom: 12px;
+  }
+
+  header .inner-wrap .inner-user .user .parent .child {
+    right: 0;
+  }
+
+  header .inner-wrap .inner-user .user .parent .child {
+    min-width: 140px;
+    top: 130%;
+    right: -2px;
+  }
+
+  /* end login */
+
+
   .section-two {
     display: none;
   }
@@ -504,7 +535,7 @@
 
   header .inner-wrap .inner-search {
     width: auto;
-    display: none;
+    /* display: none; */
   }
 
   header .inner-wrap .inner-user .cart .parent>div {
@@ -524,19 +555,33 @@
   header .inner-wrap .inner-menu_mobile i {
     position: absolute;
     left: 20px;
+    /* top: 2%; */
   }
 
   header .inner-wrap .inner-logo img {
-    width: 100px;
+    /* width: 100px; */
+    display: none;
   }
 
   /* search */
+
+  header .inner-wrap .inner-search .search {
+    width: auto;
+    margin-right: 10px;
+  }
+
+  header .inner-wrap .inner-search .search {
+    height: 26px;
+  }
+
   header .inner-wrap .inner-search select {
     display: none;
 
   }
 
-
+  header .inner-wrap .inner-search #price-toggle {
+    display: none;
+  }
 
   .list-sort>li {
     min-width: 150px;
@@ -578,6 +623,87 @@
     display: none;
   }
 
+  /* chi tiet san pham */
+  .image .main-img {
+    height: auto;
+  }
+
+  .detail-background  .detail-product {
+    width: 98%;
+  }
+
+  .detail-product .product-pay .cart-pay .btn-pay {
+    padding: 8px 11px;
+  }
+
+  .details-pro__content .product-quantity input,
+  .details-pro__content .product-quantity button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+
+  .detail-product .product-quantity {
+    align-items: center;
+  }
+
+  .details-pro__content .product__bonus {
+    /* display: none; */
+  }
+
+  .details-pro__content > p {
+    display: none;
+  }
+
+  .detail-product .product-pay .cart-pay {
+    margin-right: 10px;
+  }
+
+  .details-pro {
+    margin-right: 8px;
+  }
+
+  .promo-image .image__item {
+    height: auto;
+    padding: 0;
+  }
+
+  .cart-popup-content {
+    width: 100%;
+  }
+
+  /* pay */
+
+  .main__content h2 {
+    font-size: 21px;
+  }
+
+  .payment-page {
+    flex-direction: column;
+    margin: 0;
+    padding: 0 12px 20px;
+  }
+
+  .Infor-Client .main__content .col-two .payment {
+    padding: 0 8px;
+  }
+
+  .payment-page .Infor-Client {
+    margin: 0;
+  }
+
+  .bill .oder-list {
+    padding: 10px 10px 0;
+  }
+
+  .see-bill {
+    width: 100%;
+    border: none;
+  }
+
+  .body-content > .row {
+    flex-direction: column;
+  }
 
   /* footer */
   .footer .inner-wrap .inner-content .inner-left,

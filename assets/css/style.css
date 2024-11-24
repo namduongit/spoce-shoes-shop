@@ -101,6 +101,7 @@ header .inner-wrap .inner-user .user,
 header .inner-wrap .inner-user .user .parent {
   cursor: pointer;
   font-weight: 500;
+  position: relative;
 }
 
 header .inner-wrap .inner-user .user .parent .icon-name {
