@@ -27,7 +27,7 @@ function checkLogin() {
 
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
-        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công"', type: 'success', duration: 3000 });
+        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công', type: 'success', duration: 3000 });
         writeMainContent();
 
     } else {
@@ -57,7 +57,7 @@ function logOut() {
     document.querySelector('.login').style.display = 'block';
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
-    alert('Đã đăng xuất!');
+    toast({ title: 'SUCCESS', message: 'Đăng xuất thành công', type: 'success', duration: 3000 });
 }
 
 function showSideBar() {
@@ -1232,7 +1232,7 @@ function showUserModify(obj) {
         const emailRegex = /@[a-zA-z0-9]+\.[a-zA-z]{2,}$/;
 
         if (users.some(user => user.username == document.getElementById('username').value) && user.username != document.getElementById('username').value) {
-            alert('Username đã tồn tại trong hệ thống!');
+            toast({ title: 'WARNING', message: 'Username đã tồn tại trong hệ thống!', type: 'warning', duration: 3000 });
             return;
         }
         valid=true;
@@ -2055,12 +2055,12 @@ function sortOrder() {
 
     if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
         if (startDate.value == "") {
-            alert('Ngày bắt đầu chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn', type: 'warning', duration: 3000 });
             return;
         }
 
         if (endDate.value == "") {
-            alert('Ngày kết thúc chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn', type: 'warning', duration: 3000 });
             return;
         }
     }
