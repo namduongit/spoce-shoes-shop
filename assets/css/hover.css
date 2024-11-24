@@ -2,10 +2,13 @@ header .inner-wrap .inner-user .user .parent .child .group-form:hover {
     font-weight: bold;
     border-bottom: 2px solid black;
     transition: all 0.05s;
+    
 }
 
 header .inner-wrap .inner-user .user .parent:hover .child {
     display: block;
+    white-space: nowrap;
+    
 }
 .section-one .inner-wrap .inner-content .menu-1 > li > a:hover {
     font-weight: 500;

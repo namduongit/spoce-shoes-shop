@@ -109,6 +109,7 @@ header .inner-wrap .inner-user .user .parent .icon-name {
 }
 
 header .inner-wrap .inner-user .user .parent .icon-name>div {
+  width: 80px;
   margin-left: 5px;
 }
 
