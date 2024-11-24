@@ -2099,12 +2099,12 @@ function sortOrder() {
                         ordersSelected.push(item);
                     }
                 });
-            } else if (orderStatus.value == "4" && orderDate >= start && orderDate <= end) {
+            } else if (orderStatus.value == "4") {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy") {
+                    if (item.status == "Đã hủy" && orderDate >= start && orderDate <= end) {
                         ordersSelected.push(item);
                     }
                 });
