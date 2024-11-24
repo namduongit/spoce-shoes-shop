@@ -130,6 +130,8 @@ header .inner-wrap .inner-user .user .parent .child {
   z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
+    width:120%;
+
 }
 
 header .inner-wrap .inner-user .user .parent .child .group-form {
