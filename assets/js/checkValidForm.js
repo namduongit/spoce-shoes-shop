@@ -93,10 +93,10 @@ function checkValidRegister() {
         localStorage.removeItem("guestCart");
     }
 
+    toast({title:'SUCCESS',message:'Đăng ký tài khoản thành công!',type:'success',duration:3000});
 
     updateCartQuantity();
 
-    toast({title:'SUCCESS',message:'Đăng ký tài khoản thành công!',type:'success',duration:3000});
     hideTools();
     InterfaceLogin();
     return true;
