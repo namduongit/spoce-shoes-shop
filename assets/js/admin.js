@@ -2019,7 +2019,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã xác nhận";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.size] -= product.quantity;
+                products[productIndex].size[product.sizes] -= parseInt(product.quantity);
             });
         }
 
@@ -2031,7 +2031,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã hủy";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.size] += parseInt(product.quantity);
+                products[productIndex].size[product.sizes] += parseInt(product.quantity);
             });
         }
         orders[index].status = currentStatus;
