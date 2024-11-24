@@ -2125,8 +2125,8 @@ function showOrderDetail(obj) {
                 var productIndex = products.findIndex(item => product.id == item.id);
                 if (products[productIndex].size[product.sizes] - parseInt(product.quantity) < 0) {
                     toast({ title: 'WARNING', message: 'Số lượng trong kho không đủ', type: 'warning', duration: 3000 });
-                    document.getElementById('status-select').value = 1;
-                    currentStatus = "Đang xử lý";
+                    document.getElementById('status-select').value = 4;
+                    currentStatus = "Đã hủy";
                 } else {
                     products[productIndex].size[product.sizes] -= product.quantity;
                 }
