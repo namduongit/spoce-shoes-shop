@@ -891,7 +891,7 @@ function addingProduct() {
 
     var sizeOption = document.getElementById('size-select');
     var sizeArray = {};
-    if (sizeOption.value === 'clothes') {
+    if (brandField.value === 'clothes') {
         // Lấy các thẻ input
         var sizeS = document.getElementById('size-S');
         var sizeM = document.getElementById('size-M');
@@ -1167,7 +1167,7 @@ function showUserModify(obj) {
                     <label for="password">Mật khẩu: </label>
                     <input type="text" id="password" value="${user.password}">
                     <span class="text-danger" id="errol_pass_disable"></span>
-                     
+
                     <span class="text-danger" id="errol_pass_length"></span>
                 </div>
 
@@ -1259,13 +1259,13 @@ function showUserModify(obj) {
         if(users.some(user=>{
          return   user.phone==phone && username!=user.username;;
         })){
-            
+
             document.getElementById("errol_phone_same").innerHTML="Số điện thoại đã có người khác đăng ký";
             document.getElementById("errol_phone_same").display="block";
             valid=false;
         }
         else{
-          
+
             document.getElementById("errol_phone_same").display="none";
         }
         if(valid==false){

@@ -1038,6 +1038,11 @@ i {
     .mini-sidebar .sidebar-content .sidebar-item h3 {
         font-size: 15px;
     }
+
+    .adding-content form {
+        display: flex;
+        flex-direction: column; 
+    }
 }
 
 
@@ -1303,6 +1308,6 @@ i {
     color: red;
 }
 
-.model-1 {
+.model-2 {
     display: none;
 }

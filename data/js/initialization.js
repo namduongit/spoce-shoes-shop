@@ -1,8 +1,7 @@
 // Khởi tạo danh sách sản phẩm
 function loadProduct() {
     document.addEventListener("DOMContentLoaded", function () {
-        // Xóa dữ liệu cũ trong localStorage    
-        localStorage.removeItem("products");
+        // Xóa dữ liệu cũ trong localStorage
         console.log("LocalStorage đã được xóa khi tải trang!");
 
         // Tạo lại dữ liệu sau khi xóa
