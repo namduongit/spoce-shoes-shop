@@ -1276,7 +1276,6 @@ function showUserModify(obj) {
                     <span class="text-danger" id="errol_pass_length"></span>
                 </div>
 
-                </div>
                 <br>
 
                 <div class="form-item">
@@ -1294,7 +1293,6 @@ function showUserModify(obj) {
                     <span class="text-danger" id="errol_email_same"></span>
                 </div>
 
-                </div>
                 <br>
 
                 <div class="form-item">
@@ -2192,7 +2190,13 @@ function showOrderDetail(obj) {
             currentStatus = "Đã xác nhận";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] -= product.quantity;
+                if (products[productIndex].size[product.sizes] - parseInt(product.quantity) < 0) {
+                    toast({ title: 'WARNING', message: 'Số lượng trong kho không đủ', type: 'warning', duration: 3000 });
+                    document.getElementById('status-select').value = 4;
+                    currentStatus = "Đã hủy";
+                } else {
+                    products[productIndex].size[product.sizes] -= product.quantity;
+                }
             });
         }
 
