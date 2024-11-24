@@ -50,6 +50,219 @@
   .detail-background {
     .detail-product {
       width: 80%;
+      h2 {
+        font-size: 20px;
+      }
+
+      .detail-flex {
+
+        .details-pro {
+          h1 {
+            font-size: 18px;
+          }
+          .details-pro__content {
+            p {
+              display: none;
+            }
+            .product__price-old {
+              font-size: 16px;
+            }
+            .product__price-current {
+              font-size: 18px;
+            }
+            .product-quantity {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              span {
+                font-size: 16px;
+
+              }
+              input {
+                margin: 0 auto;
+                padding: 5px 10px;
+              }
+              button {
+                width: fit-content;
+                border: 2px solid black;
+                margin: 0 auto;
+                padding: 2px 15px;
+              }
+            }
+          }
+        }
+
+        .image {
+          .main-img {
+            height: fit-content;
+          }
+          .detail-product_content {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .detail-product .product-pay .pay-total {
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 20px;
+    width: 40%;
+    .pay-all {
+      font-size: 18px;
+    }
+  }
+
+  .detail-product .product-pay .cart-pay {
+    width: 60%;
+    display: flex;
+    margin-right: 20px;
+
+  }
+  .detail-product .product-pay .cart-pay .btn-pay {
+    padding: 2px 5px;
+      margin-left: 6px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 500;
+      background-color: #912126;
+      color: #edf8ff;
+      border: none;
+      cursor: pointer;
+      transition: all 0.5s;
+  }
+
+  /* Trang thanh toán */
+  .payment-page {
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 30px;
+
+    .Infor-Client {
+      margin-bottom: 0;
+
+      .col-two {
+        .payment .payment__content {
+          width: 100%;
+          border: solid 2px #3333336d;
+          border-bottom: none;
+          border-radius: 5px;
+
+          .payment-card {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .bill {
+
+      .oder-list {
+        width: 100%;
+        background-color: #F8F8F8;
+        height: 100%;
+        border: solid 2px #837b7bcc;
+        padding: 20px 50px 20px 50px;
+      }
+    }
+  }
+
+  .payment-page .bill {
+    padding-top: 50px;
+    margin-bottom: 100px;
+    border-top: 2px solid #ddd;
+  }
+
+  /* Cục thông tin trogn mục cài đặt */
+  .body-content>.row {
+    width: 100%;
+    margin: 50px auto 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+
+    .col-account {
+      width: 100%;
+      /* Chiều rộng khối hiển thị */
+      max-width: 100%;
+      /* Không vượt quá chiều rộng container cha */
+      overflow-x: auto;
+      /* Thanh cuộn ngang tự động */
+      overflow-y: hidden;
+      /* Ẩn thanh cuộn dọc nếu không cần */
+      white-space: nowrap;
+      /* Không cho phép ngắt dòng để dữ liệu nằm ngang */
+    }
+
+    .col-infor {
+      margin: 0;
+    }
+  }
+  #showProductCode {
+    .wrap-content {
+      width: fit-content  ;
+
+    }
+  }
+
+
+}
+
+
+
+
+
+/* Tablet 740 - 1023*/
+@media (min-width: 740px) and (max-width: 1023px) {
+
+  /* Cục login-resgister */
+  .user-content-selection {
+    .inner-content {
+      height: fit-content;
+
+
+      .left-card {
+        display: none;
+      }
+
+      .right-card {
+        width: 100%;
+        height: 100%;
+        align-content: unset;
+        justify-items: center;
+        padding: 50px 50px;
+
+        .card-content {
+          form .register-form {
+            display: flex;
+            flex-direction: column;
+
+            input {
+              width: 100%;
+            }
+          }
+
+          form .register-form .left-form {
+            width: 100%;
+            padding: 0;
+          }
+
+          form .register-form .right-form {
+            width: 100%;
+            padding: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+  /* Cục hiển thị thông tin sản phẩm */
+  .detail-background {
+    .detail-product {
+      width: 80%;
 
       .detail-flex {
         .details-pro {
@@ -151,22 +364,10 @@
   #showProductCode {
     .wrap-content {
       width: fit-content  ;
-      
+
     }
   }
 
-
-
-
-
-}
-
-
-
-
-
-/* Tablet 740 - 1023*/
-@media (min-width: 740px) and (max-width: 1023px) {
   /* dau trang */
 
   .inner-wrap {
