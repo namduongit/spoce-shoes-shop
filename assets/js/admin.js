@@ -1953,7 +1953,7 @@ function showOrderDetail(obj) {
     var str = "";
     var price = 0;
     order.products_buy.forEach(item => {
-        str = str + item.quantity + "x " + item.name_product + "; ";
+        str = str + item.quantity + "x " + "SIZE " + item.sizes+ " " + item.name_product + ";\n";
         var priceOfProduct = parseInt(item.sell.replace(/[^0-9]/g, ""));
         var quantity = parseInt(item.quantity);
         price = price + quantity * priceOfProduct;
@@ -1971,6 +1971,8 @@ function showOrderDetail(obj) {
         <h2>Chi tiết đơn hàng</h2>
         <h4>Thông tin đơn hàng</h4>
         <p>${str}</p>
+        <h4>Mã đơn hàng</h4>
+        <p>${order.code}</p>
         <h4>Tên khách hàng</h4>
         <p>${order.name}</p>
         <h4>Số điện thoại</h4>
@@ -2019,7 +2021,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã xác nhận";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.size] -= product.quantity;
+                products[productIndex].size[product.sizes] -= parseInt(product.quantity);
             });
         }
 
@@ -2031,7 +2033,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã hủy";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.size] += parseInt(product.quantity);
+                products[productIndex].size[product.sizes] += parseInt(product.quantity);
             });
         }
         orders[index].status = currentStatus;
@@ -2099,12 +2101,12 @@ function sortOrder() {
                         ordersSelected.push(item);
                     }
                 });
-            } else if (orderStatus.value == "4" && orderDate >= start && orderDate <= end) {
+            } else if (orderStatus.value == "4") {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy") {
+                    if (item.status == "Đã hủy" && orderDate >= start && orderDate <= end) {
                         ordersSelected.push(item);
                     }
                 });
