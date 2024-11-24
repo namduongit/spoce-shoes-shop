@@ -747,53 +747,17 @@ function showAddingProduct() {
                 <div class="size-option">
                     <h4>Chọn size:</h4>
                 </div>
-                <div class="quantity-option">
-                    <div class="model-1">
-                        <label for="">39: </label>
-                        <input type="number" id="size-39" value="0">
-                        <br>
-                        <label for="">40: </label>
-                        <input type="number" id="size-40" value="0">
-                        <br>
-                        <label for="">41: </label>
-                        <input type="number" id="size-41" value="0">
-                        <br>
-                        <label for="">42: </label>
-                        <input type="number" id="size-42" value="0">
-                        <br>
-                        <label for="">43: </label>
-                        <input type="number" id="size-43" value="0">
-                        <br>
-                        <label for="">44: </label>
-                        <input type="number" id="size-44" value="0">
-                    </div>
-                    <div class="model-2">
-                        <label for="">S: </label>
-                        <input type="number" id="size-S" value="0">
-                        <br>
-                        <label for="">M: </label>
-                        <input type="number" id="size-M" value="0">
-                        <br>
-                        <label for="">L: </label>
-                        <input type="number" id="size-L" value="0">
-                        <br>
-                        <label for="">XL: </label>
-                        <input type="number" id="size-XL" value="0">
-                        <br>
-                        <label for="">2XL: </label>
-                        <input type="number" id="size-2XL" value="0">
-                        <br>
-                        <label for="">3XL: </label>
-                        <input type="number" id="size-3XL" value="0">
-                    </div>
-                </div>
+                <select id="size-select">
+                
+                </select>
+                <input type="number" id="quantity">
             </div>
 
         </form>
     </div>
 
     <div class="adding-btn-container">
-        <a href="#" onclick="addingProduct()">
+        <a href="#">
             <div class="adding-btn">Thêm</div>
         </a>
 
@@ -802,44 +766,332 @@ function showAddingProduct() {
         </a>
     </div>
     `;
+    let s = '';
+    if (document.getElementById("brand-select").value != "Clothes") {
+        s = `
+         <option>35</option>
+          <option>36</option>
+           <option>37</option>
+            <option>38</option>
+        <option>39</option>
+        <option>40</option>
+        <option>41</option>
+        <option>42</option>
+        <option>43</option>
+        <option>44</option>
+        `
+    } else {
+        s = ` 
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>2XL</option>
+        <option>3XL</option>`
+    }
+    var sizeArray = {
+        "35": 0,
+       "36": 0,
+       "37": 0,
+       "38": 0,
+       "39": 0,
+       "40": 0,
+       "41": 0,
+       "42": 0,
+       "43": 0,
+       "44": 0
+   };
+    document.getElementById("size-select").innerHTML = s;
+    document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
+    document.getElementById("original-price").onchange = function () {
 
+        document.getElementById("original-price").value = ChangetoVND(document.getElementById("original-price").value);
+
+    }
+    document.getElementById("sell-price").onchange = function () {
+
+        document.getElementById("sell-price").value = ChangetoVND(document.getElementById("sell-price").value);
+    }
     // Add event listener để thay đổi size theo nhãn hiệu
     document.getElementById('brand-select').addEventListener('change', () => {
-        const brand = document.getElementById('brand-select').value;
-        const quantityOption = document.querySelector('.quantity-option');
-        if (brand === 'clothes') {
 
-            quantityOption.querySelector('.model-1').style.display = 'none';
-            quantityOption.querySelector('.model-2').style.display = 'block';
-
+        if (document.getElementById("brand-select").value != "clothes") {
+            console.log("aa");
+            s = `
+            <option>39</option>
+            <option>40</option>
+            <option>41</option>
+            <option>42</option>
+            <option>43</option>
+            <option>44</option>
+            `
+        } else {
+            s = ` 
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+            <option>3XL</option>`
         }
-        else if (brand === 'nike' || brand === 'adidas' || brand === 'VANS' || brand === 'converse') {
 
-            quantityOption.querySelector('.model-1').style.display = 'block';
-            quantityOption.querySelector('.model-2').style.display = 'none';
-        }
-
+        document.getElementById("size-select").innerHTML = s;
+       
 
     });
-}
+    
+  
+    document.getElementById("size-select").onchange = function () {
+        document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
+        console.log(document.getElementById("size-select").value.toString(),document.getElementById("quantity").value,sizeArray)
+    }
+    document.getElementById("quantity").oninput = function () {
+       sizeArray[document.getElementById("size-select").value.toString()] = document.getElementById("quantity").value;
+    }
 
-function calculateDiscount() {
-    var originalPrice = document.getElementById('original-price').value;
-    var sellPrice = document.getElementById('sell-price').value;
-    // Loại bỏ để đưa về thành số
+    document.querySelector(".adding-btn-container").onclick= function(){
+        var idField = document.getElementById('id');
+    var nameField = document.getElementById('name');
+    var brandField = document.getElementById('brand-select');
+    var orgPriceField = document.getElementById('original-price');
+    var sellPriceField = document.getElementById('sell-price');
+    var discountField = document.getElementById('discount');
+
+    var mainImg = document.getElementById('main-img');      
+    var promo1 = document.getElementById('promo-1');
+    var promo2 = document.getElementById('promo-2');
+    var promo3 = document.getElementById('promo-3');
+    var promo4 = document.getElementById('promo-4');
+
+    var sizeOption = document.getElementById('size-select');
+   
+
+    if (nameField.value === '') {
+        alert('Tên sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (orgPriceField.value === '') {
+        alert('Giá gốc sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (sellPriceField.value === '') {
+        alert('Giá bán sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (discountField.value === '' || isNaN(discountField.value)) {
+        alert('Giảm giá sản phẩm không được bỏ trống');
+        return;
+    }
+
+
+
+
+    var mainImgURL="";
+    if(mainImg.value !== ''){
+        var mainImgFile = mainImg.files[0];
+     
+       mainImgURL = URL.createObjectURL(mainImgFile);
+
+    }
+  
+    var newProduct = {};
+    newProduct.id = idField.value;
+    newProduct.name_product = nameField.value;
+    newProduct.brand = brandField.value;
+    newProduct.discount = discountField.value;
+    newProduct.image = mainImgURL;
+    // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
+    var originalPrice = orgPriceField.value;
+    var sellPrice = sellPriceField.value;
+
     originalPrice = originalPrice.replace(/\./g, '');
     originalPrice = originalPrice.replace('đ', '');
     sellPrice = sellPrice.replace(/\./g, '');
     sellPrice = sellPrice.replace('đ', '');
-    // Tính giảm theo phần trăm
-    var discount = (originalPrice - sellPrice) / originalPrice * 100;
-    // Đưa giá trị vào ô giảm
-    document.getElementById('discount').value = discount;
+    newProduct.price = formatMoney(parseInt(originalPrice));
+    newProduct.sell = formatMoney(parseInt(sellPrice));
+    newProduct.size = sizeArray;
+    newProduct.sizes =
+        ["35","36","37","38","39", "40", "41", "42", "43", "44"];
+    newProduct.promo_image = {
+        image_1:"",
+        image_2:"",
+        image_3:"",
+        image_4:"",
+    };
 
 
-    // Cho 2 thẻ kia thay đổi theo formatMoney
-    document.getElementById('original-price').value = formatMoney(parseInt(originalPrice));
-    document.getElementById('sell-price').value = formatMoney(parseInt(sellPrice));
+
+    if (promo1.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_1 = promoImgURL;
+    }
+
+    if (promo2.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_2 = promoImgURL;
+    }
+
+    if (promo3.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_3 = promoImgURL;
+    }
+
+    if (promo4.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_4 = promoImgURL;
+    }
+    if(newProduct.image==""){
+        newProduct.image="./assets/image/announcement/comingsoon.jpg";
+    }
+
+
+
+
+
+    products.push(newProduct);
+    localStorage.setItem('products', JSON.stringify(products));
+    toast({ title: 'SUCCESS', message: 'Thêm sản phẩm thành công', type: 'success', duration: 3000 });
+
+    resetForm();
+    window.onload();
+}
+}
+function addingProduct() {
+
+    var idField = document.getElementById('id');
+    var nameField = document.getElementById('name');
+    var brandField = document.getElementById('brand-select');
+    var orgPriceField = document.getElementById('original-price');
+    var sellPriceField = document.getElementById('sell-price');
+    var discountField = document.getElementById('discount');
+
+    var mainImg = document.getElementById('main-img');
+    var promo1 = document.getElementById('promo-1');
+    var promo2 = document.getElementById('promo-2');
+    var promo3 = document.getElementById('promo-3');
+    var promo4 = document.getElementById('promo-4');
+
+    var sizeOption = document.getElementById('size-select');
+
+
+    if (nameField.value === '') {
+        alert('Tên sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (orgPriceField.value === '') {
+        alert('Giá gốc sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (sellPriceField.value === '') {
+        alert('Giá bán sản phẩm không được bỏ trống');
+        return;
+    }
+
+    if (discountField.value === '' || isNaN(discountField.value)) {
+        alert('Giảm giá sản phẩm không được bỏ trống');
+        return;
+    }
+
+
+
+
+    var mainImgURL = "";
+    if (mainImg.value !== '') {
+        var mainImgFile = mainImg.files[0];
+
+        mainImgURL = URL.createObjectURL(mainImgFile);
+
+    }
+
+    var newProduct = {};
+    newProduct.id = idField.value;
+    newProduct.name_product = nameField.value;
+    newProduct.brand = brandField.value;
+    newProduct.discount = discountField.value;
+    newProduct.image = mainImgURL;
+    // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
+    var originalPrice = orgPriceField.value;
+    var sellPrice = sellPriceField.value;
+
+    originalPrice = originalPrice.replace(/\./g, '');
+    originalPrice = originalPrice.replace('đ', '');
+    sellPrice = sellPrice.replace(/\./g, '');
+    sellPrice = sellPrice.replace('đ', '');
+    newProduct.price = formatMoney(parseInt(originalPrice));
+    newProduct.sell = formatMoney(parseInt(sellPrice));
+    newProduct.size = sizeArray;
+    newProduct.sizes =
+        ["39", "40", "41", "42", "43", "44"];
+    newProduct.promo_image = {
+        image_1: "",
+        image_2: "",
+        image_3: "",
+        image_4: "",
+    };
+
+
+
+    if (promo1.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_1 = promoImgURL;
+    }
+
+    if (promo2.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_2 = promoImgURL;
+    }
+
+    if (promo3.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_3 = promoImgURL;
+    }
+
+    if (promo4.value !== '') {
+        let promoImgFile = promo1.files[0];
+        let promoImgURL = URL.createObjectURL(promoImgFile);
+        newProduct.promo_image.image_4 = promoImgURL;
+    }
+    if (newProduct.image == "") {
+        newProduct.image = "./assets/image/announcement/comingsoon.jpg";
+    }
+
+
+
+
+
+    products.push(newProduct);
+    localStorage.setItem('products', JSON.stringify(products));
+    toast({ title: 'SUCCESS', message: 'Thêm sản phẩm thành công', type: 'success', duration: 3000 });
+
+    resetForm();
+    window.onload();
+}
+
+function calculateDiscount() {
+    event.preventDefault;
+    var originalPrice = document.getElementById('original-price').value;
+    var sellPrice = document.getElementById('sell-price').value;
+    // Loại bỏ để đưa về thành số
+    if (parsePricetoNumber(originalPrice) == 0 || parsePricetoNumber(originalPrice) < parsePricetoNumber(sellPrice)) {
+        document.getElementById("discount").value = "0";
+        return;
+    }
+    discount = 100 - Math.floor((parsePricetoNumber(sellPrice) / parsePricetoNumber(originalPrice)) * 100);
+    document.getElementById("discount").value = discount;
+
 }
 
 function formatMoney(money) {
@@ -872,153 +1124,6 @@ function resetForm() {
     document.getElementById('promo-3').value = '';
     document.getElementById('promo-4').value = '';
 }
-
-// hàm để kiểm tra và tạo sản phẩm mới đồng thời cập nhật lên local storage
-function addingProduct() {
-
-    var idField = document.getElementById('id');
-    var nameField = document.getElementById('name');
-    var brandField = document.getElementById('brand-select');
-    var orgPriceField = document.getElementById('original-price');
-    var sellPriceField = document.getElementById('sell-price');
-    var discountField = document.getElementById('discount');
-
-    var mainImg = document.getElementById('main-img');
-    var promo1 = document.getElementById('promo-1');
-    var promo2 = document.getElementById('promo-2');
-    var promo3 = document.getElementById('promo-3');
-    var promo4 = document.getElementById('promo-4');
-
-    var sizeArray = {};
-    if (brandField.value === 'clothes') {
-        // Lấy các thẻ input
-        var sizeS = document.getElementById('size-S');
-        var sizeM = document.getElementById('size-M');
-        var sizeL = document.getElementById('size-L');
-        var sizeXL = document.getElementById('size-XL');
-        var size2XL = document.getElementById('size-2XL');
-        var size3XL = document.getElementById('size-3XL');
-        // Đưa vào mảng theo từng giá trị value chuyển sang int
-        sizeArray = {
-            S: parseInt(sizeS.value),
-            M: parseInt(sizeM.value),
-            L: parseInt(sizeL.value),
-            XL: parseInt(sizeXL.value),
-            '2XL': parseInt(size2XL.value),
-            '3XL': parseInt(size3XL.value)
-        };
-    }
-    else {
-        // Lấy các thẻ input
-
-        var size39 = document.getElementById('size-39');
-        var size40 = document.getElementById('size-40');
-        var size41 = document.getElementById('size-41');
-        var size42 = document.getElementById('size-42');
-        var size43 = document.getElementById('size-43');
-        var size44 = document.getElementById('size-44');
-        // Đưa vào mảng theo từng giá trị value chuyển sang int
-        sizeArray = {
-            39: parseInt(size39.value),
-            40: parseInt(size40.value),
-            41: parseInt(size41.value),
-            42: parseInt(size42.value),
-            43: parseInt(size43.value),
-            44: parseInt(size44.value)
-        };
-    }
-
-
-    if (nameField.value === '') {
-        alert('Tên sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (orgPriceField.value === '') {
-        alert('Giá gốc sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (sellPriceField.value === '') {
-        alert('Giá bán sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (discountField.value === '' || isNaN(discountField.value)) {
-        alert('Giảm giá sản phẩm không được bỏ trống');
-        return;
-    }
-
-
-    if (mainImg.value === '') {
-        alert('Ảnh sản phẩm không được bỏ trống');
-        return;
-    }
-
-
-    var mainImgFile = mainImg.files[0];
-    var mainImgURL = URL.createObjectURL(mainImgFile);
-
-    var newProduct = {};
-    newProduct.id = idField.value;
-    newProduct.name_product = nameField.value;
-    newProduct.brand = brandField.value;
-    newProduct.discount = discountField.value;
-    newProduct.image = mainImgURL;
-    // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
-    var originalPrice = orgPriceField.value;
-    var sellPrice = sellPriceField.value;
-
-    originalPrice = originalPrice.replace(/\./g, '');
-    originalPrice = originalPrice.replace('đ', '');
-    sellPrice = sellPrice.replace(/\./g, '');
-    sellPrice = sellPrice.replace('đ', '');
-    newProduct.price = formatMoney(parseInt(originalPrice));
-    newProduct.sell = formatMoney(parseInt(sellPrice));
-    newProduct.size = sizeArray;
-    newProduct.sizes =
-        ["39", "40", "41", "42", "43", "44"];
-    newProduct.promo_image = {};
-
-
-
-    if (promo1.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_1 = promoImgURL;
-    }
-
-    if (promo2.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_2 = promoImgURL;
-    }
-
-    if (promo3.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_3 = promoImgURL;
-    }
-
-    if (promo4.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_4 = promoImgURL;
-    }
-
-
-
-
-
-
-    products.push(newProduct);
-    localStorage.setItem('products', JSON.stringify(products));
-    alert('Thêm sản phẩm thành công');
-    resetForm();
-}
-
-
-
 
 
 var users = JSON.parse(localStorage.getItem('users'));
