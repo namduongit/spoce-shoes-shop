@@ -343,7 +343,7 @@ function Order(product_list) {
             id = user.id + 1;
         });
         if(usercurrent.address.some(user=>{
-            return user.name==name && user.phone==phone && user.city==city && user.district==district && user.street==street;
+            return user.consignee==name && user.phone==phone && user.city==city && user.district==district && user.street==street;
         })){
         } else{
             address.id=id;
