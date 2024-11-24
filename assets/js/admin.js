@@ -791,16 +791,16 @@ function showAddingProduct() {
     }
     var sizeArray = {
         "35": 0,
-       "36": 0,
-       "37": 0,
-       "38": 0,
-       "39": 0,
-       "40": 0,
-       "41": 0,
-       "42": 0,
-       "43": 0,
-       "44": 0
-   };
+        "36": 0,
+        "37": 0,
+        "38": 0,
+        "39": 0,
+        "40": 0,
+        "41": 0,
+        "42": 0,
+        "43": 0,
+        "44": 0
+    };
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
     document.getElementById("original-price").onchange = function () {
@@ -843,126 +843,126 @@ function showAddingProduct() {
 
     document.getElementById("size-select").onchange = function () {
         document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
-        console.log(document.getElementById("size-select").value.toString(),document.getElementById("quantity").value,sizeArray)
+        console.log(document.getElementById("size-select").value.toString(), document.getElementById("quantity").value, sizeArray)
     }
     document.getElementById("quantity").oninput = function () {
-       sizeArray[document.getElementById("size-select").value.toString()] = document.getElementById("quantity").value;
+        sizeArray[document.getElementById("size-select").value.toString()] = document.getElementById("quantity").value;
     }
 
-    document.querySelector(".adding-btn-container").onclick= function(){
+    document.querySelector(".adding-btn-container").onclick = function () {
         var idField = document.getElementById('id');
-    var nameField = document.getElementById('name');
-    var brandField = document.getElementById('brand-select');
-    var orgPriceField = document.getElementById('original-price');
-    var sellPriceField = document.getElementById('sell-price');
-    var discountField = document.getElementById('discount');
+        var nameField = document.getElementById('name');
+        var brandField = document.getElementById('brand-select');
+        var orgPriceField = document.getElementById('original-price');
+        var sellPriceField = document.getElementById('sell-price');
+        var discountField = document.getElementById('discount');
 
-    var mainImg = document.getElementById('main-img');
-    var promo1 = document.getElementById('promo-1');
-    var promo2 = document.getElementById('promo-2');
-    var promo3 = document.getElementById('promo-3');
-    var promo4 = document.getElementById('promo-4');
+        var mainImg = document.getElementById('main-img');
+        var promo1 = document.getElementById('promo-1');
+        var promo2 = document.getElementById('promo-2');
+        var promo3 = document.getElementById('promo-3');
+        var promo4 = document.getElementById('promo-4');
 
-    var sizeOption = document.getElementById('size-select');
+        var sizeOption = document.getElementById('size-select');
 
 
-    if (nameField.value === '') {
-        alert('Tên sản phẩm không được bỏ trống');
-        return;
+        if (nameField.value === '') {
+            alert('Tên sản phẩm không được bỏ trống');
+            return;
+        }
+
+        if (orgPriceField.value === '') {
+            alert('Giá gốc sản phẩm không được bỏ trống');
+            return;
+        }
+
+        if (sellPriceField.value === '') {
+            alert('Giá bán sản phẩm không được bỏ trống');
+            return;
+        }
+
+        if (discountField.value === '' || isNaN(discountField.value)) {
+            alert('Giảm giá sản phẩm không được bỏ trống');
+            return;
+        }
+
+
+
+
+        var mainImgURL = "";
+        if (mainImg.value !== '') {
+            var mainImgFile = mainImg.files[0];
+
+            mainImgURL = URL.createObjectURL(mainImgFile);
+
+        }
+
+        var newProduct = {};
+        newProduct.id = idField.value;
+        newProduct.name_product = nameField.value;
+        newProduct.brand = brandField.value;
+        newProduct.discount = discountField.value;
+        newProduct.image = mainImgURL;
+        // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
+        var originalPrice = orgPriceField.value;
+        var sellPrice = sellPriceField.value;
+
+        originalPrice = originalPrice.replace(/\./g, '');
+        originalPrice = originalPrice.replace('đ', '');
+        sellPrice = sellPrice.replace(/\./g, '');
+        sellPrice = sellPrice.replace('đ', '');
+        newProduct.price = formatMoney(parseInt(originalPrice));
+        newProduct.sell = formatMoney(parseInt(sellPrice));
+        newProduct.size = sizeArray;
+        newProduct.sizes =
+            ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44"];
+        newProduct.promo_image = {
+            image_1: "",
+            image_2: "",
+            image_3: "",
+            image_4: "",
+        };
+
+
+
+        if (promo1.value !== '') {
+            let promoImgFile = promo1.files[0];
+            let promoImgURL = URL.createObjectURL(promoImgFile);
+            newProduct.promo_image.image_1 = promoImgURL;
+        }
+
+        if (promo2.value !== '') {
+            let promoImgFile = promo1.files[0];
+            let promoImgURL = URL.createObjectURL(promoImgFile);
+            newProduct.promo_image.image_2 = promoImgURL;
+        }
+
+        if (promo3.value !== '') {
+            let promoImgFile = promo1.files[0];
+            let promoImgURL = URL.createObjectURL(promoImgFile);
+            newProduct.promo_image.image_3 = promoImgURL;
+        }
+
+        if (promo4.value !== '') {
+            let promoImgFile = promo1.files[0];
+            let promoImgURL = URL.createObjectURL(promoImgFile);
+            newProduct.promo_image.image_4 = promoImgURL;
+        }
+        if (newProduct.image == "") {
+            newProduct.image = "./assets/image/announcement/comingsoon.jpg";
+        }
+
+
+
+
+
+        products.push(newProduct);
+        localStorage.setItem('products', JSON.stringify(products));
+        toast({ title: 'SUCCESS', message: 'Thêm sản phẩm thành công', type: 'success', duration: 3000 });
+
+        resetForm();
+        window.onload();
     }
-
-    if (orgPriceField.value === '') {
-        alert('Giá gốc sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (sellPriceField.value === '') {
-        alert('Giá bán sản phẩm không được bỏ trống');
-        return;
-    }
-
-    if (discountField.value === '' || isNaN(discountField.value)) {
-        alert('Giảm giá sản phẩm không được bỏ trống');
-        return;
-    }
-
-
-
-
-    var mainImgURL="";
-    if(mainImg.value !== ''){
-        var mainImgFile = mainImg.files[0];
-
-       mainImgURL = URL.createObjectURL(mainImgFile);
-
-    }
-
-    var newProduct = {};
-    newProduct.id = idField.value;
-    newProduct.name_product = nameField.value;
-    newProduct.brand = brandField.value;
-    newProduct.discount = discountField.value;
-    newProduct.image = mainImgURL;
-    // Đổi xoá hết dấu '.' và 'đ' trong giá gốc và giá bán
-    var originalPrice = orgPriceField.value;
-    var sellPrice = sellPriceField.value;
-
-    originalPrice = originalPrice.replace(/\./g, '');
-    originalPrice = originalPrice.replace('đ', '');
-    sellPrice = sellPrice.replace(/\./g, '');
-    sellPrice = sellPrice.replace('đ', '');
-    newProduct.price = formatMoney(parseInt(originalPrice));
-    newProduct.sell = formatMoney(parseInt(sellPrice));
-    newProduct.size = sizeArray;
-    newProduct.sizes =
-        ["35","36","37","38","39", "40", "41", "42", "43", "44"];
-    newProduct.promo_image = {
-        image_1:"",
-        image_2:"",
-        image_3:"",
-        image_4:"",
-    };
-
-
-
-    if (promo1.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_1 = promoImgURL;
-    }
-
-    if (promo2.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_2 = promoImgURL;
-    }
-
-    if (promo3.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_3 = promoImgURL;
-    }
-
-    if (promo4.value !== '') {
-        let promoImgFile = promo1.files[0];
-        let promoImgURL = URL.createObjectURL(promoImgFile);
-        newProduct.promo_image.image_4 = promoImgURL;
-    }
-    if(newProduct.image==""){
-        newProduct.image="./assets/image/announcement/comingsoon.jpg";
-    }
-
-
-
-
-
-    products.push(newProduct);
-    localStorage.setItem('products', JSON.stringify(products));
-    toast({ title: 'SUCCESS', message: 'Thêm sản phẩm thành công', type: 'success', duration: 3000 });
-
-    resetForm();
-    window.onload();
-}
 }
 function addingProduct() {
 
@@ -1338,40 +1338,40 @@ function showUserModify(obj) {
             alert('Username đã tồn tại trong hệ thống!');
             return;
         }
-        valid=true;
-        let username=document.getElementById("username").value;
-        let password=document.getElementById("password").value;
-        let name=document.getElementById("fullname").value;
-        let email=document.getElementById("email").value;
-        let phone=document.getElementById("phone").value;
-        var validation=new Validation();
-        valid&=validation.kiemtraRong(password,"#errol_pass_disable")&validation.kiemtraRong(email,"#errol_email_disable")&validation.kiemtraRong(name,"#errol_name_disable")&validation.kiemtraRong(phone,"#errol_phone_disable")&validation.kiemtraDodai(password,"#errol_pass_length",6)&validation.kiemtraEmail(email,"#errol_email_wrong")&validation.kiemtraSDT(phone,"#errol_phone_wrong");
-        if(valid==0) {
+        valid = true;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let name = document.getElementById("fullname").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        var validation = new Validation();
+        valid &= validation.kiemtraRong(password, "#errol_pass_disable") & validation.kiemtraRong(email, "#errol_email_disable") & validation.kiemtraRong(name, "#errol_name_disable") & validation.kiemtraRong(phone, "#errol_phone_disable") & validation.kiemtraDodai(password, "#errol_pass_length", 6) & validation.kiemtraEmail(email, "#errol_email_wrong") & validation.kiemtraSDT(phone, "#errol_phone_wrong");
+        if (valid == 0) {
             return false;
         }
-        let i=0;
-        if(users.some(user=>{
-          return user.email==email && username!=user.username;
-        })){
-            document.getElementById("errol_email_same").innerHTML="Email đã có người khác đăng ký";
-            document.getElementById("errol_email_same").display="block";
-            valid=false;
-        } else{
-            document.getElementById("errol_email_same").display="none";
+        let i = 0;
+        if (users.some(user => {
+            return user.email == email && username != user.username;
+        })) {
+            document.getElementById("errol_email_same").innerHTML = "Email đã có người khác đăng ký";
+            document.getElementById("errol_email_same").display = "block";
+            valid = false;
+        } else {
+            document.getElementById("errol_email_same").display = "none";
         }
-        if(users.some(user=>{
-         return   user.phone==phone && username!=user.username;;
-        })){
+        if (users.some(user => {
+            return user.phone == phone && username != user.username;;
+        })) {
 
-            document.getElementById("errol_phone_same").innerHTML="Số điện thoại đã có người khác đăng ký";
-            document.getElementById("errol_phone_same").display="block";
-            valid=false;
+            document.getElementById("errol_phone_same").innerHTML = "Số điện thoại đã có người khác đăng ký";
+            document.getElementById("errol_phone_same").display = "block";
+            valid = false;
         }
-        else{
+        else {
 
-            document.getElementById("errol_phone_same").display="none";
+            document.getElementById("errol_phone_same").display = "none";
         }
-        if(valid==false){
+        if (valid == false) {
             return false;
         }
         users[indexOfUser].username = document.getElementById('username').value;
@@ -1489,42 +1489,42 @@ function showAddingCustomerForm() {
 
         var validation = new Validation();
         var valid = true;
-    //Check validation
-    valid &= validation.kiemtraRong(username.value, "#errol_user_disable") & validation.kiemtraRong(password.value, "#errol_password_disable") & validation.kiemtraRong(fullname.value, "#errol_name_disable") & validation.kiemtraRong(emailAddress.value, "#errol_email_disable") & validation.kiemtraRong(phoneNumber.value, "#errol_tel_disable") & validation.kiemtraDodai(username.value, "#errol_user_length", 6) & validation.kiemtraDodai(password.value, "#errol_password_length", 6) & validation.kiemtraEmail(emailAddress.value, "#errol_email_wrong") & validation.kiemtraSDT(phoneNumber.value,"#errol_tel_pattern");
-    if (valid === 0) {
-        return false;
-    }
-    if (users.some(user => {
-        return user.username === username.value;
-    })) {
-        document.querySelector("#errol_user_same").innerHTML = "Tên tài khoản đã tồn tại!";
-        document.querySelector("#errol_user_same").style.display = "block";
-        valid=false;
-    } else {
-        document.querySelector("#errol_user_same").style.display = "none";
-    }
-    if (users.some(user => {
-        return user.email === email.value;
-    })) {
-        document.querySelector("#errol_email_same").innerHTML = "email đã được đăng ký cho tài khoản khác!";
-        document.querySelector("#errol_email_same").style.display = "block";
-        valid=false;
-    }
-    else {
-        document.querySelector("#errol_email_same").style.display = "none";
-    }
-    if (users.some(user => {
-        return user.phone === phone.value;
-    })) {
-        document.querySelector("#errol_tel_same").innerHTML = "Số điện thoại đã được đăng ký cho tài khoản khác!";
-        document.querySelector("#errol_tel_same").style.display = "block";
-        valid=false;
-    } else {
-        document.querySelector("#errol_tel_same").style.display = "none";
-    }
-    if(valid==false){
-        return;
-    }
+        //Check validation
+        valid &= validation.kiemtraRong(username.value, "#errol_user_disable") & validation.kiemtraRong(password.value, "#errol_password_disable") & validation.kiemtraRong(fullname.value, "#errol_name_disable") & validation.kiemtraRong(emailAddress.value, "#errol_email_disable") & validation.kiemtraRong(phoneNumber.value, "#errol_tel_disable") & validation.kiemtraDodai(username.value, "#errol_user_length", 6) & validation.kiemtraDodai(password.value, "#errol_password_length", 6) & validation.kiemtraEmail(emailAddress.value, "#errol_email_wrong") & validation.kiemtraSDT(phoneNumber.value, "#errol_tel_pattern");
+        if (valid === 0) {
+            return false;
+        }
+        if (users.some(user => {
+            return user.username === username.value;
+        })) {
+            document.querySelector("#errol_user_same").innerHTML = "Tên tài khoản đã tồn tại!";
+            document.querySelector("#errol_user_same").style.display = "block";
+            valid = false;
+        } else {
+            document.querySelector("#errol_user_same").style.display = "none";
+        }
+        if (users.some(user => {
+            return user.email === email.value;
+        })) {
+            document.querySelector("#errol_email_same").innerHTML = "email đã được đăng ký cho tài khoản khác!";
+            document.querySelector("#errol_email_same").style.display = "block";
+            valid = false;
+        }
+        else {
+            document.querySelector("#errol_email_same").style.display = "none";
+        }
+        if (users.some(user => {
+            return user.phone === phone.value;
+        })) {
+            document.querySelector("#errol_tel_same").innerHTML = "Số điện thoại đã được đăng ký cho tài khoản khác!";
+            document.querySelector("#errol_tel_same").style.display = "block";
+            valid = false;
+        } else {
+            document.querySelector("#errol_tel_same").style.display = "none";
+        }
+        if (valid == false) {
+            return;
+        }
         var newCustomer = {
             username: username.value,
             password: password.value,
@@ -1831,174 +1831,184 @@ function searchOrder() {
     document.querySelector('.date-info .date-end').innerText = `Đến: ${new Date(year, month, 0).getDate()}/${month}/${year}`;
 
     // Lấy danh sách các hóa đơn trong tháng/năm
-    const billOfSelectDate = allBill.filter(item => {
-        let dateOfBill = item.paymentdate.split(' ')[2];
-        let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
-        return parseInt(monthOfBill) === month && parseInt(yearOfBill) === year;
-    });
+    const billOfSelectDate = [];
+    if (allBill) {
+        allBill.forEach(item => {
+            let dateOfBill = item.paymentdate.split(' ')[2];
+            let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
+            if (parseInt(monthOfBill) === month && parseInt(yearOfBill) === year) {
+                billOfSelectDate.push(item);
+            }
+        });
+        if (billOfSelectDate) {
 
-    // Tính số ngày trong tháng
-    const daysInMonth = new Date(year, month, 0).getDate();
-    // Tạo mảng có số ngày trong tháng và khởi tạo bằng 0
-    let dayCounts = Array(daysInMonth).fill(0);
-    resetDataList();
-    // Đếm số đơn hàng theo từng ngày
-    billOfSelectDate.forEach(item => {
-        let dateOfBill = item.paymentdate.split(' ')[2];
-        let day = parseInt(dateOfBill.split('/')[0]);
-        dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
-        // Tính tổng số lượng và doanh thu
-        let products_buy = item.products_buy;
-        products_buy.forEach(pro => {
-            totalQuantity += parseInt(pro.quantity);
-            totalMoney += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
-            let nameBrand = pro.brand;
-            let nameProduct = pro.name_product;
+            // Tính số ngày trong tháng
+            const daysInMonth = new Date(year, month, 0).getDate();
+            // Tạo mảng có số ngày trong tháng và khởi tạo bằng 0
+            let dayCounts = Array(daysInMonth).fill(0);
+            resetDataList();
+            // Đếm số đơn hàng theo từng ngày
+            billOfSelectDate.forEach(item => {
+                let dateOfBill = item.paymentdate.split(' ')[2];
+                let day = parseInt(dateOfBill.split('/')[0]);
+                dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
+                // Tính tổng số lượng và doanh thu
+                let products_buy = item.products_buy;
+                products_buy.forEach(pro => {
+                    totalQuantity += parseInt(pro.quantity);
+                    totalMoney += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
+                    let nameBrand = pro.brand;
+                    let nameProduct = pro.name_product;
+                    brandList.forEach(brand => {
+                        if (brand.brand === nameBrand) {
+                            brand.count += parseInt(pro.quantity);
+                        }
+                    });
+
+                    productsName.forEach(product => {
+                        if (product.name === nameProduct) {
+                            product.count += parseInt(pro.quantity);
+                        }
+                    });
+
+
+                });
+                let max_brand = 0;
+                brandList.forEach(brand => {
+                    if (brand.count > max_brand) {
+                        max_brand = brand.count;
+                        mostBrand = brand.brand;
+                    };
+                });
+                let max_product = 0;
+                productsName.forEach(product => {
+                    if (product.count > max_product) {
+                        max_product = product.count;
+                        mostProduct = product.name;
+                    };
+                });
+
+            });
+            // Dùng để ghi vào section-four
+
+            const brandContainer = document.querySelector('.statistics .section-four .brand-list tbody');
+            const productContainer = document.querySelector('.statistics .section-four .product-list tbody');
+            let htmlBrand = '';
+            let htmlProduct = '';
             brandList.forEach(brand => {
-                if (brand.brand === nameBrand) {
-                    brand.count += parseInt(pro.quantity);
-                }
-            });
-
-            productsName.forEach(product => {
-                if (product.name === nameProduct) {
-                    product.count += parseInt(pro.quantity);
-                }
-            });
-
-
-        });
-        let max_brand = 0;
-        brandList.forEach(brand => {
-            if (brand.count > max_brand) {
-                max_brand = brand.count;
-                mostBrand = brand.brand;
-            };
-        });
-        let max_product = 0;
-        productsName.forEach(product => {
-            if (product.count > max_product) {
-                max_product = product.count;
-                mostProduct = product.name;
-            };
-        });
-
-    });
-    // Dùng để ghi vào section-four
-
-    const brandContainer = document.querySelector('.statistics .section-four .brand-list tbody');
-    const productContainer = document.querySelector('.statistics .section-four .product-list tbody');
-    let htmlBrand = '';
-    let htmlProduct = '';
-    brandList.forEach(brand => {
-        htmlBrand += `
+                htmlBrand += `
             <tr>
                 <td>${brand.brand}</td>
                 <td>${brand.count}</td>
             </tr>
         `;
-    });
-    productsName.forEach(product => {
-        htmlProduct += `
+            });
+            productsName.forEach(product => {
+                htmlProduct += `
             <tr>
                 <td>${product.name}</td>
                 <td>${product.count}</td>
                 <td>${formatMoney(product.count * convertCurrencyToNumber(product.price))}</td>
             </tr>
         `;
-    }
-    );
-    brandContainer.innerHTML = htmlBrand;
-    productContainer.innerHTML = htmlProduct;
+            }
+            );
+            brandContainer.innerHTML = htmlBrand;
+            productContainer.innerHTML = htmlProduct;
 
 
 
-    // Tìm giá trị lớn nhất trong mảng dayCounts
-    const maxOrders = Math.max(...dayCounts);
-    const maxValue = Math.ceil(maxOrders * 1.1);
+            // Tìm giá trị lớn nhất trong mảng dayCounts
+            const maxOrders = Math.max(...dayCounts);
+            const maxValue = Math.ceil(maxOrders * 1.1);
 
-    // Tạo nhãn (labels) cho từng ngày trong tháng
-    let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}`);
+            // Tạo nhãn (labels) cho từng ngày trong tháng
+            let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}`);
 
-    // Cập nhật dữ liệu và trục y của biểu đồ
-    orderChart.data.labels = labels;
-    orderChart.data.datasets[0].data = dayCounts;
-    orderChart.options.scales.y.max = maxValue;
-    orderChart.update();
-
-
-    // Cập nhật dữ liệu vào total now
-    document.getElementsByClassName('total-info-now-title')[0].innerHTML += ` ${month}/${year}`;
-    document.getElementById('total-order').innerHTML = `Tổng số đơn hàng: ${billOfSelectDate.length}`;
-    document.getElementById('total-quantity').innerHTML = `Tổng số lượng: ${totalQuantity}`;
-    document.getElementById('total-revenue').innerHTML = `Tổng doanh thu: ${totalMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
-    document.getElementById('most-brand').innerHTML = `Brand bán chạy nhất: ${mostBrand}`;
-    document.getElementById('most-product').innerHTML = `Sản phẩm bán chạy nhất: ${mostProduct}`;
+            // Cập nhật dữ liệu và trục y của biểu đồ
+            orderChart.data.labels = labels;
+            orderChart.data.datasets[0].data = dayCounts;
+            orderChart.options.scales.y.max = maxValue;
+            orderChart.update();
 
 
-    // Làm dữ liệu cho tháng trước
+            // Cập nhật dữ liệu vào total now
+            document.getElementsByClassName('total-info-now-title')[0].innerHTML += ` ${month}/${year}`;
+            document.getElementById('total-order').innerHTML = `Tổng số đơn hàng: ${billOfSelectDate.length}`;
+            document.getElementById('total-quantity').innerHTML = `Tổng số lượng: ${totalQuantity}`;
+            document.getElementById('total-revenue').innerHTML = `Tổng doanh thu: ${totalMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
+            document.getElementById('most-brand').innerHTML = `Brand bán chạy nhất: ${mostBrand}`;
+            document.getElementById('most-product').innerHTML = `Sản phẩm bán chạy nhất: ${mostProduct}`;
 
-    let totalQuantityLast = 0;
-    let totalMoneyLast = 0;
-    let mostBrandLast = 0;
-    let mostProductLast = 0;
 
-    let lastMonth = month - 1; // Js tự hiểu phép trừ
-    let lastYear = year;
-    if (lastMonth === 0) {
-        lastMonth = 12;
-        lastYear = year - 1;
-    }
-    const billOfLastMonth = allBill.filter(item => {
-        let dateOfBill = item.paymentdate.split(' ')[2];
-        let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
-        return parseInt(monthOfBill) === lastMonth && parseInt(yearOfBill) === lastYear;
-    });
+            // Làm dữ liệu cho tháng trước
 
-    // Đếm thông tin trong billOfLastMonth
-    resetDataList();
-    billOfLastMonth.forEach(item => {
-        let products_buy = item.products_buy;
-        products_buy.forEach(pro => {
-            totalQuantityLast += parseInt(pro.quantity);
-            totalMoneyLast += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
-            let nameBrand = pro.brand;
-            let nameProduct = pro.name_product;
+            let totalQuantityLast = 0;
+            let totalMoneyLast = 0;
+            let mostBrandLast = 0;
+            let mostProductLast = 0;
+
+            let lastMonth = month - 1; // Js tự hiểu phép trừ
+            let lastYear = year;
+            if (lastMonth === 0) {
+                lastMonth = 12;
+                lastYear = year - 1;
+            }
+            const billOfLastMonth = allBill.filter(item => {
+                let dateOfBill = item.paymentdate.split(' ')[2];
+                let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
+                return parseInt(monthOfBill) === lastMonth && parseInt(yearOfBill) === lastYear;
+            });
+
+            // Đếm thông tin trong billOfLastMonth
+            resetDataList();
+            billOfLastMonth.forEach(item => {
+                let products_buy = item.products_buy;
+                products_buy.forEach(pro => {
+                    totalQuantityLast += parseInt(pro.quantity);
+                    totalMoneyLast += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
+                    let nameBrand = pro.brand;
+                    let nameProduct = pro.name_product;
+                    brandList.forEach(brand => {
+                        if (brand.brand === nameBrand) {
+                            brand.count += parseInt(pro.quantity);
+                        }
+                    });
+
+                    productsName.forEach(product => {
+                        if (product.name === nameProduct) {
+                            product.count += parseInt(pro.quantity);
+                        }
+                    });
+                });
+            });
+            let max_brand_last = 0;
             brandList.forEach(brand => {
-                if (brand.brand === nameBrand) {
-                    brand.count += parseInt(pro.quantity);
-                }
+                if (brand.count > max_brand_last) {
+                    max_brand_last = brand.count;
+                    mostBrandLast = brand.brand;
+                };
             });
-
+            let max_product_last = 0;
             productsName.forEach(product => {
-                if (product.name === nameProduct) {
-                    product.count += parseInt(pro.quantity);
-                }
+                if (product.count > max_product_last) {
+                    max_product_last = product.count;
+                    mostProductLast = product.name;
+                };
             });
-        });
-    });
-    let max_brand_last = 0;
-    brandList.forEach(brand => {
-        if (brand.count > max_brand_last) {
-            max_brand_last = brand.count;
-            mostBrandLast = brand.brand;
-        };
-    });
-    let max_product_last = 0;
-    productsName.forEach(product => {
-        if (product.count > max_product_last) {
-            max_product_last = product.count;
-            mostProductLast = product.name;
-        };
-    });
 
-    // Câp nhật dữ liệu vào total last
-    document.getElementsByClassName('total-info-last-title')[0].innerHTML += ` ${lastMonth}/${lastYear}`;
-    document.getElementById('total-order-last').innerHTML = `Tổng số đơn hàng tháng trước: ${billOfLastMonth.length}`;
-    document.getElementById('total-quantity-last').innerHTML = `Tổng số lượng tháng trước: ${totalQuantityLast}`;
-    document.getElementById('total-revenue-last').innerHTML = `Tổng doanh thu tháng trước: ${totalMoneyLast.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
-    document.getElementById('most-brand-last').innerHTML = `Brand bán chạy nhất tháng trước: ${mostBrandLast}`;
-    document.getElementById('most-product-last').innerHTML = `Sản phẩm bán chạy nhất tháng trước: ${mostProductLast}`;
+            // Câp nhật dữ liệu vào total last
+            document.getElementsByClassName('total-info-last-title')[0].innerHTML += ` ${lastMonth}/${lastYear}`;
+            document.getElementById('total-order-last').innerHTML = `Tổng số đơn hàng tháng trước: ${billOfLastMonth.length}`;
+            document.getElementById('total-quantity-last').innerHTML = `Tổng số lượng tháng trước: ${totalQuantityLast}`;
+            document.getElementById('total-revenue-last').innerHTML = `Tổng doanh thu tháng trước: ${totalMoneyLast.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
+            document.getElementById('most-brand-last').innerHTML = `Brand bán chạy nhất tháng trước: ${mostBrandLast}`;
+            document.getElementById('most-product-last').innerHTML = `Sản phẩm bán chạy nhất tháng trước: ${mostProductLast}`;
+
+        }
+    }
+
+
 }
 
 function showOrders() {
