@@ -2123,7 +2123,13 @@ function showOrderDetail(obj) {
             currentStatus = "Đã xác nhận";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] -= product.quantity;
+                if (products[productIndex].size[product.sizes] - parseInt(product.quantity) < 0) {
+                    toast({ title: 'WARNING', message: 'Số lượng trong kho không đủ', type: 'warning', duration: 3000 });
+                    document.getElementById('status-select').value = 1;
+                    currentStatus = "Đang xử lý";
+                } else {
+                    products[productIndex].size[product.sizes] -= product.quantity;
+                }
             });
         }
 
