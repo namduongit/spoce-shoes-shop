@@ -1,13 +1,13 @@
 # Đồ án web 1: Của hàng bán đồ áo, phụ kiện SpoceShop
 
-Đồ án môn web 1, web tĩnh, đề tài trang web bán đồ điện tử.
+Đồ án môn web 1, web tĩnh, đề tài trang web sản phầm giày và áo khoác
 
 Giao diện thân thiện, dễ sử dụng, chức năng khá đầy đủ.
 
 Chức năng **Cơ bản**:
 
 - Trang chủ hiển thị đẹp, các sản phẩm được chia theo nhiều tiêu chí: nổi bật, mới, khuyến mãi, giá rẻ, ..
-- Tìm kiếm/lọc/sắp xếp sản phẩm theo hãng, giá, tên, khuyến mãi, đánh giá, số sao, ...
+- Tìm kiếm/lọc/sắp xếp sản phẩm theo hãng, giá, tên, khuyến mãi
 - Đăng ký, đăng nhập, giỏ hàng, trang người dùng, lịch sử mua hàng.
 - Trang chi tiết sản phẩm, giao diện **gợi ý sản phẩm** tương tự.
 
