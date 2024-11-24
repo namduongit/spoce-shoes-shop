@@ -79,7 +79,7 @@ body {
   display: flex;
 }
 .row .col-account {
-  width: 70%;
+  width: 100%;
 }
 .row .col-account .table-order .table {
   margin-top: 20px;
@@ -259,7 +259,7 @@ body {
 }
 .address .row {
   width: 90%;
-  margin: 30px 0 50px;
+  margin: 30px auto 50px;
   display: flex;
 }
 .address {
@@ -318,13 +318,13 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 10%;
+  width: 15%;
 }
 .row .export-address .form-address .btn-fix {
   position: absolute;
   top: 40px;
   right: 0;
-  width: 10%;
+  width: 15%;
 }
 .fix-infor .form-group {
   margin-top: 10px;

@@ -28,11 +28,10 @@
     overflow: hidden;
     display: flex;
     margin-top: 8%;
-    flex-wrap: wrap;
     animation: slideDown 0.5s ease-out forwards;
 }
 .user-content-selection .inner-content .left-card {
-    width: 45%;
+    width: 100%;
     padding: 25px 40px;
     background-color: #333333;
     color: #F0F0F0;
@@ -58,7 +57,7 @@
     text-align: center;
 }
 .user-content-selection .inner-content .right-card {
-    width: 55%;
+    width: 100%;
     position: relative;
     padding: 20px;
     align-content: center;

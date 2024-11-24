@@ -1,9 +1,17 @@
 /* PC 1024px*/
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) and (max-width: 1260px) {
+  .user-content-selection .inner-content{
+    width: 70%;
+    height: 50%;
+  }
+}
 
 /* Tablet and mobile 1023px*/
 @media (min-width: 740px) and (max-width: 1023px) {
-
+  .row .export-address .form-address .btn-update{
+    position: static;
+    width: 20%;
+  }
   /* Cục login-resgister */
   .user-content-selection {
     .inner-content {
@@ -62,7 +70,6 @@
           }
           .details-pro__content {
             p {
-              display: none;
             }
             .product__price-old {
               font-size: 16px;
@@ -72,20 +79,20 @@
             }
             .product-quantity {
               display: flex;
-              flex-direction: column;
               justify-content: center;
+              
               span {
                 font-size: 16px;
 
               }
               input {
-                margin: 0 auto;
+                
                 padding: 5px 10px;
               }
               button {
                 width: fit-content;
                 border: 2px solid black;
-                margin: 0 auto;
+                
                 padding: 2px 15px;
               }
             }
@@ -97,13 +104,15 @@
             height: fit-content;
           }
           .detail-product_content {
-            display: none;
           }
         }
       }
     }
   }
+  .detail-product .product-pay{
+    align-items: normal;
 
+  }
   .detail-product .product-pay .pay-total {
     font-weight: 600;
     font-size: 12px;
@@ -118,11 +127,11 @@
   .detail-product .product-pay .cart-pay {
     width: 60%;
     display: flex;
-    margin-right: 20px;
+    margin-right: 40px;
+    justify-content: end;
 
   }
   .detail-product .product-pay .cart-pay .btn-pay {
-    padding: 2px 5px;
       margin-left: 6px;
       border-radius: 25px;
       font-size: 12px;
@@ -216,7 +225,9 @@
 
 /* Tablet 740 - 1023*/
 @media (min-width: 740px) and (max-width: 1023px) {
-
+  .card-changepass{
+    width: 50%;
+  }
   /* Cục login-resgister */
   .user-content-selection {
     .inner-content {
@@ -268,7 +279,6 @@
         .details-pro {
           .details-pro__content {
             p {
-              display: none;
             }
           }
         }
@@ -463,14 +473,62 @@
   .inner-footer .inner-wrap .inner-content .inner-right ul li i {
     margin: 8px 14px 0;
   }
+  .cart-popup-content .cart-table{
+    overflow-x: scroll;
+  }
 
 }
 
 /* Mobile 739px*/
 @media (max-width: 739px) {
+  .card-changepass{
+    width: 50%;
+  }
 
+  .row .export-address .form-address .btn-update{
+    position: static;
+    width: 20%;
+  }
+  .address .row{
+    display: block;
+    margin: 20px auto;
+    width: 70%;
+  }
+  .row .enter-address{
+    width: 100%;
+  }
+  .row .export-address{
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+  }
+  .body-content> .row{
+    display: block;
+    width: 100%;
+  }
+  .body-content .row .col-account{
+    width: 100%;
+  }
+  .body-content .row .col-account .table-order{
+    overflow-x: scroll;
+  }
+  .body-content .row .col-infor{
+    margin: 0;
+  }
   /* login */
   .user-content-selection .inner-content {
+    width: 100%;
+  }
+  .user-content-selection .inner-content .right-card .register-form{
+    display: block;
+  }
+  .user-content-selection .inner-content .right-card .register-form .left-form{
+    width: 100%;
+  }
+  .user-content-selection .inner-content .right-card .register-form .right-form{
+    width: 100%;
+  }
+  .user-content-selection .inner-content input{
     width: 100%;
   }
 
@@ -655,6 +713,7 @@
     display: none;
   }
 
+ 
   .detail-product .product-pay .cart-pay {
     margin-right: 10px;
   }
@@ -699,10 +758,6 @@
   .see-bill {
     width: 100%;
     border: none;
-  }
-
-  .body-content > .row {
-    flex-direction: column;
   }
 
   /* footer */
