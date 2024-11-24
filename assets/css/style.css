@@ -1235,13 +1235,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #showProductCode .wrap-content {
-  max-height: 700px;
+  max-height: 80%;
+  max-width: 100%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 50px 60px;
+  padding: 50px 30px;
   border-radius: 5px;
   border: 1px solid #ddd;
   overflow-y: auto;
+  overflow-x: auto;
 }
 #showProductCode .head-content span {
   margin-right: 100px;
@@ -1276,12 +1278,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .foot-content {
-  
+
 }
 #toast{
   position: fixed;
   top:32px;
-  right: 32px;  
+  right: 32px;
   z-index: 10000;
 }
 
@@ -1391,7 +1393,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .toast_icon{
   font-size: 24px;
-  
+
 }
 .toast_icon,.toast_close{
   padding: 0 16px;
