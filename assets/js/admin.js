@@ -748,7 +748,7 @@ function showAddingProduct() {
                     <h4>Chọn size:</h4>
                 </div>
                 <select id="size-select">
-                
+
                 </select>
                 <input type="number" id="quantity">
             </div>
@@ -781,7 +781,7 @@ function showAddingProduct() {
         <option>44</option>
         `
     } else {
-        s = ` 
+        s = `
         <option>S</option>
         <option>M</option>
         <option>L</option>
@@ -826,7 +826,7 @@ function showAddingProduct() {
             <option>44</option>
             `
         } else {
-            s = ` 
+            s = `
             <option>S</option>
             <option>M</option>
             <option>L</option>
@@ -836,11 +836,11 @@ function showAddingProduct() {
         }
 
         document.getElementById("size-select").innerHTML = s;
-       
+
 
     });
-    
-  
+
+
     document.getElementById("size-select").onchange = function () {
         document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
         console.log(document.getElementById("size-select").value.toString(),document.getElementById("quantity").value,sizeArray)
@@ -857,14 +857,14 @@ function showAddingProduct() {
     var sellPriceField = document.getElementById('sell-price');
     var discountField = document.getElementById('discount');
 
-    var mainImg = document.getElementById('main-img');      
+    var mainImg = document.getElementById('main-img');
     var promo1 = document.getElementById('promo-1');
     var promo2 = document.getElementById('promo-2');
     var promo3 = document.getElementById('promo-3');
     var promo4 = document.getElementById('promo-4');
 
     var sizeOption = document.getElementById('size-select');
-   
+
 
     if (nameField.value === '') {
         alert('Tên sản phẩm không được bỏ trống');
@@ -892,11 +892,11 @@ function showAddingProduct() {
     var mainImgURL="";
     if(mainImg.value !== ''){
         var mainImgFile = mainImg.files[0];
-     
+
        mainImgURL = URL.createObjectURL(mainImgFile);
 
     }
-  
+
     var newProduct = {};
     newProduct.id = idField.value;
     newProduct.name_product = nameField.value;
@@ -1147,7 +1147,8 @@ function resetDataList() {
         if (!productsName.some(p => p.name === product.name_product)) {
             let newProduct = {
                 name: product.name_product,
-                count: 0
+                count: 0,
+                price: product.price
             };
             productsName.push(newProduct);
         }
@@ -1649,6 +1650,42 @@ function showStatistics() {
                                 <p id="most-brand-last">Brand bán chạy nhất tháng trước: </p>
                                 <p id="most-product-last">Sản phẩm bán chạy nhất tháng trước: </p>
                             </div>
+                        </div>
+                </div>
+
+                <div class="section-four">
+                        <div>
+                           <h3 class="section-four-title">Thống kê tất cả đơn hàng trong tháng: </h3>
+                        </div>
+                        <div class="section-four-content">
+                            <div class="brand-list">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Tên Brand</th>
+                                            <th>Số lượng sản phẩm brand bán ra</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="brand-list">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="product-list">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng sản phẩm bán ra</th>
+                                            <th>Doanh thu</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="product-list">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="foot-content">
@@ -1732,7 +1769,8 @@ productsList.forEach(product => {
     if (!productsName.some(p => p.name === product.name_product)) {
         let newProduct = {
             name: product.name_product,
-            count: 0
+            count: 0,
+            price: product.price
         };
         productsName.push(newProduct);
     }
@@ -1756,7 +1794,8 @@ function resetDataList() {
         if (!productsName.some(p => p.name === product.name_product)) {
             let newProduct = {
                 name: product.name_product,
-                count: 0
+                count: 0,
+                price: product.price
             };
             productsName.push(newProduct);
         }
@@ -1847,6 +1886,34 @@ function searchOrder() {
         });
 
     });
+    // Dùng để ghi vào section-four
+
+    const brandContainer = document.querySelector('.statistics .section-four .brand-list tbody');
+    const productContainer = document.querySelector('.statistics .section-four .product-list tbody');
+    let htmlBrand = '';
+    let htmlProduct = '';
+    brandList.forEach(brand => {
+        htmlBrand += `
+            <tr>
+                <td>${brand.brand}</td>
+                <td>${brand.count}</td>
+            </tr>
+        `;
+    });
+    productsName.forEach(product => {
+        htmlProduct += `
+            <tr>
+                <td>${product.name}</td>
+                <td>${product.count}</td>
+                <td>${formatMoney(product.count * convertCurrencyToNumber(product.price))}</td>
+            </tr>
+        `;
+    }
+    );
+    brandContainer.innerHTML = htmlBrand;
+    productContainer.innerHTML = htmlProduct;
+
+
 
     // Tìm giá trị lớn nhất trong mảng dayCounts
     const maxOrders = Math.max(...dayCounts);
