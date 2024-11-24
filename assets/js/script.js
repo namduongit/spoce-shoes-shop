@@ -655,11 +655,11 @@ function changeContent(pageType) {
       pageContent = `<div class="shipping-policy">
   <h1>Chính sách giao hàng</h1>
   <p>Để đảm bảo sản phẩm đến tay khách hàng chất lượng tốt nhất theo một quy trình chỉn chu và tiện lợi cho khách hàng, SPOCE SHOP cung cấp chính sách giao hàng sau:</p>
-  
+
   <h2>Dịch vụ giao hàng</h2>
   <p>Dịch vụ giao hàng tận nơi trên toàn quốc, áp dụng cho khách mua hàng trên Website, Fanpage và gọi điện thoại và mua trực tiếp tại cửa hàng.</p>
   <p>Đơn hàng sẽ được chuyển phát đến tận địa chỉ khách hàng cung cấp thông qua dịch vụ vận chuyển trung gian có uy tín như Grab, Ahamove, ...</p>
-  
+
   <h2>Nghĩa vụ của bên vận chuyển</h2>
   <ul>
     <li>Bảo đảm vận chuyển tài sản đầy đủ, an toàn đến địa điểm đã định, theo đúng thời hạn.</li>
@@ -668,7 +668,7 @@ function changeContent(pageType) {
     <li>Mua bảo hiểm trách nhiệm dân sự theo quy định của pháp luật.</li>
     <li>Bồi thường thiệt hại cho bên thuê vận chuyển trong trường hợp bên vận chuyển để mất, hư hỏng tài sản, trừ trường hợp có thỏa thuận khác hoặc pháp luật có quy định khác.</li>
   </ul>
-  
+
   <h2>Quyền của bên vận chuyển</h2>
   <ul>
     <li>Kiểm tra sự xác thực của tài sản, của vận đơn hoặc chứng từ vận chuyển tương đương khác.</li>
@@ -676,20 +676,20 @@ function changeContent(pageType) {
     <li>Yêu cầu bên thuê vận chuyển thanh toán đủ cước phí vận chuyển đúng thời hạn.</li>
     <li>Từ chối vận chuyển tài sản cấm giao dịch, tài sản có tính chất nguy hiểm, độc hại, nếu bên vận chuyển.</li>
   </ul>
-  
+
   <h2>Nghĩa vụ của bên thuê vận chuyển</h2>
   <ul>
     <li>Trả đủ tiền cước phí vận chuyển cho bên vận chuyển theo đúng thời hạn, phương thức đã thỏa thuận.</li>
     <li>Cung cấp thông tin cần thiết liên quan đến tài sản vận chuyển để bảo đảm an toàn cho tài sản vận chuyển.</li>
     <li>Trông coi tài sản trên đường vận chuyển, nếu có thỏa thuận. Trường hợp bên thuê vận chuyển trông coi tài sản mà tài sản bị mất, hư hỏng thì không được bồi thường.</li>
   </ul>
-  
+
   <h2>Quyền của bên thuê vận chuyển</h2>
   <ul>
     <li>Yêu cầu bên vận chuyển chuyên chở tài sản đến đúng địa điểm, thời điểm đã thỏa thuận.</li>
     <li>Trực tiếp hoặc chỉ định người thứ ba nhận lại tài sản đã thuê vận chuyển.</li>
   </ul>
-  
+
   <h2>Trách nhiệm bồi thường thiệt hại</h2>
   <ul>
     <li>Bên vận chuyển phải bồi thường thiệt hại cho bên thuê vận chuyển nếu để tài sản bị mất hoặc hư hỏng.</li>
@@ -704,14 +704,14 @@ function changeContent(pageType) {
     <li>Đơn hàng trước 11h00 trưa thì sẽ giao trong buổi chiều cùng ngày.</li>
     <li>Đơn hàng sau 11h30 sẽ giao trong hôm sau.</li>
   </ul>
-  
+
   <h3>Đơn hàng ở các tỉnh thành khác:</h3>
   <ul>
     <li>Thời gian là 2-3 ngày đối với khu vực trung tâm tỉnh thành phố.</li>
     <li>3-7 ngày đối với khu vực ngoại thành, huyện, xã, thị trấn...</li>
     <li>Không tính thứ bảy, chủ nhật và các ngày lễ tết.</li>
   </ul>
-  
+
   <h3>Quy định chung:</h3>
   <ul>
     <li>Thời gian xử lý đơn hàng sẽ được tính từ khi nhận được thanh toán hoàn tất của quý khách.</li>
@@ -721,7 +721,7 @@ function changeContent(pageType) {
     <li>Khi hàng được giao đến quý khách, vui lòng ký xác nhận với nhân viên giao hàng và kiểm tra lại số lượng cũng như loại hàng hóa được giao có chính xác không.</li>
     <li>Quý khách vui lòng giữ lại biên lai vận chuyển và hóa đơn mua hàng để đối chiếu kiểm tra.</li>
   </ul>
-  
+
   <h2>2. Phí giao hàng</h2>
   <ul>
     <li><strong>Nội thành Thành phố Hồ Chí Minh:</strong> 25,000đ</li>
@@ -735,7 +735,7 @@ function changeContent(pageType) {
     case "baomat":
       pageContent = `<div class="privacy-policy">
     <h1>Chính Sách Bảo Mật Thông Tin</h1>
-    
+
     <h2>I. Mục Đích Và Phạm Vi Thu Thập</h2>
     <p>Việc thu thập dữ liệu chủ yếu trên website bao gồm: họ tên, email, điện thoại, địa chỉ khách hàng trong mục liên hệ. Đây là các thông tin mà chúng tôi cần thành viên cung cấp bắt buộc khi gửi thông tin nhờ tư vấn hay muốn mua sản phẩm và để chúng tôi liên hệ xác nhận lại với khách hàng trên website nhằm đảm bảo quyền lợi cho người tiêu dùng.</p>
 
@@ -1063,27 +1063,27 @@ function changeContent(pageType) {
     case "lienhe":
       pageContent = `<div class="contact-info">
   <h2>Thông Tin Liên Hệ</h2>
-  
+
   <div class="contact-item">
     <h3>Địa Chỉ Văn Phòng</h3>
     <p>Công ty Cổ Phần SPOCE SHOP<br>Số 273, Đường An Dương Vương, Quận 5, TP. Hồ Chí Minh, Việt Nam</p>
   </div>
-  
+
   <div class="contact-item">
     <h3>Số Điện Thoại</h3>
     <p>Hotline: 1800-888-666<br>Bộ phận chăm sóc khách hàng: 0388.853.835</p>
   </div>
-  
+
   <div class="contact-item">
     <h3>Email</h3>
     <p>Hỗ trợ khách hàng: <a href="mailto:cskh.spoceshop@.com">cskh.spoceshop@.com</a><br>Bộ phận kinh doanh: <a href="mailto:sales@spoceshop.com">sales@spoceshop.com</a></p>
   </div>
-  
+
   <div class="contact-item">
     <h3>Giờ Làm Việc</h3>
     <p>Thứ Hai - Thứ Sáu: 9:00 AM - 6:00 PM<br>Thứ Bảy: 9:00 AM - 12:00 PM<br>Chủ Nhật: Nghỉ</p>
   </div>
-  
+
   <div class="contact-item">
     <h3>Mạng Xã Hội</h3>
     <div class="social-media">
@@ -1092,8 +1092,8 @@ function changeContent(pageType) {
       <a href="https://twitter.com/spoceshop" target="_blank">Twitter</a>
     </div>
   </div>
-  
-  
+
+
 </div>
 `;
       break;

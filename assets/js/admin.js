@@ -27,7 +27,7 @@ function checkLogin() {
 
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
-        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công', type: 'success', duration: 3000 });
+        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công"', type: 'success', duration: 3000 });
         writeMainContent();
 
     } else {
@@ -57,7 +57,7 @@ function logOut() {
     document.querySelector('.login').style.display = 'block';
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
-    toast({ title: 'SUCCESS', message: 'Đăng xuất thành công', type: 'success', duration: 3000 });
+    alert('Đã đăng xuất!');
 }
 
 function showSideBar() {
@@ -1232,7 +1232,7 @@ function showUserModify(obj) {
         const emailRegex = /@[a-zA-z0-9]+\.[a-zA-z]{2,}$/;
 
         if (users.some(user => user.username == document.getElementById('username').value) && user.username != document.getElementById('username').value) {
-            toast({ title: 'WARNING', message: 'Username đã tồn tại trong hệ thống!', type: 'warning', duration: 3000 });
+            alert('Username đã tồn tại trong hệ thống!');
             return;
         }
         valid=true;
@@ -1953,7 +1953,7 @@ function showOrderDetail(obj) {
     var str = "";
     var price = 0;
     order.products_buy.forEach(item => {
-        str = str + item.quantity + "x " + "SIZE " + item.sizes+ " " + item.name_product + ";\n";
+        str = str + item.quantity + "x " + item.name_product + "; ";
         var priceOfProduct = parseInt(item.sell.replace(/[^0-9]/g, ""));
         var quantity = parseInt(item.quantity);
         price = price + quantity * priceOfProduct;
@@ -1971,8 +1971,6 @@ function showOrderDetail(obj) {
         <h2>Chi tiết đơn hàng</h2>
         <h4>Thông tin đơn hàng</h4>
         <p>${str}</p>
-        <h4>Mã đơn hàng</h4>
-        <p>${order.code}</p>
         <h4>Tên khách hàng</h4>
         <p>${order.name}</p>
         <h4>Số điện thoại</h4>
@@ -2021,7 +2019,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã xác nhận";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] -= parseInt(product.quantity);
+                products[productIndex].size[product.size] -= product.quantity;
             });
         }
 
@@ -2033,7 +2031,7 @@ function showOrderDetail(obj) {
             currentStatus = "Đã hủy";
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] += parseInt(product.quantity);
+                products[productIndex].size[product.size] += parseInt(product.quantity);
             });
         }
         orders[index].status = currentStatus;
@@ -2055,12 +2053,12 @@ function sortOrder() {
 
     if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
         if (startDate.value == "") {
-            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn', type: 'warning', duration: 3000 });
+            alert('Ngày bắt đầu chưa được chọn!');
             return;
         }
 
         if (endDate.value == "") {
-            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn', type: 'warning', duration: 3000 });
+            alert('Ngày kết thúc chưa được chọn!');
             return;
         }
     }
@@ -2101,12 +2099,12 @@ function sortOrder() {
                         ordersSelected.push(item);
                     }
                 });
-            } else if (orderStatus.value == "4") {
+            } else if (orderStatus.value == "4" && orderDate >= start && orderDate <= end) {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy" && orderDate >= start && orderDate <= end) {
+                    if (item.status == "Đã hủy") {
                         ordersSelected.push(item);
                     }
                 });
