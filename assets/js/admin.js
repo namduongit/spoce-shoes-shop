@@ -1275,7 +1275,6 @@ function showUserModify(obj) {
                     <span class="text-danger" id="errol_pass_length"></span>
                 </div>
 
-                </div>
                 <br>
 
                 <div class="form-item">
@@ -1293,7 +1292,6 @@ function showUserModify(obj) {
                     <span class="text-danger" id="errol_email_same"></span>
                 </div>
 
-                </div>
                 <br>
 
                 <div class="form-item">
