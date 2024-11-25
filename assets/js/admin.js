@@ -661,7 +661,7 @@ function showAddingProduct() {
     </div>
 
     <div class="adding-content">
-        <form>
+        <div>
             <div class="inner-left">
                 <div class="adding-content-item">
                     <label for="id">ID: </label>
@@ -700,7 +700,7 @@ function showAddingProduct() {
                 </div>
 
                 <div class="adding-content-item">
-                    <button onclick="calculateDiscount()">Tính giảm</button>
+                    <button onclick="calculateDiscount(event)">Tính giảm</button>
                 </div>
 
                 <div class="adding-content-item">
@@ -753,7 +753,7 @@ function showAddingProduct() {
                 <input type="number" id="quantity">
             </div>
 
-        </form>
+        </div>
     </div>
 
     <div class="adding-btn-container">
@@ -1080,7 +1080,7 @@ function addingProduct() {
     window.onload();
 }
 
-function calculateDiscount() {
+function calculateDiscount(event) {
     event.preventDefault;
     var originalPrice = document.getElementById('original-price').value;
     var sellPrice = document.getElementById('sell-price').value;
