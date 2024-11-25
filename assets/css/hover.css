@@ -59,4 +59,8 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     transition: all 0.6s;
 }
 
+.poi:hover {
+    cursor: pointer;
+}
+
 
