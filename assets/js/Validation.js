@@ -50,7 +50,8 @@ var Validation = function () {
     }
     this.kiemtraEmail= function(value,selector){
         var regexemail=/[^@]+@[^@]+\.[a-zA-Z]{2,6}/;
-        if(regexemail.test(value)){
+        var  pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$/;
+        if(regexemail.test(value) || pattern.test(value)){
             document.querySelector(selector).style.display = "none";
             return true;
         }
