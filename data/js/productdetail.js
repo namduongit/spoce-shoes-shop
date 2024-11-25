@@ -461,10 +461,10 @@ function updateQuantity(index, change) {
     return;
   }
 
-  if (newQuantity > product.size[item.size]) {
-    toast({title:'WARNING',message:`Số lượng trong kho không đủ. Chỉ còn ${product.size[item.size]} sản phẩm`,type:'warning',duration:3000});
-    return;
-  }
+  // if (newQuantity > product.size[item.size]) {
+  //   toast({title:'WARNING',message:`Số lượng trong kho không đủ. Chỉ còn ${product.size[item.size]} sản phẩm`,type:'warning',duration:3000});
+  //   return;
+  // }
 
   cart[index].quantity = newQuantity;
   localStorage.setItem(cartKey, JSON.stringify(cart));
