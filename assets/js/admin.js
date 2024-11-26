@@ -1,9 +1,20 @@
-var admins = [
-    {
-        username: "admin",
-        password: "admin@12345"
+function adminInitialization() {
+    if (localStorage.getItem('admins') == null) {
+        var admins = [
+            {
+                username: "admin",
+                password: "admin@12345"
+            }
+        ];
+        localStorage.setItem('admins', JSON.stringify(admins));
     }
-];
+}
+
+window.onload = function () {
+    adminInitialization();
+}
+
+var admins = JSON.parse(localStorage.getItem('admins'));
 
 function checkLogin() {
     var username = document.getElementById('username');
@@ -2419,4 +2430,277 @@ function sortOrder() {
         });
     }
     loadOrder(1);
+}
+
+
+function showAdmin() {
+    document.getElementById('bar-title').innerHTML = `
+    <h2>Quản trị viên</h2>
+    `;
+
+    document.querySelector('.content').innerHTML = `
+    <div class="admin-modify-form"></div>
+
+    <div class="admin-adding-form"></div>
+
+    <div class="admin-delete-confirmation-form"></div>
+
+    <div class="customer-title">
+        <h1>Danh sách quản trị viên</h1>
+        <a href="#" class="add-user-btn" onclick="showAddingAdminForm()">
+            Thêm quản trị viên
+        </a>
+    </div>
+
+    <div class="customer-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Username</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="customer-details">
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <ul id="page-select" class="page-select"></ul>
+    `;
+
+
+    var adminPerPage = 8;
+    var numOfPages = Math.ceil(admins.length / adminPerPage);
+
+    var str = "";
+    for (let i = 1; i <= numOfPages; i++) {
+        str = str + `
+            <li class="page-item" data-page="${i}">
+                <a class="page-item-text" href="javascript:void(0);">${i}</a>
+            </li>
+        `;
+    }
+
+    function loadPage(page) {
+        var start = adminPerPage * (page - 1);
+        var end = adminPerPage * page;
+        var adminOfPage = admins.slice(start, end);
+        var stt = start + 1;
+
+        var s = "";
+        for (let i = 0; i < adminOfPage.length; i++) {
+            s = s + `
+            <tr>
+                <td>${stt}</td>
+                <td>${adminOfPage[i].username}</td>
+                <td><a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminDeleteConfirmation(this)">Xóa</a></td>
+                <td><a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminModify(this)">Sửa</a></td>
+            </tr>
+            `;
+            stt++;
+        }
+
+        document.getElementById('customer-details').innerHTML = s;
+        document.getElementById('page-select').innerHTML = str;
+        document.querySelectorAll('.page-item')[page - 1].style.backgroundColor = '#11112f';
+        document.querySelectorAll('.page-item-text')[page - 1].style.color = 'white';
+
+        var pageBtns = document.querySelectorAll('.page-item');
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                var page = parseInt(btn.getAttribute('data-page'));
+                loadPage(page);
+            });
+        });
+    }
+
+    loadPage(1);
+}
+
+function showAdminDeleteConfirmation(obj) {
+    document.querySelector('.admin-delete-confirmation-form').style.display = 'block';
+    document.querySelector('.admin-delete-confirmation-form').innerHTML = `
+    <div class="confirm-top">
+        XÓA QUẢN TRỊ VIÊN
+    </div>
+
+    <div class="confirm-content">
+        Bạn có chắc chắn muốn xóa tài khoản quản trị viên?
+    </div>
+
+    <div class="confirm-btn-container">
+        <a href="#" onclick="deleteAdmin(this)" data-username="${obj.getAttribute('data-username')}">
+            <div class="confirm-btn">Xóa</div>
+        </a>
+        <a href="#" onclick="closeAdminDeleteConfirmation()">
+            <div class="confirm-btn">Bỏ qua</div>
+        </a>
+    </div>`;
+}
+
+function deleteAdmin(obj) {
+    var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
+    admins.splice(indexOfAdmin, 1);
+    localStorage.setItem('admins', JSON.stringify(admins));
+    document.querySelector('.admin-delete-confirmation-form').style.display = 'none';
+    showAdmin();
+}
+
+function closeAdminDeleteConfirmation() {
+    document.querySelector('.admin-delete-confirmation-form').style.display = 'none';
+}
+
+function showAdminModify(obj) {
+    document.querySelector('.admin-modify-form').style.display = 'block';
+    var admin = admins.find(item => item.username == obj.getAttribute('data-username'));
+    var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
+    document.querySelector('.admin-modify-form').innerHTML = `
+    <div class="admin-modify-top">
+            Thông tin khách hàng
+        </div>
+
+        <div class="admin-modify-content">
+            <form>
+                <div class="form-item">
+                    <label for="username">Tài khoản </label>
+                    <br>
+                    <input type="text" id="username" value="${admin.username}" disabled>
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="password">Mật khẩu </label>
+                    <br>
+                    <input type="text" id="password" value="${admin.password}">
+                    <span class="text-danger" id="errol_pass_disable"></span>
+                    <span class="text-danger" id="errol_pass_length"></span>
+                </div>
+            </form>
+        </div>
+
+        <div class="admin-modify-btn-container">
+            <a href="#" id="admin-save-btn">
+                <div class="admin-modify-btn">
+                    Lưu
+                </div>
+            </a>
+
+            <a href="#" onclick="closeAdminModifyForm()">
+                <div class="admin-modify-btn">
+                    Thoát
+                </div>
+            </a>
+        </div>`;
+
+    document.getElementById('admin-save-btn').addEventListener('click', () => {
+        var password = document.getElementById('password');
+
+        var validation = new Validation();
+        var valid = true;
+
+        valid &= validation.kiemtraRong(password.value, "#errol_pass_disable") & validation.kiemtraDodai(password.value, "#errol_pass_length", 6);
+
+        if (valid == false) {
+            return;
+        }
+
+        admins[indexOfAdmin].password = password.value;
+        localStorage.setItem('admins', JSON.stringify(admins));
+        showAdmin();
+    });
+}
+
+function showAddingAdminForm() {
+    document.querySelector('.admin-adding-form').style.display = 'block';
+    document.querySelector('.admin-adding-form').innerHTML = `
+        <div class="admin-adding-top">
+            Thông tin quản trị viên
+        </div>
+
+        <div class="admin-adding-content">
+            <form>
+                <div class="form-item">
+                    <label for="username">Tài khoản </label>
+                    <br>
+                    <input type="text" id="username" placeholder="Nhập tài khoản">
+                    <span class="text-danger" id="errol_user_disable"></span>
+                    <span class="text-danger" id="errol_user_length"></span>
+                    <span class="text-danger" id="errol_user_same"></span>
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="password">Mật khẩu </label>
+                    <br>
+                    <input type="text" id="password" placeholder="Nhập mật khẩu">
+                    <span class="text-danger" id="errol_password_disable"></span>
+                    <span class="text-danger" id="errol_password_length"></span>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="admin-modify-btn-container">
+            <a href="#" id="admin-save-btn">
+                <div class="admin-modify-btn">
+                    Thêm
+                </div>
+            </a>
+
+            <a href="#" onclick="closeAdminAddingForm()">
+                <div class="admin-modify-btn">
+                    Thoát
+                </div>
+            </a>
+        </div>
+    `;
+    
+    document.getElementById('admin-save-btn').addEventListener('click', () => {
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var validation = new Validation();
+        var valid = true;
+
+        valid = valid & validation.kiemtraRong(username.value, '#errol_user_disable') & validation.kiemtraRong(password.value, '#errol_password_disable') & validation.kiemtraDodai(password.value, '#errol_password_length', 6);
+        
+        if (valid == false) {
+            return;
+        }
+
+        if (admins.some(admin => {
+            return admin.username == username.value
+        })) {
+            document.getElementById('errol_user_same').style.display = 'block';
+            document.getElementById('errol_user_same').innerHTML = 'Tài khoản đã tồn tại!';
+            valid = false;
+        } else {
+            document.getElementById('errol_user_same').style.display = 'none';
+        }
+
+        if (valid == false) {
+            return;
+        }
+
+        var newAdmin = {
+            username: username.value,
+            password: password.value
+        };
+
+        admins.push(newAdmin);
+        localStorage.setItem('admins', JSON.stringify(admins));
+        showAdmin();
+    });
+}
+
+function closeAdminModifyForm() {
+    document.querySelector('.admin-modify-form').style.display = 'none';
+}
+
+function closeAdminAddingForm() {
+    document.querySelector('.admin-adding-form').style.display = 'none';
 }

@@ -957,6 +957,173 @@ i {
     }
 }
 
+/* ADMIN DELETE CONFIRMATION */
+.admin-delete-confirmation-form {
+    display: none;
+    width: 50%;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.admin-delete-confirmation-form .confirm-top {
+    width: 100%;
+    background-color: grey;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.admin-delete-confirmation-form .confirm-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.admin-delete-confirmation-form .confirm-content {
+    padding: 20px 0 10px 0;
+    text-align: center;
+}
+
+.admin-delete-confirmation-form .confirm-btn {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.admin-delete-confirmation-form .confirm-btn:hover {
+    background-color: #373333;
+    color: white;
+    transition: 0.3s all ease;
+}
+
+/* ADMIN MODIFY FORM */
+.admin-modify-form {
+    display: none;
+    width: 40%;
+    height: 45%;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+}
+
+.admin-modify-form .admin-modify-top {
+    width: 100%;
+    background-color: grey;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.admin-modify-form .admin-modify-content {
+    padding: 20px 10px 10px 10px;
+}
+
+.admin-modify-form .admin-modify-content form {
+    padding: 10px 10px;
+}
+
+.admin-modify-form .admin-modify-content form input {
+    width: 100%;
+    padding: 7px;
+    margin-top: 5px;
+}
+
+.admin-modify-form .admin-modify-content form select {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.admin-modify-form .admin-modify-content form .form-item {
+    padding: 2px;
+}
+
+.admin-modify-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.admin-modify-btn-container .admin-modify-btn {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+.admin-modify-btn-container .admin-modify-btn:hover {
+    background-color: #373333;
+    color: white;
+    transition: 0.3s all ease;
+}
+
+/* ADMIN ADDING FORM */
+
+.admin-adding-form {
+    display: none;
+    width: 40%;
+    height: 45%;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+}
+
+.admin-adding-form .admin-adding-top {
+    width: 100%;
+    background-color: grey;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.admin-adding-form .admin-adding-content {
+    padding: 20px 10px 10px 10px;
+}
+
+.admin-adding-form .admin-adding-content form {
+    padding: 10px 10px;
+}
+
+.admin-adding-form .admin-adding-content .form-item {
+    padding: 2px;
+}
+
+.admin-adding-form .admin-adding-content .form-item input {
+    padding: 7px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.admin-adding-form .admin-adding-content form select {
+    padding: 5px;
+    margin-top: 5px;
+}
 
 /* RESPONSIVE CHO Desktop và Laptop */
 @media (min-width: 769px) and (max-width: 1200px) {
