@@ -2011,6 +2011,11 @@ function searchOrder() {
 
 }
 
+function getDateFromString(str) {
+    var arr = str.match(/\d{2}\/\d{2}\/\d{4}/);
+    return arr[0];
+}
+
 function showOrders() {
     document.getElementById('bar-title').innerHTML = `
     <h2>Đơn hàng</h2>
@@ -2062,6 +2067,7 @@ function showOrders() {
             <thead>
                 <tr>
                     <th>Mã đơn hàng</th>
+                    <th>Ngày lập đơn</th>
                     <th>Khách hàng</th>
                     <th>Quận</th>
                     <th>Trạng thái</th>
@@ -2101,6 +2107,7 @@ function showOrders() {
             s = s + `
             <tr>
                 <td>${ordersOfPage[i].code}</td>
+                <td>${getDateFromString(ordersOfPage[i].paymentdate)}</td>
                 <td>${ordersOfPage[i].name}</td>
                 <td>${ordersOfPage[i].district.toUpperCase()}</td>
                 <td>${ordersOfPage[i].status}</td>
