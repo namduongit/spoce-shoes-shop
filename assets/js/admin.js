@@ -2166,7 +2166,7 @@ function showOrderDetail(obj) {
         <h4>Số điện thoại</h4>
         <p>${order.phone}</p>
         <h4>Địa chỉ</h4>
-        <p>${order.street}</p>
+        <p>${order.street + " " + order.district}</p>
         <h4>Tổng giá tiền</h4>
         <p>${priceString}</p>
     </div>
