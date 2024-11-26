@@ -2069,6 +2069,7 @@ function showOrders() {
                     <th>Mã đơn hàng</th>
                     <th>Ngày lập đơn</th>
                     <th>Khách hàng</th>
+                    <th>Địa chỉ</th>
                     <th>Quận</th>
                     <th>Trạng thái</th>
                     <th></th>
@@ -2109,6 +2110,7 @@ function showOrders() {
                 <td>${ordersOfPage[i].code}</td>
                 <td>${getDateFromString(ordersOfPage[i].paymentdate)}</td>
                 <td>${ordersOfPage[i].name}</td>
+                <td>${ordersOfPage[i].street}</td>
                 <td>${ordersOfPage[i].district.toUpperCase()}</td>
                 <td>${ordersOfPage[i].status}</td>
                 <td><a href="#" class="warning" data-code="${ordersOfPage[i].code}" onclick="showOrderDetail(this)">Chi tiết</a></td>
