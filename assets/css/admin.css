@@ -669,12 +669,13 @@ i {
 /* USER MODIFY FORM */
 .user-modify-form {
     display: none;
-    width: 50%;
+    width: 40%;
+    height: 87%;
     background-color: whitesmoke;
     border: 2px solid black;
     border-radius: 5px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: auto;
@@ -698,12 +699,17 @@ i {
 }
 
 .user-modify-form .user-modify-content form input {
-    width: 60%;
+    width: 100%;
+    padding: 7px;
+    margin-top: 5px;
+}
+
+.user-modify-form .user-modify-content form select {
     padding: 5px;
+    margin-top: 5px;
 }
 
 .user-modify-form .user-modify-content form .form-item {
-    margin: 5px 0;
     padding: 2px;
 }
 
@@ -757,13 +763,16 @@ i {
 /* Adding Customer Form */
 .customer-adding-form {
     display: none;
-    width: 50%;
+    width: 40%;
+    height: 87%;
     background-color: whitesmoke;
     border: 2px solid black;
+    border-radius: 5px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: auto;
 }
 
 .customer-adding-form .customer-adding-top {
@@ -779,8 +788,23 @@ i {
     padding: 20px 10px 10px 10px;
 }
 
+.customer-adding-form .customer-adding-content form {
+    padding: 10px 10px;
+}
+
+.customer-adding-form .customer-adding-content .form-item {
+    padding: 2px;
+}
+
 .customer-adding-form .customer-adding-content .form-item input {
-    padding: 10px;
+    padding: 7px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.customer-adding-form .customer-adding-content form select {
+    padding: 5px;
+    margin-top: 5px;
 }
 
 /* Order */

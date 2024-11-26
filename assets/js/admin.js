@@ -1263,30 +1263,33 @@ function showUserModify(obj) {
         <div class="user-modify-content">
             <form>
                 <div class="form-item">
-                    <label for="username">Tài khoản: </label>
+                    <label for="username">Tài khoản </label>
+                    <br>
                     <input type="text" id="username" value="${user.username}" disabled>
                 </div>
                 <br>
 
                 <div class="form-item">
-                    <label for="password">Mật khẩu: </label>
+                    <label for="password">Mật khẩu </label>
+                    <br>
                     <input type="text" id="password" value="${user.password}">
                     <span class="text-danger" id="errol_pass_disable"></span>
-
                     <span class="text-danger" id="errol_pass_length"></span>
                 </div>
 
                 <br>
 
                 <div class="form-item">
-                    <label for="fullname">Họ tên: </label>
+                    <label for="fullname">Họ tên </label>
+                    <br>
                     <input type="text" id="fullname" value="${user.fullname}">
                     <span class="text-danger" id="errol_name_disable"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
-                    <label for="email">Email: </label>
+                    <label for="email">Email </label>
+                    <br>
                     <input type="text" id="email" value="${user.email}">
                     <span class="text-danger" id="errol_email_disable"></span>
                       <span class="text-danger" id="errol_email_wrong"></span>
@@ -1296,7 +1299,8 @@ function showUserModify(obj) {
                 <br>
 
                 <div class="form-item">
-                    <label for="phone">Số điện thoại: </label>
+                    <label for="phone">Số điện thoại </label>
+                    <br>
                     <input type="text" id="phone" value="${user.phone}">
                     <span class="text-danger" id="errol_phone_disable"></span>
                     <span class="text-danger" id="errol_phone_wrong"></span>
@@ -1306,6 +1310,7 @@ function showUserModify(obj) {
 
                 <div class="form-item">
                     <label for="account-status">Trạng thái: </label>
+                    <br>
                     <select id="account-status">
                         <option value="true">Hoạt động</option>
                         <option value="false">Khóa</option>
@@ -1410,16 +1415,18 @@ function showAddingCustomerForm() {
         <div class="customer-adding-content">
             <form>
                 <div class="form-item">
-                    <label for="username">Tài khoản: </label>
+                    <label for="username">Tài khoản </label>
+                    <br>
                     <input type="text" id="username" placeholder="Nhập tài khoản">
                     <span class="text-danger" id="errol_user_disable"></span>
-                              <span class="text-danger" id="errol_user_length"></span>
+                    <span class="text-danger" id="errol_user_length"></span>
                     <span class="text-danger" id="errol_user_same"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
-                    <label for="password">Mật khẩu: </label>
+                    <label for="password">Mật khẩu </label>
+                    <br>
                     <input type="text" id="password" placeholder="Nhập mật khẩu">
                     <span class="text-danger" id="errol_password_disable"></span>
                     <span class="text-danger" id="errol_password_length"></span>
@@ -1428,32 +1435,36 @@ function showAddingCustomerForm() {
                 <br>
 
                 <div class="form-item">
-                    <label for="fullname">Họ tên: </label>
+                    <label for="fullname">Họ tên </label>
+                    <br>
                     <input type="text" id="fullname" placeholder="Nhập họ tên">
                     <span class="text-danger" id="errol_name_disable"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
-                    <label for="email">Email: </label>
+                    <label for="email">Email </label>
+                    <br>
                     <input type="text" id="email" placeholder="Nhập email">
-                     <span class="text-danger" id="errol_email_disable"></span>
-                      <span class="text-danger" id="errol_email_wrong"></span>
-                       <span class="text-danger" id="errol_email_same"></span>
+                    <span class="text-danger" id="errol_email_disable"></span>
+                    <span class="text-danger" id="errol_email_wrong"></span>
+                    <span class="text-danger" id="errol_email_same"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
-                    <label for="phone">Số điện thoại: </label>
+                    <label for="phone">Số điện thoại </label>
+                    <br>
                     <input type="text" id="phone" placeholder="Nhập số điện thoại">
- <span class="text-danger" id="errol_tel_disable"></span>
-                      <span class="text-danger" id="errol_tel_pattern"></span>
-                       <span class="text-danger" id="errol_tel_same"></span>
+                    <span class="text-danger" id="errol_tel_disable"></span>
+                    <span class="text-danger" id="errol_tel_pattern"></span>
+                    <span class="text-danger" id="errol_tel_same"></span>
                 </div>
                 <br>
 
                 <div class="form-item">
                     <label for="account-status">Trạng thái: </label>
+                    <br>
                     <select id="account-status">
                         <option value="true">Hoạt động</option>
                         <option value="false">Khóa</option>
