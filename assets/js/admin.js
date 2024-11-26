@@ -674,20 +674,24 @@ function showAddingProduct() {
     <div class="adding-content">
         <div>
             <div class="inner-left">
+                <form>
                 <div class="adding-content-item">
-                    <label for="id">ID: </label>
+                    <label for="id">ID </label>
+                    <br>
                     <input type="text" id="id" placeholder="Nhập ID sản phẩm" disabled value="${parseInt(products[products.length - 1].id) + 1}">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="name">Tên sản phẩm:</label>
+                    <label for="name">Tên sản phẩm</label>
+                    <br>
                     <input type="text" id="name" placeholder="Nhập tên sản phẩm">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="brand-select">Nhãn hiệu: </label>
+                    <label for="brand-select">Nhãn hiệu </label>
+                    <br>
                     <select id="brand-select">
                         <option value="nike">Nike</option>
                         <option value="adidas">Adidas</option>
@@ -699,13 +703,15 @@ function showAddingProduct() {
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="original-price">Giá gốc: </label>
+                    <label for="original-price">Giá gốc </label>
+                    <br>
                     <input type="text" id="original-price" placeholder="Nhập giá gốc">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="sell-price">Giá bán: </label>
+                    <label for="sell-price">Giá bán </label>
+                    <br>
                     <input type="text" id="sell-price" placeholder="Nhập giá bán">
                     <br>
                 </div>
@@ -715,41 +721,47 @@ function showAddingProduct() {
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="discount">Giảm: </label>
+                    <label for="discount">Giảm </label>
+                    <br>
                     <input type="text" id="discount" placeholder="Ấn nút để tính" disabled>
                     <br>
                 </div>
-
+                </form>
             </div>
 
             <div class="inner-right">
 
                 <div class="adding-content-item">
-                    <label for="main-img">Ảnh chính:</label>
+                    <label for="main-img">Ảnh chính</label>
+                    <br>
                     <input type="file" id="main-img" accept="image/*">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="promo-1">Ảnh Promo 1: </label>
+                    <label for="promo-1">Ảnh Promo 1 </label>
+                    <br>
                     <input type="file" id="promo-1" accept="image/*">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="promo-2">Ảnh Promo 2: </label>
+                    <label for="promo-2">Ảnh Promo 2 </label>
+                    <br>
                     <input type="file" id="promo-2" accept="image/*">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="promo-3">Ảnh Promo 3: </label>
+                    <label for="promo-3">Ảnh Promo 3</label>
+                    <br>
                     <input type="file" id="promo-3" accept="image/*">
                     <br>
                 </div>
 
                 <div class="adding-content-item">
-                    <label for="promo-4">Ảnh Promo 4: </label>
+                    <label for="promo-4">Ảnh Promo 4</label>
+                    <br>
                     <input type="file" id="promo-4" accept="image/*">
                     <br>
                 </div>
@@ -2057,12 +2069,15 @@ function showOrders() {
 
             <form>
                 <div class="form-item">
+                <label for="start-date">Thời gian</label>
+                <br>
                 <input type="date" id="start-date">
                 <input type="date" id="end-date">
                 </div>
                 <br>
                 <div class="form-item">
                 <label for="order-status">Tình trạng</label>
+                <br>
                 <select id="order-status">
                     <option value="0">Chọn tình trạng</option>
                     <option value="1">Đang xử lý</option>
