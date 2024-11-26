@@ -2576,7 +2576,7 @@ function showAdminModify(obj) {
     var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
     document.querySelector('.admin-modify-form').innerHTML = `
     <div class="admin-modify-top">
-            Thông tin khách hàng
+            Thông tin quản trị viên
         </div>
 
         <div class="admin-modify-content">
