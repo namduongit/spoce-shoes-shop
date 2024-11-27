@@ -110,7 +110,7 @@ i {
 
 /* SIDEBAR */
 .sidebar {
-    background-color: #383F51;
+    background-color: #333333;
     height: 100vh;
     width: 16%;
     position: relative;
@@ -188,19 +188,19 @@ i {
 }
 
 .sidebar .sidebar-content .active {
-    background-color: #4c5775;
+    background-color: #4e4c4c;
     padding-left: 30px;
 }
 
 /* SIDEBAR hover */
 .sidebar .sidebar-content .sidebar-item:hover {
-    background-color: #4c5775;
+    background-color: #4e4c4c;
     padding-left: 30px;
     transition: all 0.3s ease;
 }
 
 .sidebar .top-sidebar .exit-button a:hover {
-    background-color: #4c5775;
+    background-color: #4e4c4c;
     transition: all 0.3s ease;
     border-radius: 50%;
 }
