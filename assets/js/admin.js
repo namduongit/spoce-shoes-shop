@@ -68,7 +68,7 @@ function logOut() {
     document.querySelector('.login').style.display = 'block';
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
-    alert('Đã đăng xuất!');
+    toast({ title: 'SUCCESS', message: 'Đăng xuất thành công!', type: 'success', duration: 3000});
 }
 
 function showSideBar() {
@@ -294,7 +294,7 @@ function showProducts() {
 
 
     var str = "";
-    for (let i = 1; i <= numOfPages; i++) {
+    for (let i = 1; i <= numOfPages && numOfPages != 1; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
                 <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -1222,7 +1222,7 @@ function showCustomer() {
     var numOfPages = Math.ceil(users.length / userPerPage);
 
     var str = "";
-    for (let i = 1; i <= numOfPages; i++) {
+    for (let i = 1; i <= numOfPages && numOfPages != 1; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
                 <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -2303,6 +2303,7 @@ function sortOrder() {
         end = new Date(endDate.value);
         console.log(start);
         console.log(end);
+        console.log(start.getTime() == end.getTime());
 
         if (orderStatus.value != "0") {
             if (orderStatus.value == "1") {
@@ -2310,7 +2311,7 @@ function sortOrder() {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đang xử lý" && orderDate >= start && orderDate <= end) {
+                    if (item.status == "Đang xử lý" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2319,7 +2320,7 @@ function sortOrder() {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã xác nhận" && orderDate >= start && orderDate <= end) {
+                    if (item.status == "Đã xác nhận" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2328,7 +2329,7 @@ function sortOrder() {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã giao thành công" && orderDate >= start && orderDate <= end) {
+                    if (item.status == "Đã giao thành công" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2337,7 +2338,7 @@ function sortOrder() {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
                     var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy" && orderDate >= start && orderDate <= end) {
+                    if (item.status == "Đã hủy" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2347,7 +2348,8 @@ function sortOrder() {
                 var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                 var dateArr = dateStr[0].split('/');
                 var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                if (orderDate >= start && orderDate <= end) {
+                console.log(orderDate);
+                if (orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
                     ordersSelected.push(item);
                 }
             });
@@ -2405,7 +2407,7 @@ function sortOrder() {
     var numOfPages = Math.ceil(ordersSelected.length / orderPerPage);
 
     var str = "";
-    for (let i = 1; i <= numOfPages; i++) {
+    for (let i = 1; i <= numOfPages && numOfPages != 1; i++) {
         str = str + `
         <li class="page-item" data-page="${i}">
             <a class="page-item-text" href="javascript:void(0);">${i}</a>
@@ -2423,7 +2425,9 @@ function sortOrder() {
             s = s + `
             <tr>
                 <td>${ordersOfPage[i].code}</td>
+                <td>${getDateFromString(ordersOfPage[i].paymentdate)}</td>
                 <td>${ordersOfPage[i].name}</td>
+                <td>${ordersOfPage[i].street}</td>
                 <td>${ordersOfPage[i].district.toUpperCase()}</td>
                 <td>${ordersOfPage[i].status}</td>
                 <td><a href="#" class="warning" data-code="${ordersOfPage[i].code}" onclick="showOrderDetail(this)">Chi tiết</a></td>
@@ -2493,7 +2497,7 @@ function showAdmin() {
     var numOfPages = Math.ceil(admins.length / adminPerPage);
 
     var str = "";
-    for (let i = 1; i <= numOfPages; i++) {
+    for (let i = 1; i <= numOfPages && numOfPages != 1; i++) {
         str = str + `
             <li class="page-item" data-page="${i}">
                 <a class="page-item-text" href="javascript:void(0);">${i}</a>
