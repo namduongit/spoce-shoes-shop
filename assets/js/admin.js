@@ -38,6 +38,9 @@ function checkLogin() {
 
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
+        document.querySelector('.admin-content').innerHTML = `
+        <h4>Xin chào, ${username.value}</h4>
+        `;
         toast({ title: 'SUCCESS', message: 'Đăng nhập thành công"', type: 'success', duration: 3000 });
         writeMainContent();
 
