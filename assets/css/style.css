@@ -131,7 +131,7 @@ header .inner-wrap .inner-user .user .parent .child {
   z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
-    width:120%;
+  width: 120%;
 
 }
 
@@ -894,7 +894,8 @@ a {
   border-color: red;
   background: url(/assets/image/effect/sticked.png) right bottom no-repeat #fff;
   background-position: right bottom;
-  background-attachment: fixed;  /* Giữ hình nền cố định khi cuộn trang */
+  background-attachment: fixed;
+  /* Giữ hình nền cố định khi cuộn trang */
 
   /* border: 1px solid #000; */
   /* background-color: #fff !important; */
@@ -965,11 +966,13 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .price-inputs input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .product-quantity .input-quantity:focus {
   outline: none;
 }
@@ -1184,6 +1187,7 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: left;
   white-space: nowrap;
 }
+
 .table td {
   border: 1px solid #ccc;
   padding: 8px 20px;
@@ -1191,16 +1195,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .table th {
-  background-color: #f4f4f4; /* Màu nền cho tiêu đề bảng */
+  background-color: #f4f4f4;
+  /* Màu nền cho tiêu đề bảng */
   font-weight: bold;
 }
 
 .table tr:nth-child(even) {
-  background-color: #f9f9f9; /* Màu nền cho dòng chẵn */
+  background-color: #f9f9f9;
+  /* Màu nền cho dòng chẵn */
 }
 
 .table tr:hover {
-  background-color: #eaeaea; /* Hiệu ứng khi di chuột qua */
+  background-color: #eaeaea;
+  /* Hiệu ứng khi di chuột qua */
 }
 
 
@@ -1249,18 +1256,22 @@ input[type=number]::-webkit-outer-spin-button {
   overflow-y: auto;
   overflow-x: auto;
 }
+
 #showProductCode .head-content span {
   margin-right: 100px;
 }
+
 .group-product {
   padding: 10px 0px;
   border-bottom: 2px solid #ddd;
   margin-bottom: 10px;
   display: flex;
 }
+
 .group-product span {
   margin-right: 100px;
 }
+
 .group-product div {
   margin-bottom: 5px;
 }
@@ -1281,12 +1292,11 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-.foot-content {
+.foot-content {}
 
-}
-#toast{
+#toast {
   position: fixed;
-  top:32px;
+  top: 32px;
   right: 32px;
   z-index: 10000;
 }
@@ -1302,21 +1312,25 @@ input[type=number]::-webkit-outer-spin-button {
   min-width: 400px;
   max-width: 450px;
 }
-@keyframes slideInLeft{
-  from{
-      opacity: 0;
-      transform: translateX(calc(100% + 32px));
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
   }
-  to{
-      opacity: 1;
-      transform: translateX(0);
-  }
-}
-@keyframes fadeOut{
-  to{
-      opacity: 0;
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
 .toast__background {
   height: 4px;
   background-color: #47d864;
@@ -1327,106 +1341,121 @@ input[type=number]::-webkit-outer-spin-button {
 
 @keyframes background_time {
   0% {
-      width: 100%;
+    width: 100%;
   }
 
   10% {
-      width: 90%;
+    width: 90%;
   }
 
   20% {
-      width: 80%;
+    width: 80%;
   }
 
   30% {
-      width: 70%;
+    width: 70%;
   }
 
   40% {
-      width: 60%;
+    width: 60%;
   }
 
   50% {
-      width: 50%;
+    width: 50%;
   }
 
   60% {
-      width: 40%;
+    width: 40%;
   }
 
   70% {
-      width: 30%;
+    width: 30%;
   }
 
   80% {
-      width: 20%;
+    width: 20%;
   }
 
   90% {
-      width: 10%;
+    width: 10%;
   }
 
   100% {
-      width: 0;
+    width: 0;
   }
 }
 
-.toast--success{
+.toast--success {
   border-color: #47d864;
 
 
 }
-.toast--success .toast_icon{
+
+.toast--success .toast_icon {
   color: #47d864;
 
 }
-.toast_body{
+
+.toast_body {
   flex-grow: 1;
 }
-.toast--warning{
+
+.toast--warning {
   border-color: #ffc021;
 }
-.toast--warning .toast_icon{
+
+.toast--warning .toast_icon {
   color: #ffc021;
 }
-.toast--errol{
+
+.toast--errol {
   border-color: #ff623d;
 }
-.toast--errol .toast_icon{
+
+.toast--errol .toast_icon {
   color: #ff623d;
 }
-.toast_icon{
+
+.toast_icon {
   font-size: 24px;
 
 }
-.toast_icon,.toast_close{
+
+.toast_icon,
+.toast_close {
   padding: 0 16px;
 
 }
-.toast_close{
+
+.toast_close {
   cursor: pointer;
   font-size: 20px;
-  color: rgba(0,0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
-.toast_title{
+
+.toast_title {
   font-size: 16px;
   font-weight: 600;
   color: #333;
 
 }
-.toast_msg{
-  font-size:14px;
-  color:#888;
+
+.toast_msg {
+  font-size: 14px;
+  color: #888;
   margin-top: 4px;
   line-height: 1.5;
 }
-.toast+.toast{
+
+.toast+.toast {
   margin-top: 24px;
 }
+
 /* menu mobile */
 .inner-menu_mobile {
   position: relative;
 }
+
 .inner-menu_mobile i {
   font-size: 20px;
   position: absolute;
@@ -1435,6 +1464,7 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translate(-50%, -50%);
   padding: 12px;
 }
+
 .menu-mobile {
   position: fixed;
   top: 0;
@@ -1445,6 +1475,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: rgb(0, 0, 0, 0.25);
   display: none;
 }
+
 .menu-mobile__popup {
   position: relative;
   width: 60%;
@@ -1452,6 +1483,7 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 101;
   background-color: #fff;
 }
+
 .menu-mobile__tittle {
   text-align: center;
   text-transform: uppercase;
@@ -1460,12 +1492,15 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: 300;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .menu-mobile__list {
   list-style: none;
 }
+
 .menu-mobile__item {
   /* text-decoration: none; */
 }
+
 .menu-mobile__item a {
   color: #252525;
   text-transform: uppercase;
@@ -1476,6 +1511,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: block;
   padding: 5px 12px;
 }
+
 .menu-mobile__popup .moreMenu {
   position: absolute;
   bottom: 0;
@@ -1485,10 +1521,37 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 14px;
   font-weight: 300;
 }
+
 .menu-mobile__popup i {
   position: absolute;
   top: 3.3%;
   left: 3%;
   /* margin-left: 10px; */
   text-align: center;
+}
+
+/* Sửa lại thanh Slide bar */
+.inner-section-menu-header {
+  align-content: center;
+  position: relative;
+}
+
+.inner-section-menu-header:hover {
+  font-weight: 500;
+  /* padding-bottom: 2px;
+    border-bottom: 3px solid white; */
+  transition: all 0.3s;
+  text-shadow: 0 0 10px #fff;
+  cursor: pointer;
+}
+
+.inner-section-menu-header .child-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--bg-color-1);
+  padding: 5px 10px;
+  margin-top: 15px;
+  left: 0;
+  line-height: 2;
+  border-radius: 0 0 5px 5px;
 }

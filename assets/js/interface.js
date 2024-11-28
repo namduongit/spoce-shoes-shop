@@ -123,20 +123,27 @@ function writeMenuSelection() {
                     <li id="all_products_sale" class="ChiTietSanPham" onclick="showCategory('SALE')">
                         <a href="#">Sale 40% - 80%</a>
                     </li>
-                    <li id="all_nike_products" class="ChiTietSanPham" onclick="showCategory('NIKE')">
-                        <a href="#">NIKE</a>
-                    </li>
-                    <li id="all_adidas_products" class="ChiTietSanPham" onclick="showCategory('ADIDAS')">
-                        <a href="#">ADIDAS</a>
-                    </li>
-                    <li id="all_vans_products" class="ChiTietSanPham" onclick="showCategory('VANS')">
-                        <a href="#">VANS</a>
-                    </li>
-                    <li id="all_converse_products" class="ChiTietSanPham" onclick="showCategory('CONVERSE')">
-                        <a href="#">CONVERSE</a>
+                    <li class="inner-section-menu-header">
+                        <div class="parent-menu" onclick="showChildMenuItem()">
+                            GIÀY
+                        </div>
+                        <ul class="child-menu">
+                            <li id="all_nike_products" class="ChiTietSanPham" onclick="showCategory('NIKE')">
+                                <a href="#">NIKE</a>
+                            </li>
+                            <li id="all_adidas_products" class="ChiTietSanPham" onclick="showCategory('ADIDAS')">
+                                <a href="#">ADIDAS</a>
+                            </li>
+                            <li id="all_vans_products" class="ChiTietSanPham" onclick="showCategory('VANS')">
+                                <a href="#">VANS</a>
+                            </li>
+                            <li id="all_converse_products" class="ChiTietSanPham" onclick="showCategory('CONVERSE')">
+                                <a href="#">CONVERSE</a>
+                            </li>
+                        </ul>
                     </li>
                     <li id="all_clothes_products" class="ChiTietSanPham" onclick="showCategory('CLOTHES')">
-                        <a href="#">QUẦN ÁO</a>
+                        <a href="#">ÁO KHOÁC</a>
                     </li>
                     <li id="count_slide_bar">
                         <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>
@@ -373,3 +380,18 @@ function OutStandingProduct() {
   });
   document.querySelector(".clothes-products").innerHTML = outProductHTML;
 }
+var showChildMenuContent = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    const menuHeader = document.querySelector(".inner-section-menu-header");
+    const parentMenu = menuHeader.querySelector(".parent-menu");
+    const childMenu = menuHeader.getElementsByClassName("child-menu")[0];
+
+    parentMenu.addEventListener("click", function () {
+        showChildMenuContent += 1;
+        if (showChildMenuContent % 2 === 1) {
+            childMenu.style.display = "block";
+        } else {
+            childMenu.style.display = "none";
+        }
+    });
+});

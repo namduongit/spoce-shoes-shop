@@ -4,6 +4,13 @@ const selectSizes = [];
 function showCategory(value) {
   selectSizes.length = 0; // Reset mảng về trạng thái rỗng
   console.log("Mảng đã reset:", selectSizes);
+  const menuHeader = document.querySelector(".inner-section-menu-header");
+  const childMenu = menuHeader.getElementsByClassName("child-menu")[0];
+  if (showChildMenuContent % 2 == 1) {
+    childMenu.style.display = "none";
+    showChildMenuContent += 1;
+  }
+
 
   document.querySelector(".section-two").style.display = "none";
 
@@ -40,7 +47,7 @@ function showCategory(value) {
     let start = productsPerPage * (currentPage - 1);
     let end = productsPerPage * currentPage;
     let currentProducts = products.slice(start, end);
-  
+
     let s = "";
       currentProducts.forEach((product) => {
         s += `<div class="grid_col-4 product__item" onclick="DetailProducts('${product.id}')">
@@ -55,7 +62,7 @@ function showCategory(value) {
                           </div>
                       </div>`;
       });
-  
+
       let pageContent = `
                    <div class="wrapper">
                        <div class="grid">
@@ -64,17 +71,17 @@ function showCategory(value) {
                                    <h3 class="title_size">Hướng dẫn chọn size</h3>
                          <div class="choose-Size"> <img src="assets/image/author/kich_thuoc_chan.png" alt="Hướng dẫn chọn size"></div>
                          <div class="choose-img">Mua Giày chính hãng nhập khẩu từ các thương hiệu nổi tiếng: Adidas, Nike, Converse, Vans,
-                          Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP. 
+                          Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP.
                           ✔ Giảm 50K cho đơn đầu tiên
-                          ✔ Freeship và giao nhanh nội thành 
-                          ✔ Đổi trả dễ dàng 
+                          ✔ Freeship và giao nhanh nội thành
+                          ✔ Đổi trả dễ dàng
                           ✔ Cam kết hàng cao cấp.<br>
-  
+
                           ⭐️⭐️⭐️⭐️⭐️ (Chất lượng 5 sao)</div>
-  
-                                  
+
+
                     </div>
-  
+
                                <div class="grid__col-9">
                                 <div class="listProductByBrand">
                                       <div class="PagiBar">
@@ -106,7 +113,7 @@ function showCategory(value) {
                                                                   <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
                                                                   <li onclick="SortIncrease()"><a href="#">Giá tăng dần</a></li>
                                                                   <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
-    
+
                                                               </ul>
                                                           </li>
                                                       </ul>
@@ -114,7 +121,7 @@ function showCategory(value) {
                                               </div>
                                           </div>
                                       </div>
-            
+
                                     <div class="grid__row product_list" data-brand="${value}">
                                         ${s}
                                         <ul class="pagination">
@@ -130,20 +137,20 @@ function showCategory(value) {
   }
 
   loadItem();
-  
+
   function loadPage() {
     let numPages = Math.ceil(products.length / productsPerPage);
-  
+
     let footPage = "";
-  
+
       // them nut tro ve trang dau tien
       // footPage += `<li class="page-item" onclick="changePage(1)">
       //               <a href="javascript:void(0);" class="page-link">
       //                 <i class="fa-solid fa-angles-left"></i>
       //               </a>
       //             </li>`;
-  
-      
+
+
       if (currentPage != 1) {
           footPage += `<li class="page-item" onclick="changePage(${currentPage - 1})">
                     <a href="javascript:void(0);" class="page-link">
@@ -151,10 +158,10 @@ function showCategory(value) {
                     </a>
                   </li>`;
       }
-  
-  
+
+
       let numLinksTwoSide = 1; // so lien ket muon hien thi 2 ben
-  
+
       const range = numLinksTwoSide + 4;
       let render = "";
       let renderTwoSide = "";
@@ -163,10 +170,10 @@ function showCategory(value) {
       <a href="javascript:void(0);" class="page-link">...</a>
       </li>`;
       let countTruncate = 0;
-  
+
       const numberTruncateLeft = currentPage - numLinksTwoSide;
       const numberTruncateRight = currentPage + numLinksTwoSide;
-  
+
       let active = "";
       for (let pos = 1; pos <= numPages; pos++) {
           active = pos == currentPage ? "active" : "";
@@ -190,14 +197,14 @@ function showCategory(value) {
               render += renderPage(pos, active)
           }
       }
-  
+
       if (renderTwoSide) {
           renderTwoSide = renderPage(1) + dot + renderTwoSide + dot + renderPage(numPages);
           footPage += renderTwoSide;
       } else {
           footPage += render;
       }
-  
+
       if (currentPage != numPages) {
           footPage += `<li class="page-item" onclick="changePage(${currentPage + 1})">
                         <a href="javascript:void(0);" class="page-link">
@@ -205,7 +212,7 @@ function showCategory(value) {
                         </a>
                       </li>`;
       }
-  
+
       // footPage += `<li class="page-item" onclick="changePage(${numPages})">
       //               <a href="javascript:void(0);" class="page-link">
       //                 <i class="fa-solid fa-angles-right"></i>
@@ -218,7 +225,7 @@ function showCategory(value) {
     currentPage = page;
     loadItem();
   }
-  
+
   function renderPage(index, active) {
     return `<li class="page-item" data-page="${index}" onclick="changePage(${index})">
               <a href="javascript:void(0);" class="page-link ${active}">${index}</a>
@@ -330,7 +337,7 @@ function emptyList(brand) {
               <i class="fa-solid fa-xmark" id="close_message"></i>
             </div>`;
 
-  let pageContent = `  
+  let pageContent = `
                         <div class="PagiBar">
                           <div class="grid__row sortPagiBar">
                             <div class="grid__col-7">
