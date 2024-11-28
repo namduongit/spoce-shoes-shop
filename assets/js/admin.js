@@ -1,5 +1,5 @@
 function loadAdmin() {
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         createAdmin()
     })
 }
@@ -87,7 +87,7 @@ function logOut() {
     document.querySelector('.login').style.display = 'block';
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
-    toast({ title: 'SUCCESS', message: 'Đăng xuất thành công!', type: 'success', duration: 3000});
+    toast({ title: 'SUCCESS', message: 'Đăng xuất thành công!', type: 'success', duration: 3000 });
 }
 
 function showSideBar() {
@@ -1634,6 +1634,8 @@ function getCurrentDateTime() {
 }
 
 
+
+
 function showStatistics() {
     var currentTime = new Date();
     currentTime = getCurrentDateTime(currentTime); // Giả sử bạn có hàm này để định dạng thời gian
@@ -1644,160 +1646,15 @@ function showStatistics() {
     document.querySelector('.content').innerHTML = `
         <div class="statistics">
             <div class="head-content">
-                <div class="section-one">
-                    <div class="section-one-title">
-                        <h3>Thống kê đơn hàng</h3>
-                    </div>
-                    <div class="section-one-info">
-                        <div class="month-info">
-                            <label for="month-select">Chọn tháng: </label>
-                            <input type="text" id="month-select" placeholder="Nhập tháng">
-                        </div>
-                        <div class="year-info">
-                            <label for="year-select">Chọn năm: </label>
-                            <input type="text" id="year-select" placeholder="Nhập năm">
-                        </div>
-                    </div>
-                    <div class="search-btn">
-                        <a href="#" onclick="searchOrder()">Tìm kiếm</a>
-                    </div>
-                </div>
-                <div class="section-two">
-                    <div class="statistic-info">
-                        <h2>Biểu đồ đơn hàng</h2>
-                        <div class="date-info">
-                            <p class="date-start">Từ: </p>
-                            <p class="date-end">Đến: </p>
-                        </div>
-                    </div>
 
-                    <div class="chart-container">
-
-                            <!-- Biểu đồ cột sẽ được vẽ ở đây -->
-                            <canvas id="orderChart"></canvas>
-
-                    </div>
-                </div>
-                <div class="section-three">
-                        <div class="total-info-now">
-                            <div>
-                                <h3 class="total-info-now-title">Thống kê hàng tháng: </h3>
-                            </div>
-                            <p id="total-order">Tổng số đơn hàng: </p>
-                            <p id="total-quantity">Tổng số lượng: </p>
-                            <p id="total-revenue">Tổng doanh thu: </p>
-                            <p id="most-brand">Band bán chạy nhất: </p>
-                            <p id="most-product">Sản phẩm bán chạy nhất: </p>
-                        </div>
-
-                        <div class="total-info-last">
-                            <div>
-                                <h3 class="total-info-last-title">Thống kê hàng tháng trước: </h3>
-                            </div>
-                            <div class="total-info-last-content">
-                                <p id="total-order-last">Tổng đơn tháng trước: </p>
-                                <p id="total-quantity-last">Tổng số lượng tháng trước: </p>
-                                <p id="total-revenue-last">Tổng doanh thu tháng trước</p>
-                                <p id="most-brand-last">Brand bán chạy nhất tháng trước: </p>
-                                <p id="most-product-last">Sản phẩm bán chạy nhất tháng trước: </p>
-                            </div>
-                        </div>
-                </div>
-
-                <div class="section-four">
-                        <div>
-                           <h3 class="section-four-title">Thống kê tất cả đơn hàng trong tháng: </h3>
-                        </div>
-                        <div class="section-four-content">
-                            <div class="brand-list">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Tên Brand</th>
-                                            <th>Số lượng sản phẩm brand bán ra</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="brand-list">
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="product-list">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Số lượng sản phẩm bán ra</th>
-                                            <th>Doanh thu</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="product-list">
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                </div>
             </div>
+
             <div class="foot-content">
                 <!-- Các thông tin thêm có thể thêm ở đây -->
             </div>
         </div>
     `;
 
-    // Vẽ biểu đồ sau khi chèn nội dung
-    var ctx = document.getElementById('orderChart').getContext('2d');
-    orderChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [], // Nhãn sẽ được cập nhật trong searchOrder
-            datasets: [{
-                label: 'Hàng',
-                data: [], // Số liệu sẽ được cập nhật trong searchOrder
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(0, 0, 0, 1)',
-                borderWidth: 1,
-                barThickness: 15 // Điều chỉnh độ dày của cột (giảm bớt nếu cần)
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'rgba(0, 0, 0, 0.8)', // Màu của các nhãn trên trục X
-                        font: {
-                            weight: 'bold' // Độ đậm của font chữ trục X
-                        },
-                        maxRotation: 45, // Cho phép xoay nhãn nếu quá dài
-                        minRotation: 0
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.3)' // Màu của đường lưới trục X
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1, // Các bước nhảy trên trục y
-                        color: 'rgba(0, 0, 0, 0.8)', // Màu của các nhãn trên trục Y
-                        font: {
-                            weight: 'bold' // Độ đậm của font chữ trục Y
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.5)' // Màu của đường lưới trục Y
-                    }
-                }
-            },
-            responsive: true,
-            elements: {
-                bar: {
-                    categoryPercentage: 0.85, // Giảm khoảng cách giữa các cột
-                    barPercentage: 0.7 // Điều chỉnh chiều rộng cột để có thêm không gian
-                }
-            }
-        }
-    });
 
 }
 
@@ -1827,242 +1684,6 @@ productsList.forEach(product => {
     }
 });
 
-function resetDataList() {
-    brandList = [];
-    productsName = [];
-
-    productsList.forEach(product => {
-        // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
-        if (!brandList.some(b => b.brand === product.brand)) {
-            let newBrand = {
-                brand: product.brand,
-                count: 0
-            };
-            brandList.push(newBrand);
-        }
-
-        // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
-        if (!productsName.some(p => p.name === product.name_product)) {
-            let newProduct = {
-                name: product.name_product,
-                count: 0,
-                price: product.price
-            };
-            productsName.push(newProduct);
-        }
-    });
-}
-
-function searchOrder() {
-    var month = parseInt(document.getElementById('month-select').value);
-    var year = parseInt(document.getElementById('year-select').value);
-
-    var allBill = JSON.parse(localStorage.getItem('Allbill'));
-
-
-    // Kiểm tra dữ liệu nhập
-    if (isNaN(month) || isNaN(year)) {
-        alert('Vui lòng nhập tháng và năm hợp lệ');
-        return;
-    }
-    if (month < 1 || month > 12) {
-        alert('Tháng không hợp lệ');
-        return;
-    }
-    if (year < 2020 || year > new Date().getFullYear()) {
-        alert('Năm không hợp lệ');
-        return;
-    }
-
-    let totalQuantity = 0;
-    let totalMoney = 0;
-    let mostBrand = '';
-    let mostProduct = '';
-
-
-    document.querySelector('.date-info .date-start').innerText = `Từ: 01/${month}/${year}`;
-    document.querySelector('.date-info .date-end').innerText = `Đến: ${new Date(year, month, 0).getDate()}/${month}/${year}`;
-
-    // Lấy danh sách các hóa đơn trong tháng/năm
-    const billOfSelectDate = [];
-    if (allBill) {
-        allBill.forEach(item => {
-            let dateOfBill = item.paymentdate.split(' ')[2];
-            let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
-            if (parseInt(monthOfBill) === month && parseInt(yearOfBill) === year) {
-                billOfSelectDate.push(item);
-            }
-        });
-        if (billOfSelectDate) {
-
-            // Tính số ngày trong tháng
-            const daysInMonth = new Date(year, month, 0).getDate();
-            // Tạo mảng có số ngày trong tháng và khởi tạo bằng 0
-            let dayCounts = Array(daysInMonth).fill(0);
-            resetDataList();
-            // Đếm số đơn hàng theo từng ngày
-            billOfSelectDate.forEach(item => {
-                let dateOfBill = item.paymentdate.split(' ')[2];
-                let day = parseInt(dateOfBill.split('/')[0]);
-                dayCounts[day - 1] += 1; // Tăng số lượng đơn hàng cho ngày tương ứng
-                // Tính tổng số lượng và doanh thu
-                let products_buy = item.products_buy;
-                products_buy.forEach(pro => {
-                    totalQuantity += parseInt(pro.quantity);
-                    totalMoney += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
-                    let nameBrand = pro.brand;
-                    let nameProduct = pro.name_product;
-                    brandList.forEach(brand => {
-                        if (brand.brand === nameBrand) {
-                            brand.count += parseInt(pro.quantity);
-                        }
-                    });
-
-                    productsName.forEach(product => {
-                        if (product.name === nameProduct) {
-                            product.count += parseInt(pro.quantity);
-                        }
-                    });
-
-
-                });
-                let max_brand = 0;
-                brandList.forEach(brand => {
-                    if (brand.count > max_brand) {
-                        max_brand = brand.count;
-                        mostBrand = brand.brand;
-                    };
-                });
-                let max_product = 0;
-                productsName.forEach(product => {
-                    if (product.count > max_product) {
-                        max_product = product.count;
-                        mostProduct = product.name;
-                    };
-                });
-
-            });
-            // Dùng để ghi vào section-four
-
-            const brandContainer = document.querySelector('.statistics .section-four .brand-list tbody');
-            const productContainer = document.querySelector('.statistics .section-four .product-list tbody');
-            let htmlBrand = '';
-            let htmlProduct = '';
-            brandList.forEach(brand => {
-                htmlBrand += `
-            <tr>
-                <td>${brand.brand}</td>
-                <td>${brand.count}</td>
-            </tr>
-        `;
-            });
-            productsName.forEach(product => {
-                htmlProduct += `
-            <tr>
-                <td>${product.name}</td>
-                <td>${product.count}</td>
-                <td>${formatMoney(product.count * convertCurrencyToNumber(product.price))}</td>
-            </tr>
-        `;
-            }
-            );
-            brandContainer.innerHTML = htmlBrand;
-            productContainer.innerHTML = htmlProduct;
-
-
-
-            // Tìm giá trị lớn nhất trong mảng dayCounts
-            const maxOrders = Math.max(...dayCounts);
-            const maxValue = Math.ceil(maxOrders * 1.1);
-
-            // Tạo nhãn (labels) cho từng ngày trong tháng
-            let labels = Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${month}`);
-
-            // Cập nhật dữ liệu và trục y của biểu đồ
-            orderChart.data.labels = labels;
-            orderChart.data.datasets[0].data = dayCounts;
-            orderChart.options.scales.y.max = maxValue;
-            orderChart.update();
-
-
-            // Cập nhật dữ liệu vào total now
-            document.getElementsByClassName('total-info-now-title')[0].innerHTML += ` ${month}/${year}`;
-            document.getElementById('total-order').innerHTML = `Tổng số đơn hàng: ${billOfSelectDate.length}`;
-            document.getElementById('total-quantity').innerHTML = `Tổng số lượng: ${totalQuantity}`;
-            document.getElementById('total-revenue').innerHTML = `Tổng doanh thu: ${totalMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
-            document.getElementById('most-brand').innerHTML = `Brand bán chạy nhất: ${mostBrand}`;
-            document.getElementById('most-product').innerHTML = `Sản phẩm bán chạy nhất: ${mostProduct}`;
-
-
-            // Làm dữ liệu cho tháng trước
-
-            let totalQuantityLast = 0;
-            let totalMoneyLast = 0;
-            let mostBrandLast = 0;
-            let mostProductLast = 0;
-
-            let lastMonth = month - 1; // Js tự hiểu phép trừ
-            let lastYear = year;
-            if (lastMonth === 0) {
-                lastMonth = 12;
-                lastYear = year - 1;
-            }
-            const billOfLastMonth = allBill.filter(item => {
-                let dateOfBill = item.paymentdate.split(' ')[2];
-                let [day, monthOfBill, yearOfBill] = dateOfBill.split('/');
-                return parseInt(monthOfBill) === lastMonth && parseInt(yearOfBill) === lastYear;
-            });
-
-            // Đếm thông tin trong billOfLastMonth
-            resetDataList();
-            billOfLastMonth.forEach(item => {
-                let products_buy = item.products_buy;
-                products_buy.forEach(pro => {
-                    totalQuantityLast += parseInt(pro.quantity);
-                    totalMoneyLast += parseInt(pro.sell.replace(/[^0-9]/g, '')) * parseInt(pro.quantity);
-                    let nameBrand = pro.brand;
-                    let nameProduct = pro.name_product;
-                    brandList.forEach(brand => {
-                        if (brand.brand === nameBrand) {
-                            brand.count += parseInt(pro.quantity);
-                        }
-                    });
-
-                    productsName.forEach(product => {
-                        if (product.name === nameProduct) {
-                            product.count += parseInt(pro.quantity);
-                        }
-                    });
-                });
-            });
-            let max_brand_last = 0;
-            brandList.forEach(brand => {
-                if (brand.count > max_brand_last) {
-                    max_brand_last = brand.count;
-                    mostBrandLast = brand.brand;
-                };
-            });
-            let max_product_last = 0;
-            productsName.forEach(product => {
-                if (product.count > max_product_last) {
-                    max_product_last = product.count;
-                    mostProductLast = product.name;
-                };
-            });
-
-            // Câp nhật dữ liệu vào total last
-            document.getElementsByClassName('total-info-last-title')[0].innerHTML += ` ${lastMonth}/${lastYear}`;
-            document.getElementById('total-order-last').innerHTML = `Tổng số đơn hàng tháng trước: ${billOfLastMonth.length}`;
-            document.getElementById('total-quantity-last').innerHTML = `Tổng số lượng tháng trước: ${totalQuantityLast}`;
-            document.getElementById('total-revenue-last').innerHTML = `Tổng doanh thu tháng trước: ${totalMoneyLast.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}đ`;
-            document.getElementById('most-brand-last').innerHTML = `Brand bán chạy nhất tháng trước: ${mostBrandLast}`;
-            document.getElementById('most-product-last').innerHTML = `Sản phẩm bán chạy nhất tháng trước: ${mostProductLast}`;
-
-        }
-    }
-
-
-}
 
 function getDateFromString(str) {
     var arr = str.match(/\d{2}\/\d{2}\/\d{4}/);
@@ -2628,7 +2249,7 @@ function showAdminModify(obj) {
     var currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
 
     if (!currentAdmin || currentAdmin.title === "contributors") {
-        alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị Admin.");
+        alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
         return; // Thoát nếu người dùng không có quyền
     }
 
@@ -2819,9 +2440,9 @@ function showAddingAdminForm() {
         var valid = true;
 
         valid &= validation.kiemtraRong(username.value, '#errol_user_disable') &
-                 validation.kiemtraDodai(username.value, '#errol_user_length', 3) &
-                 validation.kiemtraRong(password.value, '#errol_password_disable') &
-                 validation.kiemtraDodai(password.value, '#errol_password_length', 6);
+            validation.kiemtraDodai(username.value, '#errol_user_length', 3) &
+            validation.kiemtraRong(password.value, '#errol_password_disable') &
+            validation.kiemtraDodai(password.value, '#errol_password_length', 6);
 
 
         if (admins.some(admin => admin.username === username.value)) {
