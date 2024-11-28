@@ -2193,12 +2193,20 @@ function showAdmin() {
 function showAdminDeleteConfirmation(obj) {
     const adminCurrent = JSON.parse(localStorage.getItem('currentAdmin')); // Lấy thông tin admin hiện tại
     const adminToDelete = admins.find(admin => admin.username === obj.getAttribute('data-username')); // Lấy thông tin admin cần xóa
+    const adminList = JSON.parse(localStorage.getItem('admins'));
+    const adminManageList = adminList.filter(admin => admin.title === "manage");
+    console.log(adminManageList)
 
     // Kiểm tra quyền hạn
     if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
         alert("Bạn không có quyền xóa quản lý.");
         return;
     }
+    if (adminCurrent.title === "manage" && adminManageList.length == 1) {
+        alert("Bạn phải giữ lại ít nhất 1 quản trị viên là Manage")
+        return;
+    }
+
 
     document.querySelector('.admin-delete-confirmation-form').style.display = 'block';
     document.querySelector('.admin-delete-confirmation-form').innerHTML = `
@@ -2258,6 +2266,11 @@ function showAdminModify(obj) {
     // Lấy thông tin admin cần chỉnh sửa
     var admin = admins.find(item => item.username == obj.getAttribute('data-username'));
     var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
+
+    if (!admin) {
+        alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
+        return;
+    }
 
     // Hiển thị form chỉnh sửa
     document.querySelector('.admin-modify-form').innerHTML = `
@@ -2341,6 +2354,16 @@ function showAdminModify(obj) {
             return;
         }
 
+        // Nếu đang sửa admin hiện tại, kiểm tra danh sách admin có ít nhất 2 quản lý
+        if (currentAdmin.username === admin.username && title !== "manage") {
+            var manageAdminsCount = admins.filter(admin => admin.title === "manage").length;
+
+            if (manageAdminsCount < 1) {
+                alert("Phải có ít nhất 1 người quản trị viên là Quản lý.");
+                return;
+            }
+        }
+
         // Cập nhật thông tin admin
         admins[indexOfAdmin].password = password;
         admins[indexOfAdmin].title = title;
@@ -2361,6 +2384,7 @@ function showAdminModify(obj) {
         showAdmin(); // Cập nhật lại danh sách admin
     });
 }
+
 
 function showAddingAdminForm() {
     // Lấy thông tin người dùng hiện tại từ localStorage
