@@ -1634,34 +1634,10 @@ function getCurrentDateTime() {
 }
 
 
-
-
-function showStatistics() {
-    var currentTime = new Date();
-    currentTime = getCurrentDateTime(currentTime); // Giả sử bạn có hàm này để định dạng thời gian
-
-    document.getElementById('bar-title').innerHTML = `
-        <h2>Thống kê đơn hàng từng tháng</h2>
-    `;
-    document.querySelector('.content').innerHTML = `
-        <div class="statistics">
-            <div class="head-content">
-
-            </div>
-
-            <div class="foot-content">
-                <!-- Các thông tin thêm có thể thêm ở đây -->
-            </div>
-        </div>
-    `;
-
-
-}
-
 var productsList = JSON.parse(localStorage.getItem('products'));
 
-var brandList = []
-var productsName = []
+var brandList = [];
+var productsName = [];
 
 productsList.forEach(product => {
     // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
@@ -1676,13 +1652,373 @@ productsList.forEach(product => {
     // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
     if (!productsName.some(p => p.name === product.name_product)) {
         let newProduct = {
+            id: product.id,
             name: product.name_product,
             count: 0,
-            price: product.price
+            price: product.price,
+            brand: product.brand
         };
         productsName.push(newProduct);
     }
 });
+
+
+function resetData() {
+    brandList = [];
+    productsName = [];
+    productsList.forEach(product => {
+        // Kiểm tra xem brand đã tồn tại trong brandList chưa và gắn cho nó là 0
+        if (!brandList.some(b => b.brand === product.brand)) {
+            let newBrand = {
+                brand: product.brand,
+                count: 0
+            };
+            brandList.push(newBrand);
+        }
+
+        // Kiểm tra xem tên sản phẩm đã tồn tại trong productsName chưa
+        if (!productsName.some(p => p.name === product.name_product)) {
+            let newProduct = {
+                id: product.id,
+                name: product.name_product,
+                count: 0,
+                price: product.price,
+                brand: product.brand
+            };
+            productsName.push(newProduct);
+        }
+    });
+
+}
+
+function getOptionBrand() {
+    resetData();
+    let html = ``;
+    if (brandList.length > 0) {
+        brandList.forEach(brand => {
+            html += `
+                <option value="${brand.brand}">${brand.brand.toUpperCase()}</option>
+            `;
+        });
+    }
+    return html;
+}
+
+function getOptionProduct() {
+    resetData();
+    let html = ``;
+    if (productsName.length > 0) {
+        productsName.forEach(product => {
+            html += `
+                <option value="${product.id}">${product.name.toUpperCase()}</option>
+            `;
+        })
+    }
+    return html;
+}
+
+
+function showStatistics() {
+    var currentTime = new Date();
+    currentTime = getCurrentDateTime(currentTime); // Giả sử bạn có hàm này để định dạng thời gian
+
+    document.getElementById('bar-title').innerHTML = `
+        <h2>Thống kê đơn hàng từng tháng</h2>
+    `;
+    document.querySelector('.content').innerHTML = `
+        <div class="statistics">
+            <div class="head-content">
+                <div class="inner-left">
+                    <div class="title">Bộ lọc ngày</div>
+                    <div class="statistics-content">
+                        <div class="form-item">
+                            <label for="date-start">Ngày bắt đầu</label>
+                            <br>
+                            <input type="date" id="date-start">
+                        </div>
+                        <div class="form-item">
+                            <label for="date-end">Ngày kết thúc</label>
+                            <br>
+                            <input type="date" id="date-end">
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-right">
+                    <div class="title">Bộ sản phẩm và brand</div>
+                    <div class="statistics-content">
+                        <div class="inner-right-left">
+                            <div class="form-item">
+                                <label for="select-brand">Nhãn sản phẩm</label>
+                                <br>
+                                <select id="select-brand">
+                                    <option value="all" selected>Tất cả</option>
+                                    ${getOptionBrand()}
+                                </select>
+                            </div>
+                            <div class="form-item">
+                                <label for="select-product">Tên sản phẩm</label>
+                                <br>
+                                <select id="select-product">
+                                    <option value="all" selected>Tất cả</option>
+                                    ${getOptionProduct()}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="inner-right-right">
+                            <button onclick="orderStatic()">Lọc</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-content">
+                <div class="chart-title">
+                    <h2>Biểu đồ thống kê số lượng đơn hàng</h2>
+
+                </div>
+                <div class="chart-content">
+                    <canvas id="myChart"></canvas>
+                    <div class="chart-total">
+                        <div class="form-item">
+                            <h4>Tổng số đơn hàng: 0</h4>
+                            <h4>Tổng doanh thu: 0đ</h4>
+                            <h4>Brand bán chạy nhất: </h4>
+                            <h4>Sản phẩm bán chạy nhất: </h4>
+                        </div>
+                        <div class="form-item">
+                            <h4>Đơn hàng thành công: 0</h4>
+                            <h4>Đơn hàng đang xử lý: 0</h4>
+                            <h4>Đơn hàng đã hủy: 0</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="foot-content">
+                <div class="statistics-title">
+                    <h2>Thống kê chi tiết</h2>
+                </div>
+
+            </div>
+        </div>
+    `;
+    document.getElementById("select-brand").addEventListener("change", function() {
+        let html = ``;
+        const nameBrand = document.getElementById("select-brand").value;
+        if (nameBrand != "all") {
+            productsName.forEach(pro => {
+                if (pro.brand === nameBrand) {
+                    html += `
+                        <option value="${pro.id}">${pro.name.toUpperCase()}</option>
+                    `;
+                }
+            });
+            document.getElementById("select-product").innerHTML = `<option value="all" selected>Tất cả</option>` + html;
+        }
+        else {
+            productsName.forEach(pro => {
+                html += `
+                        <option value="${pro.id}">${pro.name.toUpperCase()}</option>
+                    `;
+            });
+            document.getElementById("select-product").innerHTML =  `<option value="all" selected>Tất cả</option>` + html;
+        }
+
+    })
+
+}
+
+function orderStatic() {
+    const startDate = document.getElementById("date-start");
+    const endDate = document.getElementById("date-end");
+    const allBill = JSON.parse(localStorage.getItem("Allbill")) || [];
+
+    if (startDate.value === "" || endDate.value === "") {
+        alert("Vui lòng chọn ngày bắt đầu và ngày kết thúc");
+        return;
+    }
+    if (startDate.value > endDate.value) {
+        alert("Ngày bắt đầu không được lớn hơn ngày kết thúc");
+        return;
+    }
+
+    const start = new Date(startDate.value);
+    const end = new Date(endDate.value);
+
+
+
+    let filterBill = allBill.filter(bill => {
+        const dateString = bill.paymentdate.split(" ")[2];
+        const formattedDate = dateString.split("/").reverse().join("-");
+        const date = new Date(formattedDate);
+        return date >= start && date <= end;
+    });
+
+    // Hiển thị biểu đồ nếu có dữ liệu
+    if (filterBill.length <= 0) {
+        alert("Không có dữ liệu phù hợp");
+        return;
+    }
+    displayChart(filterBill);
+
+    let totalOrder = filterBill.length;
+    let totalMoney = 0;
+    let donHangDaXacNhan = 0;
+    let donHangDaGiaoThanhCong = 0;
+    let donHangDangXuLy = 0;
+    let donHangDaHuy = 0;
+    let brandBanChayNhat;
+    let sanPhamBanChayNhat;
+
+    let maxName = 0;
+    let maxBrand = 0;
+
+    // Reset brandList và productsName
+    resetData();
+
+
+
+    filterBill.forEach(bill => {
+        let products_buy = bill.products_buy;
+        products_buy.forEach(pro => {
+            totalMoney += convertCurrencyToNumber(pro.sell) * parseInt((pro.quantity).trim());
+
+            brandList.forEach(brand => {
+                if (brand.brand === pro.brand) {
+                    brand.count += 1;
+                    if (brand.count > maxBrand) maxBrand = brand.count;
+                }
+            });
+            productsName.forEach(productss => {
+                if (productss.name  === pro.name_product) {
+                    productss.count += parseInt((pro.quantity.trim()));
+                    if (productss.count > maxName) maxName = productss.count;
+                }
+            })
+
+        });
+
+        if (bill.status === "Đang xử lý") {
+            donHangDangXuLy += 1;
+        } else if (bill.status === "Đã xác nhận") {
+            donHangDaXacNhan += 1;
+        } else if (bill.status === "Đã giao thành công") {
+            donHangDaGiaoThanhCong += 1;
+        } else {
+            donHangDaHuy += 1;
+        }
+    });
+    brandList.forEach(brand => {
+        if (brand.count == maxBrand) {
+            brandBanChayNhat = brand.brand;
+        }
+    });
+    productsName.forEach(pro => {
+        if (pro.count == maxName) {
+            sanPhamBanChayNhat = pro.name;
+        }
+    });
+
+
+
+    // Cập nhật thông tin vào giao diện
+    const bodyContent = document.querySelector(".statistics .chart-total");
+    bodyContent.innerHTML = `
+                        <div class="form-item">
+                            <h4>Tổng số đơn hàng: ${totalOrder}</h4>
+                            <h4>Tổng doanh thu: ${formatMoney(totalMoney)}</h4>
+                            <h4>Brand bán chạy nhất: ${brandBanChayNhat}</h4>
+                            <h4>Sản phẩm bán chạy nhất: ${sanPhamBanChayNhat}</h4>
+                        </div>
+                        <div class="form-item">
+                            <h4>Đơn hàng thành đã giao công: ${donHangDaGiaoThanhCong}</h4>
+                            <h4>Đơn hàng đang xử lý: ${donHangDangXuLy}</h4>
+                            <h4>Đơn hàng đã xác nhận: ${donHangDaXacNhan}</h4>
+                            <h4>Đơn hàng đã hủy: ${donHangDaHuy}</h4>
+                        </div>
+    `;
+}
+
+function displayChart(filterBill) {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    if (window.myChart && typeof window.myChart.destroy === 'function') {
+        window.myChart.destroy();
+    }
+
+    const brandSelect = document.getElementById("select-brand");
+    const productSelect = document.getElementById("select-product");
+
+    let tieuChiBrand = brandSelect.value.trim();
+    let tieuChiProDuct = productSelect.value.trim();
+
+    // Đếm số lượng sản phẩm (giày) bán ra theo từng ngày
+    const counts = {}; // Đối tượng lưu tổng số lượng giày bán theo ngày
+    filterBill.forEach(bill => {
+        const dateString = bill.paymentdate.split(" ")[2]; // Lấy ngày từ hóa đơn
+        const formattedDate = dateString.split("/").reverse().join("-"); // Định dạng thành YYYY-MM-DD
+
+        if (!counts[formattedDate]) {
+            counts[formattedDate] = 0;
+        }
+
+        // Cộng dồn số lượng giày trong từng sản phẩm
+        if (tieuChiBrand === "all" && tieuChiProDuct === "all") {
+            bill.products_buy.forEach(product => {
+                counts[formattedDate] += parseInt(product.quantity.trim());
+            });
+        }
+        else {
+            if (tieuChiBrand != "all" && tieuChiBrand === "all") {
+                bill.products_buy.forEach(product => {
+                    if (product.brand === tieuChiBrand) {
+                        counts[formattedDate] += parseInt(product.quantity.trim());
+                    }
+                });
+            }
+            else if (tieuChiBrand == "all" && tieuChiProDuct != "all") {
+                bill.products_buy.forEach(product => {
+                    if (product.id === tieuChiProDuct) {
+                        counts[formattedDate] += parseInt(product.quantity.trim());
+                    }
+                });
+            }
+            else {
+                bill.products_buy.forEach(product => {
+                    if (product.id === tieuChiProDuct && product.brand === tieuChiBrand) {
+                        counts[formattedDate] += parseInt(product.quantity.trim());
+                    }
+                });
+            }
+        }
+    });
+
+    // Tạo dữ liệu cho biểu đồ
+    const chartLabels = Object.keys(counts); // Các ngày
+    const chartData = Object.values(counts); // Số lượng giày bán ra
+
+    // Vẽ biểu đồ
+    window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Số lượng giày bán ra',
+                data: chartData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 
 
 function getDateFromString(str) {

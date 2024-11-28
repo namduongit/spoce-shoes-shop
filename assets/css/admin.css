@@ -1322,165 +1322,6 @@ i {
 }
 
 
-/* CSS Thống Kê */
-.statistics {
-    padding: 50px 100px;
-    margin-top: 20px;
-}
-
-.statistics .head-content .section-one {
-    background-color: #f1f1f1;
-    padding: 20px 50px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 5px;
-    line-height: 2;
-}
-
-.statistics .head-content .section-one .search-btn a {
-    color: white;
-    background-color: green;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 3px solid green;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.statistics .head-content .section-one .search-btn a:hover {
-    background-color: white;
-    color: green;
-    transition: all 0.3s ease;
-}
-
-.statistics .head-content .section-two {
-    margin-top: 50px;
-    background-color: #f1f1f1;
-    padding: 20px 50px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 5px;
-    line-height: 2;
-}
-
-/*                      <div class="brand-info">
-                            <label for="brand-select">Chọn nhãn hiệu: </label>
-                            <select id="brand-select">
-                                <option value="all" selected>Tất cả</option>
-                            </select>
-                        </div>
-                        <div class="product-info">
-                            <label for="product-select">Chọn sản phẩm: </label>
-                            <select id="product-select">
-                                <option value="all" selected>Tất cả</option>
-                            </select>
-                        </div>
-*/
-
-.statistics .head-content .section-three {
-    margin-top: 50px;
-    background-color: #f1f1f1;
-    padding: 20px 50px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 5px;
-    line-height: 2;
-    display: flex;
-    margin-bottom: 50px;
-}
-
-.statistics .head-content .section-three {
-    .total-info-now {
-        padding-left: 20px;
-        width: 50%;
-        border-right: 1px solid black;
-    }
-
-    .total-info-last {
-        padding-left: 20px;
-        width: 50%;
-        border-left: 1px solid black;
-    }
-}
-
-.statistics .head-content .section-three h3 {
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: black 2px solid;
-    margin-bottom: 10px;
-    width: fit-content;
-}
-
-.statistics .head-content .section-four {
-    background-color: #f1f1f1;
-    padding: 20px 50px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 5px;
-    line-height: 2;
-    margin-bottom: 50px;
-
-    .section-four-content {
-        .brand-list {
-            table {
-                margin: 0 auto;
-                margin-bottom: 50px;
-                margin-top: 50px;
-                width: 80%;
-                overflow-x: auto;
-                border-collapse: collapse;
-                /* Cho chữ nó nằm bên trái */
-                text-align: left;
-
-            }
-
-            table th {
-                border: 1px solid #ccc;
-                padding: 8px 12px;
-                text-align: left;
-                white-space: nowrap;
-            }
-
-            table td {
-                border: 1px solid #ccc;
-                padding: 8px 20px;
-                white-space: nowrap;
-            }
-
-            table th {
-                background-color: #f4f4f4;
-                /* Màu nền cho tiêu đề bảng */
-                font-weight: bold;
-            }
-        }
-
-        .product-list {
-            table {
-                margin: 0 auto;
-                margin-bottom: 50px;
-                width: 80%;
-                border-collapse: collapse;
-                text-align: left;
-
-            }
-
-            table th {
-                border: 1px solid #ccc;
-                padding: 8px 12px;
-                text-align: left;
-                white-space: nowrap;
-            }
-
-            table td {
-                border: 1px solid #ccc;
-                padding: 8px 20px;
-                white-space: nowrap;
-            }
-
-            table th {
-                background-color: #f4f4f4;
-                /* Màu nền cho tiêu đề bảng */
-                font-weight: bold;
-            }
-        }
-    }
-}
 
 #toast {
     position: fixed;
@@ -1645,4 +1486,115 @@ i {
 
 .model-2 {
     display: none;
+}
+
+/* Css phần thống kê */
+
+.statistics .head-content {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.statistics .head-content .inner-left {
+    width: 30%;
+    padding: 20px 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    line-height: 1.2;
+    input {
+        padding: 4px 10px;
+    }
+}
+.statistics .head-content .inner-left .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #ddd;
+    margin-bottom: 10px;
+}
+.statistics .head-content .inner-right {
+    width: 60%;
+    padding: 20px 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    line-height: 1.2;
+}
+.statistics .head-content .inner-right .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #ddd;
+    margin-bottom: 10px;
+}
+.statistics .head-content .inner-right .statistics-content {
+    display: flex;
+}
+.statistics .head-content .inner-right .statistics-content .inner-right-right {
+    justify-items: center;
+    align-content: center;
+    width: 15%;
+    button {
+        padding: 8px 16px;
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+        border: 3px solid green;
+        cursor: pointer;
+        font-weight: bold;
+
+    }
+    button:hover {
+        color: green;
+        background-color: white;
+    }
+
+}
+.statistics .head-content .inner-right .statistics-content .inner-right-left {
+    width: 85%;;
+    select {
+        padding: 4px 10px;
+    }
+}
+.statistics .body-content {
+    padding: 20px 50px;
+    #myChart {
+        width: 100%;
+        height: auto;
+        background-color: white;
+        padding: 20px 50px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+    }
+    .chart-title {
+        background-color: white;
+        margin-bottom: 10px;
+        padding: 20px 50px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+    }
+    .chart-total {
+        background-color: white;
+        margin-top: 10px;
+        padding: 20px 50px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+        line-height: 1.5;
+        display: flex;
+        .form-item {
+            width: 50%;
+        }
+    }
+}
+
+.chart-total {
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.chart-total.loaded {
+    opacity: 1;
 }
