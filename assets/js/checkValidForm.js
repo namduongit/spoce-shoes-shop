@@ -266,11 +266,13 @@ function InforClient() {
 
     <div id="showProductCode">
         <div class="wrap-content">
+        <div class="Confirm-Cancle"></div>
             <div id="head-content">
 
             </div>
             <div class="foot-content">
                 <div class="hideShowProduct" onclick="hideShowProduct()">Đóng</div>
+                <div class="cancel_order" onclick="CancelOrder()">Hủy đơn hàng</div>
             </div>
         </div>
     </div>
@@ -278,7 +280,40 @@ function InforClient() {
 
     `
     document.querySelector(".body-content").innerHTML = s;
-
+   
+}
+function CancelOrder(){
+    let allbill=JSON.parse(localStorage.getItem("Allbill"));
+    let id=document.querySelector(".table__content").dataset.id;
+    document.querySelector(".wrap-content").style.pointerEvents="none";
+    document.querySelector(".Confirm-Cancle").style.display="block";
+    document.querySelector(".Confirm-Cancle").innerHTML=`
+    <div class="Cancle">
+    <p>Xác nhận hủy đơn hàng?</p>
+    <div class="flex-confirm">
+        <div class="Confirm">Xác nhận </div>
+    <div class="close">Đóng</div>
+    </div>
+    </div>
+    `
+    document.querySelector(".close").onclick=function(){
+        document.querySelector(".wrap-content").style.pointerEvents="auto";
+        document.querySelector(".Confirm-Cancle").style.display="none";
+    }
+    document.querySelector(".Confirm").onclick=function(){
+        allbill.forEach(bill=>{
+            if(bill.code==Number(id)){
+            
+                bill.status="Đã hủy";
+                
+            }
+        });
+        console.log(allbill);
+        localStorage.setItem("Allbill",JSON.stringify(allbill));
+        // document.querySelector(".wrap-content").style.pointerEvents="auto";
+        // document.querySelector(".Confirm-Cancle").style.display="none";
+        InforClient();
+    }
 }
 function convertIntToString(number) {
     let convertMoney = "";
@@ -790,7 +825,7 @@ function outInfoCode(billCode) {
                     </div>
                 </div>
                 <div class="body-content">
-                    <div class="table-order">
+                    <div class="table-order table__content" data-id="${billCode}">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -807,7 +842,7 @@ function outInfoCode(billCode) {
                     </div>
                 </div>
             `;
-
+            
             // Cập nhật nội dung vào thẻ
             element.innerHTML = str;
             document.getElementById("showProductCode").style.display = "block";
@@ -817,6 +852,20 @@ function outInfoCode(billCode) {
     } else {
         console.log("Dữ liệu không hợp lệ hoặc người dùng chưa đăng nhập.");
     }
+    let allbill=JSON.parse(localStorage.getItem("Allbill"));
+            let id=document.querySelector(".table__content").dataset.id;
+            let status;
+            allbill.forEach(bill=>{
+                if(bill.code==id){
+                    status=bill.status;
+                }
+            });
+            if(status!=="Đang xử lý"){
+                document.querySelector(".cancel_order").style.display="none";
+            }
+            else{
+                document.querySelector(".cancel_order").style.display="block";
+            }
 }
 
 
