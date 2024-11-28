@@ -1,18 +1,25 @@
-function adminInitialization() {
-    if (localStorage.getItem('admins') == null) {
-        var admins = [
+function loadAdmin() {
+    document.addEventListener("DOMContentLoaded", function() {
+        createAdmin()
+    })
+}
+
+function createAdmin() {
+    if (localStorage.getItem('admins') === null) {
+        let admins = [
             {
+                id: 1,
                 username: "admin",
-                password: "admin@12345"
+                password: "admin@12345",
+                title: "manage",
+                status: "Đang hoạt động"
             }
         ];
         localStorage.setItem('admins', JSON.stringify(admins));
     }
 }
 
-window.onload = function () {
-    adminInitialization();
-}
+window.onload = loadAdmin()
 
 var admins = JSON.parse(localStorage.getItem('admins'));
 
@@ -21,30 +28,39 @@ function checkLogin() {
     var password = document.getElementById('password');
     var validation = new Validation();
     let valid = true;
+
+    // Kiểm tra rỗng cho username và password
     valid &= validation.kiemtraRong(username.value, "#errol_user_disabled") & validation.kiemtraRong(password.value, "#errol_pass_disabled");
+
+    // Nếu không hợp lệ, thoát
     if (valid == 0) {
         return false;
     }
 
+    // Tìm admin với username và password
+    let loggedInAdmin = admins.find(admin => admin.username === username.value && admin.password === password.value);
 
-    if (admins.some(admin => {
-        return admin.username === username.value && admin.password === password.value
-    })) {
+    if (loggedInAdmin) {
+        // Lưu thông tin toàn bộ admin đăng nhập
         let currentAdmin = {
-            username: username.value,
-            loginTime: new Date().toISOString()
+            ...loggedInAdmin, // Lưu toàn bộ thông tin admin
+            loginTime: new Date().toISOString() // Thêm thời gian đăng nhập
         };
         localStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
 
+        // Hiển thị giao diện sau khi đăng nhập
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.admin-content').innerHTML = `
-        <h4>Xin chào, ${username.value}</h4>
+            <h4>Xin chào, ${loggedInAdmin.username}</h4>
         `;
-        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công"', type: 'success', duration: 3000 });
+
+        // Gửi thông báo thành công
+        toast({ title: 'SUCCESS', message: 'Đăng nhập thành công', type: 'success', duration: 3000 });
         writeMainContent();
 
     } else {
+        // Hiển thị lỗi nếu đăng nhập thất bại
         document.getElementById("errol_pass_disabled").innerHTML = 'Tài khoản hoặc mật khẩu không đúng';
         document.getElementById("errol_pass_disabled").style.display = "block";
     }
@@ -2480,8 +2496,9 @@ function showAdmin() {
                 <tr>
                     <th>STT</th>
                     <th>Username</th>
-                    <th></th>
-                    <th></th>
+                    <th>Trạng thái</th>
+                    <th>Chức vụ</th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
 
@@ -2520,8 +2537,16 @@ function showAdmin() {
             <tr>
                 <td>${stt}</td>
                 <td>${adminOfPage[i].username}</td>
-                <td><a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminDeleteConfirmation(this)">Xóa</a></td>
-                <td><a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminModify(this)">Sửa</a></td>
+                <td>${adminOfPage[i].status}</td>
+                <td>${adminOfPage[i].title}</td>
+                <td>
+                    <span>
+                        <a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminDeleteConfirmation(this)">Xóa</a>
+                    </span>
+                    <span>
+                        <a href="#" class="warning" data-username="${adminOfPage[i].username}" onclick="showAdminModify(this)">Sửa</a>
+                    </span>
+                </td>
             </tr>
             `;
             stt++;
@@ -2545,32 +2570,53 @@ function showAdmin() {
 }
 
 function showAdminDeleteConfirmation(obj) {
+    const adminCurrent = JSON.parse(localStorage.getItem('currentAdmin')); // Lấy thông tin admin hiện tại
+    const adminToDelete = admins.find(admin => admin.username === obj.getAttribute('data-username')); // Lấy thông tin admin cần xóa
+
+    // Kiểm tra quyền hạn
+    if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
+        alert("Bạn không có quyền xóa quản lý.");
+        return;
+    }
+
     document.querySelector('.admin-delete-confirmation-form').style.display = 'block';
     document.querySelector('.admin-delete-confirmation-form').innerHTML = `
-    <div class="confirm-top">
-        XÓA QUẢN TRỊ VIÊN
-    </div>
+        <div class="confirm-top">
+            XÓA QUẢN TRỊ VIÊN
+        </div>
 
-    <div class="confirm-content">
-        Bạn có chắc chắn muốn xóa tài khoản quản trị viên?
-    </div>
+        <div class="confirm-content">
+            Bạn có chắc chắn muốn xóa tài khoản quản trị viên "${adminToDelete.username}"?
+        </div>
 
-    <div class="confirm-btn-container">
-        <a href="#" onclick="deleteAdmin(this)" data-username="${obj.getAttribute('data-username')}">
-            <div class="confirm-btn">Xóa</div>
-        </a>
-        <a href="#" onclick="closeAdminDeleteConfirmation()">
-            <div class="confirm-btn">Bỏ qua</div>
-        </a>
-    </div>`;
+        <div class="confirm-btn-container">
+            <a href="#" onclick="deleteAdmin(this)" data-username="${adminToDelete.username}">
+                <div class="confirm-btn">Xóa</div>
+            </a>
+            <a href="#" onclick="closeAdminDeleteConfirmation()">
+                <div class="confirm-btn">Bỏ qua</div>
+            </a>
+        </div>`;
 }
 
 function deleteAdmin(obj) {
-    var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
-    admins.splice(indexOfAdmin, 1);
-    localStorage.setItem('admins', JSON.stringify(admins));
-    document.querySelector('.admin-delete-confirmation-form').style.display = 'none';
-    showAdmin();
+    const adminCurrent = JSON.parse(localStorage.getItem('currentAdmin')); // Lấy thông tin admin hiện tại
+    const usernameToDelete = obj.getAttribute('data-username'); // Lấy username cần xóa
+    const adminToDelete = admins.find(admin => admin.username === usernameToDelete); // Lấy thông tin admin cần xóa
+
+    // Kiểm tra quyền hạn trước khi xóa
+    if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
+        alert("Bạn không có quyền xóa quản lý.");
+        return;
+    }
+
+    // Thực hiện xóa admin
+    admins = admins.filter(admin => admin.username !== usernameToDelete); // Lọc bỏ admin cần xóa
+    localStorage.setItem('admins', JSON.stringify(admins)); // Cập nhật lại localStorage
+
+    alert(`Đã xóa tài khoản quản trị viên "${usernameToDelete}".`);
+    closeAdminDeleteConfirmation();
+    showAdmin(); // Cập nhật lại danh sách hiển thị
 }
 
 function closeAdminDeleteConfirmation() {
@@ -2578,11 +2624,23 @@ function closeAdminDeleteConfirmation() {
 }
 
 function showAdminModify(obj) {
+    // Lấy thông tin người dùng đang đăng nhập
+    var currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
+
+    if (!currentAdmin || currentAdmin.title === "contributors") {
+        alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị Admin.");
+        return; // Thoát nếu người dùng không có quyền
+    }
+
     document.querySelector('.admin-modify-form').style.display = 'block';
+
+    // Lấy thông tin admin cần chỉnh sửa
     var admin = admins.find(item => item.username == obj.getAttribute('data-username'));
     var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
+
+    // Hiển thị form chỉnh sửa
     document.querySelector('.admin-modify-form').innerHTML = `
-    <div class="admin-modify-top">
+        <div class="admin-modify-top">
             Thông tin quản trị viên
         </div>
 
@@ -2602,6 +2660,26 @@ function showAdminModify(obj) {
                     <span class="text-danger" id="errol_pass_disable"></span>
                     <span class="text-danger" id="errol_pass_length"></span>
                 </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="title">Chức vụ</label>
+                    <br>
+                    <select id="title" ${currentAdmin.title === "contributors" ? "disabled" : ""}>
+                        <option value="manage" ${admin.title === "manage" ? "selected" : ""}>Quản lý</option>
+                        <option value="contributors" ${admin.title === "contributors" ? "selected" : ""}>Cộng tác viên</option>
+                    </select>
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="status">Trạng thái</label>
+                    <br>
+                    <select id="status">
+                        <option value="true" ${admin.status === "Đang hoạt động" ? "selected" : ""}>Đang hoạt động</option>
+                        <option value="false" ${admin.status === "Khoá" ? "selected" : ""}>Khoá</option>
+                    </select>
+                </div>
             </form>
         </div>
 
@@ -2617,27 +2695,57 @@ function showAdminModify(obj) {
                     Thoát
                 </div>
             </a>
-        </div>`;
+        </div>
+    `;
 
+    // Thêm sự kiện cho nút lưu
     document.getElementById('admin-save-btn').addEventListener('click', () => {
-        var password = document.getElementById('password');
+        var password = document.getElementById('password').value;
+        var title = document.getElementById('title').value;
+        var status = document.getElementById('status').value === "true" ? "Đang hoạt động" : "Khoá";
 
         var validation = new Validation();
         var valid = true;
 
-        valid &= validation.kiemtraRong(password.value, "#errol_pass_disable") & validation.kiemtraDodai(password.value, "#errol_pass_length", 6);
+        // Kiểm tra hợp lệ mật khẩu
+        valid &= validation.kiemtraRong(password, "#errol_pass_disable") & validation.kiemtraDodai(password, "#errol_pass_length", 6);
 
-        if (valid == false) {
+        if (!valid) {
+            return; // Nếu không hợp lệ, thoát
+        }
+
+        // Kiểm tra quyền hạn: Không cho phép cộng tác viên sửa quản lý
+        if (currentAdmin.title === "contributors" && admin.title === "manage") {
+            alert("Bạn không được phép chỉnh sửa thông tin Quản lý.");
             return;
         }
 
-        admins[indexOfAdmin].password = password.value;
+        // Cập nhật thông tin admin
+        admins[indexOfAdmin].password = password;
+        admins[indexOfAdmin].title = title;
+        admins[indexOfAdmin].status = status;
+
+        // Lưu lại trong localStorage
         localStorage.setItem('admins', JSON.stringify(admins));
-        showAdmin();
+
+        // Nếu admin hiện tại bị sửa, cập nhật thông tin trong currentAdmin
+        if (currentAdmin && currentAdmin.username === admin.username) {
+            currentAdmin.password = password;
+            currentAdmin.title = title;
+            currentAdmin.status = status;
+            localStorage.setItem("currentAdmin", JSON.stringify(currentAdmin));
+        }
+
+        closeAdminModifyForm();
+        showAdmin(); // Cập nhật lại danh sách admin
     });
 }
 
 function showAddingAdminForm() {
+    // Lấy thông tin người dùng hiện tại từ localStorage
+    var currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
+
+
     document.querySelector('.admin-adding-form').style.display = 'block';
     document.querySelector('.admin-adding-form').innerHTML = `
         <div class="admin-adding-top">
@@ -2662,7 +2770,26 @@ function showAddingAdminForm() {
                     <input type="text" id="password" placeholder="Nhập mật khẩu">
                     <span class="text-danger" id="errol_password_disable"></span>
                     <span class="text-danger" id="errol_password_length"></span>
+                </div>
+                <br>
 
+                <div class="form-item">
+                    <label for="title">Chức vụ</label>
+                    <br>
+                    <select id="title">
+                        <option value="manage">Quản lý</option>
+                        <option value="contributors">Cộng tác viên</option>
+                    </select>
+                </div>
+                <br>
+
+                <div class="form-item">
+                    <label for="status">Trạng thái</label>
+                    <br>
+                    <select id="status">
+                        <option value="true">Đang hoạt động</option>
+                        <option value="false">Khoá</option>
+                    </select>
                 </div>
             </form>
         </div>
@@ -2681,22 +2808,23 @@ function showAddingAdminForm() {
             </a>
         </div>
     `;
-    
+
     document.getElementById('admin-save-btn').addEventListener('click', () => {
         var username = document.getElementById('username');
         var password = document.getElementById('password');
+        var title = document.getElementById('title').value;
+        var status = document.getElementById('status').value === "true" ? "Đang hoạt động" : "Khoá";
+
         var validation = new Validation();
         var valid = true;
 
-        valid = valid & validation.kiemtraRong(username.value, '#errol_user_disable') & validation.kiemtraRong(password.value, '#errol_password_disable') & validation.kiemtraDodai(password.value, '#errol_password_length', 6);
-        
-        if (valid == false) {
-            return;
-        }
+        valid &= validation.kiemtraRong(username.value, '#errol_user_disable') &
+                 validation.kiemtraDodai(username.value, '#errol_user_length', 3) &
+                 validation.kiemtraRong(password.value, '#errol_password_disable') &
+                 validation.kiemtraDodai(password.value, '#errol_password_length', 6);
 
-        if (admins.some(admin => {
-            return admin.username == username.value
-        })) {
+
+        if (admins.some(admin => admin.username === username.value)) {
             document.getElementById('errol_user_same').style.display = 'block';
             document.getElementById('errol_user_same').innerHTML = 'Tài khoản đã tồn tại!';
             valid = false;
@@ -2704,17 +2832,26 @@ function showAddingAdminForm() {
             document.getElementById('errol_user_same').style.display = 'none';
         }
 
-        if (valid == false) {
+        // Nếu không hợp lệ, thoát
+        if (!valid) {
+            return;
+        }
+
+        if (currentAdmin.title === "contributors" && title === "manage") {
+            alert("Cộng tác viên không được phép thêm quản lý.");
             return;
         }
 
         var newAdmin = {
             username: username.value,
-            password: password.value
+            password: password.value,
+            title: title,
+            status: status
         };
 
         admins.push(newAdmin);
         localStorage.setItem('admins', JSON.stringify(admins));
+        closeAdminAddingForm();
         showAdmin();
     });
 }
