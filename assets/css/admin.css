@@ -1559,45 +1559,94 @@ i {
         padding: 4px 10px;
     }
 }
-.statistics .body-content {
-    padding: 20px 50px;
-    #myChart {
-        width: 100%;
-        height: auto;
-        background-color: white;
-        padding: 20px 50px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border-radius: 10px;
+
+.statistics {
+    .body-content {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
     }
-    .chart-title {
-        background-color: white;
-        margin-bottom: 10px;
-        padding: 20px 50px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border-radius: 10px;
+
+    .chart-title h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #444;
+        margin-bottom: 20px;
     }
-    .chart-total {
-        background-color: white;
-        margin-top: 10px;
-        padding: 20px 50px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        border-radius: 10px;
-        line-height: 1.5;
+
+    .chart-content {
         display: flex;
         flex-wrap: wrap;
-        .chart-total-title {
-            width: 100%;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            padding-bottom: 10px;
-            border-bottom: 1.5px solid black;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    canvas {
+        max-width: 600px;
+        width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .chart-total {
+        max-width: 500px;
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart-total-title h2 {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .form-item {
+        margin-top: 15px;
+    }
+
+    .form-item h4 {
+        font-size: 16px;
+        color: #333;
+        margin: 5px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        th, td {
+            font-size: 14px;
+            padding: 10px;
         }
-        .form-item {
-            width: 50%;
+
+        .foot-content-title h2,
+        .chart-brand-title h2,
+        .chart-product-title h2 {
+            font-size: 18px;
+        }
+
+        .chart-title h2 {
+            font-size: 18px;
+        }
+
+        .chart-content {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas {
+            max-width: 100%;
         }
     }
-}
-.statistics {
+
     .foot-content {
         max-width: 1200px;
         margin: 20px auto;
@@ -1673,4 +1722,57 @@ i {
         }
     }
 
+}
+#order-detail-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.order-details-popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.order-details-popup h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.order-details-popup table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.order-details-popup table th,
+.order-details-popup table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-details-popup button {
+    background: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.order-details-popup button:hover {
+    background: #0056b3;
 }

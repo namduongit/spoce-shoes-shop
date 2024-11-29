@@ -1833,6 +1833,7 @@ function showStatistics() {
                                     <th>Tên sản phẩm</th>
                                     <th>Số lượng sản phẩm đã bán</th>
                                     <th>Thành tiền</th>
+                                    <th>Xem hoá đơn</th>
                                 </tr>
                             </thead>
                             <tbody id="product-details">
@@ -2126,6 +2127,7 @@ function displayChart(filterBill) {
                     <td>${product.name}</td>
                     <td>${product.count}</td>
                     <td>${formatMoney(product.count * convertCurrencyToNumber(product.price))}</td>
+                    <td><a href="#" class="warning" onclick="showOrderDetailBill(this)" data-code="${product.id}">Xem</a></td>
                 </tr>
             `;
         }
@@ -2167,6 +2169,77 @@ function displayChart(filterBill) {
             }
         }
     });
+}
+
+function showOrderDetailBill(element) {
+    const productId = element.getAttribute('data-code'); // Lấy ID sản phẩm từ data-code
+    const allBill = JSON.parse(localStorage.getItem("Allbill")) || []; // Lấy danh sách hóa đơn từ localStorage
+
+    // Tìm tất cả hóa đơn chứa sản phẩm có productId
+    const relatedBills = allBill.filter(bill =>
+        bill.products_buy.some(product => product.id === productId)
+    );
+
+    if (relatedBills.length === 0) {
+        alert("Không tìm thấy hóa đơn liên quan đến sản phẩm này.");
+        return;
+    }
+
+    // Tạo HTML để hiển thị thông tin hóa đơn
+    let orderDetailHtml = `
+        <div class="order-details-popup">
+            <h2>Chi tiết hóa đơn</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã hóa đơn</th>
+                        <th>Ngày thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Tên khách hàng</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    relatedBills.forEach(bill => {
+        const totalQuantity = bill.products_buy.reduce((sum, product) => sum + parseInt(product.quantity.trim()), 0);
+        const totalPrice = bill.products_buy.reduce((sum, product) =>
+            sum + convertCurrencyToNumber(product.sell) * parseInt(product.quantity.trim()), 0);
+
+        orderDetailHtml += `
+            <tr>
+                <td>${bill.code}</td>
+                <td>${bill.paymentdate}</td>
+                <td>${bill.status}</td>
+                <td>${bill.username}</td>
+                <td>${totalQuantity}</td>
+                <td>${formatMoney(totalPrice)}</td>
+            </tr>
+        `;
+    });
+
+    orderDetailHtml += `
+                </tbody>
+            </table>
+            <button onclick="closeOrderDetailsBill()">Đóng</button>
+        </div>
+    `;
+
+    // Hiển thị popup trong giao diện
+    const detailContainer = document.createElement('div');
+    detailContainer.id = 'order-detail-container';
+    detailContainer.innerHTML = orderDetailHtml;
+    document.body.appendChild(detailContainer);
+}
+
+// Hàm đóng popup chi tiết hóa đơn
+function closeOrderDetailsBill() {
+    const detailContainer = document.getElementById('order-detail-container');
+    if (detailContainer) {
+        document.body.removeChild(detailContainer);
+    }
 }
 
 function getDateFromString(str) {
