@@ -1902,7 +1902,8 @@ function orderStatic() {
     }
     displayChart(filterBill);
 
-    
+
+
 }
 
 function displayChart(filterBill) {
@@ -2101,6 +2102,36 @@ function displayChart(filterBill) {
                             <h4>Đơn hàng đã hủy: ${donHangDaHuy}</h4>
                         </div>
     `;
+
+
+    // Đã có BrandList và ProductName
+    const brandDetails = document.getElementById("brand-details");
+    const productDetails = document.getElementById("product-details");
+    let brandHtml = ``;
+    let productHtml = ``;
+    brandList.forEach(brand => {
+        if (brand.count > 0) {
+            brandHtml += `
+                <tr>
+                    <td>${brand.brand}</td>
+                    <td>${brand.count}</td>
+                </tr>
+            `;
+        }
+    });
+    productsName.forEach(product => {
+        if (product.count > 0) {
+            productHtml += `
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.count}</td>
+                    <td>${formatMoney(product.count * convertCurrencyToNumber(product.price))}</td>
+                </tr>
+            `;
+        }
+    });
+    brandDetails.innerHTML = brandHtml;
+    productDetails.innerHTML = productHtml;
 
 
 
