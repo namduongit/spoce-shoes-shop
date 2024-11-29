@@ -132,7 +132,88 @@ function showCategory(value) {
                           </div>
                       </div>
                   </div>`;
-      document.getElementsByClassName("body-content")[0].innerHTML = pageContent;
+
+                  let pageContent2 = `
+                   <div class="wrapper">
+                       <div class="grid">
+                           <div class="grid__row">
+                               <div class="grid__col-3">
+                                   <h3 class="title_size">Hướng dẫn chọn size</h3>
+                         <div class="choose-Size"> <img src="assets/image/author/chonsizeao.png" alt=""></div>
+                         <div class="choose-img">Mua Giày chính hãng nhập khẩu từ các thương hiệu nổi tiếng: Adidas, Nike, Converse, Vans,
+                          Áo...chất lượng hàng đầu được kiếm chứng bởi SPOCE SHOP.
+                          ✔ Giảm 50K cho đơn đầu tiên
+                          ✔ Freeship và giao nhanh nội thành
+                          ✔ Đổi trả dễ dàng
+                          ✔ Cam kết hàng cao cấp.<br>
+
+                          ⭐️⭐️⭐️⭐️⭐️ (Chất lượng 5 sao)</div>
+
+
+                    </div>
+
+                               <div class="grid__col-9">
+                                <div class="listProductByBrand">
+                                      <div class="PagiBar">
+                                          <div class="grid__row sortPagiBar">
+                                              <div class="grid__col-7">
+                                                  <div class="view-mode">
+                                                      <div class="view-mode__icon">
+                                                          <i class="fa-solid fa-grip"></i>
+                                                          <i class="fa-solid fa-bars"></i>
+                                                      </div>
+                                                      <div class="total-product">
+                                                          <span> Hiển thị ${
+                                                            start + 1
+                                                          } - ${
+        start + currentProducts.length
+      } trong tổng số ${products.length} sản phẩm </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="grid__col-5">
+                                                  <div class="sort">
+                                                      <label class="sort-by">Sắp xếp: </label>
+                                                      <ul class="list-sort">
+                                                          <li>
+                                                              <span class="text-default">Thứ tự <i class="fa-solid fa-caret-down"></i></span>
+                                                              <ul class="sort-options">
+                                                                  <li onclick="Default()"><a href="#">Mặc định</a></li>
+                                                                  <li onclick="SortA_Z()"><a href="#" >A → Z</a></li>
+                                                                  <li onclick="SortZ_A()"><a href="#">Z → A</a></li>
+                                                                  <li onclick="SortIncrease()"><a href="#">Giá tăng dần</a></li>
+                                                                  <li onclick="SortReduce()"><a href="#">Giá giảm dần</a></li>
+
+                                                              </ul>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                    <div class="grid__row product_list" data-brand="${value}">
+                                        ${s}
+                                        <ul class="pagination">
+                                        </ul>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>`;
+                  const bodyContent = document.getElementsByClassName("body-content")[0];
+                  if (bodyContent) {
+                      if (value.toLowerCase() === "clothes") {
+                          bodyContent.innerHTML = pageContent2;
+                      } else {
+                          bodyContent.innerHTML = pageContent;
+                      }
+                  } else {
+                      console.error("Phần tử 'body-content' không tồn tại trong DOM.");
+                  }
+                  
+      
       loadPage();
   }
 
