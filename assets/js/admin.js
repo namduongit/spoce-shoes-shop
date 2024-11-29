@@ -1778,15 +1778,21 @@ function showStatistics() {
                 </div>
                 <div class="chart-content">
                     <canvas id="myChart"></canvas>
+
                     <div class="chart-total">
-                        <div class="form-item">
-                            <h4>Tổng số đơn hàng: 0</h4>
-                            <h4>Tổng doanh thu: 0đ</h4>
-                            <h4>Brand bán chạy nhất: </h4>
-                            <h4>Sản phẩm bán chạy nhất: </h4>
+                        <div class="chart-total-title">
+                            <h2>Thống kê tóm lược dựa vào biểu đồ</h2>
+                            <div class="chart-total-time">
+                            </div>
                         </div>
                         <div class="form-item">
-                            <h4>Đơn hàng thành công: 0</h4>
+                            <h4>Tổng số đơn hàng: 0</h4>
+                            <h4>Tổng số sản phẩm đã bán: 0</h4>
+                            <h4>Tổng doanh thu: 0đ</h4>
+                        </div>
+                        <div class="form-item">
+                            <h4>Đơn hàng giao thành công thành công: 0</h4>
+                            <h4>Đơn hàng đã xác nhận: 0</h4>
                             <h4>Đơn hàng đang xử lý: 0</h4>
                             <h4>Đơn hàng đã hủy: 0</h4>
                         </div>
@@ -1796,14 +1802,48 @@ function showStatistics() {
             </div>
 
             <div class="foot-content">
-                <div class="statistics-title">
-                    <h2>Thống kê chi tiết</h2>
+                <div class="foot-content-title">
+                    <h2>Thống kê chi tiết toàn bộ hoá đơn trong khoảng thời gian</h2>
                 </div>
-
+                <div class="chart-brand">
+                    <div class="chart-brand-title">
+                        <h2>Biểu đồ thống kê brand</h2>
+                    </div>
+                    <div class="chart-brand-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên Brand</th>
+                                    <th>Số lượng đơn hàng của brand</th>
+                                </tr>
+                            </thead>
+                            <tbody id="brand-details">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="chart-product">
+                    <div class="chart-product-title">
+                        <h2>Biểu đồ thống kê sản phẩm</h2>
+                    </div>
+                    <div class="chart-product-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng sản phẩm đã bán</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="product-details">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     `;
-    document.getElementById("select-brand").addEventListener("change", function() {
+    document.getElementById("select-brand").addEventListener("change", function () {
         let html = ``;
         const nameBrand = document.getElementById("select-brand").value;
         if (nameBrand != "all") {
@@ -1822,7 +1862,7 @@ function showStatistics() {
                         <option value="${pro.id}">${pro.name.toUpperCase()}</option>
                     `;
             });
-            document.getElementById("select-product").innerHTML =  `<option value="all" selected>Tất cả</option>` + html;
+            document.getElementById("select-product").innerHTML = `<option value="all" selected>Tất cả</option>` + html;
         }
 
     })
@@ -1862,82 +1902,7 @@ function orderStatic() {
     }
     displayChart(filterBill);
 
-    let totalOrder = filterBill.length;
-    let totalMoney = 0;
-    let donHangDaXacNhan = 0;
-    let donHangDaGiaoThanhCong = 0;
-    let donHangDangXuLy = 0;
-    let donHangDaHuy = 0;
-    let brandBanChayNhat;
-    let sanPhamBanChayNhat;
-
-    let maxName = 0;
-    let maxBrand = 0;
-
-    // Reset brandList và productsName
-    resetData();
-
-
-
-    filterBill.forEach(bill => {
-        let products_buy = bill.products_buy;
-        products_buy.forEach(pro => {
-            totalMoney += convertCurrencyToNumber(pro.sell) * parseInt((pro.quantity).trim());
-
-            brandList.forEach(brand => {
-                if (brand.brand === pro.brand) {
-                    brand.count += 1;
-                    if (brand.count > maxBrand) maxBrand = brand.count;
-                }
-            });
-            productsName.forEach(productss => {
-                if (productss.name  === pro.name_product) {
-                    productss.count += parseInt((pro.quantity.trim()));
-                    if (productss.count > maxName) maxName = productss.count;
-                }
-            })
-
-        });
-
-        if (bill.status === "Đang xử lý") {
-            donHangDangXuLy += 1;
-        } else if (bill.status === "Đã xác nhận") {
-            donHangDaXacNhan += 1;
-        } else if (bill.status === "Đã giao thành công") {
-            donHangDaGiaoThanhCong += 1;
-        } else {
-            donHangDaHuy += 1;
-        }
-    });
-    brandList.forEach(brand => {
-        if (brand.count == maxBrand) {
-            brandBanChayNhat = brand.brand;
-        }
-    });
-    productsName.forEach(pro => {
-        if (pro.count == maxName) {
-            sanPhamBanChayNhat = pro.name;
-        }
-    });
-
-
-
-    // Cập nhật thông tin vào giao diện
-    const bodyContent = document.querySelector(".statistics .chart-total");
-    bodyContent.innerHTML = `
-                        <div class="form-item">
-                            <h4>Tổng số đơn hàng: ${totalOrder}</h4>
-                            <h4>Tổng doanh thu: ${formatMoney(totalMoney)}</h4>
-                            <h4>Brand bán chạy nhất: ${brandBanChayNhat}</h4>
-                            <h4>Sản phẩm bán chạy nhất: ${sanPhamBanChayNhat}</h4>
-                        </div>
-                        <div class="form-item">
-                            <h4>Đơn hàng thành đã giao công: ${donHangDaGiaoThanhCong}</h4>
-                            <h4>Đơn hàng đang xử lý: ${donHangDangXuLy}</h4>
-                            <h4>Đơn hàng đã xác nhận: ${donHangDaXacNhan}</h4>
-                            <h4>Đơn hàng đã hủy: ${donHangDaHuy}</h4>
-                        </div>
-    `;
+    
 }
 
 function displayChart(filterBill) {
@@ -1949,8 +1914,24 @@ function displayChart(filterBill) {
     const brandSelect = document.getElementById("select-brand");
     const productSelect = document.getElementById("select-product");
 
+
     let tieuChiBrand = brandSelect.value.trim();
     let tieuChiProDuct = productSelect.value.trim();
+    console.log(tieuChiBrand);
+    console.log(tieuChiProDuct);
+    resetData();
+    let totalOrder = 0;
+    let totalMoney = 0;
+    let donHangDaXacNhan = 0;
+    let donHangDaGiaoThanhCong = 0;
+    let donHangDangXuLy = 0;
+    let donHangDaHuy = 0;
+
+    let maxName = 0;
+    let maxBrand = 0;
+
+    let totalQuantity = 0;
+
 
     // Đếm số lượng sản phẩm (giày) bán ra theo từng ngày
     const counts = {}; // Đối tượng lưu tổng số lượng giày bán theo ngày
@@ -1966,20 +1947,100 @@ function displayChart(filterBill) {
         if (tieuChiBrand === "all" && tieuChiProDuct === "all") {
             bill.products_buy.forEach(product => {
                 counts[formattedDate] += parseInt(product.quantity.trim());
+                totalQuantity += parseInt(product.quantity.trim());
+                totalMoney += convertCurrencyToNumber(product.sell) * parseInt((product.quantity).trim());
+                brandList.forEach(brand => {
+                    if (brand.brand === product.brand) {
+                        brand.count += 1;
+                        if (brand.count > maxBrand) maxBrand = brand.count;
+                    }
+                });
+                productsName.forEach(productss => {
+                    if (productss.name === product.name_product) {
+                        productss.count += parseInt((product.quantity.trim()));
+                        if (productss.count > maxName) maxName = productss.count;
+                    }
+                });
             });
+            if (bill.status === "Đang xử lý") {
+                donHangDangXuLy += 1;
+            } else if (bill.status === "Đã xác nhận") {
+                donHangDaXacNhan += 1;
+            } else if (bill.status === "Đã giao thành công") {
+                donHangDaGiaoThanhCong += 1;
+            } else {
+                donHangDaHuy += 1;
+            }
+            totalOrder += 1;
         }
         else {
-            if (tieuChiBrand != "all" && tieuChiBrand === "all") {
+            // Trường hợp có lọc theo brand hoặc sản phẩm
+            if (tieuChiBrand != "all" && tieuChiProDuct === "all") {
                 bill.products_buy.forEach(product => {
                     if (product.brand === tieuChiBrand) {
                         counts[formattedDate] += parseInt(product.quantity.trim());
+                        totalQuantity += parseInt(product.quantity.trim());
+                        totalMoney += convertCurrencyToNumber(product.sell) * parseInt((product.quantity).trim());
+                        brandList.forEach(brand => {
+                            if (brand.brand === product.brand) {
+                                brand.count += 1;
+                                if (brand.count > maxBrand) maxBrand = brand.count;
+                            }
+                        });
+                        productsName.forEach(productss => {
+                            if (productss.name === product.name_product) {
+                                productss.count += parseInt((product.quantity.trim()));
+                                if (productss.count > maxName) maxName = productss.count;
+                            }
+                        });
+                        if (bill.status === "Đang xử lý") {
+                            donHangDangXuLy += 1;
+                        }
+                        else if (bill.status === "Đã xác nhận") {
+                            donHangDaXacNhan += 1;
+                        }
+                        else if (bill.status === "Đã giao thành công") {
+                            donHangDaGiaoThanhCong += 1;
+                        }
+                        else {
+                            donHangDaHuy += 1;
+                        }
                     }
                 });
             }
-            else if (tieuChiBrand == "all" && tieuChiProDuct != "all") {
+            // Trường hợp có lọc theo brand
+            if (tieuChiBrand == "all" && tieuChiProDuct != "all") {
                 bill.products_buy.forEach(product => {
+
                     if (product.id === tieuChiProDuct) {
                         counts[formattedDate] += parseInt(product.quantity.trim());
+                        totalQuantity += parseInt(product.quantity.trim());
+                        totalMoney += convertCurrencyToNumber(product.sell) * parseInt((product.quantity).trim());
+                        brandList.forEach(brand => {
+                            if (brand.brand === product.brand) {
+                                brand.count += 1;
+                                if (brand.count > maxBrand) maxBrand = brand.count;
+                            }
+                        });
+                        productsName.forEach(productss => {
+                            if (productss.name === product.name_product) {
+                                productss.count += parseInt((product.quantity.trim()));
+                                if (productss.count > maxName) maxName = productss.count;
+                            }
+                        });
+                        if (bill.status === "Đang xử lý") {
+                            donHangDangXuLy += 1;
+                        }
+                        else if (bill.status === "Đã xác nhận") {
+                            donHangDaXacNhan += 1;
+                        }
+                        else if (bill.status === "Đã giao thành công") {
+                            donHangDaGiaoThanhCong += 1;
+                        }
+                        else {
+                            donHangDaHuy += 1;
+                        }
+                        totalOrder += 1;
                     }
                 });
             }
@@ -1987,11 +2048,61 @@ function displayChart(filterBill) {
                 bill.products_buy.forEach(product => {
                     if (product.id === tieuChiProDuct && product.brand === tieuChiBrand) {
                         counts[formattedDate] += parseInt(product.quantity.trim());
+                        totalQuantity += parseInt(product.quantity.trim());
+                        totalMoney += convertCurrencyToNumber(product.sell) * parseInt((product.quantity).trim());
+                        brandList.forEach(brand => {
+                            if (brand.brand === product.brand) {
+                                brand.count += 1;
+                                if (brand.count > maxBrand) maxBrand = brand.count;
+                            }
+                        });
+                        productsName.forEach(productss => {
+                            if (productss.name === product.name_product) {
+                                productss.count += parseInt((product.quantity.trim()));
+                                if (productss.count > maxName) maxName = productss.count;
+                            }
+                        });
+                        if (bill.status === "Đang xử lý") {
+                            donHangDangXuLy += 1;
+                        }
+                        else if (bill.status === "Đã xác nhận") {
+                            donHangDaXacNhan += 1;
+                        }
+                        else if (bill.status === "Đã giao thành công") {
+                            donHangDaGiaoThanhCong += 1;
+                        }
+                        else {
+                            donHangDaHuy += 1;
+                        }
+                        totalOrder += 1;
                     }
                 });
             }
         }
     });
+
+    const bodyContent = document.querySelector(".statistics .chart-total");
+    bodyContent.innerHTML = `
+                        <div class="chart-total-title">
+                            <h2>Thống kê tổng quan</h2>
+                            <div class="chart-total-time">
+                            </div>
+                        </div>
+
+                        <div class="form-item">
+                            <h4>Tổng số đơn hàng: ${totalOrder}</h4>
+                            <h4>Tổng số đôi giày bán được: ${totalQuantity}</h4>
+                            <h4>Tổng doanh thu: ${formatMoney(totalMoney)}</h4>
+                        </div>
+                        <div class="form-item">
+                            <h4>Đơn hàng thành đã giao công: ${donHangDaGiaoThanhCong}</h4>
+                            <h4>Đơn hàng đang xử lý: ${donHangDangXuLy}</h4>
+                            <h4>Đơn hàng đã xác nhận: ${donHangDaXacNhan}</h4>
+                            <h4>Đơn hàng đã hủy: ${donHangDaHuy}</h4>
+                        </div>
+    `;
+
+
 
     // Tạo dữ liệu cho biểu đồ
     const chartLabels = Object.keys(counts); // Các ngày
@@ -2013,13 +2124,19 @@ function displayChart(filterBill) {
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1, // Bước nhảy giữa các giá trị trên trục y
+                        callback: function (value) {
+                            return Number.isInteger(value) ? value : ''; // Chỉ hiển thị số nguyên
+                        }
+                    },
+                    suggestedMax: Math.max(...chartData) + 5
                 }
             }
         }
     });
 }
-
 
 function getDateFromString(str) {
     var arr = str.match(/\d{2}\/\d{2}\/\d{4}/);
