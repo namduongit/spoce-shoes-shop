@@ -2756,11 +2756,13 @@ function showAdminDeleteConfirmation(obj) {
 
     // Kiểm tra quyền hạn
     if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
-        alert("Bạn không có quyền xóa quản lý.");
+        //alert("Bạn không có quyền xóa quản lý.");
+        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000});
         return;
     }
     if (adminCurrent.title === "manage" && adminManageList.length == 1) {
-        alert("Bạn phải giữ lại ít nhất 1 quản trị viên là Manage")
+        //alert("Bạn phải giữ lại ít nhất 1 quản trị viên là Manage")
+        toast({ title: "WARNING", message: "Bạn phải giữ lại ít nhất 1 quản trị viên là Manage", type: "warning", duration: 3000});
         return;
     }
 
@@ -2792,7 +2794,8 @@ function deleteAdmin(obj) {
 
     // Kiểm tra quyền hạn trước khi xóa
     if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
-        alert("Bạn không có quyền xóa quản lý.");
+        //alert("Bạn không có quyền xóa quản lý.");
+        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000});
         return;
     }
 
@@ -2800,7 +2803,8 @@ function deleteAdmin(obj) {
     admins = admins.filter(admin => admin.username !== usernameToDelete); // Lọc bỏ admin cần xóa
     localStorage.setItem('admins', JSON.stringify(admins)); // Cập nhật lại localStorage
 
-    alert(`Đã xóa tài khoản quản trị viên "${usernameToDelete}".`);
+    //alert(`Đã xóa tài khoản quản trị viên "${usernameToDelete}".`);
+    toast({ title: "SUCCESS", message: `Đã xóa tài khoản quản trị viên "${usernameToDelete}".`, type: "success", duration: 3000});
     closeAdminDeleteConfirmation();
     showAdmin(); // Cập nhật lại danh sách hiển thị
 }
