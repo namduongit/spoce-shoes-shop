@@ -2688,6 +2688,8 @@ function showOrderDetail(obj) {
         <p>${order.street + " " + order.district}</p>
         <h4>Tổng giá tiền</h4>
         <p>${priceString}</p>
+        <h4>Phương thức thanh toán</h4>
+        <p>${order.paymethod}</p>
     </div>
     <h4>Tình trạng</h4>
     <select id="status-select">
