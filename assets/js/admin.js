@@ -1800,7 +1800,46 @@ function showStatistics() {
                 </div>
 
             </div>
-
+            <div class="client">
+                <div class="client__title">
+                    <h2>Thống kê doanh thu trên đầu khách hàng</h2>
+                </div>
+                <div class="client__content">
+                    <table>
+                        <tHead>
+                            <tr>
+                                <th>Tài khoản</th>
+                                <th>Email</th>
+                                <th>Tổng số hóa đơn</th>
+                                <th>Tổng doanh thu</th>
+                                <th>Xem chi tiết Hóa đơn</th>
+                            </tr>
+                        </tHead>
+                        <tbody id="Client-details">
+                        
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="top_client__title">
+                    <h2>Thống kê 10 khách hàng phát sinh doanh thu nhiều nhất</h2>
+                </div>
+                <div class="top_client__content">
+                    <table>
+                        <tHead>
+                            <tr>
+                                <th>Tài khoản</th>
+                                <th>Email</th>
+                                <th>Tổng số hóa đơn</th>
+                                <th>Tổng doanh thu</th>
+                                <th>Xem chi tiết Hóa đơn</th>
+                            </tr>
+                        </tHead>
+                        <tbody id="top_Client-details">
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="foot-content">
                 <div class="foot-content-title">
                     <h2>Thống kê chi tiết toàn bộ hoá đơn trong khoảng thời gian</h2>
@@ -1902,11 +1941,257 @@ function orderStatic() {
         return;
     }
     displayChart(filterBill);
-
+    ClientBill();
 
 
 }
+function ClientBill() {
+    const startDate = new Date(document.getElementById("date-start").value);
+    const endDate = new Date(document.getElementById("date-end").value);
+    const allbill = JSON.parse(localStorage.getItem("Allbill"));
+    let filterBill = allbill.filter(bill => {
+        let dateString = bill.paymentdate.split(" ")[2];
+        const formattedDate = dateString.split("/").reverse().join("-");
+        const date = new Date(formattedDate);
+        return date >= startDate && date <= endDate;
+    });
+    let allbilluser = [];
+    filterBill.forEach(bill => {
+        if (allbilluser.length == 0) {
+            let billuser = {
+                user: bill.username,
+                bill: [],
+                sum:""
+            }
+            billuser.bill.push(bill);
+            allbilluser.push(billuser);
+        }
+        else {
+            let bool = true;
+            for (let key in allbilluser) {
+                if (allbilluser[key].user == bill.username) {
+                    allbilluser[key].bill.push(bill);
+                    bool = false;
+                    break;
+                }
+            }
+            if (bool == true) {
+                let billuser = {
+                    user: bill.username,
+                    bill: [],
+                    sum:""
+                }
+                billuser.bill.push(bill);
+                allbilluser.push(billuser);
+            }
+        }
+    });
 
+    let str = "";
+    allbilluser.forEach(bill => {
+        let sum = 0;
+
+        bill.bill.forEach(product => {
+            product.products_buy.forEach(buy => {
+                sum += parsePricetoNumber(buy.sell) * Number(buy.quantity);
+            })
+
+        })
+        bill.sum=sum;
+        sum = parseNumbertoPrice(sum);
+        str += `
+    <tr>
+        <td>${bill.user}</td>
+        <td>${bill.bill[0].email}</td>
+        <td class="center">${bill.bill.length}</td>
+        <td>${sum}</td>
+        <td>
+            <div class="Detail" id="${bill.user}">Xem</div>
+        </td>
+    </tr>
+    `
+    })
+    document.getElementById("Client-details").innerHTML = str;
+    let topbill=allbilluser.sort((a,b)=>{
+       return a.sum-b.sum;
+    });
+    topbill=topbill.slice(0,10);
+    let st="";
+    topbill.forEach(bill => {
+        let sum = 0;
+
+        bill.bill.forEach(product => {
+            product.products_buy.forEach(buy => {
+                sum += parsePricetoNumber(buy.sell) * Number(buy.quantity);
+            })
+
+        })
+        bill.sum=sum;
+        sum = parseNumbertoPrice(sum);
+        st += `
+    <tr>
+        <td>${bill.user}</td>
+        <td>${bill.bill[0].email}</td>
+        <td class="center">${bill.bill.length}</td>
+        <td>${sum}</td>
+        <td>
+            <div class="top_Detail" id="${bill.user}">Xem</div>
+        </td>
+    </tr>
+    `
+    })
+    document.getElementById("top_Client-details").innerHTML = st;
+    document.querySelectorAll(".Detail").forEach(element=>{
+        element.onclick = function () {
+        let id=this.id;
+        let s="";
+        allbilluser.forEach(bill=>{
+            if(bill.user==id){
+                bill.bill.forEach(order=>{
+                    let list="";
+                    order.products_buy.forEach(product=>{
+                        list+=`
+                        <tr>
+                            <td>${product.name_product}</td>
+                            <td>${product.quantity}</td>
+                            <td>${product.sizes}</td>
+                            <td>${product.sell}</td>
+                        </tr>
+                        `
+                    })
+                    s+=`
+                      <div class="bill-code">Mã hóa đơn: ${order.code} <br></div> 
+                    <div class="bill">
+                        
+                        <div class="bill__header">
+                      
+                            <h2>Thông tin người nhận</h2>
+                            <div class="bill-content">
+                                <p>
+                                   
+                                  Họ tên : ${order.name} <br>
+                                  Số điện thoại: ${order.phone} <br>
+                                 Email: ${order.email} <br>
+                                   Địa chỉ : ${order.city}, ${order.district}, ${order.street} <br>
+                                  Phương thức thanh toán: ${order.paymethod}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bill-content">
+                        <h2>Thông tin sản phẩm</h2>
+                            <table>
+                                <tHead>
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Size</th>
+                                        <th>Giá</th>
+                                    </tr>
+                                </tHead>
+                                <tbody>
+                                ${list}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    `
+                })   
+               
+            }
+        })
+        document.querySelector(".detail-background").classList.add("active");
+        document.querySelector(".detail-background").innerHTML=`
+        <div class="Bill-Client">
+                    <div class="iclose"><i class="fa fa-times"></i></div>
+
+            <div class="all-bill">
+            ${s}
+            </div>
+        </div>
+        `
+        document.querySelector(".iclose").onclick=function(){
+            document.querySelector(".detail-background").classList.remove("active");
+        }
+
+    }
+});
+document.querySelectorAll(".top_Detail").forEach(element=>{
+    element.onclick = function () {
+    let id=this.id;
+    let s="";
+    topbill.forEach(bill=>{
+        if(bill.user==id){
+            bill.bill.forEach(order=>{
+                let list="";
+                order.products_buy.forEach(product=>{
+                    list+=`
+                    <tr>
+                        <td>${product.name_product}</td>
+                        <td>${product.quantity}</td>
+                        <td>${product.sizes}</td>
+                        <td>${product.sell}</td>
+                    </tr>
+                    `
+                })
+                s+=`
+                  <div class="bill-code">Mã hóa đơn: ${order.code} <br></div> 
+                <div class="bill">
+                    
+                    <div class="bill__header">
+                  
+                        <h2>Thông tin người nhận</h2>
+                        <div class="bill-content">
+                            <p>
+                               
+                              Họ tên : ${order.name} <br>
+                              Số điện thoại: ${order.phone} <br>
+                             Email: ${order.email} <br>
+                               Địa chỉ : ${order.city}, ${order.district}, ${order.street} <br>
+                              Phương thức thanh toán: ${order.paymethod}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bill-content">
+                    <h2>Thông tin sản phẩm</h2>
+                        <table>
+                            <tHead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Size</th>
+                                    <th>Giá</th>
+                                </tr>
+                            </tHead>
+                            <tbody>
+                            ${list}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                `
+            })   
+           
+        }
+    })
+    document.querySelector(".detail-background").classList.add("active");
+    document.querySelector(".detail-background").innerHTML=`
+    <div class="Bill-Client">
+                <div class="iclose"><i class="fa fa-times"></i></div>
+
+        <div class="all-bill">
+        ${s}
+        </div>
+    </div>
+    `
+    document.querySelector(".iclose").onclick=function(){
+        document.querySelector(".detail-background").classList.remove("active");
+    }
+
+}
+});
+}
 function displayChart(filterBill) {
     const ctx = document.getElementById('myChart').getContext('2d');
     if (window.myChart && typeof window.myChart.destroy === 'function') {
@@ -2757,12 +3042,12 @@ function showAdminDeleteConfirmation(obj) {
     // Kiểm tra quyền hạn
     if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
         //alert("Bạn không có quyền xóa quản lý.");
-        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000});
+        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000 });
         return;
     }
     if (adminCurrent.title === "manage" && adminManageList.length == 1) {
         //alert("Bạn phải giữ lại ít nhất 1 quản trị viên là Manage")
-        toast({ title: "WARNING", message: "Bạn phải giữ lại ít nhất 1 quản trị viên là Manage", type: "warning", duration: 3000});
+        toast({ title: "WARNING", message: "Bạn phải giữ lại ít nhất 1 quản trị viên là Manage", type: "warning", duration: 3000 });
         return;
     }
 
@@ -2795,7 +3080,7 @@ function deleteAdmin(obj) {
     // Kiểm tra quyền hạn trước khi xóa
     if (adminCurrent.title === "contributors" && adminToDelete.title === "manage") {
         //alert("Bạn không có quyền xóa quản lý.");
-        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000});
+        toast({ title: "WARNING", message: "Bạn không có quyền xóa quản lý.", type: "warning", duration: 3000 });
         return;
     }
 
@@ -2804,7 +3089,7 @@ function deleteAdmin(obj) {
     localStorage.setItem('admins', JSON.stringify(admins)); // Cập nhật lại localStorage
 
     //alert(`Đã xóa tài khoản quản trị viên "${usernameToDelete}".`);
-    toast({ title: "SUCCESS", message: `Đã xóa tài khoản quản trị viên "${usernameToDelete}".`, type: "success", duration: 3000});
+    toast({ title: "SUCCESS", message: `Đã xóa tài khoản quản trị viên "${usernameToDelete}".`, type: "success", duration: 3000 });
     closeAdminDeleteConfirmation();
     showAdmin(); // Cập nhật lại danh sách hiển thị
 }
