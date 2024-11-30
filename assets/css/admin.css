@@ -1559,8 +1559,131 @@ i {
         padding: 4px 10px;
     }
 }
-
+.detail-background {
+    pointer-events: none;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.251);
+    transition: opacity 0.3s;
+  }
+  
+  .active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .Bill-Client{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-height: 720px;
+    background-color: white;
+    border: solid 2px black;
+    border-radius: 6px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    overflow: hidden;
+  }
+  .Bill-Client .iclose{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;    
+    transform: translateX(0);
+    border: solid 2px black;
+    border-top: none;
+    border-right: none;
+    padding: 0 20px;
+    border-bottom-left-radius: 30px;
+    background-color: black;
+    color: white;
+  }
+  .Bill-Client .all-bill{
+    overflow-y: auto;
+    max-height: 720px;
+  }
+  .Bill-Client .all-bill .bill{
+    display: flex;
+    justify-content: space-between;
+  }
+  .Bill-Client .all-bill .bill{
+    padding: 30px 0;
+    border-bottom: 1px solid #d8d7d7;
+  }
+  .Bill-Client .bill-code{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .Bill-Client .all-bill h2{
+   font-weight: 600;
+   font-size: 20px;
+   text-align: center;
+  }
+  .Bill-Client .all-bill .bill__header{
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .Bill-Client .all-bill .bill-content{
+    width: 100%;
+  }
+  .Bill-Client .all-bill .bill-content table{
+    margin-top: 20px;
+    width: 100%;
+    border: solid 1px rgba(0, 0, 0, 0.304);
+    text-align: center;
+    border-collapse: collapse;
+  }
+  .Bill-Client .all-bill .bill-content table tHead{
+    background-color: #f4f4f4;
+    font-weight: 600;
+  }
+  .Bill-Client .all-bill .bill-content table tHead th{
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  .Bill-Client .all-bill .bill-content table tbody td{
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  
 .statistics {
+    .client{
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        
+    }
+    .client .client__title,.client .top_client__title{
+        text-align: center;
+    }
+    .top_client__title{
+        margin-top: 30px;
+    }
+    .client .client__content,.client .top_client__content{
+        margin-top: 50px;
+        margin-left: 30px;
+        
+    }
+    .Detail,.center,.top_Detail{
+        text-align: center;
+
+    }
+    .Detail,.top_Detail{
+        cursor: pointer;
+    }
     .body-content {
         max-width: 1200px;
         margin: 20px auto;
@@ -1682,8 +1805,8 @@ i {
         border-collapse: collapse;
         margin-bottom: 20px;
         overflow-x: auto;
+        text-align: center;
     }
-
     th, td {
         text-align: left;
         padding: 12px 15px;
