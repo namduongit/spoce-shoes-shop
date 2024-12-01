@@ -60,8 +60,16 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     transition: all 0.6s;
 }
 
+.poi {
+    color: rgb(201, 195, 195); 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
 .poi:hover {
     cursor: pointer;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgb(255, 255, 255), 0 0 30px rgb(255, 255, 255);
 }
 
 

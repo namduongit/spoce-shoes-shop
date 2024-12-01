@@ -40,7 +40,14 @@ function checkLogin() {
     // Tìm admin với username và password
     let loggedInAdmin = admins.find(admin => admin.username === username.value && admin.password === password.value);
 
+    
+
     if (loggedInAdmin) {
+        if (loggedInAdmin.status == 'Khoá') {
+            toast({ title: 'WARNING', message: 'Tài khoản quản trị đã bị khóa!', type: 'warning', duration: 3000 });
+            return;
+        }
+
         // Lưu thông tin toàn bộ admin đăng nhập
         let currentAdmin = {
             ...loggedInAdmin, // Lưu toàn bộ thông tin admin
@@ -71,6 +78,9 @@ function interFaceAdmin() {
     if (adminCurrent) {
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
+        document.querySelector('.admin-content').innerHTML = `
+            <h4>Xin chào, ${adminCurrent.username}</h4>
+        `;
         writeMainContent();
     } else {
         console.log("Không tìm thấy admin trong localStorage");
@@ -156,15 +166,16 @@ function writeMainContent() {
     countNewUser = currentUser.length;
 
     currentBill.forEach(bill => {
-        let products_buy = bill.products_buy;
-        let totalBillMoney = 0;
-        products_buy.forEach(pro => {
-            let quantity = parseInt(convertCurrencyToNumber(pro.quantity));
-            let sell = parseInt(convertCurrencyToNumber(pro.sell));
-            totalBillMoney += quantity * sell;
-        });
-        countNewMoney += totalBillMoney;
-
+        if (bill.status != "Đã hủy") {
+            let products_buy = bill.products_buy;
+            let totalBillMoney = 0;
+            products_buy.forEach(pro => {
+                let quantity = parseInt(convertCurrencyToNumber(pro.quantity));
+                let sell = parseInt(convertCurrencyToNumber(pro.sell));
+                totalBillMoney += quantity * sell;
+            });
+            countNewMoney += totalBillMoney;
+        }
     });
 
     // Xử lí đơn hàng gần đây
@@ -264,7 +275,7 @@ function writeMainContent() {
 var products = JSON.parse(localStorage.getItem('products'));
 
 function showProducts() {
-
+    products = JSON.parse(localStorage.getItem('products'));
 
     document.getElementById('bar-title').innerHTML = `
         <h2>Sản phẩm</h2>
@@ -2729,10 +2740,12 @@ function showOrderDetail(obj) {
         var currentStatus;
         if (currentStatusCode === "1") {
             currentStatus = "Đang xử lý";
+            statusCode = 1;
         }
 
         if (currentStatusCode === "2") {
             currentStatus = "Đã xác nhận";
+            statusCode = 2;
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
                 if (products[productIndex].size[product.sizes] - parseInt(product.quantity) < 0) {
@@ -2747,14 +2760,18 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "3") {
             currentStatus = "Đã giao thành công";
+            statusCode = 3;
         }
 
         if (currentStatusCode === "4") {
             currentStatus = "Đã hủy";
-            orders[index].products_buy.forEach(product => {
-                var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] += parseInt(product.quantity);
-            });
+            if (statusCode == 2) {
+                orders[index].products_buy.forEach(product => {
+                    var productIndex = products.findIndex(item => product.id == item.id);
+                    products[productIndex].size[product.sizes] += parseInt(product.quantity);
+                });
+            }
+            statusCode = 4;
         }
         orders[index].status = currentStatus;
         localStorage.setItem('Allbill', JSON.stringify(orders));
@@ -2775,12 +2792,14 @@ function sortOrder() {
 
     if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
         if (startDate.value == "") {
-            alert('Ngày bắt đầu chưa được chọn!');
+            console.log('Ngày bắt đầu chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn!', type: 'warning', duration: 3000});
             return;
         }
 
         if (endDate.value == "") {
-            alert('Ngày kết thúc chưa được chọn!');
+            console.log('Ngày kết thúc chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn!', type: 'warning', duration: 3000});
             return;
         }
     }
@@ -2799,8 +2818,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đang xử lý" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đang xử lý" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2808,8 +2827,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã xác nhận" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã xác nhận" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2817,8 +2836,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã giao thành công" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã giao thành công" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2826,8 +2845,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã hủy" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2836,9 +2855,9 @@ function sortOrder() {
             orders.forEach(item => {
                 var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                 var dateArr = dateStr[0].split('/');
-                var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+                var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
                 console.log(orderDate);
-                if (orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                if (orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                     ordersSelected.push(item);
                 }
             });
@@ -3110,7 +3129,8 @@ function showAdminModify(obj) {
     var currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
 
     if (!currentAdmin || currentAdmin.title === "contributors") {
-        alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
+        //alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
+        toast({ title: 'WARNING', message: 'Bạn không có quyền chỉnh sửa thông tin trang quản trị.', type: 'warning', duration: 3000});
         return; // Thoát nếu người dùng không có quyền
     }
 
@@ -3121,7 +3141,8 @@ function showAdminModify(obj) {
     var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
 
     if (!admin) {
-        alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
+        //alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
+        toast({ title: 'WARNING', message: 'Không tìm thấy quản trị viên cần chỉnh sửa.', type: 'warning', duration: 3000});
         return;
     }
 
