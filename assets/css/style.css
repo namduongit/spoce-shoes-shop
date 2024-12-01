@@ -10,6 +10,7 @@ header {
 }
 
 header .inner-wrap .inner-content {
+  position: relative;
   margin: 0 auto;
   display: flex;
   padding: 10px;
@@ -60,6 +61,13 @@ header .inner-wrap .inner-search .search {
 
 header .inner-wrap .inner-search input {
   padding: 4px 0 3px 10px;
+  border: 1px solid gray;
+  width: 100%;
+  height: 100%;
+}
+
+header .inner-wrap .inner-search .price-inputs input {
+  padding: 8px 18px;
   border: 1px solid gray;
   width: 100%;
   height: 100%;
@@ -1161,11 +1169,15 @@ input[type=number]::-webkit-outer-spin-button {
   border: solid 1px grey;
   text-align: center;
   cursor: pointer;
-  padding: 5px;
+  padding: 0 6px 0 10px;
+}
+
+.price-toggle .toggle-icon {
+  padding: 6px;
 }
 
 .price-inputs {
-  margin-top: 40px;
+  margin-top: 34px;
   position: absolute;
   background-color: white;
   padding: 10px;
@@ -1501,7 +1513,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* menu mobile */
 .inner-menu_mobile {
-  position: relative;
+  /* position: relative; */
 }
 
 .inner-menu_mobile i {

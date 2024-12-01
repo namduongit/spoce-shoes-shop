@@ -403,7 +403,7 @@
 
   /* menu */
   .section-one {
-    display: none;
+    /* display: none; */
   }
 
   /* product */
@@ -612,8 +612,14 @@
 
   header .inner-wrap .inner-menu_mobile i {
     position: absolute;
-    left: 20px;
-    /* top: 2%; */
+    left: 6%;
+    top: 2.7%;
+  }
+
+  header .inner-wrap .inner-menu_mobile > i {
+    position: absolute;
+    left: 6%;
+    top: 50%;
   }
 
   header .inner-wrap .inner-logo img {

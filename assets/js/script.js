@@ -17,25 +17,35 @@ document.getElementById("price-toggle").addEventListener("click", function () {
   }
 });
 
+// lắng nghe sự kiện khi click ra ngoài price-inputs thì ẩn price-inputsn đi
+document.addEventListener("click", function(event) {
+  const icon = document.getElementById("toggle-icon");
+  //  nếu click nằm ngoài vùng toggle-icon và nút hiện thị thì ẩn đi
+  if (!document.querySelector('#price-inputs').contains(event.target) && event.target != icon) {
+    document.querySelector('#price-inputs').style.display = 'none';
+    icon.classList.remove("fa-angle-up");
+    icon.classList.add("fa-angle-down");
+  }
+});
+
+
 //start tim kiếm theo tên + brand
 
-document
-  .getElementById("button-search")
-  .addEventListener("click", function (event) {
+document.getElementById("button-search").addEventListener("click", function (event) {
     event.preventDefault();
     const icon = document.getElementById("toggle-icon");
     searchAndDisplay();
     document.getElementById("min-price").value = "";
     document.getElementById("max-price").value = "";
     document.getElementById("price-inputs").style.display = "none";
+    document.querySelector(".search input").value = "";
     icon.classList.remove("fa-angle-up");
     icon.classList.add("fa-angle-down");
   });
 
-document
-  .getElementById("search-inp")
-  .addEventListener("keyup", function (event) {
+document.getElementById("search-inp").addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
+      document.querySelector(".search input").value = "";
       searchAndDisplay();
     }
   });
@@ -56,9 +66,7 @@ document
       icon.classList.add("fa-angle-down");
     }
   });
-document
-  .getElementById("max-price")
-  .addEventListener("keyup", function (event) {
+document.getElementById("max-price").addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
       searchAndDisplay();
       const icon = document.getElementById("toggle-icon");
@@ -1192,44 +1200,44 @@ function changeContent(pageType) {
 
 // menu mobile
 
-function writeMenuMobile() {
-  return `
-        <div class="menu-mobile">
-            <div class="menu-mobile__popup">
-                <h3 class="menu-mobile__tittle">Menu</h3>
-                <i class="fa-solid fa-xmark" onclick="closeMenuMobile()"></i>
-                <ul class="menu-mobile__list">
-                    <li id="all_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ALL')">
-                        <a href="#">All</a>
-                    </li>
-                    <li id="all_products_sale" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('SALE')">
-                        <a href="#">Sale 40% - 80%</a>
-                    </li>
-                    <li id="all_nike_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('NIKE')">
-                        <a href="#">NIKE</a>
-                    </li>
-                    <li id="all_adidas_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ADIDAS')">
-                        <a href="#">ADIDAS</a>
-                    </li>
-                    <li id="all_vans_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('VANS')">
-                        <a href="#">VANS</a>
-                    </li>
-                    <li id="all_converse_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CONVERSE')">
-                        <a href="#">CONVERSE</a>
-                    </li>
-                    <li id="all_clothes_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CLOTHES')">
-                        <a href="#">QUẦN ÁO</a>
-                    </li>
-                </ul>
-                <div class="moreMenu">
-                    <p>Chất lượng vượt niềm tin.</p>
-                </div>
-            </div>
-        </div>`;
-}
+// function writeMenuMobile() {
+//   return `
+//         <div class="menu-mobile">
+//             <div class="menu-mobile__popup">
+//                 <h3 class="menu-mobile__tittle">Menu</h3>
+//                 <i class="fa-solid fa-xmark" onclick="closeMenuMobile()"></i>
+//                 <ul class="menu-mobile__list">
+//                     <li id="all_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ALL')">
+//                         <a href="#">All</a>
+//                     </li>
+//                     <li id="all_products_sale" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('SALE')">
+//                         <a href="#">Sale 40% - 80%</a>
+//                     </li>
+//                     <li id="all_nike_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('NIKE')">
+//                         <a href="#">NIKE</a>
+//                     </li>
+//                     <li id="all_adidas_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ADIDAS')">
+//                         <a href="#">ADIDAS</a>
+//                     </li>
+//                     <li id="all_vans_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('VANS')">
+//                         <a href="#">VANS</a>
+//                     </li>
+//                     <li id="all_converse_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CONVERSE')">
+//                         <a href="#">CONVERSE</a>
+//                     </li>
+//                     <li id="all_clothes_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CLOTHES')">
+//                         <a href="#">QUẦN ÁO</a>
+//                     </li>
+//                 </ul>
+//                 <div class="moreMenu">
+//                     <p>Chất lượng vượt niềm tin.</p>
+//                 </div>
+//             </div>
+//         </div>`;
+// }
 
 function showMenuMobile() {
-  document.querySelector(".inner-menu_mobile").innerHTML += writeMenuMobile();
+  // document.querySelector(".inner-menu_mobile").innerHTML += writeMenuMobile();
   document.querySelector(".menu-mobile").style.display = "block";
   document.querySelectorAll(".menu-mobile__list li").forEach(function (li) {
     li.addEventListener("click", function () {

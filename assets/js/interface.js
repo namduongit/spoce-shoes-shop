@@ -5,6 +5,38 @@ function writeLogoAndUserTools() {
             <div class="inner-content">
                 <div class="inner-menu_mobile" >
                     <i class="fa-solid fa-bars" id="menu" onclick="showMenuMobile()"></i>
+                    <div class="menu-mobile">
+                        <div class="menu-mobile__popup">
+                            <h3 class="menu-mobile__tittle">Menu</h3>
+                            <i class="fa-solid fa-xmark" onclick="closeMenuMobile()"></i>
+                            <ul class="menu-mobile__list">
+                                <li id="all_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ALL')">
+                                    <a href="#">All</a>
+                                </li>
+                                <li id="all_products_sale" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('SALE')">
+                                    <a href="#">Sale 40% - 80%</a>
+                                </li>
+                                <li id="all_nike_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('NIKE')">
+                                    <a href="#">NIKE</a>
+                                </li>
+                                <li id="all_adidas_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('ADIDAS')">
+                                    <a href="#">ADIDAS</a>
+                                </li>
+                                <li id="all_vans_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('VANS')">
+                                    <a href="#">VANS</a>
+                                </li>
+                                <li id="all_converse_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CONVERSE')">
+                                    <a href="#">CONVERSE</a>
+                                </li>
+                                <li id="all_clothes_products" class="ChiTietSanPham menu-mobile__item" onclick="showCategory('CLOTHES')">
+                                    <a href="#">QUẦN ÁO</a>
+                                </li>
+                            </ul>
+                            <div class="moreMenu">
+                                <p>Chất lượng vượt niềm tin.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="inner-logo">
                     <a href="">
