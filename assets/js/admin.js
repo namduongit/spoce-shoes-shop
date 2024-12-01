@@ -2740,10 +2740,12 @@ function showOrderDetail(obj) {
         var currentStatus;
         if (currentStatusCode === "1") {
             currentStatus = "Đang xử lý";
+            statusCode = 1;
         }
 
         if (currentStatusCode === "2") {
             currentStatus = "Đã xác nhận";
+            statusCode = 2;
             orders[index].products_buy.forEach(product => {
                 var productIndex = products.findIndex(item => product.id == item.id);
                 if (products[productIndex].size[product.sizes] - parseInt(product.quantity) < 0) {
@@ -2758,14 +2760,18 @@ function showOrderDetail(obj) {
 
         if (currentStatusCode === "3") {
             currentStatus = "Đã giao thành công";
+            statusCode = 3;
         }
 
         if (currentStatusCode === "4") {
             currentStatus = "Đã hủy";
-            orders[index].products_buy.forEach(product => {
-                var productIndex = products.findIndex(item => product.id == item.id);
-                products[productIndex].size[product.sizes] += parseInt(product.quantity);
-            });
+            if (statusCode == 2) {
+                orders[index].products_buy.forEach(product => {
+                    var productIndex = products.findIndex(item => product.id == item.id);
+                    products[productIndex].size[product.sizes] += parseInt(product.quantity);
+                });
+            }
+            statusCode = 4;
         }
         orders[index].status = currentStatus;
         localStorage.setItem('Allbill', JSON.stringify(orders));
