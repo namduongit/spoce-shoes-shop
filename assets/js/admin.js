@@ -40,7 +40,14 @@ function checkLogin() {
     // Tìm admin với username và password
     let loggedInAdmin = admins.find(admin => admin.username === username.value && admin.password === password.value);
 
+    
+
     if (loggedInAdmin) {
+        if (loggedInAdmin.status == 'Khoá') {
+            toast({ title: 'WARNING', message: 'Tài khoản quản trị đã bị khóa!', type: 'warning', duration: 3000 });
+            return;
+        }
+
         // Lưu thông tin toàn bộ admin đăng nhập
         let currentAdmin = {
             ...loggedInAdmin, // Lưu toàn bộ thông tin admin
@@ -159,15 +166,16 @@ function writeMainContent() {
     countNewUser = currentUser.length;
 
     currentBill.forEach(bill => {
-        let products_buy = bill.products_buy;
-        let totalBillMoney = 0;
-        products_buy.forEach(pro => {
-            let quantity = parseInt(convertCurrencyToNumber(pro.quantity));
-            let sell = parseInt(convertCurrencyToNumber(pro.sell));
-            totalBillMoney += quantity * sell;
-        });
-        countNewMoney += totalBillMoney;
-
+        if (bill.status != "Đã hủy") {
+            let products_buy = bill.products_buy;
+            let totalBillMoney = 0;
+            products_buy.forEach(pro => {
+                let quantity = parseInt(convertCurrencyToNumber(pro.quantity));
+                let sell = parseInt(convertCurrencyToNumber(pro.sell));
+                totalBillMoney += quantity * sell;
+            });
+            countNewMoney += totalBillMoney;
+        }
     });
 
     // Xử lí đơn hàng gần đây
@@ -267,7 +275,7 @@ function writeMainContent() {
 var products = JSON.parse(localStorage.getItem('products'));
 
 function showProducts() {
-
+    products = JSON.parse(localStorage.getItem('products'));
 
     document.getElementById('bar-title').innerHTML = `
         <h2>Sản phẩm</h2>
