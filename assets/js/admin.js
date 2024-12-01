@@ -2017,6 +2017,9 @@ function ClientBill() {
         const date = new Date(formattedDate);
         return date >= startDate && date <= endDate;
     });
+    if(document.getElementById("date-start").value=="" || document.getElementById("date-end").value==""){
+        filterBill=allbill;
+    }
     let allbilluser = [];
     filterBill.forEach(bill => {
         if (allbilluser.length == 0) {
