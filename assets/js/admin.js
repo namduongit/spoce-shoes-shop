@@ -2818,8 +2818,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đang xử lý" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đang xử lý" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2827,8 +2827,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã xác nhận" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã xác nhận" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2836,8 +2836,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã giao thành công" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã giao thành công" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2845,8 +2845,8 @@ function sortOrder() {
                 orders.forEach(item => {
                     var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                     var dateArr = dateStr[0].split('/');
-                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                    if (item.status == "Đã hủy" && orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                    var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
+                    if (item.status == "Đã hủy" && orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                         ordersSelected.push(item);
                     }
                 });
@@ -2855,9 +2855,9 @@ function sortOrder() {
             orders.forEach(item => {
                 var dateStr = item.paymentdate.match(/\d{2}\/\d{2}\/\d{4}/);
                 var dateArr = dateStr[0].split('/');
-                var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+                var orderDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0], 7, 0, 0);
                 console.log(orderDate);
-                if (orderDate.getDate() >= start.getDate() && orderDate.getDate() <= end.getDate()) {
+                if (orderDate.getTime() >= start.getTime() && orderDate.getTime() <= end.getTime()) {
                     ordersSelected.push(item);
                 }
             });
