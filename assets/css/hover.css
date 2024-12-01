@@ -10,7 +10,8 @@ header .inner-wrap .inner-user .user .parent:hover .child {
     white-space: nowrap;
     
 }
-.section-one .inner-wrap .inner-content .menu-1 > li > a:hover {
+.section-one .inner-wrap .inner-content .menu-1 > li:hover > a,
+.section-one .inner-wrap .inner-content .menu-1 > li:hover > div {
     font-weight: 500;
     /* padding-bottom: 2px;
     border-bottom: 3px solid white; */

@@ -125,7 +125,7 @@ function writeMenuSelection() {
                     </li>
                     <li class="inner-section-menu-header">
                         <div class="parent-menu" onclick="showChildMenuItem()">
-                            GIÀY
+                            <a href="#">GIÀY</a>
                         </div>
                         <ul class="child-menu">
                             <li id="all_nike_products" class="ChiTietSanPham" onclick="showCategory('NIKE')">
@@ -144,9 +144,6 @@ function writeMenuSelection() {
                     </li>
                     <li id="all_clothes_products" class="ChiTietSanPham" onclick="showCategory('CLOTHES')">
                         <a href="#">ÁO KHOÁC</a>
-                    </li>
-                    <li id="count_slide_bar">
-                        <a onclick="showSideBar()"><i class="fa-solid fa-bars"></i></a>
                     </li>
                 </ul>
             </div>
@@ -383,15 +380,13 @@ function OutStandingProduct() {
 var showChildMenuContent = 0;
 document.addEventListener("DOMContentLoaded", function () {
     const menuHeader = document.querySelector(".inner-section-menu-header");
-    const parentMenu = menuHeader.querySelector(".parent-menu");
+    // const parentMenu = menuHeader.querySelector(".parent-menu");
     const childMenu = menuHeader.getElementsByClassName("child-menu")[0];
 
-    parentMenu.addEventListener("click", function () {
-        showChildMenuContent += 1;
-        if (showChildMenuContent % 2 === 1) {
-            childMenu.style.display = "block";
-        } else {
-            childMenu.style.display = "none";
-        }
+    menuHeader.addEventListener("mouseover", function () {
+        childMenu.style.display = "block";
+    });
+    menuHeader.addEventListener("mouseout", function () {
+        childMenu.style.display = "none";
     });
 });

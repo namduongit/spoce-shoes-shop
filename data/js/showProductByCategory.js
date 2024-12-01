@@ -312,6 +312,7 @@ function showCategory(value) {
               <a href="javascript:void(0);" class="page-link ${active}">${index}</a>
             </li>`
   }
+  document.querySelector('.inner-section-menu-header .child-menu').style.display = 'none';
 }
 
 
