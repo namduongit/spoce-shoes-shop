@@ -1040,7 +1040,7 @@ i {
 .admin-modify-form {
     display: none;
     width: 40%;
-    height: 45%;
+    height: 65%;
     background-color: whitesmoke;
     border: 2px solid black;
     border-radius: 5px;
@@ -1110,7 +1110,7 @@ i {
 .admin-adding-form {
     display: none;
     width: 40%;
-    height: 45%;
+    height: 65%;
     background-color: whitesmoke;
     border: 2px solid black;
     border-radius: 5px;
