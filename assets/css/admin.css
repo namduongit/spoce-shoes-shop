@@ -466,10 +466,12 @@ i {
 .modifying {
     display: none;
     width: 50%;
+    height: 85%;
+    overflow: auto;
     background-color: whitesmoke;
     border: 2px solid black;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -497,7 +499,7 @@ i {
 }
 
 .modifying .modifying-content form .form-item {
-    padding: 0px 0;
+    padding: 2px;
 }
 
 .modifying .modifying-content form .form-image {
@@ -534,7 +536,14 @@ i {
 }
 
 .modifying .modifying-content form input {
-    width: 70%;
+    width: 100%;
+    padding: 7px;
+    margin-top: 5px;
+}
+
+.modifying .modifying-content form select {
+    padding: 5px;
+    margin-top: 5px;
 }
 
 .modify-btn-container {
