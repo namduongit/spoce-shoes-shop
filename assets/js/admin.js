@@ -2792,12 +2792,14 @@ function sortOrder() {
 
     if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
         if (startDate.value == "") {
-            alert('Ngày bắt đầu chưa được chọn!');
+            console.log('Ngày bắt đầu chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn!', type: 'warning', duration: 3000});
             return;
         }
 
         if (endDate.value == "") {
-            alert('Ngày kết thúc chưa được chọn!');
+            console.log('Ngày kết thúc chưa được chọn!');
+            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn!', type: 'warning', duration: 3000});
             return;
         }
     }
