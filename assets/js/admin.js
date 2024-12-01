@@ -504,14 +504,15 @@ function showModifyingForm(productId) {
 
     <div class="modifying-content">
         <form>
-            <br>
             <div class="form-item">
-            <label for="name">Tên sản phẩm: </label>
+            <label for="name">Tên sản phẩm</label>
+            <br>
             <input type="text" id="name" value="${product.name_product}">
             </div>
             <br>
             <div class="form-item">
-            <label for="brand-select">Nhãn hiệu: </label>
+            <label for="brand-select">Nhãn hiệu</label>
+            <br>
             <select id="brand-select">
                 <option value="nike">Nike</option>
                 <option value="adidas">Adidas</option>
@@ -522,32 +523,36 @@ function showModifyingForm(productId) {
             </div>
             <br>
             <div class="form-item">
-            <label for="original-price">Giá gốc: </label>
+            <label for="original-price">Giá gốc</label>
+            <br>
             <input type="text" id="original-price" value="${product.price}">
             </div>
             <br>
             <div class="form-item">
-            <label for="sell-price">Giá bán: </label>
+            <label for="sell-price">Giá bán</label>
+            <br>
             <input type="text" id="sell-price" value="${product.sell}">
             </div>
             <br>
             <div class="form-item">
-            <label for="discount">Giảm: </label>
+            <label for="discount">Giảm</label>
+            <br>
             <input type="text" id="discount" disabled>
             </div>
             <br>
             <div class="form-item">
             <label for="quantity">Số lượng: </label>
-            <select id="size-select" >
+            <select id="size-select">
 
             </select>
-            <input type="number" id="quantity" >
+            <br>
+            <input type="number" id="quantity">
             </div>
             <br>
             <div class="form-image">
 
             </div>
-              <div class="choose-img">Thêm ảnh:<input type="file" accept="image/*" onchange="AddImage(event)"></div>
+            <div class="choose-img">Thêm ảnh: <input type="file" accept="image/*" onchange="AddImage(event)"></div>
         </form>
     </div>
 
