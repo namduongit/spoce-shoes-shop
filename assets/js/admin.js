@@ -2773,14 +2773,16 @@ function showOrderDetail(obj) {
                 <p>${order.street + " " + order.district}</p>
                 <h4>Tổng giá tiền</h4>
                 <p>${priceString}</p>
-                <h4>Tình trạng</h4>
-                <select id="status-select">
-                    <option value="1">Đang xử lý</option>
-                    <option value="2">Đã xác nhận</option>
-                    <option value="3">Đã giao thành công</option>
-                    <option value="4">Đã hủy</option>
-                </select>
-                <a class="order-print" href="#" onclick="window.print()">In hóa đơn</a>
+                <div class="not-to-be-printed">
+                    <h4>Tình trạng</h4>
+                    <select id="status-select">
+                        <option value="1">Đang xử lý</option>
+                        <option value="2">Đã xác nhận</option>
+                        <option value="3">Đã giao thành công</option>
+                        <option value="4">Đã hủy</option>
+                    </select>
+                    <a class="order-print" href="#" onclick="window.print()">In hóa đơn</a>
+                </div>
             </div>
             
             <div class="order-detail-right">
