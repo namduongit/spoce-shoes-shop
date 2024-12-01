@@ -40,7 +40,7 @@ function checkLogin() {
     // Tìm admin với username và password
     let loggedInAdmin = admins.find(admin => admin.username === username.value && admin.password === password.value);
 
-    
+
 
     if (loggedInAdmin) {
         if (loggedInAdmin.status == 'Khoá') {
@@ -962,25 +962,25 @@ function showAddingProduct() {
 
         if (nameField.value === '') {
             //alert('Tên sản phẩm không được bỏ trống');
-            toast({ title: 'WARNING', message: 'Tên sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Tên sản phẩm không được bỏ trống!', type: 'warning', duration: 3000 });
             return;
         }
 
         if (orgPriceField.value === '') {
             // alert('Giá gốc sản phẩm không được bỏ trống');
-            toast({ title: 'WARNING', message: 'Giá gốc sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Giá gốc sản phẩm không được bỏ trống!', type: 'warning', duration: 3000 });
             return;
         }
 
         if (sellPriceField.value === '') {
             // alert('Giá bán sản phẩm không được bỏ trống');
-            toast({ title: 'WARNING', message: 'Giá bán sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Giá bán sản phẩm không được bỏ trống!', type: 'warning', duration: 3000 });
             return;
         }
 
         if (discountField.value === '' || isNaN(discountField.value)) {
             // alert('Giảm giá sản phẩm không được bỏ trống');
-            toast({ title: 'WARNING', message: 'Giảm giá sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Giảm giá sản phẩm không được bỏ trống!', type: 'warning', duration: 3000 });
             return;
         }
 
@@ -1875,7 +1875,7 @@ function showStatistics() {
                             </tr>
                         </tHead>
                         <tbody id="Client-details">
-                        
+
                         </tbody>
                     </table>
                 </div>
@@ -1894,7 +1894,7 @@ function showStatistics() {
                             </tr>
                         </tHead>
                         <tbody id="top_Client-details">
-                        
+
                         </tbody>
                     </table>
                 </div>
@@ -1973,35 +1973,38 @@ function orderStatic() {
     const endDate = document.getElementById("date-end");
     const allBill = JSON.parse(localStorage.getItem("Allbill")) || [];
 
+
     if (startDate.value === "" || endDate.value === "") {
-        alert("Vui lòng chọn ngày bắt đầu và ngày kết thúc");
-        return;
+        let filterBill = allBill;
+        displayChart(filterBill);
+        ClientBill();
     }
-    if (startDate.value > endDate.value) {
-        alert("Ngày bắt đầu không được lớn hơn ngày kết thúc");
-        return;
+    else {
+        if (startDate.value > endDate.value) {
+            alert("Ngày bắt đầu không được lớn hơn ngày kết thúc");
+            return;
+        }
+        const start = new Date(startDate.value);
+        const end = new Date(endDate.value);
+
+
+
+        let filterBill = allBill.filter(bill => {
+            const dateString = bill.paymentdate.split(" ")[2];
+            const formattedDate = dateString.split("/").reverse().join("-");
+            const date = new Date(formattedDate);
+            return date >= start && date <= end;
+        });
+
+        // Hiển thị biểu đồ nếu có dữ liệu
+        if (filterBill.length <= 0) {
+            alert("Không có dữ liệu phù hợp");
+            return;
+        }
+        displayChart(filterBill);
+        ClientBill();
+
     }
-
-    const start = new Date(startDate.value);
-    const end = new Date(endDate.value);
-
-
-
-    let filterBill = allBill.filter(bill => {
-        const dateString = bill.paymentdate.split(" ")[2];
-        const formattedDate = dateString.split("/").reverse().join("-");
-        const date = new Date(formattedDate);
-        return date >= start && date <= end;
-    });
-
-    // Hiển thị biểu đồ nếu có dữ liệu
-    if (filterBill.length <= 0) {
-        alert("Không có dữ liệu phù hợp");
-        return;
-    }
-    displayChart(filterBill);
-    ClientBill();
-
 
 }
 function ClientBill() {
@@ -2020,7 +2023,7 @@ function ClientBill() {
             let billuser = {
                 user: bill.username,
                 bill: [],
-                sum:""
+                sum: ""
             }
             billuser.bill.push(bill);
             allbilluser.push(billuser);
@@ -2038,7 +2041,7 @@ function ClientBill() {
                 let billuser = {
                     user: bill.username,
                     bill: [],
-                    sum:""
+                    sum: ""
                 }
                 billuser.bill.push(bill);
                 allbilluser.push(billuser);
@@ -2056,7 +2059,7 @@ function ClientBill() {
             })
 
         })
-        bill.sum=sum;
+        bill.sum = sum;
         sum = parseNumbertoPrice(sum);
         str += `
     <tr>
@@ -2071,11 +2074,11 @@ function ClientBill() {
     `
     })
     document.getElementById("Client-details").innerHTML = str;
-    let topbill=allbilluser.sort((a,b)=>{
-       return a.sum-b.sum;
+    let topbill = allbilluser.sort((a, b) => {
+        return a.sum - b.sum;
     });
-    topbill=topbill.slice(0,10);
-    let st="";
+    topbill = topbill.slice(0, 10);
+    let st = "";
     topbill.forEach(bill => {
         let sum = 0;
 
@@ -2085,7 +2088,7 @@ function ClientBill() {
             })
 
         })
-        bill.sum=sum;
+        bill.sum = sum;
         sum = parseNumbertoPrice(sum);
         st += `
     <tr>
@@ -2100,16 +2103,16 @@ function ClientBill() {
     `
     })
     document.getElementById("top_Client-details").innerHTML = st;
-    document.querySelectorAll(".Detail").forEach(element=>{
+    document.querySelectorAll(".Detail").forEach(element => {
         element.onclick = function () {
-        let id=this.id;
-        let s="";
-        allbilluser.forEach(bill=>{
-            if(bill.user==id){
-                bill.bill.forEach(order=>{
-                    let list="";
-                    order.products_buy.forEach(product=>{
-                        list+=`
+            let id = this.id;
+            let s = "";
+            allbilluser.forEach(bill => {
+                if (bill.user == id) {
+                    bill.bill.forEach(order => {
+                        let list = "";
+                        order.products_buy.forEach(product => {
+                            list += `
                         <tr>
                             <td>${product.name_product}</td>
                             <td>${product.quantity}</td>
@@ -2117,17 +2120,17 @@ function ClientBill() {
                             <td>${product.sell}</td>
                         </tr>
                         `
-                    })
-                    s+=`
-                      <div class="bill-code">Mã hóa đơn: ${order.code} <br></div> 
+                        })
+                        s += `
+                      <div class="bill-code">Mã hóa đơn: ${order.code} <br></div>
                     <div class="bill">
-                        
+
                         <div class="bill__header">
-                      
+
                             <h2>Thông tin người nhận</h2>
                             <div class="bill-content">
                                 <p>
-                                   
+
                                   Họ tên : ${order.name} <br>
                                   Số điện thoại: ${order.phone} <br>
                                  Email: ${order.email} <br>
@@ -2155,12 +2158,12 @@ function ClientBill() {
                         </div>
                     </div>
                     `
-                })   
-               
-            }
-        })
-        document.querySelector(".detail-background").classList.add("active");
-        document.querySelector(".detail-background").innerHTML=`
+                    })
+
+                }
+            })
+            document.querySelector(".detail-background").classList.add("active");
+            document.querySelector(".detail-background").innerHTML = `
         <div class="Bill-Client">
                     <div class="iclose"><i class="fa fa-times"></i></div>
 
@@ -2169,22 +2172,22 @@ function ClientBill() {
             </div>
         </div>
         `
-        document.querySelector(".iclose").onclick=function(){
-            document.querySelector(".detail-background").classList.remove("active");
-        }
+            document.querySelector(".iclose").onclick = function () {
+                document.querySelector(".detail-background").classList.remove("active");
+            }
 
-    }
-});
-document.querySelectorAll(".top_Detail").forEach(element=>{
-    element.onclick = function () {
-    let id=this.id;
-    let s="";
-    topbill.forEach(bill=>{
-        if(bill.user==id){
-            bill.bill.forEach(order=>{
-                let list="";
-                order.products_buy.forEach(product=>{
-                    list+=`
+        }
+    });
+    document.querySelectorAll(".top_Detail").forEach(element => {
+        element.onclick = function () {
+            let id = this.id;
+            let s = "";
+            topbill.forEach(bill => {
+                if (bill.user == id) {
+                    bill.bill.forEach(order => {
+                        let list = "";
+                        order.products_buy.forEach(product => {
+                            list += `
                     <tr>
                         <td>${product.name_product}</td>
                         <td>${product.quantity}</td>
@@ -2192,17 +2195,17 @@ document.querySelectorAll(".top_Detail").forEach(element=>{
                         <td>${product.sell}</td>
                     </tr>
                     `
-                })
-                s+=`
-                  <div class="bill-code">Mã hóa đơn: ${order.code} <br></div> 
+                        })
+                        s += `
+                  <div class="bill-code">Mã hóa đơn: ${order.code} <br></div>
                 <div class="bill">
-                    
+
                     <div class="bill__header">
-                  
+
                         <h2>Thông tin người nhận</h2>
                         <div class="bill-content">
                             <p>
-                               
+
                               Họ tên : ${order.name} <br>
                               Số điện thoại: ${order.phone} <br>
                              Email: ${order.email} <br>
@@ -2230,12 +2233,12 @@ document.querySelectorAll(".top_Detail").forEach(element=>{
                     </div>
                 </div>
                 `
-            })   
-           
-        }
-    })
-    document.querySelector(".detail-background").classList.add("active");
-    document.querySelector(".detail-background").innerHTML=`
+                    })
+
+                }
+            })
+            document.querySelector(".detail-background").classList.add("active");
+            document.querySelector(".detail-background").innerHTML = `
     <div class="Bill-Client">
                 <div class="iclose"><i class="fa fa-times"></i></div>
 
@@ -2244,12 +2247,12 @@ document.querySelectorAll(".top_Detail").forEach(element=>{
         </div>
     </div>
     `
-    document.querySelector(".iclose").onclick=function(){
-        document.querySelector(".detail-background").classList.remove("active");
-    }
+            document.querySelector(".iclose").onclick = function () {
+                document.querySelector(".detail-background").classList.remove("active");
+            }
 
-}
-});
+        }
+    });
 }
 function displayChart(filterBill) {
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -2836,13 +2839,13 @@ function sortOrder() {
     if ((startDate.value == "" && endDate.value != "") || (startDate.value != "" && endDate.value == "")) {
         if (startDate.value == "") {
             console.log('Ngày bắt đầu chưa được chọn!');
-            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Ngày bắt đầu chưa được chọn!', type: 'warning', duration: 3000 });
             return;
         }
 
         if (endDate.value == "") {
             console.log('Ngày kết thúc chưa được chọn!');
-            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn!', type: 'warning', duration: 3000});
+            toast({ title: 'WARNING', message: 'Ngày kết thúc chưa được chọn!', type: 'warning', duration: 3000 });
             return;
         }
     }
@@ -3173,7 +3176,7 @@ function showAdminModify(obj) {
 
     if (!currentAdmin || currentAdmin.title === "contributors") {
         //alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
-        toast({ title: 'WARNING', message: 'Bạn không có quyền chỉnh sửa thông tin trang quản trị.', type: 'warning', duration: 3000});
+        toast({ title: 'WARNING', message: 'Bạn không có quyền chỉnh sửa thông tin trang quản trị.', type: 'warning', duration: 3000 });
         return; // Thoát nếu người dùng không có quyền
     }
 
@@ -3185,7 +3188,7 @@ function showAdminModify(obj) {
 
     if (!admin) {
         //alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
-        toast({ title: 'WARNING', message: 'Không tìm thấy quản trị viên cần chỉnh sửa.', type: 'warning', duration: 3000});
+        toast({ title: 'WARNING', message: 'Không tìm thấy quản trị viên cần chỉnh sửa.', type: 'warning', duration: 3000 });
         return;
     }
 
