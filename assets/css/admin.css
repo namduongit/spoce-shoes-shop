@@ -935,11 +935,11 @@ i {
     display: none;
     flex-direction: column;
     overflow: auto;
-    width: 60%;
-    height: 60%;
+    width: 65%;
+    height: 75%;
     left: 50%;
-    top: 40%;
-    transform: translate(-50%, -40%);
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .order-detail select {
@@ -973,8 +973,23 @@ i {
     transition: 0.3s all ease;
 }
 
+.detail {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
 .to-print h2 {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.to-print h4 {
+    margin-bottom: 10px;
+}
+
+.to-print p {
+    margin-bottom: 10px;
 }
 
 @media print {

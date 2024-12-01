@@ -2725,13 +2725,30 @@ function showOrderDetail(obj) {
     var str = "";
     var price = 0;
     order.products_buy.forEach(item => {
-        str = str + item.quantity + "x " + "SIZE " + item.sizes + " " + item.name_product + "; ";
+        str = str + item.quantity + "x " + "SIZE " + item.sizes + " " + item.name_product + "<br>";
         var priceOfProduct = parseInt(item.sell.replace(/[^0-9]/g, ""));
         var quantity = parseInt(item.quantity);
         price = price + quantity * priceOfProduct;
     });
     var priceString = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     priceString = priceString + "₫";
+
+
+    var cardDetails = "";
+    if (order.paymethod == 'pay-by-card') {
+        cardDetails = `
+        <div class="payment-detail">
+            <h4>Số thẻ</h4>
+            <p>${order.numbercard}</p>
+            <h4>Tên chủ thẻ</h4>
+            <p>${order.namecard}</p>
+            <h4>Ngày hết hạn</h4>
+            <p>${order.date}</p>
+            <h4>Mã bảo mật</h4>
+            <p>${order.csc}</p>
+        </div>
+        `;
+    }
 
 
     document.querySelector('.order-detail').style.display = 'flex';
@@ -2741,29 +2758,38 @@ function showOrderDetail(obj) {
     </div>
     <div class="to-print">
         <h2>Chi tiết đơn hàng</h2>
-        <h4>Thông tin đơn hàng</h4>
-        <p>${str}</p>
-        <h4>Mã đơn hàng</h4>
-        <p>${order.code}</p>
-        <h4>Tên khách hàng</h4>
-        <p>${order.name}</p>
-        <h4>Số điện thoại</h4>
-        <p>${order.phone}</p>
-        <h4>Địa chỉ</h4>
-        <p>${order.street + " " + order.district}</p>
-        <h4>Tổng giá tiền</h4>
-        <p>${priceString}</p>
-        <h4>Phương thức thanh toán</h4>
-        <p>${order.paymethod}</p>
+
+        <div class="detail">
+            <div class="order-detail-left">
+                <h4>Thông tin đơn hàng</h4>
+                <p>${str}</p>
+                <h4>Mã đơn hàng</h4>
+                <p>${order.code}</p>
+                <h4>Tên khách hàng</h4>
+                <p>${order.name}</p>
+                <h4>Số điện thoại</h4>
+                <p>${order.phone}</p>
+                <h4>Địa chỉ</h4>
+                <p>${order.street + " " + order.district}</p>
+                <h4>Tổng giá tiền</h4>
+                <p>${priceString}</p>
+                <h4>Tình trạng</h4>
+                <select id="status-select">
+                    <option value="1">Đang xử lý</option>
+                    <option value="2">Đã xác nhận</option>
+                    <option value="3">Đã giao thành công</option>
+                    <option value="4">Đã hủy</option>
+                </select>
+                <a class="order-print" href="#" onclick="window.print()">In hóa đơn</a>
+            </div>
+            
+            <div class="order-detail-right">
+                <h4>Phương thức thanh toán</h4>
+                <p>${order.paymethod}</p>
+                ${cardDetails}
+            </div>
+        </div>
     </div>
-    <h4>Tình trạng</h4>
-    <select id="status-select">
-        <option value="1">Đang xử lý</option>
-        <option value="2">Đã xác nhận</option>
-        <option value="3">Đã giao thành công</option>
-        <option value="4">Đã hủy</option>
-    </select>
-    <a class="order-print" href="#" onclick="window.print()">In hóa đơn</a>
     `;
     var statusCode;
     if (order.status === "Đang xử lý") {

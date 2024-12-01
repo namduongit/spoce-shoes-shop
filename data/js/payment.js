@@ -313,7 +313,7 @@ function Order(product_list) {
         var date = document.getElementById("exp-date").value;
         var csc = document.getElementById("csc").value;
         var namecard = document.getElementById("name-card").value;
-        valid &= validation.kiemtraRong(numbercard, "#errol_cardnumber_disable") & validation.kiemtraRong(numbercard, "#errol_date_disable") & validation.kiemtraRong(numbercard, "#errol_csc_disable") & validation.kiemtraRong(numbercard, "#errol_nameoncard_disable") & validation.kiemtraDateCard(numbercard, "#errol_date_wrong");
+        valid &= validation.kiemtraRong(numbercard, "#errol_cardnumber_disable") & validation.kiemtraRong(numbercard, "#errol_date_disable") & validation.kiemtraRong(numbercard, "#errol_csc_disable") & validation.kiemtraRong(numbercard, "#errol_nameoncard_disable") & validation.kiemtraDateCard(date, "#errol_date_wrong");
         if (valid == 0) {
             return false;
         }
