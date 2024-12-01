@@ -577,6 +577,8 @@ function showModifyingForm(productId) {
         </a>
     </div>
     `;
+    document.getElementById('brand-select').value = product.brand;
+
     let s = '';
     product.sizes.forEach(size => {
         s += `
@@ -825,12 +827,13 @@ function showAddingProduct() {
     </div>
     `;
     let s = '';
+    var sizeArray;
     if (document.getElementById("brand-select").value != "Clothes") {
         s = `
-         <option>35</option>
-          <option>36</option>
-           <option>37</option>
-            <option>38</option>
+        <option>35</option>
+        <option>36</option>
+        <option>37</option>
+        <option>38</option>
         <option>39</option>
         <option>40</option>
         <option>41</option>
@@ -838,6 +841,19 @@ function showAddingProduct() {
         <option>43</option>
         <option>44</option>
         `
+
+        sizeArray = {
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+        };
     } else {
         s = `
         <option>S</option>
@@ -846,19 +862,17 @@ function showAddingProduct() {
         <option>XL</option>
         <option>2XL</option>
         <option>3XL</option>`
+
+        sizeArray = {
+            "S": 0,
+            "M": 0,
+            "L": 0,
+            "XL": 0,
+            "2XL": 0,
+            "3XL": 0
+        };
     }
-    var sizeArray = {
-        "35": 0,
-        "36": 0,
-        "37": 0,
-        "38": 0,
-        "39": 0,
-        "40": 0,
-        "41": 0,
-        "42": 0,
-        "43": 0,
-        "44": 0
-    };
+
     document.getElementById("size-select").innerHTML = s;
     document.getElementById("quantity").value = sizeArray[document.getElementById("size-select").value.toString()];
     document.getElementById("original-price").onchange = function () {
@@ -883,6 +897,19 @@ function showAddingProduct() {
             <option>43</option>
             <option>44</option>
             `
+
+            sizeArray = {
+                "35": 0,
+                "36": 0,
+                "37": 0,
+                "38": 0,
+                "39": 0,
+                "40": 0,
+                "41": 0,
+                "42": 0,
+                "43": 0,
+                "44": 0
+            };
         } else {
             s = `
             <option>S</option>
@@ -891,6 +918,15 @@ function showAddingProduct() {
             <option>XL</option>
             <option>2XL</option>
             <option>3XL</option>`
+
+            sizeArray = {
+                "S": 0,
+                "M": 0,
+                "L": 0,
+                "XL": 0,
+                "2XL": 0,
+                "3XL": 0
+            };
         }
 
         document.getElementById("size-select").innerHTML = s;
@@ -904,10 +940,10 @@ function showAddingProduct() {
         console.log(document.getElementById("size-select").value.toString(), document.getElementById("quantity").value, sizeArray)
     }
     document.getElementById("quantity").oninput = function () {
-        sizeArray[document.getElementById("size-select").value.toString()] = document.getElementById("quantity").value;
+        sizeArray[document.getElementById("size-select").value.toString()] = parseInt(document.getElementById("quantity").value);
     }
 
-    document.querySelector(".adding-btn-container").onclick = function () {
+    document.querySelector(".adding-btn").onclick = function () {
         var idField = document.getElementById('id');
         var nameField = document.getElementById('name');
         var brandField = document.getElementById('brand-select');
@@ -925,22 +961,26 @@ function showAddingProduct() {
 
 
         if (nameField.value === '') {
-            alert('Tên sản phẩm không được bỏ trống');
+            //alert('Tên sản phẩm không được bỏ trống');
+            toast({ title: 'WARNING', message: 'Tên sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
             return;
         }
 
         if (orgPriceField.value === '') {
-            alert('Giá gốc sản phẩm không được bỏ trống');
+            // alert('Giá gốc sản phẩm không được bỏ trống');
+            toast({ title: 'WARNING', message: 'Giá gốc sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
             return;
         }
 
         if (sellPriceField.value === '') {
-            alert('Giá bán sản phẩm không được bỏ trống');
+            // alert('Giá bán sản phẩm không được bỏ trống');
+            toast({ title: 'WARNING', message: 'Giá bán sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
             return;
         }
 
         if (discountField.value === '' || isNaN(discountField.value)) {
-            alert('Giảm giá sản phẩm không được bỏ trống');
+            // alert('Giảm giá sản phẩm không được bỏ trống');
+            toast({ title: 'WARNING', message: 'Giảm giá sản phẩm không được bỏ trống!', type: 'warning', duration: 3000});
             return;
         }
 
@@ -972,8 +1012,11 @@ function showAddingProduct() {
         newProduct.price = formatMoney(parseInt(originalPrice));
         newProduct.sell = formatMoney(parseInt(sellPrice));
         newProduct.size = sizeArray;
-        newProduct.sizes =
-            ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44"];
+        if (brandField.value == 'clothes') {
+            newProduct.sizes = ["S", "M", "L", "XL", "2XL", "3XL"];
+        } else {
+            newProduct.sizes = ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44"];
+        }
         newProduct.promo_image = {
             image_1: "",
             image_2: "",
