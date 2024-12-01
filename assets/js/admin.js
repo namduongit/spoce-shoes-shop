@@ -71,6 +71,9 @@ function interFaceAdmin() {
     if (adminCurrent) {
         document.querySelector('.container').style.display = 'flex';
         document.querySelector('.login').style.display = 'none';
+        document.querySelector('.admin-content').innerHTML = `
+            <h4>Xin chào, ${adminCurrent.username}</h4>
+        `;
         writeMainContent();
     } else {
         console.log("Không tìm thấy admin trong localStorage");
@@ -3110,7 +3113,8 @@ function showAdminModify(obj) {
     var currentAdmin = JSON.parse(localStorage.getItem("currentAdmin"));
 
     if (!currentAdmin || currentAdmin.title === "contributors") {
-        alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
+        //alert("Bạn không có quyền chỉnh sửa thông tin trang quản trị.");
+        toast({ title: 'WARNING', message: 'Bạn không có quyền chỉnh sửa thông tin trang quản trị.', type: 'warning', duration: 3000});
         return; // Thoát nếu người dùng không có quyền
     }
 
@@ -3121,7 +3125,8 @@ function showAdminModify(obj) {
     var indexOfAdmin = admins.findIndex(item => item.username == obj.getAttribute('data-username'));
 
     if (!admin) {
-        alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
+        //alert("Không tìm thấy quản trị viên cần chỉnh sửa.");
+        toast({ title: 'WARNING', message: 'Không tìm thấy quản trị viên cần chỉnh sửa.', type: 'warning', duration: 3000});
         return;
     }
 
