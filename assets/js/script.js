@@ -25,9 +25,9 @@ document
     event.preventDefault();
     const icon = document.getElementById("toggle-icon");
     searchAndDisplay();
-    document.getElementById("min-price").value = "";
-    document.getElementById("max-price").value = "";
-    document.getElementById("price-inputs").style.display = "none";
+     document.getElementById("min-price").value = "";
+     document.getElementById("max-price").value = "";
+     document.getElementById("price-inputs").style.display = "none";
     icon.classList.remove("fa-angle-up");
     icon.classList.add("fa-angle-down");
   });
