@@ -325,7 +325,7 @@ function addToCart(productInfo) {
   let cart;
   if (!currentUser) {
   
-    cart = JSON.parse(localStorage.getItem("guestCart")) || [];
+    cart = JSON.parse(localgitStorage.getItem("guestCart")) || [];
   } else {
     
     const userCartKey = `cart_${currentUser.username}`;
