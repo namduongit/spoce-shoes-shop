@@ -3301,7 +3301,8 @@ function showAdminModify(obj) {
 
         // Kiểm tra quyền hạn: Không cho phép cộng tác viên sửa quản lý
         if (currentAdmin.title === "contributors" && admin.title === "manage") {
-            alert("Bạn không được phép chỉnh sửa thông tin Quản lý.");
+            //alert("Bạn không được phép chỉnh sửa thông tin Quản lý.");
+            toast({ title: 'WARNING', message: 'Bạn không được phép chỉnh sửa thông tin Quản lý.', type: 'warning', duration: 3000});
             return;
         }
 
@@ -3310,7 +3311,8 @@ function showAdminModify(obj) {
             var manageAdminsCount = admins.filter(admin => admin.title === "manage").length;
 
             if (manageAdminsCount < 1) {
-                alert("Phải có ít nhất 1 người quản trị viên là Quản lý.");
+                //alert("Phải có ít nhất 1 người quản trị viên là Quản lý.");
+                toast({ title: 'WARNING', message: 'Phải có ít nhất 1 người quản trị viên là Quản lý.', type: 'warning', duration: 3000});
                 return;
             }
         }
