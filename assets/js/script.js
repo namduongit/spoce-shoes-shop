@@ -19,9 +19,10 @@ document.getElementById("price-toggle").addEventListener("click", function () {
 
 // lắng nghe sự kiện khi click ra ngoài price-inputs thì ẩn price-inputsn đi
 document.addEventListener("click", function(event) {
+  const areaInside = document.getElementById("price-toggle");
   const icon = document.getElementById("toggle-icon");
   //  nếu click nằm ngoài vùng toggle-icon và nút hiện thị thì ẩn đi
-  if (!document.querySelector('#price-inputs').contains(event.target) && event.target != icon) {
+  if (!document.querySelector('#price-inputs').contains(event.target) && event.target != areaInside) {
     document.querySelector('#price-inputs').style.display = 'none';
     icon.classList.remove("fa-angle-up");
     icon.classList.add("fa-angle-down");

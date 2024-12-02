@@ -156,7 +156,7 @@ function writeMenuSelection() {
                         <a href="#">Sale 40% - 80%</a>
                     </li>
                     <li class="inner-section-menu-header">
-                        <div class="parent-menu" onclick="showChildMenuItem()">
+                        <div class="parent-menu">
                             <a href="#">GIÀY</a>
                         </div>
                         <ul class="child-menu">
